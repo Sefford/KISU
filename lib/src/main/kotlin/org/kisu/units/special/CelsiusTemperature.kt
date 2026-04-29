@@ -7,12 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents **temperature in degrees Celsius (°C)**.
+ * Represents temperature measured on the **Celsius scale**, using [Celsius].
  *
- * Celsius temperature is defined as the temperature in kelvins minus 273.15.
- * While the unit interval is the same as for kelvin (1 °C = 1 K), the zero point differs.
+ * Celsius temperature quantifies thermal state on a scale chosen for everyday and
+ * laboratory interpretation. Its interval matches the kelvin scale exactly, but its
+ * zero point is shifted by `273.15` relative to absolute temperature.
  *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * This is the quantity commonly used for weather reports, room temperature, body
+ * temperature, cooking, refrigeration, and many practical measurements read directly by
+ * people.
+ *
+ * The associated unit representation is [Celsius] (`°C`).
  */
 class CelsiusTemperature internal constructor(magnitude: BigDecimal, expression: Celsius) :
     Measure<Celsius, CelsiusTemperature>(magnitude, expression, ::CelsiusTemperature) {
@@ -22,9 +27,19 @@ class CelsiusTemperature internal constructor(magnitude: BigDecimal, expression:
 }
 
 /**
- * Represents the Celsius temperature scale: **degree Celsius** (°C).
+ * Represents the unit **degree Celsius** (`°C`), used to express [CelsiusTemperature].
  *
- * Defined as kelvin offset by 273.15.
+ * The degree Celsius quantifies temperature on a scale offset from the kelvin scale by
+ * 273.15. A temperature difference of `1 °C` is exactly the same size as a difference
+ * of `1 K`; the distinction lies in the zero point.
+ *
+ * Celsius is the unit most commonly used in weather reports, room and body
+ * temperatures, cooking, and laboratory readings intended for human interpretation.
+ *
+ * In this library, [Celsius] models the named scale unit, while [CelsiusTemperature]
+ * carries the measured value expressed with that unit.
+ *
+ * @see CelsiusTemperature
  */
 class Celsius private constructor(
     prefix: Metric,

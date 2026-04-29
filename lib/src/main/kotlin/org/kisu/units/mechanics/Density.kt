@@ -8,19 +8,16 @@ import org.kisu.units.special.CubicMetre
 import java.math.BigDecimal
 
 /**
- * Measure of density expressed in [KilogramPerCubicMetre].
+ * Represents the physical quantity of **density**, measured in
+ * [KilogramPerCubicMetre].
  *
- * Density quantifies how much mass is contained in a given volume of a substance.
+ * Density quantifies how much mass is packed into a given volume. It is one of the most
+ * widely used material descriptors in mechanics, fluid dynamics, and materials science.
  *
- * Common applications include:
- * - Material science (characterizing solids, liquids, and gases)
- * - Fluid mechanics (buoyancy and flow calculations)
- * - Geophysics (rock and soil density measurements)
+ * Typical examples include the density of air, water, metals, soils, and fuels, as
+ * well as buoyancy and stratification calculations.
  *
- * @property magnitude Numerical value of the density.
- * @property expression Unit of the density, here [KilogramPerCubicMetre].
- *
- * @see KilogramPerCubicMetre
+ * The associated unit representation is [KilogramPerCubicMetre] (`kg/m³`).
  */
 class Density(
     magnitude: BigDecimal,

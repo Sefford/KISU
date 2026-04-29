@@ -8,23 +8,17 @@ import org.kisu.units.special.Joule
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **heat capacity**.
+ * Represents the physical quantity of **heat capacity**, measured in
+ * [JoulePerKelvin].
  *
- * Heat capacity quantifies the **amount of heat energy required to raise the temperature
- * of a system by one kelvin**.
- * Its SI unit is the **joule per kelvin (J/K)**, represented here by [JoulePerKelvin].
+ * Heat capacity quantifies how much heat must be supplied to raise the temperature of
+ * an entire system by one kelvin. It depends on the system as a whole, not only on the
+ * material from which it is made.
  *
- * Example usages include:
- * - The heat capacity of water (~4184 J/K per kilogram at 25 °C)
- * - The thermal response of materials to heating or cooling
- * - Engineering and thermodynamics calculations
+ * Typical examples include the thermal response of a sample, vessel, machine component,
+ * or room-sized system during heating and cooling.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [HeatCapacity] are immutable, and the [expression] parameter ties the measurement
- * to its unit representation ([JoulePerKelvin]).
- *
- * @property magnitude The numeric value of the heat capacity.
- * @property expression The unit expression of the heat capacity, always [JoulePerKelvin].
+ * The associated SI unit representation is [JoulePerKelvin] (`J/K`).
  */
 class HeatCapacity(
     magnitude: BigDecimal,

@@ -8,20 +8,16 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Measure of moment of inertia expressed in [KilogramSquareMetre].
+ * Represents the physical quantity of **moment of inertia**, measured in
+ * [KilogramSquareMetre].
  *
- * Moment of inertia quantifies how mass is distributed relative to a rotation axis,
- * determining the torque required for a desired angular acceleration.
+ * Moment of inertia quantifies how mass is distributed relative to an axis of rotation.
+ * It determines how resistant a body is to angular acceleration under applied torque.
  *
- * Common applications include:
- * - Mechanical engineering (rotating machinery, flywheels)
- * - Physics (rotational dynamics of rigid bodies)
- * - Aerospace and automotive design (moment calculations for vehicles and satellites)
+ * Typical examples include flywheels, rotating machinery, vehicle dynamics, and
+ * spacecraft attitude analysis.
  *
- * @property magnitude Numerical value of the moment of inertia.
- * @property expression Unit of the moment of inertia, here [KilogramSquareMetre].
- *
- * @see KilogramSquareMetre
+ * The associated unit representation is [KilogramSquareMetre] (`kg·m²`).
  */
 class MomentOfIntertia(
     magnitude: BigDecimal,

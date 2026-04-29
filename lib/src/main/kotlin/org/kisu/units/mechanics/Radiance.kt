@@ -10,20 +10,17 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Measure of radiance expressed in [WattPerSteradianSquareMetre].
+ * Represents the physical quantity of **radiance**, measured in
+ * [WattPerSteradianSquareMetre].
  *
- * Radiance quantifies the intensity of electromagnetic radiation in a specific
- * direction per unit area.
+ * Radiance quantifies radiant power per unit area and per unit solid angle in a given
+ * direction. It is one of the most informative directional quantities in radiometry
+ * because it combines emission geometry with surface distribution.
  *
- * Common applications include:
- * - Optics and photometry (brightness of light sources)
- * - Radiative heat transfer (thermal emission calculations)
- * - Remote sensing and astronomy (intensity of observed radiation)
+ * Typical examples include thermal emission from surfaces, optical source
+ * characterization, and remote-sensing observations.
  *
- * @property magnitude Numerical value of the radiance.
- * @property expression Unit of the radiance, here [WattPerSteradianSquareMetre].
- *
- * @see WattPerSteradianSquareMetre
+ * The associated unit representation is [WattPerSteradianSquareMetre].
  */
 class Radiance(
     magnitude: BigDecimal,

@@ -11,22 +11,16 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **yank**, the rate of change of force over time.
+ * Represents the physical quantity of **yank**, measured in
+ * [KilogramMetrePerSecondCubed].
  *
- * Yank quantifies how quickly a force changes, i.e., the derivative of force with respect to time.
- * Its SI unit is **kilogram metre per second cubed (kg·m/s³)**, represented here by [KilogramMetrePerSecondCubed].
+ * Yank quantifies how rapidly force changes over time. It is the time derivative of
+ * force and appears in high-order dynamics where abrupt force variation matters.
  *
- * Typical applications include:
- * - Analysis of rapidly changing forces in mechanical systems
- * - Vibration and shock studies in engineering
- * - Dynamics simulations requiring higher-order force derivatives
+ * Typical examples include shock loading, vibration control, impact modeling, and
+ * precision motion systems.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [Yank] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation
- * ([KilogramMetrePerSecondCubed]).
- *
- * @property magnitude The numeric value of the yank.
- * @property expression The unit expression of the yank, always [KilogramMetrePerSecondCubed].
+ * The associated unit representation is [KilogramMetrePerSecondCubed] (`kg·m/s³`).
  */
 class Yank internal constructor(
     magnitude: BigDecimal,

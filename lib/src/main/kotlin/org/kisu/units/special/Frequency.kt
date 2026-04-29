@@ -7,17 +7,15 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **frequency**, measured in hertz (Hz).
+ * Represents the physical quantity of **frequency**, measured in [Hertz].
  *
- * Frequency quantifies how often a repeating event occurs per unit time.
- * One hertz corresponds to one cycle per second.
+ * Frequency quantifies how often a periodic event repeats in time. It is fundamental
+ * for oscillations, waves, rotating systems, and repeating signals.
  *
- * This unit is commonly used in physics, engineering, and signal processing to describe waveforms and oscillations.
+ * Typical examples include the pitch of a sound, the carrier frequency of a radio
+ * signal, the clock rate of an electronic system, or the rotational rate of a machine.
  *
- * This class expresses frequency as a combination of a [magnitude] and an [expression], supporting values such as
- * kilohertz (kHz), megahertz (MHz), or millihertz (mHz).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Hertz] (`Hz`), often scaled as `kHz`, `MHz`, or `GHz`.
  */
 class Frequency internal constructor(magnitude: BigDecimal, expression: Hertz) :
     Measure<Hertz, Frequency>(magnitude, expression, ::Frequency) {
@@ -27,11 +25,18 @@ class Frequency internal constructor(magnitude: BigDecimal, expression: Hertz) :
 }
 
 /**
- * Represents the SI derived unit of frequency: **hertz** (Hz).
+ * Represents the unit **hertz** (`Hz`), used to express [Frequency].
  *
- * One hertz is one event or cycle per second.
+ * A hertz quantifies how often a repeating event occurs. One hertz means one cycle,
+ * oscillation, or event per second.
  *
- * SI definition: `Hz = s⁻¹`.
+ * This unit is used for sound pitch, electrical alternating current, processor clocks,
+ * rotating systems, and any periodic motion or signal.
+ *
+ * In unit form, `Hz = s⁻¹`.
+ *
+ * @see Frequency
+ * @see Becquerel
  */
 class Hertz private constructor(
     prefix: Metric,

@@ -8,21 +8,14 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **snap**, the fourth derivative of position with respect to time.
+ * Represents the physical quantity of **snap**, measured in
+ * [MetrePerSecondFourth].
  *
- * Snap quantifies how the **jerk** (third derivative of position) changes over time.
- * Its SI unit is the **metre per second to the fourth (m/s⁴)**, represented here by [MetrePerSecondFourth].
+ * Snap is the time derivative of jerk. It appears in high-order motion design where the
+ * smoothness of acceleration changes matters, such as robotics, precision stages, and
+ * comfort-constrained vehicle motion.
  *
- * Snap is mainly used in advanced kinematics and precise motion analysis, such as:
- * - Robotics and trajectory planning, to ensure smooth higher-order motion profiles
- * - Physics simulations requiring accurate modeling of position derivatives beyond acceleration
- * - Systems where control over the change of jerk is necessary for stability or comfort
- *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [Snap] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([MetrePerSecondFourth]).
- *
- * @property magnitude The numeric value of the snap.
- * @property expression The unit expression of the snap, always [MetrePerSecondFourth].
+ * The associated unit representation is [MetrePerSecondFourth] (`m/s⁴`).
  */
 class Snap(
     magnitude: BigDecimal,

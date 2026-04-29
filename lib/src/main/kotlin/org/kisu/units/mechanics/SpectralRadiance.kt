@@ -10,20 +10,17 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Measure of spectral radiance expressed in [WattPerSteradianCubicMetre].
+ * Represents the physical quantity of **spectral radiance**, measured in
+ * [WattPerSteradianCubicMetre].
  *
- * Spectral radiance quantifies the directional distribution of radiant power within a
- * volumetric medium.
+ * Spectral radiance combines directional radiance with spectral resolution. It is used
+ * when both angular distribution and spectral content of radiation must be described at
+ * once.
  *
- * Common applications include:
- * - Radiative transfer in gases, plasmas, or participating media
- * - Astrophysics (emission of radiation in specific directions)
- * - Optical engineering (beam propagation analysis)
+ * Typical examples include atmospheric radiation models, plasma emission studies, and
+ * remote-sensing radiative transfer.
  *
- * @property magnitude Numerical value of the spectral radiance.
- * @property expression Unit of the spectral radiance, here [WattPerSteradianCubicMetre].
- *
- * @see WattPerSteradianCubicMetre
+ * The associated unit representation is [WattPerSteradianCubicMetre].
  */
 class SpectralRadiance(
     magnitude: BigDecimal,

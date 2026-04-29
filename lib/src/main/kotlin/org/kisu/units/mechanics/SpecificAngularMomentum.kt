@@ -11,20 +11,17 @@ import org.kisu.units.special.Newton
 import java.math.BigDecimal
 
 /**
- * Measure of specific angular momentum expressed in [NewtonMetreSecondPerKilogram].
+ * Represents the physical quantity of **specific angular momentum**, measured in
+ * [NewtonMetreSecondPerKilogram].
  *
- * Specific angular momentum quantifies the rotational motion of an object normalized by its mass,
- * describing how mass distribution affects angular velocity.
+ * Specific angular momentum quantifies angular momentum per unit mass. It is especially
+ * useful in orbital mechanics and continuum descriptions where total mass varies or is
+ * not the natural comparison basis.
  *
- * Common applications include:
- * - Astrophysics (orbital mechanics of planets and stars)
- * - Classical mechanics (rotational dynamics of bodies)
- * - Engineering (rotating machinery and flywheel analysis)
+ * Typical examples include planetary orbits, rotating flows, and trajectory analysis in
+ * astrodynamics.
  *
- * @property magnitude Numerical value of the specific angular momentum.
- * @property expression Unit of the specific angular momentum, here [NewtonMetreSecondPerKilogram].
- *
- * @see NewtonMetreSecondPerKilogram
+ * The associated unit representation is [NewtonMetreSecondPerKilogram].
  */
 class SpecificAngularMomentum(
     magnitude: BigDecimal,

@@ -8,24 +8,17 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **thermal resistance**.
+ * Represents the physical quantity of **thermal resistance**, measured in
+ * [KelvinPerWatt].
  *
- * Thermal resistance quantifies a material’s or system’s **opposition to heat flow**.
- * It describes the temperature difference required to transfer a given amount of heat
- * through a material or interface.
- * Its SI unit is the **kelvin per watt (K/W)**, represented here by [KelvinPerWatt].
+ * Thermal resistance quantifies how strongly a material, component, or interface
+ * opposes heat flow. It tells how much temperature difference is required to sustain a
+ * given rate of heat transfer.
  *
- * Example usages include:
- * - Insulation performance in buildings
- * - Thermal management of electronic components
- * - Heat transfer analysis in engineering systems
+ * Typical examples include insulation layers, heat sinks, package-to-ambient thermal
+ * paths, and building-envelope calculations.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [ThermalResistance] are immutable, and the [expression] parameter ties the measurement
- * to its unit representation ([KelvinPerWatt]).
- *
- * @property magnitude The numeric value of the thermal resistance.
- * @property expression The unit expression of the thermal resistance, always [KelvinPerWatt].
+ * The associated SI unit representation is [KelvinPerWatt] (`K/W`).
  */
 class ThermalResistance(
     magnitude: BigDecimal,

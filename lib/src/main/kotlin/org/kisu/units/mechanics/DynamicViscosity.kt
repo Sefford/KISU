@@ -8,20 +8,16 @@ import org.kisu.units.special.Pascal
 import java.math.BigDecimal
 
 /**
- * Measure of dynamic viscosity expressed in [PascalSecond].
+ * Represents the physical quantity of **dynamic viscosity**, measured in
+ * [PascalSecond].
  *
- * Dynamic viscosity quantifies a fluid's internal resistance to motion
- * when subjected to a shear force.
+ * Dynamic viscosity quantifies a fluid's internal resistance to shear and flow. It is
+ * the quantity used when relating shear stress to velocity gradients in continuum
+ * mechanics.
  *
- * Common applications include:
- * - Fluid mechanics (laminar and turbulent flow calculations)
- * - Chemical engineering (viscosity of liquids and gases)
- * - Lubrication studies (engine oils and greases)
+ * Typical examples include comparing oils, gases, polymer melts, and process fluids.
  *
- * @property magnitude Numerical value of the dynamic viscosity.
- * @property expression Unit of the dynamic viscosity, here [PascalSecond].
- *
- * @see PascalSecond
+ * The associated unit representation is [PascalSecond] (`Pa·s`).
  */
 class DynamicViscosity(
     magnitude: BigDecimal,

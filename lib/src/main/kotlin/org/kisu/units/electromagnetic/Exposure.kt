@@ -8,19 +8,16 @@ import org.kisu.units.special.Coulomb
 import java.math.BigDecimal
 
 /**
- * Represents **radiation exposure** (X), which quantifies the amount of ionizing
- * radiation in terms of the electric charge produced per unit mass of air.
+ * Represents the physical quantity of **radiation exposure**, measured in
+ * [CoulombPerKilogram].
  *
- * - **Dimension**: electric charge per mass (C/kg)
- * - **SI Unit**: coulomb per kilogram (C/kg)
+ * Exposure quantifies ionizing radiation in terms of the electric charge generated in
+ * air per unit mass. It is specific to ionization in air and should be distinguished
+ * from absorbed dose or biological effect.
  *
- * Exposure measures the ability of ionizing radiation to ionize air molecules,
- * and it is primarily used in **radiation protection** and **dosimetry**.
- * While it characterizes the intensity of radiation in air, it does not directly
- * account for the absorbed dose within human tissue.
+ * This quantity is used in dosimetry and radiation protection.
  *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in coulomb per kilogram (C/kg)
+ * The associated unit representation is [CoulombPerKilogram] (`C/kg`).
  */
 class Exposure(
     magnitude: BigDecimal,

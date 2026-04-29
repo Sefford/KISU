@@ -7,15 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **volume**, measured in cubic metres (m³).
+ * Represents the physical quantity of **volume**, measured in [CubicMetre].
  *
- * One cubic metre is the volume of a cube with edges one metre in length.
- * This is a coherent derived SI unit with the base unit m³.
+ * Volume quantifies how much three-dimensional space is occupied or enclosed. It is
+ * used for containers, rooms, solids, fluids, and any region with spatial extent in
+ * three dimensions.
  *
- * This class expresses volume as a combination of a [magnitude] and an [expression], supporting values such as
- * cubic millimetres (mm³), cubic centimetres (cm³), or cubic kilometres (km³).
+ * Typical examples include the capacity of a tank, the internal space of a room, the
+ * volume of fuel consumed, or the size of a solid object.
  *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [CubicMetre] (`m³`), with smaller or larger metric
+ * forms such as `cm³` or `km³` used when appropriate.
  */
 class Volume internal constructor(magnitude: BigDecimal, expression: CubicMetre) :
     Measure<CubicMetre, Volume>(magnitude, expression, ::Volume) {
@@ -25,11 +27,18 @@ class Volume internal constructor(magnitude: BigDecimal, expression: CubicMetre)
 }
 
 /**
- * Represents the SI derived unit of volume: **cubic metre** (m³).
+ * Represents the unit **cubic metre** (`m³`), used to express [Volume].
  *
- * One cubic metre is the volume of a cube with edges one metre long.
+ * A cubic metre quantifies three-dimensional space. It is the volume enclosed by a
+ * cube whose edges are each one metre long.
  *
- * SI definition: `m³`.
+ * This unit is used for the capacity of rooms, tanks, containers, natural gas usage,
+ * rainfall storage, and many engineering calculations involving occupied space.
+ *
+ * In unit form, `m³` is the product of three lengths.
+ *
+ * @see Volume
+ * @see SquareMetre
  */
 class CubicMetre private constructor(
     prefix: Metric,

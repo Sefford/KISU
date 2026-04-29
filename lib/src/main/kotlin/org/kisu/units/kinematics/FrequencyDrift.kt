@@ -9,21 +9,16 @@ import org.kisu.units.special.Hertz
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **frequency drift**, the rate of change of frequency over time.
+ * Represents the physical quantity of **frequency drift**, measured in
+ * [HertzPerSecond].
  *
- * Frequency drift quantifies how quickly a frequency changes with respect to time.
- * Its SI unit is the **hertz per second (Hz/s)**, represented here by [HertzPerSecond].
+ * Frequency drift quantifies how rapidly a frequency changes over time. It is useful
+ * whenever an oscillator, resonator, or periodic process is not perfectly stable.
  *
- * Typical applications include:
- * - Monitoring clock stability in electronics and timekeeping devices
- * - Signal processing and communication systems
- * - Oscillator or resonator performance analysis
+ * Typical examples include clock stability analysis, communication carrier drift,
+ * resonator aging, and control-system diagnostics.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [FrequencyDrift] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([HertzPerSecond]).
- *
- * @property magnitude The numeric value of the frequency drift.
- * @property expression The unit expression of the frequency drift, always [HertzPerSecond].
+ * The associated unit representation is [HertzPerSecond] (`Hz/s`).
  */
 class FrequencyDrift internal constructor(
     magnitude: BigDecimal,

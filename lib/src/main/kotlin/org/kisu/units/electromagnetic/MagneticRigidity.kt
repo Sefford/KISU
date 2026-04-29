@@ -8,26 +8,15 @@ import org.kisu.units.special.Tesla
 import java.math.BigDecimal
 
 /**
- * Represents **magnetic rigidity**, which quantifies the resistance of a charged
- * particle to deflection by a magnetic field.
+ * Represents the physical quantity of **magnetic rigidity**, measured in [TeslaMetre].
  *
- * - **Dimension**: magnetic flux density × length (T·m)
- * - **SI Unit**: tesla metre (T·m)
+ * Magnetic rigidity quantifies how resistant a charged particle beam is to bending by a
+ * magnetic field. Larger rigidity means a trajectory is harder to deflect.
  *
- * Magnetic rigidity is particularly used in **particle physics** and
- * **accelerator physics** to describe how strongly a particle’s trajectory
- * bends in a magnetic field. It is related to the particle’s momentum (p) and
- * charge (q) by:
+ * This quantity is widely used in accelerator physics, beam transport, and magnetic
+ * spectrometry.
  *
- *     R = p / q
- *
- * Example usages include:
- * - Designing beamlines in particle accelerators
- * - Calculating deflection in magnetic spectrometers
- * - Analyzing charged particle trajectories in magnetic fields
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in tesla metre (T·m)
+ * The associated unit representation is [TeslaMetre] (`T·m`).
  */
 class MagneticRigidity(
     magnitude: BigDecimal,

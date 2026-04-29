@@ -8,26 +8,17 @@ import org.kisu.units.special.Weber
 import java.math.BigDecimal
 
 /**
- * Represents the **magnetic vector potential** (A), a vector field used in
- * electromagnetism to describe the magnetic field in terms of a potential.
+ * Represents the physical quantity of **magnetic vector potential**, measured in
+ * [WeberPerMetre].
  *
- * - **Dimension**: magnetic flux per length (Wb/m)
- * - **SI Unit**: weber per metre (Wb/m)
+ * Magnetic vector potential is a field quantity from which magnetic flux density can be
+ * derived. It is especially important in theoretical electromagnetism, gauge-based
+ * formulations, and quantum contexts.
  *
- * The magnetic field (B) can be derived from the vector potential via the curl:
+ * Typical examples include field computation in complex geometries, inductive systems,
+ * and electromagnetic simulations.
  *
- *     B = ∇ × A
- *
- * Magnetic vector potential is widely used in **theoretical electromagnetism,
- * quantum mechanics, and electrodynamics calculations**.
- *
- * Example usages include:
- * - Computing magnetic fields in complex geometries
- * - Solving Maxwell’s equations
- * - Analyzing inductors and magnetic circuits
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in weber per metre (Wb/m)
+ * The associated unit representation is [WeberPerMetre] (`Wb/m`).
  */
 class MagneticVectorPotential(
     magnitude: BigDecimal,

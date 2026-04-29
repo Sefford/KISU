@@ -8,20 +8,14 @@ import org.kisu.units.special.Newton
 import java.math.BigDecimal
 
 /**
- * Measure of momentum expressed in [NewtonSecond].
+ * Represents the physical quantity of **momentum**, measured in [NewtonSecond].
  *
- * Momentum quantifies the motion of a body, combining its mass and velocity,
- * and determines the force needed to change its motion.
+ * Momentum quantifies the amount of motion carried by a body. Because it is conserved in
+ * isolated systems, it is one of the central bookkeeping quantities of mechanics.
  *
- * Common applications include:
- * - Classical mechanics (collisions and motion analysis)
- * - Aerospace engineering (rocket propulsion, orbital mechanics)
- * - Particle physics (momentum conservation in reactions)
+ * Typical examples include collisions, propulsion, recoil, and particle-beam dynamics.
  *
- * @property magnitude Numerical value of the momentum.
- * @property expression Unit of the momentum, here [NewtonSecond].
- *
- * @see NewtonSecond
+ * The associated unit representation is [NewtonSecond].
  */
 class Momentum(
     magnitude: BigDecimal,

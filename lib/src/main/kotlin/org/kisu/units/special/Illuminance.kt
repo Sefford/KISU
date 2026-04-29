@@ -7,17 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **illuminance**, measured in lux (lx).
+ * Represents the physical quantity of **illuminance**, measured in [Lux].
  *
- * One lux is equal to one lumen per square meter. It measures the amount of visible light falling on a surface.
- * In SI base units, it is cd·sr·m⁻².
+ * Illuminance quantifies how much visible light arrives at a surface. Unlike luminous
+ * flux, which describes total emitted light, illuminance is about the light actually
+ * falling on a desk, road, page, sensor, or wall.
  *
- * Lux are commonly used to quantify lighting conditions in indoor and outdoor environments.
+ * Typical examples include office lighting standards, daylight measurements, museum
+ * conservation limits, and exposure planning in photography or cinematography.
  *
- * This class expresses illuminance as a combination of a [magnitude] and an [expression], supporting values such as
- * millilux (mlx), kilolux (klx), or megalux (Mlx).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Lux] (`lx`), with values ranging from fractions of a
+ * lux in dim settings to many kilolux in full daylight.
  */
 class Illuminance internal constructor(magnitude: BigDecimal, expression: Lux) :
     Measure<Lux, Illuminance>(magnitude, expression, ::Illuminance) {
@@ -27,11 +27,19 @@ class Illuminance internal constructor(magnitude: BigDecimal, expression: Lux) :
 }
 
 /**
- * Represents the SI derived unit of illuminance: **lux** (lx).
+ * Represents the unit **lux** (`lx`), used to express [Illuminance].
  *
- * One lux is equal to one lumen per square metre.
+ * A lux quantifies how much visible light reaches a surface. One lux means one [Lumen]
+ * distributed over one [SquareMetre].
  *
- * SI definition: `lx = m⁻²·cd·sr`.
+ * It is used when specifying lighting conditions for offices, classrooms, roads,
+ * museums, photography, or plant growth environments.
+ *
+ * In unit form, `lx = lm/m² = m⁻²·cd·sr`.
+ *
+ * @see Illuminance
+ * @see Lumen
+ * @see SquareMetre
  */
 class Lux private constructor(
     prefix: Metric,

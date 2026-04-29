@@ -7,17 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **catalytic activity**, measured in katals (kat).
+ * Represents the physical quantity of **catalytic activity**, measured in [Katal].
  *
- * One katal corresponds to the catalytic activity that converts one mole of substrate per second.
- * In SI base units, it is mol·s⁻¹.
+ * Catalytic activity quantifies how rapidly a catalyst converts reactants into
+ * products, expressed as amount of substance transformed per unit time.
  *
- * Katals are used in biochemistry and enzymology to quantify the rate of enzymatic reactions.
+ * This quantity is used in enzymology, clinical chemistry, and biochemical process
+ * analysis, for example when reporting the activity of an enzyme in blood serum or the
+ * performance of a catalyst in an industrial reactor.
  *
- * This class expresses catalytic activity as a combination of a [magnitude] and an [expression], supporting values
- * such as millikatals (mkat), microkatals (µkat), or kilokatals (kkat).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Katal] (`kat`), with smaller metric forms often used
+ * in laboratory work.
  */
 class CatalyticActivity internal constructor(magnitude: BigDecimal, expression: Katal) :
     Measure<Katal, CatalyticActivity>(magnitude, expression, ::CatalyticActivity) {
@@ -27,11 +27,19 @@ class CatalyticActivity internal constructor(magnitude: BigDecimal, expression: 
 }
 
 /**
- * Represents the SI derived unit of catalytic activity: **katal** (kat).
+ * Represents the unit **katal** (`kat`), used to express [CatalyticActivity].
  *
- * One katal is equal to one mole per second.
+ * A katal quantifies how quickly a catalyst converts reactants into products. One
+ * katal corresponds to a catalytic process that transforms one mole of substance per
+ * second.
  *
- * SI definition: `kat = mol·s⁻¹`.
+ * This unit appears in enzymology, clinical chemistry, and biochemical process
+ * analysis, where reaction rate is tied to the amount of substance transformed over
+ * time.
+ *
+ * In unit form, `kat = mol·s⁻¹`.
+ *
+ * @see CatalyticActivity
  */
 class Katal private constructor(
     prefix: Metric,

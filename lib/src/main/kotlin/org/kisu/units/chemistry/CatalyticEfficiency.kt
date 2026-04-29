@@ -12,28 +12,18 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **catalytic efficiency**.
+ * Represents the physical quantity of **catalytic efficiency**, measured in
+ * [CubicMetrePerMoleSecond].
  *
- * Catalytic efficiency quantifies the **efficiency of an enzyme or catalyst
- * in converting substrate molecules into product**.
- * It is often expressed as the ratio *kcat/Km* in enzyme kinetics, where:
- * - *kcat* is the catalytic turnover number
- * - *Km* is the Michaelis–Menten constant
+ * Catalytic efficiency quantifies how effectively an enzyme or catalyst converts
+ * substrate into product once both reaction speed and substrate affinity are taken into
+ * account. In biochemistry it is closely associated with the ratio `kcat/Km`.
  *
- * Its SI unit is the **cubic metre per mole second (m³/(mol·s))**, represented here
- * by [CubicMetrePerMoleSecond].
+ * This quantity is used to compare enzymes, characterize catalytic mechanisms, and
+ * evaluate reaction performance in biochemical, pharmaceutical, and industrial
+ * contexts.
  *
- * Example usages include:
- * - Characterising enzyme kinetics in biochemistry
- * - Comparing catalytic effectiveness between different enzymes
- * - Biotechnological and pharmaceutical applications
- *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [CatalyticEfficiency] are immutable, and the [expression] parameter ties
- * the measurement to its unit representation ([CubicMetrePerMoleSecond]).
- *
- * @property magnitude The numeric value of the catalytic efficiency.
- * @property expression The unit expression of the catalytic efficiency, always [CubicMetrePerMoleSecond].
+ * The associated SI unit representation is [CubicMetrePerMoleSecond] (`m³/(mol·s)`).
  */
 class CatalyticEfficiency(
     magnitude: BigDecimal,

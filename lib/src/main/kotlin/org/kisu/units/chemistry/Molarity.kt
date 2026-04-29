@@ -8,21 +8,18 @@ import org.kisu.units.special.CubicMetre
 import java.math.BigDecimal
 
 /**
- * Represents the **molarity** (also called **molar concentration**) of a solution.
+ * Represents the physical quantity of **molarity**, also called molar concentration,
+ * measured in [MolePerCubicMetre].
  *
- * Molarity is the number of moles of solute present in one cubic metre of solution.
- * It expresses how concentrated a substance is within a given volume of solvent.
+ * Molarity quantifies how much solute is present per unit volume of solution. It is one
+ * of the most familiar ways to describe concentration in chemistry, especially in
+ * laboratory and industrial solution preparation.
  *
- * Expressed in **moles per cubic metre (mol·m⁻³)**.
+ * Typical examples include reagent concentrations, buffer preparation, and analytical
+ * chemistry workflows.
  *
- * ## Example
- * A typical laboratory solution of sodium chloride (NaCl) might have a molarity of
- * **1000 mol·m⁻³**, which is equivalent to a 1 mol/L solution. This means the solution
- * contains one mole of NaCl dissolved in each litre of water.
- *
- * @constructor Creates a [Molarity] with the given [magnitude] and [expression].
- * @property magnitude Numerical value of the molarity.
- * @property expression The unit expression, [MolePerCubicMetre].
+ * The associated SI unit representation is [MolePerCubicMetre] (`mol/m³`), though
+ * litre-based forms are also common in practice.
  */
 class Molarity(
     magnitude: BigDecimal,

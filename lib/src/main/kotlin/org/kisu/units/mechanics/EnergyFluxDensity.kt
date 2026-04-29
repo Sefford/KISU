@@ -11,19 +11,16 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Measure of energy flux density expressed in [JoulePerSquareMetreSecond].
+ * Represents the physical quantity of **energy flux density**, measured in
+ * [JoulePerSquareMetreSecond].
  *
- * Energy flux density quantifies the rate at which energy passes through a unit area.
+ * Energy flux density quantifies how much energy crosses a unit area per unit time. It
+ * is a transport quantity used whenever energy flow through a surface is of interest.
  *
- * Common applications include:
- * - Heat transfer analysis (radiative or conductive flux)
- * - Electromagnetic wave intensity calculations
- * - Energy transport in fluids and solids
+ * Typical examples include radiative transport, wave intensity, and conductive or
+ * convective energy transfer analyses.
  *
- * @property magnitude Numerical value of the energy flux density.
- * @property expression Unit of the energy flux density, here [JoulePerSquareMetreSecond].
- *
- * @see JoulePerSquareMetreSecond
+ * The associated unit representation is [JoulePerSquareMetreSecond].
  */
 class EnergyFluxDensity(
     magnitude: BigDecimal,

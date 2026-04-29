@@ -7,18 +7,18 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **electric potential difference**, measured in volts (V).
+ * Represents the physical quantity of **electric potential difference**, measured in
+ * [Volt].
  *
- * One volt is defined as the potential difference across a conductor when a current of one ampere dissipates one watt
- * of power. In SI base units, it is kg·m²·s⁻³·A⁻¹.
+ * Electric potential difference quantifies how much energy is available per unit charge
+ * between two points. It is the quantity usually called voltage in circuits and field
+ * problems.
  *
- * Volts are used extensively in electrical circuits to describe voltage, electromotive force, and potential energy
- * per charge.
+ * Typical examples include the output of a battery, the voltage across a resistor, the
+ * supply level of a device, or the potential between two electrodes.
  *
- * This class expresses electric potential as a combination of a [magnitude] and an [expression], supporting values
- * such as millivolts (mV), microvolts (µV), or kilovolts (kV).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Volt] (`V`), with common practical forms such as `mV`,
+ * `kV`, and everything in between.
  */
 class ElectricPotential internal constructor(magnitude: BigDecimal, expression: Volt) :
     Measure<Volt, ElectricPotential>(magnitude, expression, ::ElectricPotential) {
@@ -28,13 +28,20 @@ class ElectricPotential internal constructor(magnitude: BigDecimal, expression: 
 }
 
 /**
- * Represents the SI derived unit of electric potential: **volt** (V).
+ * Represents the unit **volt** (`V`), used to express [ElectricPotential].
  *
- * One volt is the potential difference between two points of a conductor
- * carrying a constant current of one ampere, when the power dissipated between
- * these points is one watt.
+ * A volt quantifies electric potential difference, or energy available per unit charge.
+ * It tells how strongly a source can drive charges through a circuit.
  *
- * SI definition: `V = m²·kg·s⁻³·A⁻¹`.
+ * Everyday examples include the output of a battery cell, the charging voltage of a
+ * USB power supply, or the potential difference across a component in an electric
+ * circuit.
+ *
+ * In unit form, `V = W/A = J/C = m²·kg·s⁻³·A⁻¹`.
+ *
+ * @see ElectricPotential
+ * @see Watt
+ * @see Coulomb
  */
 class Volt private constructor(
     prefix: Metric,

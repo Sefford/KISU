@@ -8,24 +8,16 @@ import org.kisu.units.special.Joule
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **molar energy**.
+ * Represents the physical quantity of **molar energy**, measured in [JoulePerMole].
  *
- * Molar energy quantifies the **amount of energy per mole of substance**.
- * It is commonly used in thermodynamics and chemistry to describe the energy
- * content or energy change associated with chemical reactions or phase transitions.
- * Its SI unit is the **joule per mole (J/mol)**, represented here by [JoulePerMole].
+ * Molar energy quantifies how much energy is associated with one mole of substance. It
+ * is a natural way to express reaction enthalpies, formation energies, phase-change
+ * energies, and other thermodynamic quantities tied to amount of substance.
  *
- * Example usages include:
- * - Enthalpy of reaction (ΔH, in J/mol)
- * - Gibbs free energy of formation (ΔG, in J/mol)
- * - Energy per mole in phase changes (e.g., vaporization, fusion)
+ * Typical examples include the enthalpy of combustion of a fuel, the free energy of
+ * formation of a compound, or the energy change accompanying vaporization.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [MolarEnergy] are immutable, and the [expression] parameter ties
- * the measurement to its unit representation ([JoulePerMole]).
- *
- * @property magnitude The numeric value of the molar energy.
- * @property expression The unit expression of the molar energy, always [JoulePerMole].
+ * The associated SI unit representation is [JoulePerMole] (`J/mol`).
  */
 class MolarEnergy(
     magnitude: BigDecimal,

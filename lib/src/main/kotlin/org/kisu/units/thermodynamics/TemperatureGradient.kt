@@ -8,22 +8,17 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **temperature gradient**.
+ * Represents the physical quantity of **temperature gradient**, measured in
+ * [KelvinPerMetre].
  *
- * Temperature gradient quantifies the **rate of change of temperature with respect to distance**.
- * Its SI unit is the **kelvin per metre (K/m)**, represented here by [KelvinPerMetre].
+ * Temperature gradient quantifies how rapidly temperature changes across space. It is
+ * the spatial counterpart of a thermal slope and is central to heat conduction and
+ * transport analysis.
  *
- * Example usages include:
- * - Heat conduction through materials (Fourier’s law)
- * - Atmospheric temperature gradients
- * - Thermal engineering and geophysics
+ * Typical examples include the temperature drop through a wall, geothermal gradients in
+ * the ground, or thermal fields inside a device.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [TemperatureGradient] are immutable, and the [expression] parameter ties the measurement
- * to its unit representation ([KelvinPerMetre]).
- *
- * @property magnitude The numeric value of the temperature gradient.
- * @property expression The unit expression of the temperature gradient, always [KelvinPerMetre].
+ * The associated SI unit representation is [KelvinPerMetre] (`K/m`).
  */
 class TemperatureGradient(
     magnitude: BigDecimal,

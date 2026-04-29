@@ -7,17 +7,16 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **solid angle**, measured in steradians (sr).
+ * Represents the physical quantity of **solid angle**, measured in [Steradian].
  *
- * A steradian is the solid angle subtended at the center of a sphere by a portion of the surface
- * with area equal to the square of the radius. It is used in three-dimensional angular measurements.
+ * Solid angle quantifies angular spread in three dimensions. It plays the same role in
+ * space that plane angle plays in a plane, making it essential for describing how wide
+ * a cone of emission, detection, or view really is.
  *
- * Like radians, the steradian is a **dimensionless** derived SI unit.
+ * Typical examples include the beam spread of a lamp, the field of view of a detector,
+ * or the angular extent under which a surface is seen from a point.
  *
- * This class expresses solid angle as a combination of a [magnitude] and an [expression], supporting values such as
- * millisteradians (msr) or kilosteradians (ksr).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Steradian] (`sr`), a named dimensionless unit.
  */
 class SolidAngle internal constructor(magnitude: BigDecimal, expression: Steradian) :
     Measure<Steradian, SolidAngle>(magnitude, expression, ::SolidAngle) {
@@ -27,12 +26,20 @@ class SolidAngle internal constructor(magnitude: BigDecimal, expression: Steradi
 }
 
 /**
- * Represents the SI derived unit of solid angle: **steradian** (sr).
+ * Represents the unit **steradian** (`sr`), used to express [SolidAngle].
  *
- * One steradian is the solid angle with an area equal to the square of the radius
- * on the surface of a sphere.
+ * A steradian quantifies how wide a three-dimensional angular spread is. It is the
+ * solid angle that cuts out an area on a sphere equal to the square of the sphere's
+ * radius.
  *
- * SI definition: dimensionless (m²/m²).
+ * This unit appears in photometry and radiometry, for example when describing the
+ * spread of a lamp, LED, spotlight, or detector field of view.
+ *
+ * In unit form, the steradian is dimensionless and can be understood as `m²/m²`.
+ *
+ * @see SolidAngle
+ * @see Lumen
+ * @see Radian
  */
 class Steradian private constructor(
     prefix: Metric,

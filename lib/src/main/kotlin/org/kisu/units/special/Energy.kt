@@ -7,17 +7,16 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **energy**, **work**, or **amount of heat**, measured in joules (J).
+ * Represents the physical quantity of **energy**, measured in [Joule].
  *
- * One joule is equal to the work done when a force of one newton displaces an object by one meter.
- * In base SI units, it is defined as kg·m²·s⁻².
+ * Energy quantifies the capacity to perform work, transfer heat, or produce change. In
+ * mechanics it appears as kinetic or potential energy; in thermodynamics as heat; in
+ * electricity as energy delivered or stored.
  *
- * Joules are widely used in physics and engineering to quantify energy, heat, and work.
+ * Typical examples include the energy consumed by an appliance, the work done lifting
+ * a load, the heat delivered to a sample, or the stored energy in a battery.
  *
- * This class expresses energy as a combination of a [magnitude] and an [expression], supporting values such as
- * kilojoules (kJ), megajoules (MJ), or millijoules (mJ).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Joule] (`J`), commonly scaled as `mJ`, `kJ`, or `MJ`.
  */
 class Energy internal constructor(magnitude: BigDecimal, expression: Joule) :
     Measure<Joule, Energy>(magnitude, expression, ::Energy) {
@@ -27,12 +26,20 @@ class Energy internal constructor(magnitude: BigDecimal, expression: Joule) :
 }
 
 /**
- * Represents the SI derived unit of energy: **joule** (J).
+ * Represents the unit **joule** (`J`), used to express [Energy].
  *
- * One joule is the energy transferred when a force of one newton
- * acts over a displacement of one metre.
+ * A joule quantifies energy, work, or heat. One joule is the energy transferred when
+ * a force of one [Newton] acts through a distance of one metre.
  *
- * SI definition: `J = m²·kg·s⁻²`.
+ * It is used for mechanical work, thermal energy, electrical energy delivered over
+ * time, and many everyday quantities such as the energy content of food or the energy
+ * stored in a battery cell.
+ *
+ * In unit form, `J = N·m = m²·kg·s⁻²`.
+ *
+ * @see Energy
+ * @see Newton
+ * @see Watt
  */
 class Joule private constructor(
     prefix: Metric,

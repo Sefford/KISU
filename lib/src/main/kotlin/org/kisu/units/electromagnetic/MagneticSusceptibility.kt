@@ -8,23 +8,14 @@ import org.kisu.units.special.Henry
 import java.math.BigDecimal
 
 /**
- * Represents **magnetic susceptibility** (χ), a dimensionless quantity that
- * describes how much a material becomes magnetized in response to an applied
- * magnetic field.
+ * Represents the physical quantity of **magnetic susceptibility**, measured in
+ * [MetrePerHenry] in this library.
  *
- * - **Dimension**: length per inductance (m/H)
- * - **SI Unit**: metre per henry (m/H)
+ * Magnetic susceptibility quantifies how strongly a material becomes magnetized when an
+ * external magnetic field is applied. It is widely used to compare diamagnetic,
+ * paramagnetic, and ferromagnetic responses.
  *
- * Magnetic susceptibility quantifies the ease with which a material can be
- * magnetized and is used to classify materials as **diamagnetic, paramagnetic, or ferromagnetic**.
- *
- * Example usages include:
- * - Determining the response of materials in magnetic fields
- * - Calculating magnetic polarization and permeability
- * - Material characterization in physics and engineering
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in metre per henry (m/H)
+ * The associated unit representation is [MetrePerHenry] (`m/H`) as modeled by this API.
  */
 class MagneticSusceptibility(
     magnitude: BigDecimal,

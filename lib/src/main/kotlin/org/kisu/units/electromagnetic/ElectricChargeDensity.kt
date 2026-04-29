@@ -9,22 +9,14 @@ import org.kisu.units.special.CubicMetre
 import java.math.BigDecimal
 
 /**
- * Represents **electric charge density** in the SI system.
+ * Represents the physical quantity of **electric charge density**, measured in
+ * [CoulombPerCubicMetre].
  *
- * Electric charge density measures the amount of electric charge distributed
- * per unit volume. It is defined as the quotient of electric charge and volume:
+ * Electric charge density quantifies how much electric charge is distributed through a
+ * unit volume. It is the natural description for charged media, plasmas, electrolytes,
+ * and continuum electrostatics.
  *
- *     ρ = Q / V
- *
- * where:
- * - ρ is the electric charge density,
- * - Q is the electric charge in coulombs (C),
- * - V is the volume in cubic metres (m³).
- *
- * The SI derived unit is **coulomb per cubic metre (C/m³)**.
- *
- * @constructor Creates a measure of electric charge density with a given [magnitude]
- * in terms of the unit expression [CoulombPerCubicMetre].
+ * The associated unit representation is [CoulombPerCubicMetre] (`C/m³`).
  */
 class ElectricChargeDensity(
     magnitude: BigDecimal,

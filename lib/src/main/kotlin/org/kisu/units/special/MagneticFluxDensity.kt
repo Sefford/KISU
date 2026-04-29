@@ -7,17 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **magnetic flux density**, measured in teslas (T).
+ * Represents the physical quantity of **magnetic flux density**, measured in [Tesla].
  *
- * One tesla is equal to one weber per square meter (Wb/m²), or kg·s⁻²·A⁻¹ in SI base units.
- * It measures the strength of magnetic fields.
+ * Magnetic flux density quantifies how concentrated a magnetic field is over an area.
+ * It is the quantity commonly denoted by `B` in electromagnetism and is especially
+ * useful when describing field strength inside magnets, coils, and magnetic materials.
  *
- * Teslas are used in electromagnetism, especially in the context of MRI machines, magnets, and inductors.
+ * Typical examples include Earth's magnetic field, the field inside an MRI scanner, or
+ * the flux density in a motor or transformer core.
  *
- * This class expresses magnetic flux density as a combination of a [magnitude] and an [expression], supporting values
- * such as milliteslas (mT), microteslas (µT), or kiloteslas (kT).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Tesla] (`T`), with `mT` and `µT` being common in
+ * practice.
  */
 class MagneticFluxDensity internal constructor(magnitude: BigDecimal, expression: Tesla) :
     Measure<Tesla, MagneticFluxDensity>(magnitude, expression, ::MagneticFluxDensity) {
@@ -27,11 +27,20 @@ class MagneticFluxDensity internal constructor(magnitude: BigDecimal, expression
 }
 
 /**
- * Represents the SI derived unit of magnetic flux density: **tesla** (T).
+ * Represents the unit **tesla** (`T`), used to express [MagneticFluxDensity].
  *
- * One tesla is equal to one weber per square metre.
+ * A tesla quantifies magnetic flux density, describing how concentrated a magnetic
+ * field is over an area. One tesla means one [Weber] of magnetic flux through one
+ * [SquareMetre].
  *
- * SI definition: `T = m⁻²·kg·s⁻²·A⁻¹`.
+ * This unit is used for MRI systems, permanent magnets, electric motors, particle
+ * beam systems, and general electromagnetic field analysis.
+ *
+ * In unit form, `T = Wb/m² = m⁻²·kg·s⁻²·A⁻¹`.
+ *
+ * @see MagneticFluxDensity
+ * @see Weber
+ * @see SquareMetre
  */
 class Tesla private constructor(
     prefix: Metric,

@@ -8,21 +8,14 @@ import org.kisu.units.special.Radian
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **angular jerk**, the third derivative of angular position with respect to time.
+ * Represents the physical quantity of **angular jerk**, measured in
+ * [RadianPerSecondCubed].
  *
- * Angular jerk quantifies how **angular acceleration** changes over time.
- * Its SI unit is the **radian per second cubed (rad/s³)**, represented here by [RadianPerSecondCubed].
+ * Angular jerk is the time derivative of angular acceleration. It quantifies how
+ * abruptly rotational acceleration changes and is important in motion comfort,
+ * actuator limits, and high-quality trajectory generation.
  *
- * Typical applications include:
- * - Rotational motion control in robotics and machinery
- * - Vehicle or spacecraft rotational dynamics
- * - Physics simulations requiring higher-order angular derivatives
- *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [AngularJerk] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([RadianPerSecondCubed]).
- *
- * @property magnitude The numeric value of the angular jerk.
- * @property expression The unit expression of the angular jerk, always [RadianPerSecondCubed].
+ * The associated unit representation is [RadianPerSecondCubed] (`rad/s³`).
  */
 class Jerk(
     magnitude: BigDecimal,

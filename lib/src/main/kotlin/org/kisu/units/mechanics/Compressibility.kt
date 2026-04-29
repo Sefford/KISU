@@ -8,20 +8,18 @@ import org.kisu.units.special.Pascal
 import java.math.BigDecimal
 
 /**
- * Measure of compressibility expressed in [ReciprocalPascal].
+ * Represents the physical quantity of **compressibility**, measured in
+ * [ReciprocalPascal].
  *
- * Compressibility quantifies the **ease with which a material or fluid can be compressed**
- * under applied pressure. It is commonly used in fluid mechanics, thermodynamics, and materials science.
+ * Compressibility quantifies how strongly the volume of a substance changes when
+ * pressure is applied. A highly compressible material changes volume readily, whereas a
+ * low-compressibility material resists such change.
  *
- * Common applications include:
- * - Determining bulk modulus of solids and fluids
- * - Analyzing acoustic properties of materials
- * - Evaluating fluid compressibility in engineering systems
+ * This quantity is used in fluid mechanics, acoustics, thermodynamics, and materials
+ * science, for example when comparing gases, liquids, and solids or when deriving bulk
+ * modulus.
  *
- * @property magnitude Numerical value of the compressibility.
- * @property expression Unit of the compressibility, here [ReciprocalPascal].
- *
- * @see ReciprocalPascal
+ * The associated unit representation is [ReciprocalPascal] (`Pa⁻¹`).
  */
 class Compressibility(
     magnitude: BigDecimal,
@@ -33,15 +31,18 @@ class Compressibility(
 }
 
 /**
- * Unit of [Compressibility].
+ * Represents the unit **reciprocal pascal** (`Pa⁻¹`), used by [Compressibility].
  *
- * Represents the unit of **compressibility**, i.e., the physical quantity measuring
- * the relative change in volume per unit pressure.
+ * Reciprocal pascal quantifies how much a material's volume changes in response to
+ * pressure. Larger values indicate a substance that is easier to compress.
  *
- * Symbol: `Pa⁻¹`
- * SI: `m⁻¹·kg⁻¹·s²`
+ * This unit is used in fluid mechanics, materials science, geophysics, and
+ * thermodynamics when comparing how gases, liquids, or solids respond to pressure.
+ *
+ * In this library, [ReciprocalPascal] is defined as the inverse of [Pascal.UNIT].
  *
  * @see Compressibility
+ * @see Pascal
  */
 class ReciprocalPascal private constructor(
     prefix: Metric,

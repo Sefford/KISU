@@ -8,21 +8,14 @@ import org.kisu.units.special.Radian
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **angular acceleration**.
+ * Represents the physical quantity of **angular acceleration**, measured in
+ * [RadianPerSecondSquared].
  *
- * Angular acceleration quantifies the **rate of change of angular velocity** over time.
- * Its SI unit is the **radian per second squared (rad/s²)**, represented here by [RadianPerSecondSquared].
+ * Angular acceleration quantifies how rapidly angular velocity changes. It is the
+ * rotational counterpart of linear acceleration and is central to the dynamics of
+ * motors, wheels, gears, and articulated systems.
  *
- * Typical applications include:
- * - Rotational dynamics of machinery and engines
- * - Robotics and control systems for precise angular motion
- * - Physics simulations involving rotational kinematics
- *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [AngularAcceleration] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([RadianPerSecondSquared]).
- *
- * @property magnitude The numeric value of the angular acceleration.
- * @property expression The unit expression of the angular acceleration, always [RadianPerSecondSquared].
+ * The associated unit representation is [RadianPerSecondSquared] (`rad/s²`).
  */
 class Acceleration(
     magnitude: BigDecimal,

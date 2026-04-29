@@ -7,17 +7,16 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **electrical conductance**, measured in siemens (S).
+ * Represents the physical quantity of **electrical conductance**, measured in [Siemens].
  *
- * One siemens is the reciprocal of one ohm. It measures how easily electricity flows through a conductor.
- * In base SI units, it is kg⁻¹·m⁻²·s³·A².
+ * Conductance quantifies how readily electric current flows through a component,
+ * material, or path. It is the reciprocal viewpoint of [Resistance]: larger values
+ * indicate less opposition to current.
  *
- * Siemens are used to describe the conductance of materials and components in electrical systems.
+ * This quantity is used for circuit elements, electrolytic solutions, semiconductor
+ * materials, and transport models where current-carrying ability is the main concern.
  *
- * This class expresses conductance as a combination of a [magnitude] and an [expression], supporting values such as
- * millisiemens (mS), microsiemens (µS), or kilosiemens (kS).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Siemens] (`S`), often seen as `mS` or `µS` in practice.
  */
 class Conductance internal constructor(magnitude: BigDecimal, expression: Siemens) :
     Measure<Siemens, Conductance>(magnitude, expression, ::Conductance) {
@@ -27,11 +26,19 @@ class Conductance internal constructor(magnitude: BigDecimal, expression: Siemen
 }
 
 /**
- * Represents the SI derived unit of electrical conductance: **siemens** (S).
+ * Represents the unit **siemens** (`S`), used to express [Conductance].
  *
- * One siemens is equal to the reciprocal of one ohm.
+ * A siemens quantifies how readily electric current flows through a component or
+ * material. It is the reciprocal of the [Ohm]: a larger conductance means less
+ * opposition to current.
  *
- * SI definition: `S = m⁻²·kg⁻¹·s³·A²`.
+ * This unit is used for electrical components, electrolytic solutions, semiconductor
+ * materials, and any system where ease of current flow matters more than resistance.
+ *
+ * In unit form, `S = 1/Ω = m⁻²·kg⁻¹·s³·A²`.
+ *
+ * @see Conductance
+ * @see Ohm
  */
 class Siemens private constructor(
     prefix: Metric,

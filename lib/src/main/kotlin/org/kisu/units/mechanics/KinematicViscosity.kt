@@ -8,20 +8,17 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Measure of kinematic viscosity expressed in [SquareMetrePerSecond].
+ * Represents the physical quantity of **kinematic viscosity**, measured in
+ * [SquareMetrePerSecond].
  *
- * Kinematic viscosity quantifies the intrinsic resistance of a fluid to motion
- * under the influence of shear stress, normalized by its density.
+ * Kinematic viscosity quantifies the diffusive tendency of momentum in a fluid by
+ * relating dynamic viscosity to density. It is especially convenient in fluid flow
+ * analysis because it appears directly in many transport equations.
  *
- * Common applications include:
- * - Fluid mechanics (laminar and turbulent flow analysis)
- * - Hydraulic engineering (pipeline and channel flow)
- * - Aerodynamics and meteorology (air viscosity, diffusion)
+ * Typical examples include oil grading, hydraulic calculations, and atmospheric or
+ * aerodynamic flow studies.
  *
- * @property magnitude Numerical value of the kinematic viscosity.
- * @property expression Unit of the kinematic viscosity, here [SquareMetrePerSecond].
- *
- * @see SquareMetrePerSecond
+ * The associated unit representation is [SquareMetrePerSecond] (`m²/s`).
  */
 class KinematicViscosity(
     magnitude: BigDecimal,

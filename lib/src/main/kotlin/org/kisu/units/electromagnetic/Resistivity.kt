@@ -8,28 +8,17 @@ import org.kisu.units.special.Ohm
 import java.math.BigDecimal
 
 /**
- * Represents **electrical resistivity** (ρ), a measure of how strongly a material
- * opposes the flow of electric current.
+ * Represents the physical quantity of **electrical resistivity**, measured in
+ * [OhmMetre].
  *
- * - **Dimension**: electric resistance × length (Ω·m)
- * - **SI Unit**: ohm metre (Ω·m)
+ * Resistivity quantifies the intrinsic opposition a material presents to electric
+ * current, independent of the geometry of any particular sample. It is the material
+ * property behind resistance once length and cross section are taken into account.
  *
- * Resistivity is the intrinsic property of a material and is related to the
- * resistance (R) of a uniform conductor by:
+ * Typical examples include comparing conductors, semiconductors, and insulators, and
+ * estimating resistive losses in devices and materials.
  *
- *     R = ρ * (L / A)
- *
- * where:
- * - L is the length of the conductor,
- * - A is the cross-sectional area.
- *
- * Example usages include:
- * - Characterizing conductors and insulators
- * - Designing electrical circuits and materials
- * - Modeling heat generation due to resistive losses
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in ohm metre (Ω·m)
+ * The associated unit representation is [OhmMetre] (`Ω·m`).
  */
 class Resistivity(
     magnitude: BigDecimal,

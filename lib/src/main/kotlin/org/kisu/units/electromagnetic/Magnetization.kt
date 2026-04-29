@@ -8,25 +8,16 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents **magnetization** (M), a measure of the magnetic moment per unit
- * volume of a material.
+ * Represents the physical quantity of **magnetization**, measured in
+ * [AmperePerMetre].
  *
- * - **Dimension**: electric current per length (A/m)
- * - **SI Unit**: ampere per metre (A/m)
+ * Magnetization quantifies magnetic dipole moment per unit volume in a material. It
+ * describes how strongly a substance responds internally to an applied magnetic field.
  *
- * Magnetization describes how strongly a material is magnetized in response
- * to an applied magnetic field. It is related to the magnetic flux density (B)
- * and the magnetic field strength (H) via:
+ * Typical examples include ferromagnetic materials, magnetic media, and constitutive
+ * modeling in electromagnetism.
  *
- *     B = μ₀(H + M)
- *
- * Example usages include:
- * - Characterizing ferromagnetic, paramagnetic, and diamagnetic materials
- * - Designing magnetic devices like transformers and inductors
- * - Modeling material response in electromagnetic simulations
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in ampere per metre (A/m)
+ * The associated unit representation is [AmperePerMetre] (`A/m`).
  */
 class Magnetization(
     magnitude: BigDecimal,
@@ -39,32 +30,22 @@ class Magnetization(
     /**
      * Represents the SI unit **ampere per metre (A/m)**.
      *
-     * This unit measures **magnetization**, i.e., the magnetic moment per unit
-     * length of a material.
-     * It is defined as the [Quotient] of [Ampere] (electric current) and [Metre] (length).
+     * This unit is used for magnetization, commonly interpreted as magnetic dipole
+     * moment per unit volume. It is defined here as the [Quotient] of [Ampere] and
+     * [Metre].
      *
-     * Example usages include:
-     * - Characterizing the magnetic response of materials
-     * - Designing magnetic circuits and devices
-     *
-     * @see Magnetization for the physical quantity represented by this unit.
+     * @see Magnetization
      */
     typealias AmperePerMetre = Quotient<Ampere, Metre>
 
     companion object {
         /**
-         * Creates a measure of **amperes per metre** (A/m).
+         * Creates a unit expression in **amperes per metre** (A/m).
          *
-         * This derived unit expresses **magnetic field strength (H)** —
-         * how much current flows per unit length of a conductor.
-         *
-         * Internally this returns a [Quotient] of:
-         *  - an [Ampere] (electric current) with the specified [prefix]
-         *  - divided by a [Metre] (length)
+         * This representation is used by [Magnetization]. Internally it returns a
+         * [Quotient] of [Ampere] by [Metre].
          *
          * @param prefix Metric prefix to apply to the ampere unit.
-         * Defaults to [Metric.BASE] (no prefix).
-         *
          * @return An [AmperePerMetre] representing A/m.
          */
         @Suppress("FunctionNaming")

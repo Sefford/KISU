@@ -8,20 +8,16 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Measure of radiant exposure expressed in [JoulePerSquareMetre].
+ * Represents the physical quantity of **radiant exposure**, measured in
+ * [JoulePerSquareMetre].
  *
- * Radiant exposure quantifies the total energy incident on a surface per unit area,
- * integrating the effect of radiative flux over time.
+ * Radiant exposure quantifies the total radiant energy received by a surface per unit
+ * area over a finite interval. It is the cumulative counterpart of irradiance.
  *
- * Common applications include:
- * - Photometry and radiometry (measurement of light energy)
- * - Solar energy studies (energy received by solar panels)
- * - Radiobiology and medical physics (dose from radiation therapy)
+ * Typical examples include pulse-laser exposure, solar energy received over a time
+ * window, and optical or radiation treatment delivery.
  *
- * @property magnitude Numerical value of the radiant exposure.
- * @property expression Unit of the radiant exposure, here [JoulePerSquareMetre].
- *
- * @see JoulePerSquareMetre
+ * The associated unit representation is [JoulePerSquareMetre] (`J/m²`).
  */
 class RadiantExposure(
     magnitude: BigDecimal,

@@ -10,22 +10,17 @@ import org.kisu.units.special.Joule
 import java.math.BigDecimal
 
 /**
- * Represents the **molar heat capacity** of a substance.
+ * Represents the physical quantity of **molar heat capacity**, measured in
+ * [JoulePerKelvinMole].
  *
- * Molar heat capacity is the amount of heat required to raise the temperature
- * of one mole of a substance by one kelvin. It combines energy, temperature,
- * and amount of substance into a single quantity.
+ * Molar heat capacity quantifies how much heat must be supplied to raise the
+ * temperature of one mole of a substance by one kelvin. It links thermal behavior to
+ * amount of substance rather than to total mass.
  *
- * Expressed in **joules per kelvin mole (J·K⁻¹·mol⁻¹)**.
+ * This quantity is widely used in thermodynamics, physical chemistry, and materials
+ * science when comparing substances on a molar basis.
  *
- * ## Example
- * The molar heat capacity of liquid water at room temperature is approximately
- * **75.3 J·K⁻¹·mol⁻¹**, meaning it takes 75.3 joules of energy to increase the
- * temperature of one mole of water by one kelvin.
- *
- * @constructor Creates a [MolarHeatCapacity] with the given [magnitude] and [expression].
- * @property magnitude Numerical value of the molar heat capacity.
- * @property expression The unit expression, [JoulePerKelvinMole].
+ * The associated SI unit representation is [JoulePerKelvinMole] (`J/(mol·K)`).
  */
 class MolarHeatCapacity(
     magnitude: BigDecimal,

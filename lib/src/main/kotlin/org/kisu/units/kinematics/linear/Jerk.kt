@@ -8,21 +8,14 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **jerk**, the third derivative of position with respect to time.
+ * Represents the physical quantity of **jerk**, measured in
+ * [MetrePerSecondCubed].
  *
- * Jerk quantifies how the **acceleration** changes over time.
- * Its SI unit is the **metre per second cubed (m/s³)**, represented here by [MetrePerSecondCubed].
+ * Jerk is the time derivative of acceleration. It quantifies how abruptly acceleration
+ * changes and is important in ride comfort, actuator control, vibration analysis, and
+ * trajectory smoothing.
  *
- * Typical applications include:
- * - Motion control and robotics, to ensure smooth acceleration profiles
- * - Vehicle dynamics analysis
- * - Physics simulations that require higher-order derivatives of position
- *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [Jerk] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([MetrePerSecondCubed]).
- *
- * @property magnitude The numeric value of the jerk.
- * @property expression The unit expression of the jerk, always [MetrePerSecondCubed].
+ * The associated unit representation is [MetrePerSecondCubed] (`m/s³`).
  */
 class Jerk(
     magnitude: BigDecimal,

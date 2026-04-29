@@ -8,20 +8,16 @@ import org.kisu.units.special.Joule
 import java.math.BigDecimal
 
 /**
- * Measure of action expressed in [JouleSecond].
+ * Represents the physical quantity of **action**, measured in [JouleSecond].
  *
- * Action quantifies the product of energy and the time over which it is applied.
- * It is a fundamental concept in classical and quantum mechanics.
+ * Action combines energy with time and plays a foundational role in analytical
+ * mechanics and quantum theory. It is the quantity minimized or extremized in
+ * variational formulations of motion.
  *
- * Common applications include:
- * - Calculating the action in Lagrangian mechanics
- * - Quantum mechanics (Planck’s constant has units of action)
- * - Dynamical systems and oscillatory motion
+ * Typical examples include the action integral in Lagrangian mechanics and constants
+ * such as Planck's constant.
  *
- * @property magnitude Numerical value of the action.
- * @property expression Unit of the action, here [JouleSecond].
- *
- * @see JouleSecond
+ * The associated unit representation is [JouleSecond] (`J·s`).
  */
 class Action(
     magnitude: BigDecimal,

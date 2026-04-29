@@ -11,26 +11,17 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **molar conductivity**.
+ * Represents the physical quantity of **molar conductivity**, measured in
+ * [SiemensSquareMetrePerMole].
  *
- * Molar conductivity quantifies the **conductivity of an electrolyte solution,
- * normalized by its molar concentration**.
- * It indicates how effectively ions contribute to electrical conduction on a
- * per-mole basis.
- * Its SI unit is the **siemens square metre per mole (S·m²/mol)**, represented here
- * by [SiemensSquareMetrePerMole].
+ * Molar conductivity quantifies the electrical conductivity contributed by an
+ * electrolyte when normalized by amount of substance. It helps describe how effectively
+ * ions carry current in solution on a per-mole basis.
  *
- * Example usages include:
- * - Determining ion mobility in electrolyte solutions
- * - Characterising strong and weak electrolytes
- * - Applications in electrochemistry and materials science
+ * This quantity is used in electrochemistry to compare electrolytes, study dissociation
+ * behavior, and estimate ionic mobility.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [MolarConductivity] are immutable, and the [expression] parameter ties
- * the measurement to its unit representation ([SiemensSquareMetrePerMole]).
- *
- * @property magnitude The numeric value of the molar conductivity.
- * @property expression The unit expression of the molar conductivity, always [SiemensSquareMetrePerMole].
+ * The associated SI unit representation is [SiemensSquareMetrePerMole] (`S·m²/mol`).
  */
 class MolarConductivity(
     magnitude: BigDecimal,

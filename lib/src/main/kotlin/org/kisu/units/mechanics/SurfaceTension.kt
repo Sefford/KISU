@@ -8,20 +8,17 @@ import org.kisu.units.special.Newton
 import java.math.BigDecimal
 
 /**
- * Measure of surface tension expressed in [NewtonPerMetre].
+ * Represents the physical quantity of **surface tension**, measured in
+ * [NewtonPerMetre].
  *
- * Surface tension quantifies the cohesive force at the interface of a liquid,
- * reflecting how molecules resist deformation of the surface.
+ * Surface tension quantifies the contractive tendency of a liquid surface caused by
+ * intermolecular cohesion. It governs capillarity, droplet shape, wetting, and many
+ * interface phenomena.
  *
- * Common applications include:
- * - Fluid mechanics (capillarity, droplet formation)
- * - Material science (wetting and adhesion studies)
- * - Chemistry (surface phenomena, detergency)
+ * Typical examples include water droplets, detergency, coating processes, and
+ * microfluidic behavior.
  *
- * @property magnitude Numerical value of the surface tension.
- * @property expression Unit of the surface tension, here [NewtonPerMetre].
- *
- * @see NewtonPerMetre
+ * The associated unit representation is [NewtonPerMetre] (`N/m`).
  */
 class SurfaceTension(
     magnitude: BigDecimal,

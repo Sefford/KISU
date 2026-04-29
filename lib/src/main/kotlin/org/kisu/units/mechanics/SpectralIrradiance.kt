@@ -8,20 +8,14 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Measure of spectral irradiance expressed in [WattPerCubicMetre].
+ * Represents the physical quantity of **spectral irradiance**, measured in
+ * [WattPerCubicMetre].
  *
- * Spectral irradiance quantifies the distribution of radiant power within a given volume,
- * commonly used to describe energy emission or absorption per unit volume.
+ * Spectral irradiance quantifies radiant power distributed with respect to a spectral
+ * variable in this library's chosen representation. It is useful in radiometric and
+ * spectroscopic analyses where spectral decomposition matters.
  *
- * Common applications include:
- * - Radiative transfer in participating media (gases, plasmas)
- * - Astrophysics (emission from stellar atmospheres)
- * - Material sciences (volumetric energy deposition)
- *
- * @property magnitude Numerical value of the spectral irradiance.
- * @property expression Unit of the spectral irradiance, here [WattPerCubicMetre].
- *
- * @see WattPerCubicMetre
+ * The associated unit representation is [WattPerCubicMetre].
  */
 class SpectralIrradiance(
     magnitude: BigDecimal,

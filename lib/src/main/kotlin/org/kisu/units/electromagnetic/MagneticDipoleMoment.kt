@@ -8,18 +8,16 @@ import org.kisu.units.special.Tesla
 import java.math.BigDecimal
 
 /**
- * Represents the **magnetic dipole moment** (m), a vector quantity that measures
- * the strength and orientation of a magnetic source.
+ * Represents the physical quantity of **magnetic dipole moment**, measured in
+ * [JoulePerTesla].
  *
- * - **Dimension**: energy per magnetic flux density (J/T)
- * - **SI Unit**: joule per tesla (J/T), which is equivalent to ampere·square metre (A·m²)
+ * Magnetic dipole moment quantifies the strength and orientation of a magnetic source.
+ * It describes how strongly a current loop, permanent magnet, or microscopic magnetic
+ * dipole interacts with an external magnetic field.
  *
- * The magnetic dipole moment describes how strongly an object (such as a current loop,
- * magnet, or particle with spin) interacts with an external magnetic field.
- * It is central to the study of **magnetostatics, electromagnetism, and quantum physics**.
+ * This quantity is central in magnetostatics, materials science, and quantum physics.
  *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in joule per tesla (J/T)
+ * The associated unit representation is [JoulePerTesla] (`J/T`), equivalent to `A·m²`.
  */
 class MagneticDipoleMoment(
     magnitude: BigDecimal,

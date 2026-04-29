@@ -7,17 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **dose equivalent**, measured in sieverts (Sv).
+ * Represents the physical quantity of **dose equivalent**, measured in [Sievert].
  *
- * One sievert represents a dose of radiation equivalent in biological effect to one gray of X-rays or gamma rays.
- * It shares the same SI base units as the gray (m²·s⁻²) but accounts for biological effectiveness.
+ * Dose equivalent quantifies radiation exposure in a way that reflects likely
+ * biological effect rather than only absorbed energy. It distinguishes physically equal
+ * doses that may not carry the same biological risk.
  *
- * Sieverts are used in radiation protection to quantify health risk.
+ * This quantity is used in radiation protection, occupational monitoring, medical risk
+ * assessment, and environmental safety reporting.
  *
- * This class expresses dose equivalent as a combination of a [magnitude] and an [expression], supporting values such as
- * millisieverts (mSv), microsieverts (µSv), or sieverts (Sv).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Sievert] (`Sv`), with `mSv` and `µSv` being especially
+ * common in practice.
  */
 class DoseEquivalent internal constructor(magnitude: BigDecimal, expression: Sievert) :
     Measure<Sievert, DoseEquivalent>(magnitude, expression, ::DoseEquivalent) {
@@ -27,11 +27,19 @@ class DoseEquivalent internal constructor(magnitude: BigDecimal, expression: Sie
 }
 
 /**
- * Represents the SI derived unit of dose equivalent: **sievert** (Sv).
+ * Represents the unit **sievert** (`Sv`), used to express [DoseEquivalent].
  *
- * One sievert is equal to one joule per kilogram.
+ * A sievert quantifies the biological significance of ionizing radiation exposure. It
+ * shares the same dimensional form as the [Gray], but it applies weighting factors so
+ * that the value reflects expected biological effect rather than only absorbed energy.
  *
- * SI definition: `Sv = m²·s⁻²`.
+ * This unit is used in radiation protection, occupational exposure limits, medical
+ * imaging risk assessment, and environmental monitoring.
+ *
+ * In unit form, `Sv = J/kg = m²·s⁻²`.
+ *
+ * @see DoseEquivalent
+ * @see Gray
  */
 class Sievert private constructor(
     prefix: Metric,

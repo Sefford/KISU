@@ -8,28 +8,17 @@ import org.kisu.units.special.Radian
 import java.math.BigDecimal
 
 /**
- * Represents **magnetomotive force** (MMF, 𝓕), which drives magnetic flux
- * through a magnetic circuit, analogous to electromotive force in electrical circuits.
+ * Represents the physical quantity of **magnetomotive force**, measured in
+ * [AmpereRadian] in this library.
  *
- * - **Dimension**: electric current × angle (A·rad)
- * - **SI Unit**: ampere-radian (A·rad)
+ * Magnetomotive force quantifies the driving influence that establishes magnetic flux in
+ * a magnetic circuit. It plays a role analogous to voltage in electric circuits.
  *
- * Magnetomotive force is defined as the product of current and the number of
- * turns in a coil:
+ * Typical examples include coil excitation, transformer cores, electromagnets, and
+ * magnetic circuit calculations.
  *
- *     𝓕 = N * I
- *
- * where:
- * - N is the number of turns,
- * - I is the electric current (A).
- *
- * Example usages include:
- * - Designing magnetic circuits, transformers, and electromagnets
- * - Calculating flux in solenoids and coils
- * - Analyzing inductive components in physics and engineering
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in ampere-radian (A·rad)
+ * The associated unit representation is [AmpereRadian] (`A·rad`) as modeled by this
+ * API.
  */
 class MagnetomotiveForce(
     magnitude: BigDecimal,
@@ -56,18 +45,12 @@ class MagnetomotiveForce(
 
     companion object {
         /**
-         * Creates a measure of **ampere-radians** (A·rad).
+         * Creates a unit expression in **ampere-radians** (A·rad).
          *
-         * This compound unit represents the product of:
-         *  - an [Ampere] (electric current) with the specified [prefix]
-         *  - multiplied by a [Radian] (angle)
-         *
-         * It can be used in contexts where current is associated with rotational motion,
-         * such as in electromechanical systems.
+         * This is the representation chosen by the library for [MagnetomotiveForce].
+         * It is constructed as a [Product] of [Ampere] and [Radian].
          *
          * @param prefix Metric prefix to apply to the ampere unit.
-         * Defaults to [Metric.BASE] (no prefix).
-         *
          * @return An [AmpereRadian] representing A·rad.
          */
         @Suppress("FunctionNaming")

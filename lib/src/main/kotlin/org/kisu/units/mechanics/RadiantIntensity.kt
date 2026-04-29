@@ -8,19 +8,16 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Measure of radiant intensity expressed in [WattPerSteradian].
+ * Represents the physical quantity of **radiant intensity**, measured in
+ * [WattPerSteradian].
  *
- * Radiant intensity quantifies the distribution of radiated power in a particular direction.
+ * Radiant intensity quantifies how radiant power is distributed by direction. It is
+ * especially useful for point-like or directional sources whose emission pattern
+ * matters.
  *
- * Common applications include:
- * - Optics and photometry (characterizing light sources)
- * - Radiative heat transfer (directional energy emission)
- * - Astronomy and remote sensing (measuring emission from celestial sources)
+ * Typical examples include lamps, LEDs, laser sources, and astronomical emitters.
  *
- * @property magnitude Numerical value of the radiant intensity.
- * @property expression Unit of the radiant intensity, here [WattPerSteradian].
- *
- * @see WattPerSteradian
+ * The associated unit representation is [WattPerSteradian] (`W/sr`).
  */
 class RadiantIntensity(
     magnitude: BigDecimal,

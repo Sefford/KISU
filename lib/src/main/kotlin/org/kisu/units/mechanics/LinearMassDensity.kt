@@ -8,19 +8,17 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Measure of linear mass density expressed in [KilogramPerMetre].
+ * Represents the physical quantity of **linear mass density**, measured in
+ * [KilogramPerMetre].
  *
- * Linear mass density quantifies the amount of mass distributed along a line or slender object.
+ * Linear mass density quantifies how much mass is distributed along a line-like object.
+ * It is useful whenever length is the natural geometric reference rather than area or
+ * volume.
  *
- * Common applications include:
- * - Mechanics of strings, cables, and rods
- * - Structural engineering (beam and truss analysis)
- * - Material characterization of fibers and wires
+ * Typical examples include strings, cables, wires, rails, fibers, and slender
+ * structural members.
  *
- * @property magnitude Numerical value of the linear mass density.
- * @property expression Unit of the linear mass density, here [KilogramPerMetre].
- *
- * @see KilogramPerMetre
+ * The associated unit representation is [KilogramPerMetre] (`kg/m`).
  */
 class LinearMassDensity(
     magnitude: BigDecimal,

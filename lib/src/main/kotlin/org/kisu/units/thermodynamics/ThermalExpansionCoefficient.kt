@@ -8,24 +8,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **thermal expansion coefficient**.
+ * Represents the physical quantity of **thermal expansion coefficient**, measured in
+ * [ReciprocalKelvin].
  *
- * The thermal expansion coefficient quantifies the **fractional change in a material’s
- * dimensions (length, area, or volume) per unit change in temperature**.
- * It describes how much a material expands or contracts when its temperature changes.
- * Its SI unit is the **reciprocal kelvin (1/K)**, represented here by [ReciprocalKelvin].
+ * Thermal expansion coefficient quantifies how strongly a material's dimensions change
+ * in response to temperature. It is central when predicting expansion, contraction, and
+ * thermally induced stress.
  *
- * Example usages include:
- * - Linear expansion of solids (e.g., steel ≈ 12 × 10⁻⁶ 1/K)
- * - Volume expansion of liquids and gases
- * - Engineering applications involving thermal stress or dimensional tolerances
+ * Typical examples include dimensional tolerances in structures, expansion joints,
+ * heated pipelines, and material selection for precision assemblies.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [ThermalExpansionCoefficient] are immutable, and the [expression] parameter ties
- * the measurement to its unit representation ([ReciprocalKelvin]).
- *
- * @property magnitude The numeric value of the thermal expansion coefficient.
- * @property expression The unit expression of the thermal expansion coefficient, always [ReciprocalKelvin].
+ * The associated SI unit representation is [ReciprocalKelvin] (`K⁻¹`).
  */
 class ThermalExpansionCoefficient(
     magnitude: BigDecimal,
@@ -37,26 +30,20 @@ class ThermalExpansionCoefficient(
 }
 
 /**
- * Represents the **reciprocal of temperature** in the SI system.
+ * Represents the unit **reciprocal kelvin** (`K⁻¹`), used by
+ * [ThermalExpansionCoefficient].
  *
- * Reciprocal kelvin (1/K) is used in several thermodynamic contexts, such as
- * the **thermal expansion coefficient** and other relations where temperature
- * appears in the denominator.
- * This class models the unit `K⁻¹` by inverting the [Kelvin] base unit.
+ * Reciprocal kelvin quantifies how strongly a quantity changes for each unit change in
+ * temperature. It appears naturally when temperature sits in a denominator, especially
+ * in expansion laws and exponential thermodynamic relations.
  *
- * The class is implemented as a [Scalar], parameterized with the [Metric] system
- * of prefixes to allow scaling (e.g., mK⁻¹, µK⁻¹).
- * The primary constructor is private, and instances are typically created through
- * the public constructor using a [Metric] prefix, defaulting to the base unit.
+ * Typical examples include coefficients describing how solids expand when heated or
+ * how equilibrium relations vary with temperature.
  *
- * Example usages include:
- * - Expressing a thermal expansion coefficient (e.g., 12 × 10⁻⁶ 1/K for steel)
- * - Other physics and engineering calculations where reciprocal temperature is needed
+ * In this library, [ReciprocalKelvin] is built by inverting [Kelvin.UNIT].
  *
- * @constructor Creates a [ReciprocalKelvin] with a given [Metric] prefix, defaulting to [Metric.BASE].
- * @property prefix The metric prefix applied to the reciprocal kelvin.
- * @property overflow Scaling factor for large or reduced unit expressions (internal use).
- * @property unit The underlying [Unit], fixed to [Kelvin.UNIT.inverted].
+ * @see ThermalExpansionCoefficient
+ * @see Kelvin
  */
 class ReciprocalKelvin private constructor(
     prefix: Metric,
