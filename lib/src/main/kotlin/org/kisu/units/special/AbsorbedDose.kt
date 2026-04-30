@@ -7,17 +7,18 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **absorbed dose** or **kerma**, measured in grays (Gy).
+ * Represents the physical quantity of **absorbed dose**, measured in [Gray].
  *
- * One gray corresponds to the absorption of one joule of radiation energy by one kilogram of matter.
- * In SI base units, it is m²·s⁻².
+ * Absorbed dose quantifies how much energy from ionizing radiation is deposited in a
+ * material per unit mass. It answers a physical question: how much radiant energy did
+ * the matter actually absorb?
  *
- * Grays are used in radiology, radiation therapy, and radiation protection.
+ * This quantity is central in radiology, radiation therapy, shielding analysis, and
+ * detector calibration. Typical examples include the dose delivered to tissue during a
+ * treatment session or the energy absorbed by a sample exposed to radiation.
  *
- * This class expresses dose as a combination of a [magnitude] and an [expression], supporting values such as
- * milligrays (mGy), centigrays (cGy), or kilograys (kGy).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Gray] (`Gy`), with practical values often expressed in
+ * mGy or cGy.
  */
 class AbsorbedDose internal constructor(magnitude: BigDecimal, expression: Gray) :
     Measure<Gray, AbsorbedDose>(magnitude, expression, ::AbsorbedDose) {
@@ -27,11 +28,21 @@ class AbsorbedDose internal constructor(magnitude: BigDecimal, expression: Gray)
 }
 
 /**
- * Represents the SI derived unit of absorbed dose: **gray** (Gy).
+ * Represents the unit **gray** (`Gy`), used to express [AbsorbedDose].
  *
- * One gray is the absorption of one joule of radiation energy per kilogram of matter.
+ * A gray quantifies how much energy from ionizing radiation is deposited in matter.
+ * One gray means that one joule of radiation energy has been absorbed by one kilogram
+ * of material.
  *
- * SI definition: `Gy = m²·s⁻²`.
+ * This unit is central in dosimetry, radiotherapy planning, and radiation shielding
+ * studies, where the concern is the physical energy delivered to tissue or another
+ * material rather than its biological effect.
+ *
+ * In unit form, `Gy = J/kg = m²·s⁻²`.
+ *
+ * @see AbsorbedDose
+ * @see Sievert
+ * @see Joule
  */
 class Gray private constructor(
     prefix: Metric,

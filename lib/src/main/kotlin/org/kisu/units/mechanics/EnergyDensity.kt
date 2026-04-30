@@ -8,19 +8,17 @@ import org.kisu.units.special.Joule
 import java.math.BigDecimal
 
 /**
- * Measure of energy density expressed in [JoulePerCubicMetre].
+ * Represents the physical quantity of **energy density**, measured in
+ * [JoulePerCubicMetre].
  *
- * Energy density quantifies how much energy is stored or contained in a given volume.
+ * Energy density quantifies how much energy is stored, carried, or deposited within a
+ * given volume. It is useful when the spatial concentration of energy matters more than
+ * the total amount alone.
  *
- * Common applications include:
- * - Material science (energy stored in fuels or batteries)
- * - Thermodynamics (energy content of gases or liquids)
- * - Electromagnetism (energy density in electric and magnetic fields)
+ * Typical examples include battery materials, fuels, compressed gases, and electric or
+ * magnetic field energy in space.
  *
- * @property magnitude Numerical value of the energy density.
- * @property expression Unit of the energy density, here [JoulePerCubicMetre].
- *
- * @see JoulePerCubicMetre
+ * The associated unit representation is [JoulePerCubicMetre] (`J/m³`).
  */
 class EnergyDensity(
     magnitude: BigDecimal,

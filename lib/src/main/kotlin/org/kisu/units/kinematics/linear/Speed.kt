@@ -8,17 +8,15 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **speed** (velocity magnitude).
+ * Represents the physical quantity of **speed**, measured in [MetrePerSecond].
  *
- * Speed quantifies the **rate of change of position** over time.
- * Its SI unit is **metre per second (m/s)**, represented here by [MetrePerSecond].
+ * Speed quantifies how quickly position changes, without encoding direction. It is the
+ * scalar magnitude commonly used in everyday descriptions of motion.
  *
- * Typical applications:
- * - Vehicle speed
- * - Object motion analysis
- * - Any system where displacement changes over time
+ * Typical examples include vehicle speed, fluid speed in a pipe, or the speed of a
+ * moving object in a simulation.
  *
- * The magnitude is stored as a [BigDecimal] for high precision. Instances are immutable.
+ * The associated unit representation is [MetrePerSecond] (`m/s`).
  */
 class Speed(
     magnitude: BigDecimal,

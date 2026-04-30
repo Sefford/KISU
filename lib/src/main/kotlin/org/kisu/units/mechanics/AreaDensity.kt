@@ -8,19 +8,17 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Measure of area density expressed in [KilogramPerSquareMetre].
+ * Represents the physical quantity of **area density**, measured in
+ * [KilogramPerSquareMetre].
  *
- * Area density quantifies the amount of mass distributed over a given area.
+ * Area density quantifies how much mass is distributed across a surface. It is useful
+ * whenever mass is naturally associated with sheets, layers, or coatings rather than
+ * with bulk volume.
  *
- * Common applications include:
- * - Material science (sheet metal thickness and weight)
- * - Civil engineering (surface density of soil layers)
- * - Textile and paper industries (fabric or paper weight per area)
+ * Typical examples include fabric weight, paper grammage, roofing membranes, and soil
+ * or snow loading per ground area.
  *
- * @property magnitude Numerical value of the area density.
- * @property expression Unit of the area density, here [KilogramPerSquareMetre].
- *
- * @see KilogramPerSquareMetre
+ * The associated unit representation is [KilogramPerSquareMetre] (`kg/m²`).
  */
 class AreaDensity(
     magnitude: BigDecimal,

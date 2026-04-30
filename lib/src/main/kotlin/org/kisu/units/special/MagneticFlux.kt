@@ -7,17 +7,16 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **magnetic flux**, measured in webers (Wb).
+ * Represents the physical quantity of **magnetic flux**, measured in [Weber].
  *
- * One weber is the magnetic flux that, linking a circuit of one turn, produces an electromotive force of one volt
- * when reduced to zero uniformly over one second. In SI base units, it is kg·m²·s⁻²·A⁻¹.
+ * Magnetic flux quantifies how much magnetic field passes through a surface. It is the
+ * quantity that appears naturally in electromagnetic induction: changing flux produces
+ * induced voltage.
  *
- * Webers are used in electromagnetism to quantify magnetic flux through a surface.
+ * Typical examples include the flux linked by a transformer winding, the flux through
+ * a loop in a magnetic field, or the working flux inside a magnetic core.
  *
- * This class expresses magnetic flux as a combination of a [magnitude] and an [expression], supporting values such as
- * milliwwebers (mWb), microwebers (µWb), or kilowebers (kWb).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Weber] (`Wb`), often scaled to `mWb` or `µWb`.
  */
 class MagneticFlux internal constructor(magnitude: BigDecimal, expression: Weber) :
     Measure<Weber, MagneticFlux>(magnitude, expression, ::MagneticFlux) {
@@ -27,13 +26,20 @@ class MagneticFlux internal constructor(magnitude: BigDecimal, expression: Weber
 }
 
 /**
- * Represents the SI derived unit of magnetic flux: **weber** (Wb).
+ * Represents the unit **weber** (`Wb`), used to express [MagneticFlux].
  *
- * One weber is the magnetic flux that, linking a circuit of one turn,
- * produces an electromotive force of one volt if it is reduced to zero
- * at a uniform rate in one second.
+ * A weber quantifies the total magnetic field passing through a surface or circuit. It
+ * is especially useful when discussing induction, where changing magnetic flux induces
+ * an electromotive force.
  *
- * SI definition: `Wb = m²·kg·s⁻²·A⁻¹`.
+ * This unit appears in transformers, electric machines, magnetic cores, and field
+ * calculations involving loops, coils, and enclosed areas.
+ *
+ * In unit form, `Wb = V·s = T·m² = m²·kg·s⁻²·A⁻¹`.
+ *
+ * @see MagneticFlux
+ * @see Tesla
+ * @see Volt
  */
 class Weber private constructor(
     prefix: Metric,

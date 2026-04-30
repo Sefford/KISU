@@ -8,20 +8,16 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Measure of spectral power expressed in [WattPerMetre].
+ * Represents the physical quantity of **spectral power**, measured in [WattPerMetre].
  *
- * Spectral power quantifies the distribution of radiant power along a specific length,
- * commonly used to analyze energy per wavelength or spatial dimension.
+ * Spectral power quantifies how radiant power is distributed with respect to a spectral
+ * coordinate. It is frequently used when analyzing sources by wavelength or another
+ * one-dimensional spectral variable.
  *
- * Common applications include:
- * - Optical spectroscopy (power per wavelength)
- * - Radiometry (distribution of light along fibers or sources)
- * - Photonics (waveguide or laser power characterization)
+ * Typical examples include source spectra, laser outputs, and optical transmission
+ * analysis.
  *
- * @property magnitude Numerical value of the spectral power.
- * @property expression Unit of the spectral power, here [WattPerMetre].
- *
- * @see WattPerMetre
+ * The associated unit representation is [WattPerMetre].
  */
 class SpectralPower(
     magnitude: BigDecimal,

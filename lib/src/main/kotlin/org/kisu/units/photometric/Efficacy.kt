@@ -8,18 +8,17 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Represents the **luminous efficacy** of a light source.
+ * Represents the physical quantity of **luminous efficacy**, measured in
+ * [LumenPerWatt].
  *
- * Luminous efficacy is the ratio between the luminous flux (in lumens)
- * and the power consumed (in watts). It indicates how efficiently a
- * light source produces visible light.
+ * Luminous efficacy quantifies how efficiently a source turns power into visible light
+ * as perceived by the human eye. It compares useful luminous output with the power
+ * supplied or emitted.
  *
- * Expressed in **lumens per watt (lm/W)**.
+ * Typical examples include comparing incandescent bulbs, LEDs, display backlights, or
+ * optical emitters for lighting efficiency.
  *
- * @constructor Creates a luminous efficacy measure with the given [magnitude]
- * and [expression].
- * @param magnitude The numeric value of the measure.
- * @param expression The unit expression in lumens per watt.
+ * The associated unit representation is [LumenPerWatt] (`lm/W`).
  */
 class Efficacy(
     magnitude: BigDecimal,

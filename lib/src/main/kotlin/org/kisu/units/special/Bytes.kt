@@ -7,15 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the digital information unit **byte (B)**.
+ * Represents a quantity of digital information measured in [Byte].
  *
- * One byte consists of 8 bits. This class helps express storage or transmission size
- * in units such as kilobytes (kB), megabytes (MB), etc., using metric prefixes.
+ * A byte-based measure quantifies stored or transmitted information in groups of eight
+ * bits. This is the scale commonly used in everyday computing when discussing files,
+ * memory, bandwidth, and device capacity.
  *
- * This class expresses information as a combination of a [magnitude] and an [expression], supporting values such as
- * kilobytes (kB), megabytes (MB), or gigabytes (GB).
+ * Typical examples include the size of a document, the memory occupied by an image,
+ * or the amount of data moved across a network.
  *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical unit is [Byte] (`B`), usually combined with metric prefixes such as
+ * `kB`, `MB`, or `GB`.
  */
 class Bytes private constructor(magnitude: BigDecimal, expression: Byte) :
     Measure<Byte, Bytes>(magnitude, expression, ::Bytes) {
@@ -33,9 +35,19 @@ class Bytes private constructor(magnitude: BigDecimal, expression: Byte) :
 }
 
 /**
- * Represents the unit of information: **byte** (B).
+ * Represents the unit **byte** (`B`), used to express [Bytes].
  *
- * One byte is equal to 8 bits.
+ * A byte quantifies digital information in groups of eight bits. It is the unit most
+ * commonly used when discussing file sizes, memory capacity, and data transfers in
+ * everyday computing.
+ *
+ * Typical examples include the size of a text file, the memory occupied by an image,
+ * or the amount of data sent across a network packet payload.
+ *
+ * In this library, [Byte] is the scalar unit representation behind [Bytes], and it
+ * can be combined with metric prefixes such as kB, MB, or GB.
+ *
+ * @see Bytes
  */
 class Byte private constructor(
     prefix: Metric,

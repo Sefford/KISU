@@ -10,23 +10,17 @@ import org.kisu.units.special.Joule
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **specific heat capacity**.
+ * Represents the physical quantity of **specific heat capacity**, measured in
+ * [JoulePerKilogramKelvin].
  *
- * Specific heat capacity quantifies the **amount of heat energy required to raise the temperature
- * of one kilogram of a substance by one kelvin**.
- * Its SI unit is the **joule per kilogram kelvin (J/(kg·K))**, represented here by [JoulePerKilogramKelvin].
+ * Specific heat capacity quantifies how much heat is required to raise the temperature
+ * of one kilogram of a substance by one kelvin. It is one of the most important
+ * descriptors of a material's thermal response.
  *
- * Example usages include:
- * - The specific heat capacity of water (~4184 J/(kg·K) at 25 °C)
- * - Material science and thermodynamics calculations
- * - Estimating heating and cooling requirements in engineering systems
+ * Typical examples include comparing water, metals, or building materials for heating,
+ * cooling, and energy-storage behavior.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [SpecificHeatCapacity] are immutable, and the [expression] parameter ties the measurement
- * to its unit representation ([JoulePerKilogramKelvin]).
- *
- * @property magnitude The numeric value of the specific heat capacity.
- * @property expression The unit expression of the specific heat capacity, always [JoulePerKilogramKelvin].
+ * The associated SI unit representation is [JoulePerKilogramKelvin] (`J/(kg·K)`).
  */
 class SpecificHeatCapacity(
     magnitude: BigDecimal,
@@ -66,7 +60,7 @@ class SpecificHeatCapacity(
          * specific entropy — energy per unit mass per unit temperature.
          *
          * Internally this returns a [Quotient] of:
-         *  - a [Joule] (energy) with the specified [prefix]
+         *  - a [Joule] (energy)
          *  - divided by a [Product] of [Kilogram] (mass) with the specified [prefix]
          *    and [Kelvin] (temperature)
          *

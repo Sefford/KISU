@@ -7,17 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **luminous flux**, measured in lumens (lm).
+ * Represents the physical quantity of **luminous flux**, measured in [Lumen].
  *
- * One lumen is the luminous flux emitted in a solid angle of one steradian by a point source with a luminous
- * intensity of one candela. In SI, it is defined as cd·sr.
+ * Luminous flux quantifies the total visible light output of a source, weighted by the
+ * response of human vision. It describes how much light is emitted overall, without
+ * yet saying how that light is distributed.
  *
- * Lumens are widely used in lighting to describe the total perceived power of light emitted.
+ * Typical examples include the rated output of a lamp, flashlight, LED panel, or
+ * projector.
  *
- * This class expresses luminous flux as a combination of a [magnitude] and an [expression], supporting values such as
- * millilumens (mlm), kilolumens (klm), or megalumens (Mlm).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Lumen] (`lm`), often scaled to `klm` for larger
+ * lighting systems.
  */
 class LuminousFlux internal constructor(magnitude: BigDecimal, expression: Lumen) :
     Measure<Lumen, LuminousFlux>(magnitude, expression, ::LuminousFlux) {
@@ -27,12 +27,20 @@ class LuminousFlux internal constructor(magnitude: BigDecimal, expression: Lumen
 }
 
 /**
- * Represents the SI derived unit of luminous flux: **lumen** (lm).
+ * Represents the unit **lumen** (`lm`), used to express [LuminousFlux].
  *
- * One lumen is the luminous flux emitted within a unit solid angle (one steradian)
- * by a point source having a uniform intensity of one candela.
+ * A lumen quantifies the total visible light emitted by a source, weighted by the
+ * sensitivity of human vision. It describes overall light output rather than how that
+ * light is distributed over an area.
  *
- * SI definition: `lm = cd·sr`.
+ * This unit is commonly used to compare light bulbs, LED fixtures, flashlights, and
+ * other sources where total visible output matters.
+ *
+ * In unit form, `lm = cd·sr`.
+ *
+ * @see LuminousFlux
+ * @see Lux
+ * @see Steradian
  */
 class Lumen private constructor(
     prefix: Metric,

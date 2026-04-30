@@ -8,26 +8,17 @@ import org.kisu.units.special.Gray
 import java.math.BigDecimal
 
 /**
- * Measure of absorbed dose rate expressed in [GrayPerSecond].
+ * Represents the physical quantity of **absorbed dose rate**, measured in
+ * [GrayPerSecond].
  *
- * Absorbed dose rate quantifies the **intensity of ionizing radiation** in terms of
- * the rate at which energy is deposited in matter per unit of mass.
+ * Absorbed dose rate quantifies how quickly radiation energy is deposited in matter per
+ * unit mass. It is the time rate of change of absorbed dose and is central whenever not
+ * only total dose but delivery speed matters.
  *
- * It is expressed in **gray per second (Gy/s)**, linking the concept of *absorbed dose* (energy
- * imparted by radiation per unit mass, in grays) with the dimension of *time*.
+ * Typical examples include radiotherapy beam characterization, radiation safety
+ * monitoring, and irradiation process control.
  *
- * This measure is critical in fields such as:
- * - **Radiation protection**, to establish exposure limits for workers and the public.
- * - **Medical physics**, particularly in radiotherapy, where precise control of dose rate is
- *   essential to optimize treatment while minimizing harm.
- * - **Nuclear engineering**, in monitoring radiation levels and ensuring safety of materials
- *   and environments.
- *
- * Properties:
- * @property numerical value of the absorbed dose rate.
- * @property the unit system representation, here [GrayPerSecond].
- *
- * @see GrayPerSecond
+ * The associated unit representation is [GrayPerSecond] (`Gy/s`).
  */
 class AbsorbedDoseRate(
     magnitude: BigDecimal,

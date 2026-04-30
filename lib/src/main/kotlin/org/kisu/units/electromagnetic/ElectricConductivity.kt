@@ -8,24 +8,14 @@ import org.kisu.units.special.Siemens
 import java.math.BigDecimal
 
 /**
- * Represents **electric conductivity** in the SI system.
+ * Represents the physical quantity of **electric conductivity**, measured in
+ * [SiemensPerMetre].
  *
- * Electric conductivity quantifies a material's ability to conduct an electric current.
- * It is defined as the reciprocal of resistivity and can be expressed as:
+ * Electric conductivity quantifies how readily a material carries electric current. It
+ * is the reciprocal perspective of resistivity and is central to electronics,
+ * electrochemistry, and materials characterization.
  *
- *     σ = 1 / ρ
- *
- * where:
- * - σ is the electric conductivity,
- * - ρ is the electric resistivity (Ω·m).
- *
- * The SI derived unit is **siemens per metre (S/m)**,
- * which corresponds to the reciprocal ohm per metre:
- *
- *     1 S/m = 1 / (Ω·m)
- *
- * @constructor Creates a measure of electric conductivity with a given [magnitude]
- * in terms of the unit expression [SiemensPerMetre].
+ * The associated unit representation is [SiemensPerMetre] (`S/m`).
  */
 class ElectricConductivity(
     magnitude: BigDecimal,

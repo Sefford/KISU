@@ -8,20 +8,16 @@ import org.kisu.units.special.Joule
 import java.math.BigDecimal
 
 /**
- * Measure of specific energy expressed in [JoulePerKilogram].
+ * Represents the physical quantity of **specific energy**, measured in
+ * [JoulePerKilogram].
  *
- * Specific energy quantifies the amount of energy contained or transferred per unit mass,
- * commonly used to describe energy content of fuels or energy absorption in materials.
+ * Specific energy quantifies energy per unit mass. It is useful when comparing fuels,
+ * flows, or materials independently of total sample size.
  *
- * Common applications include:
- * - Thermodynamics (energy per unit mass of fluids or solids)
- * - Aerospace engineering (specific kinetic or potential energy)
- * - Material science (energy absorbed per unit mass)
+ * Typical examples include fuel energy content, gravitational or kinetic energy per unit
+ * mass, and absorbed energy in irradiated matter.
  *
- * @property magnitude Numerical value of the specific energy.
- * @property expression Unit of the specific energy, here [JoulePerKilogram].
- *
- * @see JoulePerKilogram
+ * The associated unit representation is [JoulePerKilogram] (`J/kg`).
  */
 class SpecificEnergy(
     magnitude: BigDecimal,

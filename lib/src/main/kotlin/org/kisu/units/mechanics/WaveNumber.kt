@@ -8,20 +8,16 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Measure of wave number expressed in [ReciprocalMetre].
+ * Represents the physical quantity of **wave number**, measured in
+ * [ReciprocalMetre].
  *
- * Wave number quantifies the **spatial frequency of a wave**, defined as the number of
- * wave cycles per unit distance. It is widely used in spectroscopy, optics, and quantum mechanics.
+ * Wave number quantifies spatial frequency: how many oscillations occur per unit
+ * length. It is widely used in optics, spectroscopy, and quantum mechanics.
  *
- * Common applications include:
- * - Characterizing light and electromagnetic waves
- * - Spectroscopic analysis of materials
- * - Quantum physics and molecular vibrations
+ * Typical examples include spectroscopic line positions, electromagnetic wave
+ * characterization, and molecular vibration analysis.
  *
- * @property magnitude Numerical value of the wave number.
- * @property expression Unit of the wave number, here [ReciprocalMetre].
- *
- * @see ReciprocalMetre
+ * The associated unit representation is [ReciprocalMetre] (`m⁻¹`).
  */
 class WaveNumber(
     magnitude: BigDecimal,
@@ -32,13 +28,15 @@ class WaveNumber(
 }
 
 /**
- * Unit of [WaveNumber].
+ * Represents the unit **reciprocal metre** (`m⁻¹`), used by [WaveNumber].
  *
- * Represents the unit of **wave number**, i.e., the physical quantity measuring
- * the number of waves per unit length.
+ * Reciprocal metre quantifies how many wavelengths, cycles, or spatial oscillations
+ * fit into a unit length. It is common in spectroscopy, optics, and wave mechanics.
  *
- * Symbol: `m⁻¹`
- * SI: `m⁻¹`
+ * A familiar use is the spectroscopic wave number, where larger values correspond to
+ * shorter wavelengths.
+ *
+ * In this library, [ReciprocalMetre] is defined as the inverse of [Metre.UNIT].
  *
  * @see WaveNumber
  */

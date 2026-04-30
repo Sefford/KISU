@@ -8,28 +8,17 @@ import org.kisu.units.special.Henry
 import java.math.BigDecimal
 
 /**
- * Represents **magnetic reluctance** (ℛ), which quantifies the opposition
- * that a material or magnetic circuit presents to the establishment of a magnetic flux.
+ * Represents the physical quantity of **magnetic reluctance**, measured in
+ * [ReciprocalHenry].
  *
- * - **Dimension**: reciprocal of inductance (H⁻¹)
- * - **SI Unit**: reciprocal henry (1/H)
+ * Magnetic reluctance quantifies how strongly a magnetic circuit opposes the formation
+ * of magnetic flux. It plays a role analogous to electrical resistance in magnetic
+ * circuit models.
  *
- * Magnetic reluctance is analogous to electrical resistance in circuits:
+ * Typical examples include magnetic core analysis, air-gap design, transformers, and
+ * inductors.
  *
- *     ℛ = Φ / F
- *
- * where:
- * - ℛ is the magnetic reluctance,
- * - Φ is the magnetic flux (Wb),
- * - F is the magnetomotive force (A·turns).
- *
- * Example usages include:
- * - Modeling magnetic circuits
- * - Designing transformers, inductors, and electromagnets
- * - Analyzing magnetic field distribution in materials
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in reciprocal henry (1/H)
+ * The associated unit representation is [ReciprocalHenry] (`H⁻¹`).
  */
 class MagneticReluctance(
     magnitude: BigDecimal,
@@ -41,25 +30,18 @@ class MagneticReluctance(
 }
 
 /**
- * Represents the **reciprocal of inductance** (1/H), a scalar quantity used
- * to express **magnetic reluctance**.
+ * Represents the unit **reciprocal henry** (`H⁻¹`), used by [MagneticReluctance].
  *
- * - **Dimension**: reciprocal of inductance
- * - **SI Unit**: 1/henry (H⁻¹)
+ * Reciprocal henry quantifies the opposition a magnetic circuit presents to magnetic
+ * flux when reluctance is expressed as the inverse of inductance.
  *
- * This class wraps a numeric value together with its unit and supports
- * operations consistent with other [Scalar] types in the system.
- * The unit is defined as the inverse of [Henry.UNIT].
+ * This unit is useful in magnetic-circuit analysis for cores, gaps, coils, and related
+ * electromagnetic devices.
  *
- * Example usages include:
- * - Modeling magnetic reluctance in magnetic circuits
- * - Calculating opposition to magnetic flux
+ * In this library, [ReciprocalHenry] is defined as the inverse of [Henry.UNIT].
  *
- * @param prefix the metric prefix applied to the unit (default is [Metric.BASE])
- * @param overflow numeric factor to scale the unit
- * @param unit the underlying unit representation (always the reciprocal of henry)
- *
- * @see MagneticReluctance for the physical quantity represented by this unit.
+ * @see MagneticReluctance
+ * @see Henry
  */
 class ReciprocalHenry private constructor(
     prefix: Metric,

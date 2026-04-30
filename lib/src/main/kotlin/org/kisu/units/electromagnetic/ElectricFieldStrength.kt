@@ -8,31 +8,17 @@ import org.kisu.units.special.Volt
 import java.math.BigDecimal
 
 /**
- * Represents **electric field strength** in the SI system.
+ * Represents the physical quantity of **electric field strength**, measured in
+ * [VoltPerMetre].
  *
- * Electric field strength describes the force experienced by a unit positive charge
- * placed in an electric field. It quantifies the intensity of the electric field at
- * a given point in space.
+ * Electric field strength quantifies the intensity of an electric field at a point. It
+ * can be understood as force per unit charge or, equivalently, potential difference per
+ * unit distance.
  *
- * Defined as:
+ * Typical examples include capacitor fields, electrostatic environments, and breakdown
+ * or insulation studies.
  *
- *     E = F / q
- *
- * where:
- * - E is the electric field strength,
- * - F is the electric force (N),
- * - q is the electric charge (C).
- *
- * It can also be expressed as the potential difference per unit distance:
- *
- *     E = V / d
- *
- * The SI derived unit is **volt per metre (V/m)**:
- *
- *     1 V/m = 1 volt / 1 metre
- *
- * @constructor Creates a measure of electric field strength with a given [magnitude]
- * in terms of the unit expression [VoltPerMetre].
+ * The associated unit representation is [VoltPerMetre] (`V/m`).
  */
 class ElectricFieldStrength(
     magnitude: BigDecimal,
@@ -49,8 +35,9 @@ class ElectricFieldStrength(
     /**
      * Represents the SI unit **volt per metre (V/m)**.
      *
-     * This unit measures **electric field strength**, i.e., the force experienced by
-     * a unit positive charge per unit distance.
+     * This unit measures **electric field strength**, i.e., force per unit positive charge.
+     * Equivalently, it is the electric potential difference per unit distance.
+
      * It is defined as the [Quotient] of [Volt] (electric potential) and [Metre] (distance).
      *
      * Example usages include:

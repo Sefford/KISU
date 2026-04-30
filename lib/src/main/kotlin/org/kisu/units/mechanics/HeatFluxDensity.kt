@@ -8,19 +8,17 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Measure of heat flux density expressed in [WattPerSquareMetre].
+ * Represents the physical quantity of **heat flux density**, measured in
+ * [WattPerSquareMetre].
  *
- * Heat flux density quantifies the rate of heat transfer across a unit area.
+ * Heat flux density quantifies the rate at which thermal energy crosses a unit area. It
+ * is one of the main quantities used to describe conduction, convection, and radiation
+ * heat transfer.
  *
- * Common applications include:
- * - Heat transfer engineering (conduction, convection, radiation)
- * - Thermal management of systems and devices
- * - Climate and energy studies (solar radiation, building heat loss)
+ * Typical examples include solar loading on a surface, heat loss through a wall, and
+ * thermal management of electronics.
  *
- * @property magnitude Numerical value of the heat flux density.
- * @property expression Unit of the heat flux density, here [WattPerSquareMetre].
- *
- * @see WattPerSquareMetre
+ * The associated unit representation is [WattPerSquareMetre] (`W/m²`).
  */
 class HeatFluxDensity(
     magnitude: BigDecimal,

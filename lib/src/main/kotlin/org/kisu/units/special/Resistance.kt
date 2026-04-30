@@ -7,18 +7,16 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **electrical resistance**, measured in ohms (Ω).
+ * Represents the physical quantity of **electrical resistance**, measured in [Ohm].
  *
- * One ohm is the resistance between two points of a conductor when a constant potential difference of one volt,
- * applied to these points, produces a current of one ampere.
- * In SI base units, it is kg·m²·s⁻³·A⁻².
+ * Resistance quantifies how strongly a component or material opposes the flow of
+ * electric current. It is one of the core descriptive quantities of electric circuits
+ * and conductive media.
  *
- * Ohms are used in electrical and electronic systems to describe resistance and impedance.
+ * Typical examples include resistor values, wire resistance, winding resistance, and
+ * material measurements used to characterize electronic components.
  *
- * This class expresses resistance as a combination of a [magnitude] and an [expression], supporting values such as
- * milliohms (mΩ), kiloohms (kΩ), or megaohms (MΩ).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Ohm] (`Ω`), commonly scaled as `mΩ`, `kΩ`, or `MΩ`.
  */
 class Resistance internal constructor(magnitude: BigDecimal, expression: Ohm) :
     Measure<Ohm, Resistance>(magnitude, expression, ::Resistance) {
@@ -28,11 +26,20 @@ class Resistance internal constructor(magnitude: BigDecimal, expression: Ohm) :
 }
 
 /**
- * Represents the SI derived unit of electrical resistance: **ohm** (Ω).
+ * Represents the unit **ohm** (`Ω`), used to express [Resistance].
  *
- * One ohm is equal to one volt per ampere.
+ * An ohm quantifies electrical resistance, the opposition a component or material
+ * presents to the flow of current. One ohm means that a potential difference of one
+ * volt produces a current of one ampere.
  *
- * SI definition: `Ω = m²·kg·s⁻³·A⁻²`.
+ * This unit is used for resistors, heaters, wiring, sensors, and material property
+ * measurements in electronics and electrical engineering.
+ *
+ * In unit form, `Ω = V/A = m²·kg·s⁻³·A⁻²`.
+ *
+ * @see Resistance
+ * @see Volt
+ * @see Siemens
  */
 class Ohm private constructor(
     prefix: Metric,

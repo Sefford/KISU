@@ -8,21 +8,16 @@ import org.kisu.units.special.Lux
 import java.math.BigDecimal
 
 /**
- * Represents **luminous exposure**.
+ * Represents the physical quantity of **luminous exposure**, measured in [LuxSecond].
  *
- * Luminous exposure is the measure of the total luminous energy
- * received per unit area, calculated as the product of illuminance
- * (in lux) and time (in seconds).
+ * Luminous exposure quantifies the total visible light received by a surface over a
+ * period of time. It combines illuminance with duration, making it a cumulative measure
+ * rather than an instantaneous one.
  *
- * Expressed in **lux-seconds (lx·s)**.
+ * This quantity is used in photography, lighting analysis, and exposure studies where
+ * total incident light matters.
  *
- * Commonly used in **photography** and **radiometry** to quantify the
- * total light incident on a surface during an exposure.
- *
- * @constructor Creates a luminous exposure measure with the given [magnitude]
- * and [expression].
- * @param magnitude The numeric value of the measure.
- * @param expression The unit expression in lux-seconds.
+ * The associated unit representation is [LuxSecond] (`lx·s`).
  */
 class Exposure(
     magnitude: BigDecimal,

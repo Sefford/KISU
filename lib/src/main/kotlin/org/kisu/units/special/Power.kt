@@ -7,17 +7,16 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **power** or **radiant flux**, measured in watts (W).
+ * Represents the physical quantity of **power**, measured in [Watt].
  *
- * One watt is equal to one joule per second (J/s), or kg·m²·s⁻³ in base SI units.
- * It quantifies the rate of energy transfer or conversion.
+ * Power quantifies how quickly energy is transferred, converted, or expended. It is
+ * the rate form of energy, appearing in electrical systems, mechanical devices,
+ * heating, radiation, and fluid transport.
  *
- * Commonly used in electrical and mechanical contexts, as well as in radiometry and thermodynamics.
+ * Typical examples include the output of a motor, the consumption of an appliance, the
+ * thermal power of a heater, or the radiant output of a source.
  *
- * This class expresses power as a combination of a [magnitude] and an [expression], supporting values such as
- * kilowatts (kW), megawatts (MW), or milliwatts (mW).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Watt] (`W`), commonly scaled as `mW`, `kW`, or `MW`.
  */
 class Power internal constructor(magnitude: BigDecimal, expression: Watt) :
     Measure<Watt, Power>(magnitude, expression, ::Power) {
@@ -27,11 +26,19 @@ class Power internal constructor(magnitude: BigDecimal, expression: Watt) :
 }
 
 /**
- * Represents the SI derived unit of power: **watt** (W).
+ * Represents the unit **watt** (`W`), used to express [Power].
  *
- * One watt is equal to one joule per second.
+ * A watt quantifies the rate at which energy is transferred or work is performed. One
+ * watt means one [Joule] of energy transferred each second.
  *
- * SI definition: `W = m²·kg·s⁻³`.
+ * This unit is used for light bulb ratings, motor output, appliance consumption,
+ * battery charging, and thermal transfer rates.
+ *
+ * In unit form, `W = J/s = m²·kg·s⁻³`.
+ *
+ * @see Power
+ * @see Joule
+ * @see Volt
  */
 class Watt private constructor(
     prefix: Metric,

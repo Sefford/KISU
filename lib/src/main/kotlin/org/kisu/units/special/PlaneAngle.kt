@@ -7,17 +7,18 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **plane angle**, measured in radians (rad).
+ * Represents the physical quantity of **plane angle**, measured in [Radian].
  *
- * A radian is the angle subtended at the center of a circle by an arc whose length is equal to the radius.
- * It is the standard unit of angular measure used in many areas of mathematics.
+ * Plane angle quantifies rotation or opening in a two-dimensional plane. Even though
+ * the radian is dimensionless in SI, angle remains a distinct geometric concept that
+ * is indispensable in trigonometry, rotational motion, oscillations, and phase
+ * analysis.
  *
- * The radian is a **dimensionless** derived unit in the SI, meaning it has no units in terms of base SI dimensions.
+ * Typical examples include the rotation of a wheel, the angular position of a pendulum,
+ * the phase of a wave, or the orientation of a robotic arm.
  *
- * This class expresses angle as a combination of a [magnitude] and an [expression], supporting values such as
- * milliradians (mrad) or kiloradians (krad).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Radian] (`rad`), often written in `mrad` for small
+ * angular deviations.
  */
 class PlaneAngle internal constructor(magnitude: BigDecimal, expression: Radian) :
     Measure<Radian, PlaneAngle>(magnitude, expression, ::PlaneAngle) {
@@ -27,11 +28,20 @@ class PlaneAngle internal constructor(magnitude: BigDecimal, expression: Radian)
 }
 
 /**
- * Represents the SI derived unit of plane angle: **radian** (rad).
+ * Represents the unit **radian** (`rad`), used to express [PlaneAngle].
  *
- * One radian is the angle with an arc length equal to the radius of the circle.
+ * A radian quantifies plane angle through geometry: it is the angle that subtends an
+ * arc whose length equals the radius of the circle. Although dimensionless in SI, it
+ * is kept as a named unit because that geometric meaning is important.
  *
- * SI definition: dimensionless (m/m).
+ * This unit is used for rotational motion, trigonometry, wave phase, angular
+ * frequency, and any analysis where angle is treated mathematically rather than as a
+ * visual degree measure.
+ *
+ * In unit form, the radian is dimensionless and can be understood as `m/m`.
+ *
+ * @see PlaneAngle
+ * @see Steradian
  */
 class Radian private constructor(
     prefix: Metric,

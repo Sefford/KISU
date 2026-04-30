@@ -7,17 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **force**, measured in newtons (N).
+ * Represents the physical quantity of **force**, measured in [Newton].
  *
- * One newton is the force required to accelerate a mass of one kilogram at a rate of one meter per second squared.
- * It is a derived SI unit defined as kg·m/s².
+ * Force quantifies an interaction capable of changing motion or deforming a body. It
+ * is the language used to describe pushes, pulls, tension, weight, contact reactions,
+ * and many field interactions in classical mechanics.
  *
- * Newtons are commonly used in mechanics, physics, and engineering to describe force interactions.
+ * Typical examples include the weight of an object, the thrust of a motor, the pull in
+ * a cable, or the load applied to a structural element.
  *
- * This class expresses force as a combination of a [magnitude] and an [expression], supporting values such as
- * kilonewtons (kN), millinewtons (mN), or micronewtons (µN).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Newton] (`N`), often scaled to `mN` or `kN` depending
+ * on the application.
  */
 class Force internal constructor(magnitude: BigDecimal, expression: Newton) :
     Measure<Newton, Force>(magnitude, expression, ::Force) {
@@ -27,12 +27,20 @@ class Force internal constructor(magnitude: BigDecimal, expression: Newton) :
 }
 
 /**
- * Represents the SI derived unit of force: **newton** (N).
+ * Represents the unit **newton** (`N`), used to express [Force].
  *
- * One newton is the force required to accelerate a mass of one kilogram
- * at a rate of one metre per second squared.
+ * A newton quantifies force: the push or pull that changes motion or balances another
+ * force. One newton is the force required to accelerate a one-kilogram mass by one
+ * metre per second squared.
  *
- * SI definition: `N = m·kg·s⁻²`.
+ * This unit is used for mechanical loads, contact forces, weight near Earth's surface,
+ * spring forces, and structural calculations.
+ *
+ * In unit form, `N = kg·m/s² = m·kg·s⁻²`.
+ *
+ * @see Force
+ * @see Joule
+ * @see Pascal
  */
 class Newton private constructor(
     prefix: Metric,

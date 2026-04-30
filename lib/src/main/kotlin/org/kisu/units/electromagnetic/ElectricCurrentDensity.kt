@@ -8,27 +8,14 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Represents **electric current density** in the SI system.
+ * Represents the physical quantity of **electric current density**, measured in
+ * [AmperePerSquareMetre].
  *
- * Electric current density describes the amount of electric current flowing per unit
- * cross-sectional area of a conductor. It indicates how concentrated an electric current
- * is within a given area.
+ * Electric current density quantifies how much electric current passes through a unit
+ * cross-sectional area. It describes how concentrated current flow is inside a
+ * conductor, plasma, or continuous medium.
  *
- * Defined as:
- *
- *     J = I / A
- *
- * where:
- * - J is the electric current density,
- * - I is the electric current (A),
- * - A is the cross-sectional area (m²).
- *
- * The SI derived unit is **ampere per square metre (A/m²)**:
- *
- *     1 A/m² = 1 ampere / 1 square metre
- *
- * @constructor Creates a measure of electric current density with a given [magnitude]
- * in terms of the unit expression [AmperePerSquareMetre].
+ * The associated unit representation is [AmperePerSquareMetre] (`A/m²`).
  */
 class ElectricCurrentDensity(
     magnitude: BigDecimal,

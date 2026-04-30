@@ -8,23 +8,18 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Represents **luminance**.
+ * Represents the physical quantity of **luminance**, measured in
+ * [CandelaPerSquareMetre].
  *
- * Luminance is the measure of the luminous intensity emitted,
- * transmitted, or reflected from a surface in a given direction
- * per unit area.
+ * Luminance quantifies the directional brightness of a surface as seen by an observer.
+ * It describes emitted, transmitted, or reflected visible light per unit projected area
+ * in a given direction.
  *
- * Expressed in **candelas per square metre (cd/m²)**, also known as
- * **nits** in display technology.
+ * Typical examples include display brightness, roadway glare, illuminated signage, and
+ * perceived brightness of reflective surfaces.
  *
- * It quantifies how bright a surface will appear to the human eye,
- * making it a central concept in **optics, lighting engineering, and
- * display calibration**.
- *
- * @constructor Creates a luminance measure with the given [magnitude]
- * and [expression].
- * @param magnitude The numeric value of the measure.
- * @param expression The unit expression in candelas per square metre.
+ * The associated unit representation is [CandelaPerSquareMetre] (`cd/m²`), often known
+ * in display contexts as nits.
  */
 class Luminance(
     magnitude: BigDecimal,

@@ -8,20 +8,16 @@ import org.kisu.units.special.CubicMetre
 import java.math.BigDecimal
 
 /**
- * Measure of fuel efficiency expressed in [MetrePerCubicMetre].
+ * Represents the physical quantity of **fuel efficiency**, measured in
+ * [MetrePerCubicMetre].
  *
- * Fuel efficiency quantifies how far a vehicle or engine can travel for a given
- * volume of fuel consumed.
+ * Fuel efficiency quantifies how much distance is obtained from a given volume of fuel.
+ * It expresses travel or transport performance in terms of fuel use.
  *
- * Common applications include:
- * - Automotive engineering (vehicle efficiency ratings)
- * - Engine performance evaluation
- * - Environmental impact assessment (fuel consumption per distance)
+ * Typical examples include vehicle economy ratings, engine benchmarking, and transport
+ * energy analysis.
  *
- * @property magnitude Numerical value of the fuel efficiency.
- * @property expression Unit of the fuel efficiency, here [MetrePerCubicMetre].
- *
- * @see MetrePerCubicMetre
+ * The associated unit representation is [MetrePerCubicMetre].
  */
 class FuelEfficiency(
     magnitude: BigDecimal,

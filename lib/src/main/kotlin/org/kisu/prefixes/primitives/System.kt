@@ -61,7 +61,7 @@ interface System<T : Prefix<T>> {
      * ```kotlin
      * val metricSystem: System<Metric>
      *
-     * metricSystem.smallest // QUETTA
+     * metricSystem.largest // QUETTA
      * ```
      */
     val largest: T

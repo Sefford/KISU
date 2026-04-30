@@ -10,20 +10,17 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Measure of spectral intensity expressed in [WattPerSteradianMetre].
+ * Represents the physical quantity of **spectral intensity**, measured in
+ * [WattPerSteradianMetre].
  *
- * Spectral intensity quantifies the distribution of radiant power along a specific direction
- * per unit length.
+ * Spectral intensity quantifies directional radiant power resolved per unit of spectral
+ * coordinate. It is useful whenever not only direction but also spectral distribution
+ * matters.
  *
- * Common applications include:
- * - Radiometry (characterizing directional spectral power)
- * - Optics and photonics (laser beam or light source analysis)
- * - Astrophysics (intensity of radiation along a line of sight)
+ * Typical examples include spectroscopy, optical source characterization, and
+ * astrophysical emission analysis.
  *
- * @property magnitude Numerical value of the spectral intensity.
- * @property expression Unit of the spectral intensity, here [WattPerSteradianMetre].
- *
- * @see WattPerSteradianMetre
+ * The associated unit representation is [WattPerSteradianMetre].
  */
 class SpectralIntensity(
     magnitude: BigDecimal,

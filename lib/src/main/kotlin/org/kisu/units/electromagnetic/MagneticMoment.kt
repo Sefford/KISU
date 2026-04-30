@@ -8,23 +8,14 @@ import org.kisu.units.special.Weber
 import java.math.BigDecimal
 
 /**
- * Represents the **magnetic moment** (μ), a vector quantity that measures
- * the strength and orientation of a magnet or current loop.
+ * Represents magnetic moment in terms of [WeberMetre].
  *
- * - **Dimension**: magnetic flux × length (Wb·m)
- * - **SI Unit**: weber metre (Wb·m)
+ * In this API the quantity is modeled as magnetic flux multiplied by length. This is a library representation choice;
+ * readers expecting the common `A·m²` form should interpret this type through its expressed units rather than by name
+ * alone.
  *
- * The magnetic moment quantifies how an object interacts with a magnetic field,
- * including torque and potential energy in the field.
- * It is widely used in **magnetostatics, electromagnetism, and materials science**.
- *
- * Example usages include:
- * - Calculating torque on a current loop in a magnetic field
- * - Describing the magnetic properties of materials
- * - Modeling atomic or molecular magnetic moments
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in weber metre (Wb·m)
+ * @param magnitude Numerical value of the quantity.
+ * @param expression Unit expression in weber metres (`Wb·m`).
  */
 class MagneticMoment(
     magnitude: BigDecimal,
@@ -35,34 +26,21 @@ class MagneticMoment(
         this(magnitude, WeberMetre(prefix))
 
     /**
-     * Represents the SI unit **weber metre (Wb·m)**.
+     * Represents the library unit **weber metre (Wb·m)** for [MagneticMoment].
      *
-     * This unit measures **magnetic moment**, i.e., the strength of a magnet or
-     * current loop in terms of magnetic flux times length.
-     * It is defined as the [Product] of [Weber] (magnetic flux) and [Metre] (length).
+     * It is defined as the [Product] of [Weber] and [Metre].
      *
-     * Example usages include:
-     * - Calculating magnetic moments of coils or permanent magnets
-     * - Modeling torque and energy in magnetic systems
-     *
-     * @see MagneticMoment for the physical quantity represented by this unit.
+     * @see MagneticMoment
      */
     typealias WeberMetre = Product<Weber, Metre>
 
     companion object {
         /**
-         * Creates a measure of **weber-metres** (Wb·m).
+         * Creates a unit expression in **weber-metres** (Wb·m).
          *
-         * This compound unit represents the product of:
-         *  - a [Weber] (magnetic flux) with the specified [prefix]
-         *  - multiplied by a [Metre] (length)
-         *
-         * It’s commonly used in electromagnetism when expressing quantities like
-         * magnetic flux times a distance.
+         * This representation is built as a [Product] of [Weber] and [Metre].
          *
          * @param prefix Metric prefix to apply to the weber unit.
-         * Defaults to [Metric.BASE] (no prefix).
-         *
          * @return A [WeberMetre] representing Wb·m.
          */
         @Suppress("FunctionNaming")

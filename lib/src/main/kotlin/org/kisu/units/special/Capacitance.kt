@@ -7,17 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **capacitance**, measured in farads (F).
+ * Represents the physical quantity of **capacitance**, measured in [Farad].
  *
- * One farad is the capacitance of a capacitor in which a charge of one coulomb causes a potential difference of one
- * volt. In base SI units, it is kg⁻¹·m⁻²·s⁴·A².
+ * Capacitance quantifies a system's ability to store electric charge for a given
+ * potential difference. It describes how much charge accumulates when a voltage is
+ * applied.
  *
- * Farads are commonly used in electronics to describe how much electric charge a component can store.
+ * This quantity is fundamental in electronics, where it appears in capacitors used for
+ * filtering, timing, smoothing power supplies, signal coupling, and energy storage.
  *
- * This class expresses capacitance as a combination of a [magnitude] and an [expression], supporting values such as
- * millifarads (mF), microfarads (µF), nanofarads (nF), or picofarads (pF).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Farad] (`F`), although practical circuits usually use
+ * `mF`, `µF`, `nF`, or `pF`.
  */
 class Capacitance internal constructor(magnitude: BigDecimal, expression: Farad) :
     Measure<Farad, Capacitance>(magnitude, expression, ::Capacitance) {
@@ -27,11 +27,20 @@ class Capacitance internal constructor(magnitude: BigDecimal, expression: Farad)
 }
 
 /**
- * Represents the SI derived unit of capacitance: **farad** (F).
+ * Represents the unit **farad** (`F`), used to express [Capacitance].
  *
- * One farad is equal to one coulomb per volt.
+ * A farad quantifies how much electric charge a system can store for a given electric
+ * potential difference. One farad means one coulomb of charge stored per volt.
  *
- * SI definition: `F = m⁻²·kg⁻¹·s⁴·A²`.
+ * In practice, the farad is a large unit, so electronics often use microfarads,
+ * nanofarads, or picofarads for capacitors in filters, timing circuits, and power
+ * supplies.
+ *
+ * In unit form, `F = C/V = m⁻²·kg⁻¹·s⁴·A²`.
+ *
+ * @see Capacitance
+ * @see Coulomb
+ * @see Volt
  */
 class Farad private constructor(
     prefix: Metric,

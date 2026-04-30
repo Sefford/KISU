@@ -8,24 +8,16 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **molality**.
+ * Represents the physical quantity of **molality**, measured in [MolePerKilogram].
  *
- * Molality quantifies the **amount of substance of solute per unit mass of solvent**.
- * Unlike molarity, it does not depend on volume (and therefore is unaffected by temperature
- * or pressure changes), making it particularly useful in thermodynamic calculations.
- * Its SI unit is the **mole per kilogram (mol/kg)**, represented here by [MolePerKilogram].
+ * Molality quantifies amount of solute per unit mass of solvent. Unlike [Molarity], it
+ * does not depend on the total solution volume, so it remains especially useful when
+ * temperature or pressure changes would make volume-based concentration less stable.
  *
- * Example usages include:
- * - Expressing the concentration of a solute in a solution
- * - Thermodynamic property calculations (e.g., colligative properties)
- * - Chemistry and chemical engineering applications
+ * This quantity is common in solution chemistry, thermodynamics, and colligative
+ * property calculations such as boiling-point elevation or freezing-point depression.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [Molality] are immutable, and the [expression] parameter ties
- * the measurement to its unit representation ([MolePerKilogram]).
- *
- * @property magnitude The numeric value of the molality.
- * @property expression The unit expression of the molality, always [MolePerKilogram].
+ * The associated SI unit representation is [MolePerKilogram] (`mol/kg`).
  */
 class Molality(
     magnitude: BigDecimal,

@@ -8,20 +8,17 @@ import org.kisu.units.special.CubicMetre
 import java.math.BigDecimal
 
 /**
- * Measure of specific volume expressed in [CubicMetrePerKilogram].
+ * Represents the physical quantity of **specific volume**, measured in
+ * [CubicMetrePerKilogram].
  *
- * Specific volume quantifies the space occupied by a unit mass of a substance,
- * describing the relationship between mass and volume.
+ * Specific volume quantifies how much volume is occupied per unit mass. It is the
+ * reciprocal viewpoint of density and is especially common in thermodynamics and fluid
+ * property tables.
  *
- * Common applications include:
- * - Thermodynamics (gas and liquid properties)
- * - Fluid mechanics (density and compressibility analysis)
- * - Material science (characterizing porous or solid materials)
+ * Typical examples include steam tables, gas-property analysis, and compressible-flow
+ * calculations.
  *
- * @property magnitude Numerical value of the specific volume.
- * @property expression Unit of the specific volume, here [CubicMetrePerKilogram].
- *
- * @see CubicMetrePerKilogram
+ * The associated unit representation is [CubicMetrePerKilogram] (`m³/kg`).
  */
 class SpecificVolume(
     magnitude: BigDecimal,

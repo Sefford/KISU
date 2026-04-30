@@ -8,21 +8,14 @@ import org.kisu.units.special.Radian
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **angular snap**, the fourth derivative of angular position with respect to time.
+ * Represents the physical quantity of **angular snap**, measured in
+ * [RadianPerSecondFourth].
  *
- * Angular snap quantifies how the **angular jerk** (third derivative of angular position) changes over time.
- * Its SI unit is the **radian per second to the fourth (rad/s⁴)**, represented here by [RadianPerSecondFourth].
+ * Angular snap is the time derivative of angular jerk. It describes how rotational
+ * jerk itself changes and is mainly useful in advanced control, trajectory smoothing,
+ * and high-fidelity rotational simulation.
  *
- * Typical applications include:
- * - Robotics and rotational motion control for smooth higher-order trajectories
- * - Physics simulations requiring precise modeling of angular derivatives beyond acceleration
- * - Systems where control of the change of angular jerk is necessary for stability or comfort
- *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [AngularSnap] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([RadianPerSecondFourth]).
- *
- * @property magnitude The numeric value of the angular snap.
- * @property expression The unit expression of the angular snap, always [RadianPerSecondFourth].
+ * The associated unit representation is [RadianPerSecondFourth] (`rad/s⁴`).
  */
 class Snap(
     magnitude: BigDecimal,

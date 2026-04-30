@@ -8,26 +8,19 @@ import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
- * Represents the **electric displacement field (D)** in SI units.
+ * Represents the **electric displacement field** `D`, measured in
+ * [CoulombPerSquareMetre].
  *
- * The electric displacement field describes how electric fields interact with
- * materials, particularly in the presence of free and bound charges.
- * It is measured in **coulombs per square metre (C/m²)**.
+ * Electric displacement field quantifies how electric fields and free charge are
+ * related inside matter. It is especially useful in dielectric media, where it helps
+ * separate externally supplied charge from polarization effects in the material.
  *
- * Defined as a [Measure] of [CoulombPerSquareMetre], this quantity is
- * central in electromagnetism, especially in **Gauss's law for electric displacement**:
+ * This quantity appears naturally in capacitor theory, dielectric modeling, and
+ * Maxwell's equations in matter, particularly through Gauss's law for electric
+ * displacement.
  *
- * ```
- * ∇ · D = ρ_free
- * ```
- *
- * Example usages include:
- * - Calculating field distributions in dielectric materials
- * - Modeling capacitors and polarization
- * - Solving Maxwell’s equations in matter
- *
- * @see CoulombPerSquareMetre for the unit definition.
- * @see ElectricField for the related field quantity.
+ * @see CoulombPerSquareMetre
+ * @see ElectricFieldStrength
  */
 class ElectricDisplacementField(
     magnitude: BigDecimal,
@@ -44,32 +37,22 @@ class ElectricDisplacementField(
     /**
      * Represents the SI unit **coulomb per square metre (C/m²)**.
      *
-     * This unit measures **electric displacement field**, i.e., the electric charge
-     * per unit area on a surface.
-     * It is defined as the [Quotient] of [Coulomb] (electric charge) and [SquareMetre] (area).
+     * This unit is used for electric displacement field and is also dimensionally
+     * consistent with surface charge density. It is defined as the [Quotient] of
+     * [Coulomb] and [SquareMetre].
      *
-     * Example usages include:
-     * - Calculating surface charge distributions
-     * - Modeling dielectric materials and capacitors
-     *
-     * @see ElectricDisplacementField for the physical quantity represented by this unit.
+     * @see ElectricDisplacementField
      */
     typealias CoulombPerSquareMetre = Quotient<Coulomb, SquareMetre>
 
     companion object {
         /**
-         * Creates a measure of **coulombs per square metre** (C/m²).
+         * Creates a unit expression in **coulombs per square metre** (C/m²).
          *
-         * This derived unit expresses **surface charge density** —
-         * how much electric charge (in coulombs) is distributed per unit area.
-         *
-         * Internally this returns a [Quotient] of:
-         *  - a [Coulomb] (electric charge) with the specified [prefix]
-         *  - divided by a [SquareMetre] (area)
+         * This representation is used by [ElectricDisplacementField] and is
+         * constructed as a [Quotient] of [Coulomb] by [SquareMetre].
          *
          * @param prefix Metric prefix to apply to the coulomb unit.
-         * Defaults to [Metric.BASE] (no prefix).
-         *
          * @return A [CoulombPerSquareMetre] representing C/m².
          */
         @Suppress("FunctionNaming")

@@ -7,15 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **pressure** or **stress**, measured in pascals (Pa).
+ * Represents the physical quantity of **pressure**, measured in [Pascal].
  *
- * One pascal equals one newton per square meter (N/m²), which is kg·m⁻¹·s⁻² in SI base units.
- * It is used to quantify internal pressure, stress, Young's modulus, and tensile strength.
+ * Pressure quantifies force distributed over an area. In solids the same unit also
+ * appears for normal stress and many elastic moduli, which is why this quantity sits
+ * at the boundary between fluid mechanics and solid mechanics.
  *
- * This class expresses pressure as a combination of a [magnitude] and an [expression], supporting values such as
- * kilopascals (kPa), megapascals (MPa), or hectopascals (hPa).
+ * Typical examples include atmospheric pressure, tire pressure, hydraulic pressure, and
+ * mechanical stress inside a loaded structural part.
  *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Pascal] (`Pa`), with `kPa`, `MPa`, and `hPa` being
+ * especially common in practice.
  */
 class Pressure internal constructor(magnitude: BigDecimal, expression: Pascal) :
     Measure<Pascal, Pressure>(magnitude, expression, ::Pressure) {
@@ -25,11 +27,19 @@ class Pressure internal constructor(magnitude: BigDecimal, expression: Pascal) :
 }
 
 /**
- * Represents the SI derived unit of pressure: **pascal** (Pa).
+ * Represents the unit **pascal** (`Pa`), used to express [Pressure].
  *
- * One pascal is equal to one newton per square metre.
+ * A pascal quantifies pressure or normal stress: force distributed over an area. One
+ * pascal means one [Newton] acting uniformly on one [SquareMetre].
  *
- * SI definition: `Pa = m⁻¹·kg·s⁻²`.
+ * This unit is used for atmospheric and tire pressure, hydraulic systems, sound
+ * pressure, and material stress in engineering.
+ *
+ * In unit form, `Pa = N/m² = m⁻¹·kg·s⁻²`.
+ *
+ * @see Pressure
+ * @see Newton
+ * @see SquareMetre
  */
 class Pascal private constructor(
     prefix: Metric,

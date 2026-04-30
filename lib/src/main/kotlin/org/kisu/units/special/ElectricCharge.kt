@@ -7,17 +7,18 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **electric charge**, measured in coulombs (C).
+ * Represents the physical quantity of **electric charge**, measured in [Coulomb].
  *
- * One coulomb corresponds to the amount of electric charge transferred by a current of one ampere in one second.
- * It is defined as s·A in SI base units.
+ * Electric charge quantifies how much electrically active matter or imbalance is
+ * present. It is the conserved quantity behind electrostatics, current flow, and the
+ * behavior of capacitors, batteries, and charged particles.
  *
- * Coulombs are used in physics and electrical engineering to quantify electric charge and electrochemical processes.
+ * Typical examples include the charge stored on a capacitor plate, the charge moved
+ * through a circuit during a pulse, or the charge associated with ions in an
+ * electrochemical process.
  *
- * This class expresses charge as a combination of a [magnitude] and an [expression], supporting values such as
- * millicoulombs (mC), microcoulombs (µC), or kilocoulombs (kC).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Coulomb] (`C`), often written as `mC` or `µC` for
+ * laboratory-scale quantities.
  */
 class ElectricCharge internal constructor(magnitude: BigDecimal, expression: Coulomb) :
     Measure<Coulomb, ElectricCharge>(magnitude, expression, ::ElectricCharge) {
@@ -27,11 +28,20 @@ class ElectricCharge internal constructor(magnitude: BigDecimal, expression: Cou
 }
 
 /**
- * Represents the SI derived unit of electric charge: **coulomb** (C).
+ * Represents the unit **coulomb** (`C`), used to express [ElectricCharge].
  *
- * One coulomb is equal to one ampere second.
+ * A coulomb quantifies the amount of electric charge. One coulomb is the charge
+ * transported by a current of one ampere flowing for one second.
  *
- * SI definition: `C = s·A`.
+ * This unit appears in electrostatics, capacitor calculations, battery analysis, and
+ * any context where the quantity of charge itself matters rather than only current or
+ * voltage.
+ *
+ * In unit form, `C = A·s`.
+ *
+ * @see ElectricCharge
+ * @see Volt
+ * @see Farad
  */
 class Coulomb private constructor(
     prefix: Metric,

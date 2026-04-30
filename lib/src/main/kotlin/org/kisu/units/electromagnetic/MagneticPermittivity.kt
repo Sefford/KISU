@@ -8,25 +8,17 @@ import org.kisu.units.special.Henry
 import java.math.BigDecimal
 
 /**
- * Represents **magnetic permeability** (μ), a measure of a material's ability
- * to support the formation of a magnetic field within itself.
+ * Represents magnetic permeability, here exposed under the type name
+ * `MagneticPermittivity`.
  *
- * - **Dimension**: inductance per length (H/m)
- * - **SI Unit**: henry per metre (H/m)
+ * Magnetic permeability quantifies how readily a medium supports magnetic flux in
+ * response to an applied magnetic field. In linear materials it appears in the relation
+ * `B = μH`, linking magnetic flux density to magnetic field strength.
  *
- * Magnetic permeability quantifies how a material responds to a magnetic field,
- * influencing the relationship between the magnetic field strength (H) and the
- * magnetic flux density (B) in the material:
+ * This quantity is used in material characterization, magnetic circuit analysis,
+ * transformer and inductor design, and electromagnetic simulation.
  *
- *     B = μ * H
- *
- * Example usages include:
- * - Characterizing ferromagnetic, paramagnetic, or diamagnetic materials
- * - Designing inductors, transformers, and electromagnetic devices
- * - Electromagnetic field simulations
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in henry per metre (H/m)
+ * The associated unit representation is [HenryPerMetre] (`H/m`).
  */
 class MagneticPermittivity(
     magnitude: BigDecimal,
@@ -43,32 +35,21 @@ class MagneticPermittivity(
     /**
      * Represents the SI unit **henry per metre (H/m)**.
      *
-     * This unit measures **magnetic permeability**, i.e., the ability of a material
-     * to support the formation of a magnetic field.
-     * It is defined as the [Quotient] of [Henry] (inductance) and [Metre] (length).
+     * This unit is used for magnetic permeability: inductive response normalized by
+     * length. It is defined as the [Quotient] of [Henry] and [Metre].
      *
-     * Example usages include:
-     * - Characterizing magnetic properties of materials
-     * - Designing inductors, transformers, and magnetic circuits
-     *
-     * @see MagneticPermittivity for the physical quantity represented by this unit.
+     * @see MagneticPermittivity
      */
     typealias HenryPerMetre = Quotient<Henry, Metre>
 
     companion object {
         /**
-         * Creates a measure of **henrys per metre** (H/m).
+         * Creates a unit expression in **henrys per metre** (H/m).
          *
-         * This derived unit expresses **magnetic inductance per unit length** —
-         * how much inductance is present per metre of a conductor or coil.
-         *
-         * Internally this returns a [Quotient] of:
-         *  - a [Henry] (inductance) with the specified [prefix]
-         *  - divided by a [Metre] (length)
+         * This representation is used for magnetic permeability and is constructed as a
+         * [Quotient] of [Henry] by [Metre].
          *
          * @param prefix Metric prefix to apply to the henry unit.
-         * Defaults to [Metric.BASE] (no prefix).
-         *
          * @return A [HenryPerMetre] representing H/m.
          */
         @Suppress("FunctionNaming")

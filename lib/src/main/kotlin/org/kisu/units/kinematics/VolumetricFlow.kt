@@ -8,21 +8,17 @@ import org.kisu.units.special.CubicMetre
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **volumetric flow**, the rate of volume change over time.
+ * Represents the physical quantity of **volumetric flow rate**, measured in
+ * [CubicMetrePerSecond].
  *
- * Volumetric flow quantifies how much volume of a substance passes through a given point or area per unit time.
- * Its SI unit is the **cubic metre per second (m³/s)**, represented here by [CubicMetrePerSecond].
+ * Volumetric flow rate quantifies how much volume passes through a section or boundary
+ * per unit time. It is one of the standard ways to describe fluid transport in pipes,
+ * ducts, pumps, and open channels.
  *
- * Typical applications include:
- * - Fluid dynamics and pipe flow measurement
- * - HVAC and water distribution systems
- * - Chemical and process engineering
+ * Typical examples include the output of a pump, airflow through HVAC equipment, or
+ * water delivery in a distribution network.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [VolumetricFlow] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([CubicMetrePerSecond]).
- *
- * @property magnitude The numeric value of the volumetric flow.
- * @property expression The unit expression of the volumetric flow, always [CubicMetrePerSecond].
+ * The associated unit representation is [CubicMetrePerSecond] (`m³/s`).
  */
 class VolumetricFlow internal constructor(
     magnitude: BigDecimal,

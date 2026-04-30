@@ -8,22 +8,16 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **molar mass**.
+ * Represents the physical quantity of **molar mass**, measured in [KilogramPerMole].
  *
- * Molar mass quantifies the **mass of one mole of a substance**.
- * Its SI unit is the **kilogram per mole (kg/mol)**, represented here by [KilogramPerMole].
+ * Molar mass quantifies the mass associated with one mole of a substance. It provides
+ * the bridge between microscopic counting in moles and macroscopic mass measured in the
+ * laboratory.
  *
- * Example usages include:
- * - Calculating the mass of a given number of moles of a substance
- * - Determining stoichiometric ratios in chemical reactions
- * - Molecular property and thermodynamic calculations
+ * This quantity is fundamental in stoichiometry, solution preparation, and molecular
+ * property calculations.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [MolarMass] are immutable, and the [expression] parameter ties the measurement
- * to its unit representation ([KilogramPerMole]).
- *
- * @property magnitude The numeric value of the molar mass.
- * @property expression The unit expression of the molar mass, always [KilogramPerMole].
+ * The associated SI unit representation is [KilogramPerMole] (`kg/mol`).
  */
 class MolarMass(
     magnitude: BigDecimal,

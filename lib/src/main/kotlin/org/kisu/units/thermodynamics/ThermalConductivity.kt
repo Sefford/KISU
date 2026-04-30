@@ -10,24 +10,17 @@ import org.kisu.units.special.Watt
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **thermal conductivity**.
+ * Represents the physical quantity of **thermal conductivity**, measured in
+ * [WattPerMetreKelvin].
  *
- * Thermal conductivity quantifies a material’s **ability to conduct heat**.
- * It measures the rate at which heat energy passes through a material under a given
- * temperature gradient.
- * Its SI unit is the **watt per metre kelvin (W/(m·K))**, represented here by [WattPerMetreKelvin].
+ * Thermal conductivity quantifies how readily heat flows through a material under a
+ * temperature gradient. High values indicate efficient heat transfer; low values
+ * indicate insulating behavior.
  *
- * Example usages include:
- * - Characterising materials (e.g., copper ≈ 401 W/(m·K), glass ≈ 1 W/(m·K))
- * - Heat transfer calculations in engineering and physics
- * - Thermal insulation design
+ * This quantity is used to compare metals, ceramics, polymers, gases, and insulation
+ * materials in engineering and physics.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [ThermalConductivity] are immutable, and the [expression] parameter ties the measurement
- * to its unit representation ([WattPerMetreKelvin]).
- *
- * @property magnitude The numeric value of the thermal conductivity.
- * @property expression The unit expression of the thermal conductivity, always [WattPerMetreKelvin].
+ * The associated SI unit representation is [WattPerMetreKelvin] (`W/(m·K)`).
  */
 class ThermalConductivity(
     magnitude: BigDecimal,

@@ -8,21 +8,15 @@ import org.kisu.units.special.Lumen
 import java.math.BigDecimal
 
 /**
- * Represents **luminous energy**.
+ * Represents the physical quantity of **luminous energy**, measured in [LumenSecond].
  *
- * Luminous energy (also known as *quantity of light*) is the measure of the
- * perceived amount of light emitted over a period of time.
+ * Luminous energy, also called quantity of light, quantifies the total visible light
+ * emitted over a duration. It is the time-integrated form of luminous flux.
  *
- * It is defined as the time integral of luminous flux and is expressed in
- * **lumen-seconds (lm·s)**.
+ * This quantity is useful when evaluating how much visible light a source delivers
+ * during a pulse, exposure, or finite operating interval.
  *
- * This quantity is important in photometry when evaluating the total amount
- * of light delivered by a source during a given interval.
- *
- * @constructor Creates a luminous energy measure with the given [magnitude]
- * and [expression].
- * @param magnitude The numeric value of the measure.
- * @param expression The unit expression in lumen-seconds.
+ * The associated unit representation is [LumenSecond] (`lm·s`).
  */
 class LuminousEnergy(
     magnitude: BigDecimal,

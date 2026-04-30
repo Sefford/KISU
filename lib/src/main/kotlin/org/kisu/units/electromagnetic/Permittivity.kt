@@ -8,24 +8,17 @@ import org.kisu.units.special.Farad
 import java.math.BigDecimal
 
 /**
- * Represents **electric permittivity** (ε), a measure of a material's ability
- * to permit the formation of an electric field within it.
+ * Represents the physical quantity of **electric permittivity**, measured in
+ * [FaradPerMetre].
  *
- * - **Dimension**: capacitance per length (F/m)
- * - **SI Unit**: farad per metre (F/m)
+ * Electric permittivity quantifies how a medium responds to an electric field. It links
+ * electric displacement to electric field strength and is one of the core constitutive
+ * properties of dielectric materials.
  *
- * Permittivity relates the electric displacement field (D) to the electric
- * field strength (E) in a medium:
+ * Typical examples include capacitor dielectrics, insulating materials, and wave
+ * propagation in media.
  *
- *     D = ε * E
- *
- * Example usages include:
- * - Characterizing dielectric materials
- * - Designing capacitors and insulating materials
- * - Modeling electromagnetic wave propagation in media
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in farad per metre (F/m)
+ * The associated unit representation is [FaradPerMetre] (`F/m`).
  */
 class Permittivity(
     magnitude: BigDecimal,
@@ -54,9 +47,8 @@ class Permittivity(
         /**
          * Creates a measure of **farads per metre** (F/m).
          *
-         * This derived unit expresses **capacitance per unit length** —
-         * how much capacitance is present along a given length, commonly used in
-         * transmission lines and electromagnetic contexts.
+         * This derived unit expresses **electric permittivity** — a material property quantifying how a medium
+         * responds to an electric field.
          *
          * Internally this returns a [Quotient] of:
          *  - a [Farad] (capacitance) with the specified [prefix]

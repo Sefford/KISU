@@ -8,21 +8,17 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **acceleration**.
+ * Represents the physical quantity of **linear acceleration**, measured in
+ * [MetrePerSecondSquared].
  *
- * Acceleration quantifies the **rate of change of velocity** over time.
- * Its SI unit is the **metre per second squared (m/s²)**, represented here by [MetrePerSecondSquared].
+ * Acceleration quantifies how rapidly velocity changes in time. It describes speeding
+ * up, slowing down, and changes in direction, making it one of the core quantities of
+ * kinematics and dynamics.
  *
- * Example usages include:
- * - Free-fall acceleration due to gravity (~9.81 m/s²)
- * - Vehicle acceleration
- * - Any system where velocity changes over time
+ * Typical examples include gravitational acceleration, vehicle launch and braking, and
+ * motion of moving parts in machinery.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [Acceleration] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([MetrePerSecondSquared]).
- *
- * @property magnitude The numeric value of the acceleration.
- * @property expression The unit expression of the acceleration, always [MetrePerSecondSquared].
+ * The associated unit representation is [MetrePerSecondSquared] (`m/s²`).
  */
 class Acceleration(
     magnitude: BigDecimal,

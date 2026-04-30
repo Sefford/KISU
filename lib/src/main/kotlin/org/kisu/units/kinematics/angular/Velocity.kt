@@ -8,21 +8,16 @@ import org.kisu.units.special.Radian
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **angular velocity**.
+ * Represents the physical quantity of **angular velocity**, measured in
+ * [RadianPerSecond].
  *
- * Angular velocity quantifies the **rate of change of angular position** over time.
- * Its SI unit is the **radian per second (rad/s)**, represented here by [RadianPerSecond].
+ * Angular velocity quantifies the rate at which angular position changes. It is the
+ * standard descriptor of rotational speed in mechanics, robotics, and wave motion.
  *
- * Typical applications include:
- * - Rotational motion in machinery and robotics
- * - Vehicle and spacecraft rotational dynamics
- * - Physics simulations involving angular motion
+ * Typical examples include wheel rotation, shaft speed, orbital spin, and actuator
+ * motion.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision. Instances of [Velocity] are
- * immutable, and the [expression] parameter ties the measurement to its unit representation ([RadianPerSecond]).
- *
- * @property magnitude The numeric value of the angular velocity.
- * @property expression The unit expression of the angular velocity, always [RadianPerSecond].
+ * The associated unit representation is [RadianPerSecond] (`rad/s`).
  */
 class Velocity(
     magnitude: BigDecimal,

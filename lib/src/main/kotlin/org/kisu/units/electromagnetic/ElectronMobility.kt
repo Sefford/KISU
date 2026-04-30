@@ -10,18 +10,17 @@ import org.kisu.units.special.Volt
 import java.math.BigDecimal
 
 /**
- * Represents **electron mobility** (μ), which describes how quickly an electron
- * can move through a material under the influence of an electric field.
+ * Represents the physical quantity of **electron mobility**, measured in
+ * [SquareMetrePerVoltSecond].
  *
- * - **Dimension**: area per voltage-time (m² / (V·s))
- * - **SI Unit**: square metre per volt-second (m²/(V·s))
+ * Electron mobility quantifies how quickly electrons drift through a material in
+ * response to an electric field. It is a central transport property in semiconductors
+ * and conducting media.
  *
- * Electron mobility is a key property in **semiconductor physics**, as it determines
- * how efficiently charge carriers move through a material, directly impacting the
- * electrical conductivity and performance of electronic devices.
+ * Typical examples include transistor materials, semiconductor characterization, and
+ * carrier-transport modeling.
  *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in square metre per volt-second (m²/(V·s))
+ * The associated unit representation is [SquareMetrePerVoltSecond] (`m²/(V·s)`).
  */
 class ElectronMobility(
     magnitude: BigDecimal,
@@ -55,7 +54,7 @@ class ElectronMobility(
         /**
          * Creates a measure of **square metres per volt-second** (m²/(V·s)).
          *
-         * This derived unit expresses a quantity such as **electrical mobility**
+         * This derived unit expresses a quantity such as **electron mobility**
          * (area per unit electric potential and time) used in various electromagnetic
          * and materials contexts.
          *

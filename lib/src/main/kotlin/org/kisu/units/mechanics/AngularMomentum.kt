@@ -9,20 +9,17 @@ import org.kisu.units.special.Newton
 import java.math.BigDecimal
 
 /**
- * Measure of angular momentum expressed in [NewtonMeterSecond].
+ * Represents the physical quantity of **angular momentum**, measured in
+ * [NewtonMeterSecond].
  *
- * Angular momentum quantifies the rotational motion of a body, combining
- * its moment of inertia with angular velocity.
+ * Angular momentum quantifies rotational motion and the resistance of that motion to
+ * change. It is conserved in isolated systems and therefore fundamental in mechanics
+ * from spinning rotors to orbiting bodies.
  *
- * Common applications include:
- * - Mechanics of rotating bodies
- * - Orbital dynamics in astronomy
- * - Quantum mechanics (orbital and spin angular momentum)
+ * Typical examples include flywheels, planetary orbits, gyroscopic stabilization, and
+ * quantum angular momentum.
  *
- * @property magnitude Numerical value of the angular momentum.
- * @property expression Unit of the angular momentum, here [NewtonMeterSecond].
- *
- * @see NewtonMeterSecond
+ * The associated unit representation is [NewtonMeterSecond] (`N·m·s`).
  */
 class AngularMomentum(
     magnitude: BigDecimal,

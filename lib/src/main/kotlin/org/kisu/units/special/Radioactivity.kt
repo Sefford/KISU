@@ -7,18 +7,17 @@ import org.kisu.units.representation.Unit
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **radioactivity**, specifically the activity of a radionuclide, measured in
- * becquerels (Bq).
+ * Represents the physical quantity of **radioactive activity**, measured in [Becquerel].
  *
- * One becquerel corresponds to one nuclear decay per second. In SI base units, it is defined as s⁻¹.
+ * Radioactivity quantifies how frequently unstable nuclei decay. It measures rate, not
+ * energy deposited and not biological effect, so it should be distinguished from
+ * quantities such as absorbed dose and dose equivalent.
  *
- * Becquerels are used in nuclear physics, radiology, and environmental monitoring to measure the rate of radioactive
- * decay.
+ * Typical examples include the activity of a medical tracer, a sealed source, a
+ * contaminated sample, or a naturally radioactive material.
  *
- * This class expresses activity as a combination of a [magnitude] and an [expression], supporting values such as
- * kilobecquerels (kBq), megabecquerels (MBq), or gigabecquerels (GBq).
- *
- * Instances of this class are immutable and use [BigDecimal] for precision.
+ * The canonical SI unit is the [Becquerel] (`Bq`), often scaled as `kBq`, `MBq`, or
+ * `GBq`.
  */
 class Radioactivity internal constructor(magnitude: BigDecimal, expression: Becquerel) :
     Measure<Becquerel, Radioactivity>(magnitude, expression, ::Radioactivity) {
@@ -28,11 +27,18 @@ class Radioactivity internal constructor(magnitude: BigDecimal, expression: Becq
 }
 
 /**
- * Represents the SI derived unit of radioactivity: **becquerel** (Bq).
+ * Represents the unit **becquerel** (`Bq`), used to express [Radioactivity].
  *
- * One becquerel is one radioactive decay per second.
+ * A becquerel quantifies radioactive activity: how often unstable nuclei decay. One
+ * becquerel means one nuclear decay event per second.
  *
- * SI definition: `Bq = s⁻¹`.
+ * This unit is used for radioactive tracers, environmental monitoring, nuclear
+ * medicine, and the characterization of radioactive sources.
+ *
+ * In unit form, `Bq = s⁻¹`.
+ *
+ * @see Radioactivity
+ * @see Hertz
  */
 class Becquerel private constructor(
     prefix: Metric,

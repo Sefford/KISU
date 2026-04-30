@@ -8,22 +8,17 @@ import org.kisu.units.special.CubicMetre
 import java.math.BigDecimal
 
 /**
- * Represents the physical quantity of **molar volume**.
+ * Represents the physical quantity of **molar volume**, measured in
+ * [CubicMetrePerMole].
  *
- * Molar volume quantifies the **volume occupied by one mole of a substance**.
- * Its SI unit is the **cubic metre per mole (m³/mol)**, represented here by [CubicMetrePerMole].
+ * Molar volume quantifies how much volume is occupied by one mole of substance. It is
+ * especially useful when comparing gases, liquids, or solids on a chemically natural
+ * amount-of-substance basis.
  *
- * Example usages include:
- * - Calculating the volume of gases using the ideal gas law
- * - Determining molar volumes of liquids and solids
- * - Chemical and thermodynamic calculations
+ * Typical examples include the molar volume of an ideal gas under stated conditions or
+ * the volume occupied by one mole of a condensed phase.
  *
- * The magnitude is stored as a [BigDecimal] to ensure high precision.
- * Instances of [MolarVolume] are immutable, and the [expression] parameter ties the measurement
- * to its unit representation ([CubicMetrePerMole]).
- *
- * @property magnitude The numeric value of the molar volume.
- * @property expression The unit expression of the molar volume, always [CubicMetrePerMole].
+ * The associated SI unit representation is [CubicMetrePerMole] (`m³/mol`).
  */
 class MolarVolume(
     magnitude: BigDecimal,

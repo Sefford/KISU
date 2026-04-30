@@ -8,19 +8,16 @@ import org.kisu.units.representation.Quotient
 import java.math.BigDecimal
 
 /**
- * Measure of mass flow rate expressed in [KilogramPerSecond].
+ * Represents the physical quantity of **mass flow rate**, measured in
+ * [KilogramPerSecond].
  *
- * Mass flow rate quantifies how much mass passes through a given surface or section per unit time.
+ * Mass flow rate quantifies how much mass crosses a section or boundary per unit time.
+ * It is often preferred over volumetric flow when density changes matter.
  *
- * Common applications include:
- * - Fluid and gas transport systems (pipes, ducts)
- * - Chemical and process engineering (reactor feed rates)
- * - Environmental studies (mass flux in rivers or air currents)
+ * Typical examples include fuel feed to an engine, airflow through a duct, and process
+ * streams in chemical plants.
  *
- * @property magnitude Numerical value of the mass flow rate.
- * @property expression Unit of the mass flow rate, here [KilogramPerSecond].
- *
- * @see KilogramPerSecond
+ * The associated unit representation is [KilogramPerSecond] (`kg/s`).
  */
 class MassFlowRate(
     magnitude: BigDecimal,
