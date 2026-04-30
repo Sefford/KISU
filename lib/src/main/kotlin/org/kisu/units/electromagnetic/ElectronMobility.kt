@@ -54,7 +54,7 @@ class ElectronMobility(
         /**
          * Creates a measure of **square metres per volt-second** (m²/(V·s)).
          *
-         * This derived unit expresses a quantity such as **electrical mobility**
+         * This derived unit expresses a quantity such as **electron mobility**
          * (area per unit electric potential and time) used in various electromagnetic
          * and materials contexts.
          *

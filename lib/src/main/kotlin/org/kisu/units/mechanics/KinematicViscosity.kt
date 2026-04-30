@@ -48,9 +48,8 @@ class KinematicViscosity(
         /**
          * Creates a measure of **square metres per second** (m²/s).
          *
-         * This derived unit expresses **area flux** —
-         * how much area is covered or transported per unit time, commonly used
-         * in diffusion or fluid flow contexts.
+         * This derived unit expresses **kinematic viscosity** (momentum diffusivity) — the ratio of dynamic viscosity
+         * to density, commonly used in fluid-flow and transport analysis.
          *
          * Internally this returns a [Quotient] of:
          *  - a [SquareMetre] (area) with the specified [prefix]

@@ -10,15 +10,12 @@ import java.math.BigDecimal
 /**
  * Represents magnetic moment in terms of [WeberMetre].
  *
- * In this API the quantity is modeled as magnetic flux multiplied by length. Read this
- * as a derived representation used by the library, not as the more common textbook
- * form `A·m²` usually associated with magnetic dipole moment.
+ * In this API the quantity is modeled as magnetic flux multiplied by length. This is a library representation choice;
+ * readers expecting the common `A·m²` form should interpret this type through its expressed units rather than by name
+ * alone.
  *
- * Typical uses include electromagnetic calculations where magnetic interaction
- * strength is expressed through a flux-length construction.
- *
- * @param magnitude numerical value of the measure
- * @param expression unit expression in weber metre (Wb·m)
+ * @param magnitude Numerical value of the quantity.
+ * @param expression Unit expression in weber metres (`Wb·m`).
  */
 class MagneticMoment(
     magnitude: BigDecimal,

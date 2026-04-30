@@ -60,7 +60,7 @@ class SpecificHeatCapacity(
          * specific entropy — energy per unit mass per unit temperature.
          *
          * Internally this returns a [Quotient] of:
-         *  - a [Joule] (energy) with the specified [prefix]
+         *  - a [Joule] (energy)
          *  - divided by a [Product] of [Kilogram] (mass) with the specified [prefix]
          *    and [Kelvin] (temperature)
          *

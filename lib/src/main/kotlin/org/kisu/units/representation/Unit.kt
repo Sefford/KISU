@@ -29,17 +29,14 @@ import org.kisu.units.special.Watt
 import org.kisu.units.special.Weber
 
 /**
- * Represents a physical unit (such as "m", "s", "kg") with an optional exponent.
+ * Symbolic unit with an integer exponent, such as `m`, `s²`, or `kg⁻¹`.
  *
- * This class is used to model unit symbols and their powers, and supports basic
- * arithmetic operations (multiplication and division) with units of the same type.
+ * [Unit] is responsible only for unit symbols and exponent arithmetic. Prefix handling lives at the [Scalar] level.
  *
- * Equality and hash code are based **only** on the [symbol] name, not on the exponent.
- * This is useful when you want to treat units like "m²" and "m³" as the same base unit
- * for lookup or comparison purposes.
+ * Equality and hash code include both [symbol] and [exponent].
  *
- * @property symbol The unit symbol, e.g., "m" for meters, "s" for seconds.
- * @property exponent The exponent of the unit (defaults to 1). For example, "m²" would have an exponent of 2.
+ * @property symbol The unit symbol, such as `m` or `s`.
+ * @property exponent The exponent applied to the symbol.
  */
 @Suppress("NoUnitReturn")
 class Unit(
@@ -91,15 +88,13 @@ class Unit(
     val inverted: Unit by lazy { Unit(symbol, exponent.inverted) }
 
     /**
-     * Multiplies two [Unit]s of the same unit type.
+     * Multiplies two units with the same symbol by adding their exponents.
      *
-     * ```
-     * UnitRepresentation("m") * UnitRepresentation("m") //m * m = m²
-     * ```
+     * Example: `Unit("m") * Unit("m")` produces `m²`.
      *
      * @param other The other unit to multiply.
-     * @return A new [Unit] with the same unit and summed exponents.
-     * @throws IllegalArgumentException if the units are different.
+     * @return A new [Unit] with the same symbol and summed exponents.
+     * @throws IllegalArgumentException if the symbols differ.
      */
     operator fun times(other: Unit): Unit {
         require(symbol == other.symbol) {
@@ -110,15 +105,13 @@ class Unit(
     }
 
     /**
-     * Divides this [Unit] by another one of the same unit type.
+     * Divides this unit by another unit with the same symbol by subtracting exponents.
      *
-     * ```
-     * UnitRepresentation("m", 2) * UnitRepresentation("m") //m² / m = m
-     * ```
+     * Example: `Unit("m", 2) / Unit("m")` produces `m`.
      *
      * @param other The unit to divide by.
-     * @return A new [Unit] with the same unit and the difference of the exponents.
-     * @throws IllegalArgumentException if the units are different.
+     * @return A new [Unit] with the same symbol and the difference of the exponents.
+     * @throws IllegalArgumentException if the symbols differ.
      */
     operator fun div(other: Unit): Unit {
         require(symbol == other.symbol) {

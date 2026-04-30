@@ -10,8 +10,8 @@ import java.math.BigDecimal
 /**
  * Represents the physical quantity of **magnetic rigidity**, measured in [TeslaMetre].
  *
- * Magnetic rigidity quantifies how resistant a charged particle beam is to bending by a
- * magnetic field. Larger rigidity means a trajectory is harder to deflect.
+ * Magnetic rigidity quantifies how resistant a charged particle (or beam) is to bending by a
+ * magnetic field. Larger rigidity means the trajectory is harder to deflect.
  *
  * This quantity is widely used in accelerator physics, beam transport, and magnetic
  * spectrometry.

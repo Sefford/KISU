@@ -22,7 +22,7 @@ val Iterable<Scalar<*, *>>.sortByUnit: List<Scalar<*, *>>
  * The scalars are first sorted by unit using [sortByUnit] to ensure deterministic ordering.
  * Each scalar is then converted to its string representation via [Expression.toString],
  * and the results are joined with a middle dot (`·`) to form a product-like notation
- * (e.g., `"kg·m/s²"`).
+ * (e.g., `"kg·m·s"`).
  *
  * This is primarily used for generating display-friendly representations of
  * compound units or dimensional expressions.

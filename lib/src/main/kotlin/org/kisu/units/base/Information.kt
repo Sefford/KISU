@@ -5,7 +5,6 @@ import org.kisu.prefixes.Binary
 import org.kisu.prefixes.isCanonical
 import org.kisu.units.Measure
 import org.kisu.units.base.Bit.Companion.UNIT
-import org.kisu.units.exceptions.NegativeInformation
 import org.kisu.units.exceptions.SubBitInformation
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
@@ -21,12 +20,10 @@ import java.math.BigDecimal
  * quantities such as storage, memory, and bandwidth.
  *
  * - The **smallest representable unit** is a single bit.
- * - Negative values are not permitted, as information content cannot be less than zero.
- * - In canonical form (i.e., using the base prefix), the quantity must also be **whole** — fractional bits have no
- *   meaningful interpretation in physical or computational systems.
+ * - Negative values are not permitted.
+ * - In canonical form, the quantity must also be whole: fractional raw bits are rejected.
  *
- * This class enforces those constraints and will reject values that violate them. Precision is maintained using
- * [BigDecimal].
+ * Precision is maintained using [BigDecimal].
  *
  * Instances are immutable and safely validated at construction.
  */
@@ -37,20 +34,11 @@ class Information private constructor(magnitude: BigDecimal, expression: Bit) :
         /**
          * Creates a new [Information] quantity with the given [magnitude] and [expression].
          *
-         * Constraints:
-         * - The [magnitude] must be strictly positive; negative information is physically meaningless.
-         * - If the [expression] is canonical (i.e., no prefix, representing raw bits), the [magnitude] must not include
-         * fractional parts.
-         *   Fractional bits are not representable as atomic units of digital information.
-         *
-         * If these constraints are violated:
-         * - A [NegativeInformation] exception is thrown for negative values.
-         * - A [SubBitInformation] exception is thrown for fractional bit values in canonical form.
+         * If [expression] is canonical, [magnitude] must be a whole number of bits.
          *
          * @param magnitude The magnitude of the information quantity.
-         * @param expression The binary prefix to apply (e.g., Ki, Mi, Gi, etc.).
-         * @return A new [Information] instance with the specified magnitude and prefix.
-         * @throws NegativeInformation if the value is negative.
+         * @param expression The bit expression, including its [Binary] prefix.
+         * @return A new [Information] instance with the specified magnitude and expression.
          * @throws SubBitInformation if a non-integer bit value is used with the base unit.
          */
         operator fun invoke(
@@ -66,22 +54,11 @@ class Information private constructor(magnitude: BigDecimal, expression: Bit) :
         }
 
         /**
-         * Creates a new [Information] quantity with the given [magnitude] and [prefix].
-         *
-         * Constraints:
-         * - The [magnitude] must be strictly positive; negative information is physically meaningless.
-         * - If the [prefix] is canonical (i.e., no prefix, representing raw bits), the [magnitude] must not include
-         * fractional parts.
-         *   Fractional bits are not representable as atomic units of digital information.
-         *
-         * If these constraints are violated:
-         * - A [NegativeInformation] exception is thrown for negative values.
-         * - A [SubBitInformation] exception is thrown for fractional bit values in canonical form.
+         * Creates a new [Information] quantity with the given [magnitude] and binary [prefix].
          *
          * @param magnitude The magnitude of the information quantity.
-         * @param prefix The binary prefix to apply (e.g., Ki, Mi, Gi, etc.).
+         * @param prefix The [Binary] prefix to apply to the bit unit.
          * @return A new [Information] instance with the specified magnitude and prefix.
-         * @throws NegativeInformation if the value is negative.
          * @throws SubBitInformation if a non-integer bit value is used with the base unit.
          */
         operator fun invoke(
@@ -92,12 +69,12 @@ class Information private constructor(magnitude: BigDecimal, expression: Bit) :
 }
 
 /**
- * Represents the SI/IEC base unit of **information**.
+ * Represents the library's scalar bit unit.
  *
- * One bit (b) represents a single binary unit of information.
+ * One bit represents the canonical unit of digital information.
  * Use [Bit.UNIT] for the canonical unit.
  *
- * You can also apply metric prefixes to represent kilobits (kb), megabits (Mb), etc.
+ * This type uses [Binary] prefixes such as `Ki`, `Mi`, and `Gi`.
  */
 class Bit private constructor(
     prefix: Binary,
@@ -108,12 +85,12 @@ class Bit private constructor(
     /**
      * Secondary constructor for convenience.
      *
-     * @param prefix Metric prefix to apply (default: no prefix)
+     * @param prefix Binary prefix to apply to the bit unit.
      */
     constructor(prefix: Binary = Binary.BASE) : this(prefix, BigDecimal.ONE, UNIT)
 
     companion object {
-        /** The unit symbol for digital information: "bit". */
+        /** The canonical symbol for digital information: "bit". */
         internal val UNIT = Unit("bit", 1)
     }
 }

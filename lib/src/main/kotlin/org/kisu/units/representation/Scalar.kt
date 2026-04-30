@@ -8,20 +8,13 @@ import org.kisu.prefixes.times
 import java.math.BigDecimal
 
 /**
- * Represents a scalar unit, composed of a [Prefix] and a unit symbol (e.g., "km" for kilo + meter, "μs" for micro +
- * second).
+ * Atomic unit expression consisting of a prefixed [unit], such as `km`, `ms`, or `kg`.
  *
- * This is the atomic element of the [Expression] system, which models complex unit compositions such as "N⋅m" or
- * "mol⋅K".
+ * A [Scalar] is the building block for composite expressions. It can be combined with other expressions through
+ * multiplication and division to produce [Product] and [Quotient] values.
  *
- * A [Scalar] combines a prefix and a base unit into a single symbolic component, and can be composed with other
- * expressions through multiplication and division to form [Product] and [Quotient] types.
- *
- * It delegates [System] behavior to a [ScalarSystem] built from the same prefix and unit.
- *
- * @param A the type of prefix used in this scalar unit.
- * @property prefix the prefix applied to the unit (e.g., kilo, micro).
- * @property unit the base unit symbol (e.g., "m" for meter, "s" for second).
+ * @param A The prefix type used by this scalar.
+ * @property unit The base unit symbol and exponent carried by this scalar.
  */
 abstract class Scalar<A, Self : Scalar<A, Self>>(
     private val prefix: A,
@@ -91,15 +84,13 @@ abstract class Scalar<A, Self : Scalar<A, Self>>(
     override val factors: Set<Scalar<*, *>> = sortedSetOf(this)
 
     /**
-     * Combines this scalar with another by multiplying their prefixes and units.
+     * Multiplies this scalar expression by [other] within the same scalar family.
      *
-     * This operation corresponds to the multiplication of two quantities with the same dimension system.
-     * The result preserves the same type parameter [A], assuming compatible systems.
+     * This combines both prefixes and unit exponents. For example, `m + m` yields `m²`, while `km + m` yields a
+     * scalar whose factor reflects the combined prefixes.
      *
-     * Example: `1.kilo.meters + 100.meters` results in `1.1.kilo.meters` (assuming proper normalization).
-     *
-     * @param other The scalar to combine with this one.
-     * @return A new [Scalar] representing the combined magnitude and unit.
+     * @param other The scalar expression to multiply with this one.
+     * @return A new scalar expression representing the product.
      */
     operator fun plus(other: Self): Self {
         val (prefix, overflow) = prefix * other.prefix
@@ -107,16 +98,12 @@ abstract class Scalar<A, Self : Scalar<A, Self>>(
     }
 
     /**
-     * Reduces this scalar by dividing its prefix and unit by those of [other].
+     * Divides this scalar expression by [other] within the same scalar family.
      *
-     * This operation is used to reverse a previous composition or normalize
-     * a scalar relative to another. The result maintains the same type parameter [A].
+     * This subtracts unit exponents and adjusts the prefix factor accordingly.
      *
-     * Example: `1.kilo.meters - 500.meters` results in `0.5.kilo.meters`
-     * (assuming appropriate normalization of prefixes and units).
-     *
-     * @param other The scalar to divide out of this one.
-     * @return A new [Scalar] representing the relative magnitude and unit.
+     * @param other The scalar expression to divide out of this one.
+     * @return A new scalar expression representing the quotient.
      */
     operator fun minus(other: Self): Self {
         val (prefix, overflow) = prefix / other.prefix

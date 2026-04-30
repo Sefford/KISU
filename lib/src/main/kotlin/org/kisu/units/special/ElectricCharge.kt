@@ -30,7 +30,7 @@ class ElectricCharge internal constructor(magnitude: BigDecimal, expression: Cou
 /**
  * Represents the unit **coulomb** (`C`), used to express [ElectricCharge].
  *
- * A coulomb quantifies amount of electric charge. One coulomb is the charge
+ * A coulomb quantifies the amount of electric charge. One coulomb is the charge
  * transported by a current of one ampere flowing for one second.
  *
  * This unit appears in electrostatics, capacitor calculations, battery analysis, and

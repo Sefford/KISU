@@ -47,9 +47,8 @@ class Permittivity(
         /**
          * Creates a measure of **farads per metre** (F/m).
          *
-         * This derived unit expresses **capacitance per unit length** —
-         * how much capacitance is present along a given length, commonly used in
-         * transmission lines and electromagnetic contexts.
+         * This derived unit expresses **electric permittivity** — a material property quantifying how a medium
+         * responds to an electric field.
          *
          * Internally this returns a [Quotient] of:
          *  - a [Farad] (capacitance) with the specified [prefix]

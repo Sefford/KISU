@@ -8,7 +8,6 @@ import org.kisu.units.chemistry.CatalyticEfficiency.Companion.CubicMetrePerMoleS
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.CubicMetre
-import org.kisu.units.special.SquareMetre
 import java.math.BigDecimal
 
 /**
@@ -45,12 +44,12 @@ class CatalyticEfficiency(
      *
      * This unit is used to measure **catalytic efficiency**, i.e., the volume of
      * substrate converted per mole of catalyst per second.
-     * It is defined as the [Quotient] of [SquareMetre] (area) divided by the [Product]
-     * of [Mole] (amount of substance) and [Second] (time).
+     *
+     * It is defined as the [Quotient] of [CubicMetre] (volume) divided by the [Product] of [Mole] (amount of
+     * substance) and [Second] (time).
      *
      * Example usages include:
-     * - Characterising enzyme or catalyst performance in chemical reactions
-     * - Determining turnover rates in biochemistry and industrial catalysis
+     * - Characterizing enzyme or catalyst performance in biochemistry and industrial catalysis
      *
      * @see CatalyticEfficiency for the physical quantity represented by this unit.
      */

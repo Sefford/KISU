@@ -50,8 +50,8 @@ class SpectralRadiance(
         /**
          * Creates a measure of **watts per steradian per cubic metre** (W/(sr·m³)).
          *
-         * This derived unit expresses **radiant intensity per unit volume** —
-         * the power emitted per unit solid angle and per unit volume.
+         * This derived unit expresses **spectral radiance density** — radiant power per unit solid angle and per unit
+         * spectral-coordinate representation (W/(sr·m³)).
          *
          * Internally this returns a [Quotient] of:
          *  - a [Watt] (power) with the specified [prefix]

@@ -19,7 +19,7 @@ import java.math.BigDecimal
  * Typical examples include flywheels, planetary orbits, gyroscopic stabilization, and
  * quantum angular momentum.
  *
- * The associated unit representation is [NewtonMeterSecond].
+ * The associated unit representation is [NewtonMeterSecond] (`N·m·s`).
  */
 class AngularMomentum(
     magnitude: BigDecimal,

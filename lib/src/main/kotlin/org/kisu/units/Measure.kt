@@ -3,7 +3,6 @@ package org.kisu.units
 import org.kisu.KisuConfig
 import org.kisu.bigDecimal
 import org.kisu.orElse
-import org.kisu.prefixes.Metric
 import org.kisu.prefixes.primitives.System
 import org.kisu.units.representation.Expression
 import org.kisu.zero
@@ -11,29 +10,18 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 /**
- * Represents a physical quantity composed of a [magnitude] and an [expression].
+ * Base type for a measured quantity expressed as a numeric [magnitude] in some unit [expression].
  *
- * This generic class models measurements in a unit system with metric-style prefixes,
- * such as meters, grams, or seconds.
+ * `Measure` handles arithmetic on quantities of the same concrete type, conversion between compatible expressions, and
+ * normalization into canonical or human-friendly forms. The expression type [A] may be a single prefixed unit such as
+ * `km`, or a compound expression such as `m/s` or `J/(K·mol)`.
  *
- * It is designed to support operations like addition, subtraction, scaling, and conversion
- * between compatible units with automatic prefix normalization (e.g., converting 1000 millimeters to 1 meter).
- *
- * @param org.kisu.units.representation.Expression The type representing the system of prefixes (e.g., [Metric]).
- *        It must implement both [System] (to provide ordering and base relations)
- *        and [org.kisu.prefixes.Prefix] (to support scaling operations).
- *
- * @param Self The concrete subclass type used for safe covariant returns.
- *        This is a common pattern to support fluent APIs in hierarchies.
- *
- * @property magnitude The numerical value of the measurement in the specified [expression].
- * @property expression The metric prefix applied to the unit (e.g., `kilo`, `milli`).
- *        This determines the scale of the [magnitude] relative to the base unit.
- *
- * @constructor Protected to enforce instantiation via factory methods or subclasses.
- *
- * @see System for prefix ordering and canonical base relationships.
- * @see org.kisu.prefixes.Prefix for scaling behavior.
+ * @param A The unit-expression type used by the measure. It must be both an [Expression] and a [System] so it can be
+ * ordered, converted, and normalized.
+ * @param Self The concrete measure subtype. This self-referential type keeps fluent operations strongly typed.
+ * @property magnitude The numeric value represented in [expression].
+ * @property expression The unit expression associated with [magnitude].
+ * @constructor Protected to enforce construction through concrete measure types.
  */
 @Suppress("TooManyFunctions")
 abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
@@ -43,23 +31,11 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
 ) : Comparable<Self> where A : Expression<A>, A : System<A> {
 
     /**
-     * Returns the most human-readable form of the measurement by automatically choosing the
-     * most appropriate [expression] such that the magnitude is near or above 1.
+     * Returns this measure rescaled to a more readable expression.
      *
-     * If the magnitude is zero, this falls back to the [canonical] representation.
-     * If the current [expression] is already the smallest and the magnitude is less than 1,
-     * or if it is the largest and the magnitude is greater than 1, the [representation] form is returned.
-     *
-     * Otherwise, it selects the largest rescaled prefix such that the resulting magnitude is ≥ 1.
-     *
-     * Does not trim the floating point in any form, to avoid precision loss.
-     *
-     * Example: `"1500m" -> "1.5 km"`
-     *
-     * ```
-     * val distance = Measure(1500.0, BASE, "m")
-     * distance.optimal // "1.5km"
-     * ```
+     * The chosen expression is the largest available one whose converted magnitude has absolute value at least `1`.
+     * Zero is always rendered in the canonical expression. If the current expression is already at the smallest or
+     * largest end of the system and no better rescaling exists, this returns the current value unchanged.
      */
     val optimal: Self by lazy {
         when {
@@ -76,14 +52,9 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
     }
 
     /**
-     * Returns the canonical form of the measurement by converting it to the base prefix.
+     * Returns this measure converted to its canonical expression.
      *
-     * Example `"1.5 km" -> "1500 m"`
-     *
-     * ```
-     * val distance = Measure(1.5, KILO, "m")
-     * distance.canonical // "1500m"
-     * ```
+     * Example: `1.5 km` becomes `1500 m`.
      */
     val canonical: Self by lazy {
         if (expression == expression.canonical) {
@@ -96,19 +67,9 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
     }
 
     /**
-     * Returns the raw string representation of the measurement without any rescaling.
+     * Returns a string for the current stored value without rescaling.
      *
-     * If magnitude is 0, it returns the value in the canonical unit, even if the prefix stated is different.
-     *
-     * ```
-     * val distance = Measure(1.5, KILO, "m")
-     * distance.representation // "1.5 km"
-     * ```
-     *
-     * ```
-     * val distance = Measure(0, KILO, "m")
-     * distance.representation // "0 m"
-     * ```
+     * Zero is always rendered using the canonical expression so equivalent zero values produce the same output.
      */
     val representation: String by lazy {
         if (magnitude.zero) {
@@ -126,28 +87,14 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
     val zero: Boolean by lazy { magnitude.zero }
 
     /**
-     * Decomposes this measure into a list of (count, prefix) pairs, representing how
-     * the magnitude can be expressed as a sum of scaled canonical prefixes.
+     * Decomposes this measure into additive parts expressed with the system's available expressions.
      *
-     * For example:
-     * ```
-     * val length = Length(BigDecimal("1.234,55"), Metric.KILO) // 1,23455 km
-     * val parts = length.decomposition
-     * // parts:
-     * // listOf(
-     * //     1 to Metric.KILO,
-     * //     2.toBigInteger() to Metric.HECTO,
-     * //     3.toBigInteger() to Metric.DECA,
-     * //     4.toBigInteger() to Metric.BASE,
-     * //     5.
-     * // )
-     * ```
+     * The result is a [List] of the same measure type, not `(count, prefix)` pairs. Decomposition is performed from
+     * the canonical value using the available expressions from largest to smallest, omitting zero-valued parts.
      *
-     * - If the magnitude is zero, returns a single pair with 0 and the canonical prefix.
-     * - If the current prefix is not canonical, delegates to the canonical version’s decomposition.
-     * - Otherwise, attempts to break down the magnitude using available descending prefixes.
+     * Example: a canonical metric length of `1234 m` decomposes into `1 km`, `2 hm`, `3 dam`, and `4 m`.
      *
-     * Lazily evaluated for performance.
+     * If this measure is zero, the result contains a single zero value in the canonical expression.
      */
     val decomposition: List<Self> by lazy {
         if (zero) {
@@ -170,16 +117,10 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
     private val self: Self = this as Self
 
     /**
-     * Rescales the current measurement to a different [expression], adjusting the [magnitude] accordingly.
+     * Converts this measure to [other].
      *
-     * ```
-     * val distance = Measure(1500.0, METER, "m")
-     * val inKilometers = distance.to(KILO)
-     * println(inKilometers.literal) // "1.5 km"
-     * ```
-     *
-     * @param other The target prefix to convert to.
-     * @return A new [Measure] instance using the new [expression] and the converted [magnitude].
+     * @param other The target expression.
+     * @return A new measure with the converted magnitude and the requested expression.
      */
     fun to(other: A): Self {
         if (expression == other) {
@@ -274,11 +215,11 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
     operator fun component2(): A = expression
 
     /**
-     * Returns the unit name of this measure.
+     * Returns the canonical symbol of this measure's expression.
      *
      * Enables destructuring declarations like:
      * ```
-     * val (_, _, unit) = measure
+     * val (_, _, symbol) = measure
      * ```
      */
     operator fun component3(): String = expression.canonical.symbol
@@ -295,20 +236,10 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
     override fun compareTo(other: Self): Int = canonical.magnitude.compareTo(other.canonical.magnitude)
 
     /**
-     * Sorts this [Measure] and the [other] measure in ascending order based on their canonical magnitude.
+     * Returns this measure and [other] ordered by canonical magnitude.
      *
-     * @param other The other [Measure] to compare with.
-     * @return A [Pair] where the first element is the smaller (or equal) measure and the second is the larger.
-     *
-     * This uses the [Comparable] implementation of [Measure], which compares based on canonical magnitude.
-     * It is useful when performing arithmetic operations that require a common unit or a predictable ordering.
-     *
-     * Example:
-     * ```
-     * val a = Measure(5, Metric.KILO)
-     * val b = Measure(3000, Metric.UNIT)
-     * val (smaller, larger) = a.sortWith(b)
-     * ```
+     * @param other The measure to compare with.
+     * @return A pair whose first element is the smaller value and whose second element is the larger.
      */
     infix fun sortWith(other: Self): Pair<Self, Self> =
         listOf(self, other)
@@ -316,43 +247,16 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
             .let { (left, right) -> left to right }
 
     /**
-     * Returns the [optimal] string representation of this measurement for inspection purposes.
-     *
-     * ```
-     * val distance = Measure(1500.0, BASE, "m")
-     * distance.toString() // "1.5km"
-     * ```
+     * Returns the [optimal] representation of this measure.
      */
     override fun toString(): String = optimal.representation
 
     /**
-     * Compares this [Measure] with another object for equality.
+     * Compares this measure with [other] for value equality.
      *
-     * Two [Measure] instances are considered equal if:
-     * - They are the same instance, or
-     * - They have the same runtime class,
-     * - Their [expression] is equal,
-     * - Their canonical [magnitude] values are equal.
-     *
-     * The [expression] is intentionally ignored in the comparison,
-     * as equality is determined by the canonical (normalized) value.
-     *
-     * ```
-     * val distanceInKm = Measure(1.0, KILO, "m")
-     * val distanceInM = Measure(1000.0, BASE, "m")
-     *
-     * distanceInKm == distanceInM // true
-     * ```
-     *
-     * ```
-     * val temperature = Measure(200.0, BASE, "º")
-     * val weight = Measure(10.0, KILO, "g")
-     *
-     * temperature == weight // false
-     * ```
-     *
-     * @param other The object to compare with.
-     * @return `true` if the objects are considered equal, `false` otherwise.
+     * Two measures are equal when they have the same runtime type, the same canonical expression, and equal canonical
+     * magnitudes. The original stored expression is ignored, so equivalent values such as `1 km` and `1000 m` compare
+     * as equal.
      */
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -368,12 +272,7 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
     }
 
     /**
-     * Returns a hash code value for the [Measure] object.
-     *
-     * The hash code is based on the canonical [magnitude] and [expression] only,
-     * since [expression] is ignored in the [equals] comparison as all units are compared to their canonical unit.
-     *
-     * @return The hash code value.
+     * Returns a hash code based on the canonical magnitude and canonical expression.
      */
     override fun hashCode(): Int {
         val canonical = canonical

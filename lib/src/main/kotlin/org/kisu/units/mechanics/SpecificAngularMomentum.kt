@@ -21,7 +21,7 @@ import java.math.BigDecimal
  * Typical examples include planetary orbits, rotating flows, and trajectory analysis in
  * astrodynamics.
  *
- * The associated unit representation is [NewtonMetreSecondPerKilogram].
+ * The associated unit representation is [NewtonMetreSecondPerKilogram] (`N·m·s/kg`).
  */
 class SpecificAngularMomentum(
     magnitude: BigDecimal,

@@ -35,8 +35,9 @@ class ElectricFieldStrength(
     /**
      * Represents the SI unit **volt per metre (V/m)**.
      *
-     * This unit measures **electric field strength**, i.e., the force experienced by
-     * a unit positive charge per unit distance.
+     * This unit measures **electric field strength**, i.e., force per unit positive charge.
+     * Equivalently, it is the electric potential difference per unit distance.
+
      * It is defined as the [Quotient] of [Volt] (electric potential) and [Metre] (distance).
      *
      * Example usages include:

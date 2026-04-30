@@ -30,7 +30,7 @@ class MagneticSusceptibility(
         this(magnitude, MetrePerHenry(prefix))
 
     /**
-     * Represents the SI unit **metre per henry (m/H)**.
+     * Represents the library unit form **metre per henry (m/H)** used by this type.
      *
      * This unit measures **magnetic susceptibility**, i.e., the degree to which
      * a material can be magnetized in response to an applied magnetic field.
@@ -48,8 +48,7 @@ class MagneticSusceptibility(
         /**
          * Creates a measure of **metres per henry** (m/H).
          *
-         * This derived unit expresses **inverse inductance per unit length** —
-         * how much length corresponds to a given inductance.
+         * This derived unit expresses **length per inductance** — how much length corresponds to a given inductance.
          *
          * Internally this returns a [Quotient] of:
          *  - a [Metre] (length) with the specified [prefix]

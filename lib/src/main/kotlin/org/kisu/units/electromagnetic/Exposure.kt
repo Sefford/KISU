@@ -46,8 +46,7 @@ class Exposure(
         /**
          * Creates a measure of **coulombs per kilogram** (C/kg).
          *
-         * This derived unit expresses **specific charge** —
-         * the amount of electric charge per unit mass.
+         * This derived unit expresses **radiation exposure in air** — electric charge liberated in air per unit mass.
          *
          * Internally this returns a [Quotient] of:
          *  - a [Coulomb] (electric charge) with the specified [prefix]

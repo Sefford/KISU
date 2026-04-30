@@ -20,7 +20,7 @@ import java.math.BigDecimal
  * Typical examples include radiative transport, wave intensity, and conductive or
  * convective energy transfer analyses.
  *
- * The associated unit representation is [JoulePerSquareMetreSecond].
+ * The associated unit representation is [JoulePerSquareMetreSecond] (`J/(m²·s)`).
  */
 class EnergyFluxDensity(
     magnitude: BigDecimal,

@@ -45,8 +45,8 @@ class SpectralIrradiance(
         /**
          * Creates a measure of **watts per cubic metre** (W/m³).
          *
-         * This derived unit expresses **volumetric power density** —
-         * how much power is distributed per unit volume.
+         * This derived unit expresses **spectral irradiance density** — power per unit area per unit spectral
+         * coordinate (represented as W/m³)
          *
          * Internally this returns a [Quotient] of:
          *  - a [Watt] (power) with the specified [prefix]

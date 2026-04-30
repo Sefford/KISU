@@ -20,7 +20,7 @@ import java.math.BigDecimal
  * This quantity is widely used in thermodynamics, physical chemistry, and materials
  * science when comparing substances on a molar basis.
  *
- * The associated SI unit representation is [JoulePerKelvinMole] (`J/(mol·K)`).
+ * The associated SI unit representation is [JoulePerKelvinMole] (`J/(K·mol)`).
  */
 class MolarHeatCapacity(
     magnitude: BigDecimal,
