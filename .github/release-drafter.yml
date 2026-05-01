@@ -1,0 +1,61 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+change-template: "- $TITLE (#$NUMBER) $AUTHOR"
+change-title-escapes: '\<*_&'
+no-changes-template: "- No user-facing changes in this release."
+
+categories:
+  - title: "Features"
+    labels:
+      - "feature"
+      - "enhancement"
+      - "api"
+  - title: "Bug Fixes"
+    labels:
+      - "bug"
+  - title: "Documentation"
+    labels:
+      - "docs"
+      - "documentation"
+  - title: "Operations"
+    labels:
+      - "ops"
+  - title: "Quality"
+    labels:
+      - "quality"
+  - title: "Maintenance"
+    labels:
+      - "task"
+      - "tech-debt"
+
+exclude-labels:
+  - "skip-changelog"
+
+version-resolver:
+  major:
+    labels:
+      - "breaking"
+  minor:
+    labels:
+      - "feature"
+      - "enhancement"
+      - "api"
+  patch:
+    labels:
+      - "bug"
+      - "docs"
+      - "documentation"
+      - "ops"
+      - "quality"
+      - "task"
+      - "tech-debt"
+  default: patch
+
+template: |
+  ## Changes
+
+  $CHANGES
+
+  ## Contributors
+
+  $CONTRIBUTORS
