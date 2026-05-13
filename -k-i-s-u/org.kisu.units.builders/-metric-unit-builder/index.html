@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>MetricUnitBuilder</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KISU
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,8 +45,8 @@
         <div class="library-version" id="library-version">
 0.0.1-SNAPSHOT        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":lib/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +56,9 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +73,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +81,41 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KISU
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KISU::org.kisu.units.builders/MetricUnitBuilder///PointingToDeclaration//-1895836109">
   <div class="breadcrumbs"><a href="../../../index.html">KISU</a><span class="delimiter">/</span><a href="../index.html">org.kisu.units.builders</a><span class="delimiter">/</span><span class="current">MetricUnitBuilder</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Metric</span><wbr></wbr><span>Unit</span><wbr></wbr><span><span>Builder</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="index.html">MetricUnitBuilder</a></div><p class="paragraph">Represents a metric unit builder carrying a magnitude value. Implementations correspond to metric prefixes like kilo, milli, etc.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-quecto-builder/index.html">QuectoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-ronto-builder/index.html">RontoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-yocto-builder/index.html">YoctoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-zepto-builder/index.html">ZeptoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-atto-builder/index.html">AttoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-femto-builder/index.html">FemtoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-pico-builder/index.html">PicoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-nano-builder/index.html">NanoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-micro-builder/index.html">MicroBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-milli-builder/index.html">MilliBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-centi-builder/index.html">CentiBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-deci-builder/index.html">DeciBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-deca-builder/index.html">DecaBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-hecto-builder/index.html">HectoBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-kilo-builder/index.html">KiloBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-mega-builder/index.html">MegaBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-giga-builder/index.html">GigaBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-tera-builder/index.html">TeraBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-peta-builder/index.html">PetaBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-exa-builder/index.html">ExaBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-zetta-builder/index.html">ZettaBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-yotta-builder/index.html">YottaBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-ronna-builder/index.html">RonnaBuilder</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-quetta-builder/index.html">QuettaBuilder</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="index.html">MetricUnitBuilder</a></div><p class="paragraph">Represents a metric unit builder carrying a magnitude value. Implementations correspond to metric prefixes like kilo, milli, etc.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-quecto-builder/index.html">QuectoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-ronto-builder/index.html">RontoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-yocto-builder/index.html">YoctoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-zepto-builder/index.html">ZeptoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-atto-builder/index.html">AttoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-femto-builder/index.html">FemtoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-pico-builder/index.html">PicoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-nano-builder/index.html">NanoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-micro-builder/index.html">MicroBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-milli-builder/index.html">MilliBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-centi-builder/index.html">CentiBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-deci-builder/index.html">DeciBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-deca-builder/index.html">DecaBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-hecto-builder/index.html">HectoBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-kilo-builder/index.html">KiloBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-mega-builder/index.html">MegaBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-giga-builder/index.html">GigaBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-tera-builder/index.html">TeraBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-peta-builder/index.html">PetaBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-exa-builder/index.html">ExaBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-zetta-builder/index.html">ZettaBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-yotta-builder/index.html">YottaBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-ronna-builder/index.html">RonnaBuilder</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-quetta-builder/index.html">QuettaBuilder</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-1138511369%2FProperties%2F-1895836109" anchor-label="amperes" id="-1138511369%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../amperes.html"><span><span>amperes</span></span></a></div>
@@ -131,7 +130,7 @@
             </div>
           </div>
 <a data-name="840965001%2FProperties%2F-1895836109" anchor-label="amperesPerMetre" id="840965001%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../amperes-per-metre.html"><span>amperes</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -146,7 +145,7 @@
             </div>
           </div>
 <a data-name="966299244%2FProperties%2F-1895836109" anchor-label="amperesPerSquareMetre" id="966299244%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../amperes-per-square-metre.html"><span>amperes</span><wbr></wbr><span>Per</span><wbr></wbr><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -161,7 +160,7 @@
             </div>
           </div>
 <a data-name="-1102558984%2FProperties%2F-1895836109" anchor-label="amperesRadian" id="-1102558984%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../amperes-radian.html"><span>amperes</span><wbr></wbr><span><span>Radian</span></span></a></div>
@@ -176,7 +175,7 @@
             </div>
           </div>
 <a data-name="-1899835479%2FProperties%2F-1895836109" anchor-label="becquerels" id="-1899835479%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../becquerels.html"><span><span>becquerels</span></span></a></div>
@@ -191,7 +190,7 @@
             </div>
           </div>
 <a data-name="-170409277%2FProperties%2F-1895836109" anchor-label="bytes" id="-170409277%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../bytes.html"><span><span>bytes</span></span></a></div>
@@ -206,7 +205,7 @@
             </div>
           </div>
 <a data-name="-446896933%2FProperties%2F-1895836109" anchor-label="candelas" id="-446896933%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../candelas.html"><span><span>candelas</span></span></a></div>
@@ -221,7 +220,7 @@
             </div>
           </div>
 <a data-name="758964816%2FProperties%2F-1895836109" anchor-label="candelasPerSquareMetre" id="758964816%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../candelas-per-square-metre.html"><span>candelas</span><wbr></wbr><span>Per</span><wbr></wbr><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -236,7 +235,7 @@
             </div>
           </div>
 <a data-name="310251286%2FProperties%2F-1895836109" anchor-label="celsius" id="310251286%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../celsius.html"><span><span>celsius</span></span></a></div>
@@ -251,7 +250,7 @@
             </div>
           </div>
 <a data-name="938435872%2FProperties%2F-1895836109" anchor-label="coulombs" id="938435872%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../coulombs.html"><span><span>coulombs</span></span></a></div>
@@ -266,7 +265,7 @@
             </div>
           </div>
 <a data-name="-1800482840%2FProperties%2F-1895836109" anchor-label="coulombsPerCubicMetre" id="-1800482840%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../coulombs-per-cubic-metre.html"><span>coulombs</span><wbr></wbr><span>Per</span><wbr></wbr><span>Cubic</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -281,7 +280,7 @@
             </div>
           </div>
 <a data-name="5079163%2FProperties%2F-1895836109" anchor-label="coulombsPerKilogram" id="5079163%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../coulombs-per-kilogram.html"><span>coulombs</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Kilogram</span></span></a></div>
@@ -296,7 +295,7 @@
             </div>
           </div>
 <a data-name="1266587058%2FProperties%2F-1895836109" anchor-label="coulombsPerMetre" id="1266587058%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../coulombs-per-metre.html"><span>coulombs</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -311,7 +310,7 @@
             </div>
           </div>
 <a data-name="-2053962283%2FProperties%2F-1895836109" anchor-label="coulombsPerSquareMetre" id="-2053962283%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../coulombs-per-square-metre.html"><span>coulombs</span><wbr></wbr><span>Per</span><wbr></wbr><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -326,7 +325,7 @@
             </div>
           </div>
 <a data-name="-2097380602%2FProperties%2F-1895836109" anchor-label="cubicMetres" id="-2097380602%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../cubic-metres.html"><span>cubic</span><wbr></wbr><span><span>Metres</span></span></a></div>
@@ -341,7 +340,7 @@
             </div>
           </div>
 <a data-name="1148638933%2FProperties%2F-1895836109" anchor-label="cubicMetresPerKilogram" id="1148638933%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../cubic-metres-per-kilogram.html"><span>cubic</span><wbr></wbr><span>Metres</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Kilogram</span></span></a></div>
@@ -356,7 +355,7 @@
             </div>
           </div>
 <a data-name="1594619000%2FProperties%2F-1895836109" anchor-label="cubicMetresPerMole" id="1594619000%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../cubic-metres-per-mole.html"><span>cubic</span><wbr></wbr><span>Metres</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Mole</span></span></a></div>
@@ -371,7 +370,7 @@
             </div>
           </div>
 <a data-name="1887723596%2FProperties%2F-1895836109" anchor-label="cubicMetresPerMoleSecond" id="1887723596%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../cubic-metres-per-mole-second.html"><span>cubic</span><wbr></wbr><span>Metres</span><wbr></wbr><span>Per</span><wbr></wbr><span>Mole</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -386,7 +385,7 @@
             </div>
           </div>
 <a data-name="1149114769%2FProperties%2F-1895836109" anchor-label="cubicMetresPerSecond" id="1149114769%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../cubic-metres-per-second.html"><span>cubic</span><wbr></wbr><span>Metres</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -401,7 +400,7 @@
             </div>
           </div>
 <a data-name="-1894259929%2FProperties%2F-1895836109" anchor-label="farads" id="-1894259929%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../farads.html"><span><span>farads</span></span></a></div>
@@ -416,7 +415,7 @@
             </div>
           </div>
 <a data-name="-1222107975%2FProperties%2F-1895836109" anchor-label="faradsPerMetre" id="-1222107975%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../farads-per-metre.html"><span>farads</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -431,7 +430,7 @@
             </div>
           </div>
 <a data-name="-772678892%2FProperties%2F-1895836109" anchor-label="grams" id="-772678892%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grams.html"><span><span>grams</span></span></a></div>
@@ -446,7 +445,7 @@
             </div>
           </div>
 <a data-name="-166101920%2FProperties%2F-1895836109" anchor-label="gramsMetreSecondCubed" id="-166101920%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grams-metre-second-cubed.html"><span>grams</span><wbr></wbr><span>Metre</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Cubed</span></span></a></div>
@@ -461,7 +460,7 @@
             </div>
           </div>
 <a data-name="1920378484%2FProperties%2F-1895836109" anchor-label="gramsPerCubicMetre" id="1920378484%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grams-per-cubic-metre.html"><span>grams</span><wbr></wbr><span>Per</span><wbr></wbr><span>Cubic</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -476,7 +475,7 @@
             </div>
           </div>
 <a data-name="1534449574%2FProperties%2F-1895836109" anchor-label="gramsPerMetre" id="1534449574%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grams-per-metre.html"><span>grams</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -491,7 +490,7 @@
             </div>
           </div>
 <a data-name="1479807146%2FProperties%2F-1895836109" anchor-label="gramsPerMole" id="1479807146%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grams-per-mole.html"><span>grams</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Mole</span></span></a></div>
@@ -506,7 +505,7 @@
             </div>
           </div>
 <a data-name="-1810894525%2FProperties%2F-1895836109" anchor-label="gramsPerSecond" id="-1810894525%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grams-per-second.html"><span>grams</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -521,7 +520,7 @@
             </div>
           </div>
 <a data-name="1623589065%2FProperties%2F-1895836109" anchor-label="gramsPerSquareMetre" id="1623589065%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grams-per-square-metre.html"><span>grams</span><wbr></wbr><span>Per</span><wbr></wbr><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -536,7 +535,7 @@
             </div>
           </div>
 <a data-name="753512260%2FProperties%2F-1895836109" anchor-label="gramsSquareMetre" id="753512260%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grams-square-metre.html"><span>grams</span><wbr></wbr><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -551,7 +550,7 @@
             </div>
           </div>
 <a data-name="655994760%2FProperties%2F-1895836109" anchor-label="grays" id="655994760%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grays.html"><span><span>grays</span></span></a></div>
@@ -566,7 +565,7 @@
             </div>
           </div>
 <a data-name="-1648500913%2FProperties%2F-1895836109" anchor-label="graysPerSecond" id="-1648500913%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../grays-per-second.html"><span>grays</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -581,7 +580,7 @@
             </div>
           </div>
 <a data-name="-1135554034%2FProperties%2F-1895836109" anchor-label="henries" id="-1135554034%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../henries.html"><span><span>henries</span></span></a></div>
@@ -596,7 +595,7 @@
             </div>
           </div>
 <a data-name="-1789709152%2FProperties%2F-1895836109" anchor-label="henriesPerMetre" id="-1789709152%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../henries-per-metre.html"><span>henries</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -611,7 +610,7 @@
             </div>
           </div>
 <a data-name="560953011%2FProperties%2F-1895836109" anchor-label="hertz" id="560953011%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../hertz.html"><span><span>hertz</span></span></a></div>
@@ -626,7 +625,7 @@
             </div>
           </div>
 <a data-name="-1840383868%2FProperties%2F-1895836109" anchor-label="hertzPerSecond" id="-1840383868%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../hertz-per-second.html"><span>hertz</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -641,7 +640,7 @@
             </div>
           </div>
 <a data-name="-1439249160%2FProperties%2F-1895836109" anchor-label="joules" id="-1439249160%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules.html"><span><span>joules</span></span></a></div>
@@ -656,7 +655,7 @@
             </div>
           </div>
 <a data-name="487122704%2FProperties%2F-1895836109" anchor-label="joulesPerCubicMetre" id="487122704%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-cubic-metre.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span>Cubic</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -671,7 +670,7 @@
             </div>
           </div>
 <a data-name="-1956351308%2FProperties%2F-1895836109" anchor-label="joulesPerKelvin" id="-1956351308%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-kelvin.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Kelvin</span></span></a></div>
@@ -686,7 +685,7 @@
             </div>
           </div>
 <a data-name="-1223578065%2FProperties%2F-1895836109" anchor-label="joulesPerKelvinMole" id="-1223578065%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-kelvin-mole.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span>Kelvin</span><wbr></wbr><span><span>Mole</span></span></a></div>
@@ -701,7 +700,7 @@
             </div>
           </div>
 <a data-name="588464547%2FProperties%2F-1895836109" anchor-label="joulesPerKilogram" id="588464547%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-kilogram.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Kilogram</span></span></a></div>
@@ -716,7 +715,7 @@
             </div>
           </div>
 <a data-name="66810892%2FProperties%2F-1895836109" anchor-label="joulesPerKilogramKelvin" id="66810892%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-kilogram-kelvin.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span>Kilogram</span><wbr></wbr><span><span>Kelvin</span></span></a></div>
@@ -731,7 +730,7 @@
             </div>
           </div>
 <a data-name="-348522938%2FProperties%2F-1895836109" anchor-label="joulesPerMole" id="-348522938%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-mole.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Mole</span></span></a></div>
@@ -746,7 +745,7 @@
             </div>
           </div>
 <a data-name="142332845%2FProperties%2F-1895836109" anchor-label="joulesPerSquareMetre" id="142332845%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-square-metre.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -761,7 +760,7 @@
             </div>
           </div>
 <a data-name="-1946467391%2FProperties%2F-1895836109" anchor-label="joulesPerSquareMetreSecond" id="-1946467391%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-square-metre-second.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span>Square</span><wbr></wbr><span>Metre</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -776,7 +775,7 @@
             </div>
           </div>
 <a data-name="1416831890%2FProperties%2F-1895836109" anchor-label="joulesPerTesla" id="1416831890%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-per-tesla.html"><span>joules</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Tesla</span></span></a></div>
@@ -791,7 +790,7 @@
             </div>
           </div>
 <a data-name="-380970804%2FProperties%2F-1895836109" anchor-label="joulesSecond" id="-380970804%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../joules-second.html"><span>joules</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -806,7 +805,7 @@
             </div>
           </div>
 <a data-name="1874726840%2FProperties%2F-1895836109" anchor-label="katals" id="1874726840%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../katals.html"><span><span>katals</span></span></a></div>
@@ -821,7 +820,7 @@
             </div>
           </div>
 <a data-name="-1367571870%2FProperties%2F-1895836109" anchor-label="kelvins" id="-1367571870%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../kelvins.html"><span><span>kelvins</span></span></a></div>
@@ -836,7 +835,7 @@
             </div>
           </div>
 <a data-name="-549236492%2FProperties%2F-1895836109" anchor-label="kelvinsPerMetre" id="-549236492%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../kelvins-per-metre.html"><span>kelvins</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -851,7 +850,7 @@
             </div>
           </div>
 <a data-name="-2124462581%2FProperties%2F-1895836109" anchor-label="kelvinsPerWatt" id="-2124462581%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../kelvins-per-watt.html"><span>kelvins</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Watt</span></span></a></div>
@@ -866,7 +865,7 @@
             </div>
           </div>
 <a data-name="561141780%2FProperties%2F-1895836109" anchor-label="lumens" id="561141780%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../lumens.html"><span><span>lumens</span></span></a></div>
@@ -881,7 +880,7 @@
             </div>
           </div>
 <a data-name="1437664281%2FProperties%2F-1895836109" anchor-label="lumensPerWatt" id="1437664281%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../lumens-per-watt.html"><span>lumens</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Watt</span></span></a></div>
@@ -896,7 +895,7 @@
             </div>
           </div>
 <a data-name="-1818190104%2FProperties%2F-1895836109" anchor-label="lumensSecond" id="-1818190104%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../lumens-second.html"><span>lumens</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -911,7 +910,7 @@
             </div>
           </div>
 <a data-name="980892327%2FProperties%2F-1895836109" anchor-label="lux" id="980892327%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../lux.html"><span><span>lux</span></span></a></div>
@@ -926,7 +925,7 @@
             </div>
           </div>
 <a data-name="2049443643%2FProperties%2F-1895836109" anchor-label="luxSecond" id="2049443643%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../lux-second.html"><span>lux</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -941,7 +940,7 @@
             </div>
           </div>
 <a data-name="2019133833%2FProperties%2F-1895836109" anchor-label="magnitude" id="2019133833%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="magnitude.html"><span><span>magnitude</span></span></a></div>
@@ -950,13 +949,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="magnitude.html">magnitude</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/math/BigDecimal.html">BigDecimal</a></div><div class="brief "><p class="paragraph">The numeric magnitude associated with this metric prefix. For example, for <code class="lang-kotlin">25.kilo</code>, magnitude would be 25.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="magnitude.html">magnitude</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html">BigDecimal</a></div><div class="brief "><p class="paragraph">The numeric magnitude associated with this metric prefix. For example, for <code class="lang-kotlin">25.kilo</code>, magnitude would be 25.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1066735758%2FProperties%2F-1895836109" anchor-label="metres" id="-1066735758%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres.html"><span><span>metres</span></span></a></div>
@@ -971,7 +970,7 @@
             </div>
           </div>
 <a data-name="-444521770%2FProperties%2F-1895836109" anchor-label="metresPerCubicMetre" id="-444521770%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres-per-cubic-metre.html"><span>metres</span><wbr></wbr><span>Per</span><wbr></wbr><span>Cubic</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -986,7 +985,7 @@
             </div>
           </div>
 <a data-name="2057139149%2FProperties%2F-1895836109" anchor-label="metresPerHenry" id="2057139149%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres-per-henry.html"><span>metres</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Henry</span></span></a></div>
@@ -1001,7 +1000,7 @@
             </div>
           </div>
 <a data-name="33287845%2FProperties%2F-1895836109" anchor-label="metresPerSecond" id="33287845%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres-per-second.html"><span>metres</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -1016,7 +1015,7 @@
             </div>
           </div>
 <a data-name="1353114416%2FProperties%2F-1895836109" anchor-label="metresPerSecondCubed" id="1353114416%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres-per-second-cubed.html"><span>metres</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Cubed</span></span></a></div>
@@ -1031,7 +1030,7 @@
             </div>
           </div>
 <a data-name="-1369215976%2FProperties%2F-1895836109" anchor-label="metresPerSecondFifth" id="-1369215976%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres-per-second-fifth.html"><span>metres</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Fifth</span></span></a></div>
@@ -1046,7 +1045,7 @@
             </div>
           </div>
 <a data-name="902326495%2FProperties%2F-1895836109" anchor-label="metresPerSecondFourth" id="902326495%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres-per-second-fourth.html"><span>metres</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Fourth</span></span></a></div>
@@ -1061,7 +1060,7 @@
             </div>
           </div>
 <a data-name="794271095%2FProperties%2F-1895836109" anchor-label="metresPerSecondSixth" id="794271095%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres-per-second-sixth.html"><span>metres</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Sixth</span></span></a></div>
@@ -1076,7 +1075,7 @@
             </div>
           </div>
 <a data-name="-1297536568%2FProperties%2F-1895836109" anchor-label="metresPerSecondSquared" id="-1297536568%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../metres-per-second-squared.html"><span>metres</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Squared</span></span></a></div>
@@ -1091,7 +1090,7 @@
             </div>
           </div>
 <a data-name="-399582287%2FProperties%2F-1895836109" anchor-label="metric" id="-399582287%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="metric.html"><span><span>metric</span></span></a></div>
@@ -1106,7 +1105,7 @@
             </div>
           </div>
 <a data-name="-177720240%2FProperties%2F-1895836109" anchor-label="moles" id="-177720240%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../moles.html"><span><span>moles</span></span></a></div>
@@ -1121,7 +1120,7 @@
             </div>
           </div>
 <a data-name="701771448%2FProperties%2F-1895836109" anchor-label="molesPerCubicMetre" id="701771448%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../moles-per-cubic-metre.html"><span>moles</span><wbr></wbr><span>Per</span><wbr></wbr><span>Cubic</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1136,7 +1135,7 @@
             </div>
           </div>
 <a data-name="-1109634229%2FProperties%2F-1895836109" anchor-label="molesPerKilogram" id="-1109634229%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../moles-per-kilogram.html"><span>moles</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Kilogram</span></span></a></div>
@@ -1151,7 +1150,7 @@
             </div>
           </div>
 <a data-name="-55998728%2FProperties%2F-1895836109" anchor-label="newtons" id="-55998728%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../newtons.html"><span><span>newtons</span></span></a></div>
@@ -1166,7 +1165,7 @@
             </div>
           </div>
 <a data-name="2127631633%2FProperties%2F-1895836109" anchor-label="newtonsMetreSecond" id="2127631633%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../newtons-metre-second.html"><span>newtons</span><wbr></wbr><span>Metre</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -1181,7 +1180,7 @@
             </div>
           </div>
 <a data-name="18161642%2FProperties%2F-1895836109" anchor-label="newtonsMetreSecondPerKilogram" id="18161642%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../newtons-metre-second-per-kilogram.html"><span>newtons</span><wbr></wbr><span>Metre</span><wbr></wbr><span>Second</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Kilogram</span></span></a></div>
@@ -1196,7 +1195,7 @@
             </div>
           </div>
 <a data-name="-1572511862%2FProperties%2F-1895836109" anchor-label="newtonsPerMetre" id="-1572511862%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../newtons-per-metre.html"><span>newtons</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1211,7 +1210,7 @@
             </div>
           </div>
 <a data-name="1699353292%2FProperties%2F-1895836109" anchor-label="newtonsSecond" id="1699353292%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../newtons-second.html"><span>newtons</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -1226,7 +1225,7 @@
             </div>
           </div>
 <a data-name="865151853%2FProperties%2F-1895836109" anchor-label="ohms" id="865151853%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../ohms.html"><span><span>ohms</span></span></a></div>
@@ -1241,7 +1240,7 @@
             </div>
           </div>
 <a data-name="-1560101464%2FProperties%2F-1895836109" anchor-label="ohmsMetre" id="-1560101464%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../ohms-metre.html"><span>ohms</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1256,7 +1255,7 @@
             </div>
           </div>
 <a data-name="-1028687841%2FProperties%2F-1895836109" anchor-label="pascals" id="-1028687841%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../pascals.html"><span><span>pascals</span></span></a></div>
@@ -1271,7 +1270,7 @@
             </div>
           </div>
 <a data-name="-1603646797%2FProperties%2F-1895836109" anchor-label="pascalsSecond" id="-1603646797%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../pascals-second.html"><span>pascals</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -1286,7 +1285,7 @@
             </div>
           </div>
 <a data-name="-1890188854%2FProperties%2F-1895836109" anchor-label="radians" id="-1890188854%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../radians.html"><span><span>radians</span></span></a></div>
@@ -1301,7 +1300,7 @@
             </div>
           </div>
 <a data-name="976025421%2FProperties%2F-1895836109" anchor-label="radiansPerSecond" id="976025421%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../radians-per-second.html"><span>radians</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -1316,7 +1315,7 @@
             </div>
           </div>
 <a data-name="1418265480%2FProperties%2F-1895836109" anchor-label="radiansPerSecondCubed" id="1418265480%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../radians-per-second-cubed.html"><span>radians</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Cubed</span></span></a></div>
@@ -1331,7 +1330,7 @@
             </div>
           </div>
 <a data-name="-1304064912%2FProperties%2F-1895836109" anchor-label="radiansPerSecondFifth" id="-1304064912%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../radians-per-second-fifth.html"><span>radians</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Fifth</span></span></a></div>
@@ -1346,7 +1345,7 @@
             </div>
           </div>
 <a data-name="-1372957817%2FProperties%2F-1895836109" anchor-label="radiansPerSecondFourth" id="-1372957817%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../radians-per-second-fourth.html"><span>radians</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Fourth</span></span></a></div>
@@ -1361,7 +1360,7 @@
             </div>
           </div>
 <a data-name="859422159%2FProperties%2F-1895836109" anchor-label="radiansPerSecondSixth" id="859422159%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../radians-per-second-sixth.html"><span>radians</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Sixth</span></span></a></div>
@@ -1376,7 +1375,7 @@
             </div>
           </div>
 <a data-name="1183093792%2FProperties%2F-1895836109" anchor-label="radiansPerSecondSquared" id="1183093792%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../radians-per-second-squared.html"><span>radians</span><wbr></wbr><span>Per</span><wbr></wbr><span>Second</span><wbr></wbr><span><span>Squared</span></span></a></div>
@@ -1391,7 +1390,7 @@
             </div>
           </div>
 <a data-name="1618728916%2FProperties%2F-1895836109" anchor-label="reciprocalHenries" id="1618728916%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../reciprocal-henries.html"><span>reciprocal</span><wbr></wbr><span><span>Henries</span></span></a></div>
@@ -1406,7 +1405,7 @@
             </div>
           </div>
 <a data-name="1386711080%2FProperties%2F-1895836109" anchor-label="reciprocalKelvins" id="1386711080%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../reciprocal-kelvins.html"><span>reciprocal</span><wbr></wbr><span><span>Kelvins</span></span></a></div>
@@ -1421,7 +1420,7 @@
             </div>
           </div>
 <a data-name="-8056596%2FProperties%2F-1895836109" anchor-label="reciprocalMetres" id="-8056596%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../reciprocal-metres.html"><span>reciprocal</span><wbr></wbr><span><span>Metres</span></span></a></div>
@@ -1436,7 +1435,7 @@
             </div>
           </div>
 <a data-name="1725595109%2FProperties%2F-1895836109" anchor-label="reciprocalPascals" id="1725595109%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../reciprocal-pascals.html"><span>reciprocal</span><wbr></wbr><span><span>Pascals</span></span></a></div>
@@ -1451,7 +1450,7 @@
             </div>
           </div>
 <a data-name="-159663465%2FProperties%2F-1895836109" anchor-label="seconds" id="-159663465%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../seconds.html"><span><span>seconds</span></span></a></div>
@@ -1466,7 +1465,7 @@
             </div>
           </div>
 <a data-name="-190119036%2FProperties%2F-1895836109" anchor-label="siemens" id="-190119036%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../siemens.html"><span><span>siemens</span></span></a></div>
@@ -1481,7 +1480,7 @@
             </div>
           </div>
 <a data-name="1148686358%2FProperties%2F-1895836109" anchor-label="siemensPerMetre" id="1148686358%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../siemens-per-metre.html"><span>siemens</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1496,7 +1495,7 @@
             </div>
           </div>
 <a data-name="-586673430%2FProperties%2F-1895836109" anchor-label="siemensSquareMetrePerMole" id="-586673430%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../siemens-square-metre-per-mole.html"><span>siemens</span><wbr></wbr><span>Square</span><wbr></wbr><span>Metre</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Mole</span></span></a></div>
@@ -1511,7 +1510,7 @@
             </div>
           </div>
 <a data-name="1834026401%2FProperties%2F-1895836109" anchor-label="sieverts" id="1834026401%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../sieverts.html"><span><span>sieverts</span></span></a></div>
@@ -1526,7 +1525,7 @@
             </div>
           </div>
 <a data-name="-165601425%2FProperties%2F-1895836109" anchor-label="squareMetres" id="-165601425%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../square-metres.html"><span>square</span><wbr></wbr><span><span>Metres</span></span></a></div>
@@ -1541,7 +1540,7 @@
             </div>
           </div>
 <a data-name="216556360%2FProperties%2F-1895836109" anchor-label="squareMetresPerSecond" id="216556360%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../square-metres-per-second.html"><span>square</span><wbr></wbr><span>Metres</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -1556,7 +1555,7 @@
             </div>
           </div>
 <a data-name="-13101079%2FProperties%2F-1895836109" anchor-label="squareMetresPerVoltSecond" id="-13101079%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../square-metres-per-volt-second.html"><span>square</span><wbr></wbr><span>Metres</span><wbr></wbr><span>Per</span><wbr></wbr><span>Volt</span><wbr></wbr><span><span>Second</span></span></a></div>
@@ -1571,7 +1570,7 @@
             </div>
           </div>
 <a data-name="1478471164%2FProperties%2F-1895836109" anchor-label="steradians" id="1478471164%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../steradians.html"><span><span>steradians</span></span></a></div>
@@ -1586,7 +1585,7 @@
             </div>
           </div>
 <a data-name="-34330006%2FProperties%2F-1895836109" anchor-label="teslas" id="-34330006%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../teslas.html"><span><span>teslas</span></span></a></div>
@@ -1601,7 +1600,7 @@
             </div>
           </div>
 <a data-name="612930763%2FProperties%2F-1895836109" anchor-label="teslasMetre" id="612930763%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../teslas-metre.html"><span>teslas</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1616,7 +1615,7 @@
             </div>
           </div>
 <a data-name="476269354%2FProperties%2F-1895836109" anchor-label="volts" id="476269354%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../volts.html"><span><span>volts</span></span></a></div>
@@ -1631,7 +1630,7 @@
             </div>
           </div>
 <a data-name="1398329788%2FProperties%2F-1895836109" anchor-label="voltsPerMetre" id="1398329788%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../volts-per-metre.html"><span>volts</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1646,7 +1645,7 @@
             </div>
           </div>
 <a data-name="1842753985%2FProperties%2F-1895836109" anchor-label="watts" id="1842753985%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts.html"><span><span>watts</span></span></a></div>
@@ -1661,7 +1660,7 @@
             </div>
           </div>
 <a data-name="1840206055%2FProperties%2F-1895836109" anchor-label="wattsPerCubicMetre" id="1840206055%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts-per-cubic-metre.html"><span>watts</span><wbr></wbr><span>Per</span><wbr></wbr><span>Cubic</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1676,7 +1675,7 @@
             </div>
           </div>
 <a data-name="48443731%2FProperties%2F-1895836109" anchor-label="wattsPerMetre" id="48443731%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts-per-metre.html"><span>watts</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1691,7 +1690,7 @@
             </div>
           </div>
 <a data-name="-601563204%2FProperties%2F-1895836109" anchor-label="wattsPerMetreKelvin" id="-601563204%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts-per-metre-kelvin.html"><span>watts</span><wbr></wbr><span>Per</span><wbr></wbr><span>Metre</span><wbr></wbr><span><span>Kelvin</span></span></a></div>
@@ -1706,7 +1705,7 @@
             </div>
           </div>
 <a data-name="-861756234%2FProperties%2F-1895836109" anchor-label="wattsPerSquareMetre" id="-861756234%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts-per-square-metre.html"><span>watts</span><wbr></wbr><span>Per</span><wbr></wbr><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1721,7 +1720,7 @@
             </div>
           </div>
 <a data-name="-1083761783%2FProperties%2F-1895836109" anchor-label="wattsPerSteradian" id="-1083761783%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts-per-steradian.html"><span>watts</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Steradian</span></span></a></div>
@@ -1736,7 +1735,7 @@
             </div>
           </div>
 <a data-name="-1230983474%2FProperties%2F-1895836109" anchor-label="wattsPerSteradianCubicMetre" id="-1230983474%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts-per-steradian-cubic-metre.html"><span>watts</span><wbr></wbr><span>Per</span><wbr></wbr><span>Steradian</span><wbr></wbr><span>Cubic</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1751,7 +1750,7 @@
             </div>
           </div>
 <a data-name="-282427636%2FProperties%2F-1895836109" anchor-label="wattsPerSteradianMetre" id="-282427636%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts-per-steradian-metre.html"><span>watts</span><wbr></wbr><span>Per</span><wbr></wbr><span>Steradian</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1766,7 +1765,7 @@
             </div>
           </div>
 <a data-name="-1579351121%2FProperties%2F-1895836109" anchor-label="wattsPerSteradianSquareMetre" id="-1579351121%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../watts-per-steradian-square-metre.html"><span>watts</span><wbr></wbr><span>Per</span><wbr></wbr><span>Steradian</span><wbr></wbr><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1781,7 +1780,7 @@
             </div>
           </div>
 <a data-name="-2013219776%2FProperties%2F-1895836109" anchor-label="webers" id="-2013219776%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../webers.html"><span><span>webers</span></span></a></div>
@@ -1796,7 +1795,7 @@
             </div>
           </div>
 <a data-name="924238005%2FProperties%2F-1895836109" anchor-label="webersMetre" id="924238005%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../webers-metre.html"><span>webers</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1811,7 +1810,7 @@
             </div>
           </div>
 <a data-name="-1587624750%2FProperties%2F-1895836109" anchor-label="webersPerMetre" id="-1587624750%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_PROPERTY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../webers-per-metre.html"><span>webers</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -1831,17 +1830,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Sefford & Patri-create 2025</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Sefford & Patri-create 2025</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

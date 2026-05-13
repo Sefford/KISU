@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Decimal</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KISU
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,8 +45,8 @@
         <div class="library-version" id="library-version">
 0.0.1-SNAPSHOT        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":lib/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +56,9 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +73,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +81,41 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KISU
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KISU::org.kisu.prefixes/Decimal///PointingToDeclaration//-1895836109">
   <div class="breadcrumbs"><a href="../../../index.html">KISU</a><span class="delimiter">/</span><a href="../index.html">org.kisu.prefixes</a><span class="delimiter">/</span><span class="current">Decimal</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Decimal</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">Decimal</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token operator">&gt; </span>, <a href="../-prefix/index.html">Prefix</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token operator">&gt; </span>, <a href="../../org.kisu.prefixes.primitives/-system/index.html">System</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token operator">&gt; </span>, <a href="../../org.kisu.prefixes.primitives/-symbol/index.html">Symbol</a></div><p class="paragraph">The <code class="lang-kotlin">Decimal</code> prefix system defines unit prefixes based on powers of 1000 (10³).</p><h3 class="">Use in Information Technology</h3><p class="paragraph">In information technology, decimal (SI) prefixes are commonly used to describe data transfer rates, storage device capacities, and other measurements where consistency with the metric system is expected:</p><ul><li><p class="paragraph"><strong>Storage devices</strong>: A &quot;500 GB&quot; hard drive typically refers to 500 × 10⁹ bytes (500,000,000,000 bytes).</p></li><li><p class="paragraph"><strong>Network bandwidth</strong>: &quot;100 Mbps&quot; usually means 100 × 10⁶ bits per second.</p></li></ul><h3 class="">Discrepancy Between Decimal and <a href="../-binary/index.html">Binary</a> Prefixes</h3><p class="paragraph">When SI prefixes like &quot;kilo&quot; or &quot;mega&quot; are interpreted as binary (e.g., 2¹⁰ instead of 10³), the difference in value increases with the size of the prefix:</p><ul><li><p class="paragraph">For <code class="lang-kotlin">kilo</code> (10³) vs. <code class="lang-kotlin">kibi</code> (2¹⁰), the relative difference is approximately <strong>2.4%</strong>.</p></li><li><p class="paragraph">For <code class="lang-kotlin">quetta</code> (10³⁰) vs. <code class="lang-kotlin">quebi</code> (2¹⁰⁰), the discrepancy grows to nearly <strong>27%</strong>.</p></li></ul><p class="paragraph">This growing gap reinforces the need to use the correct system—<strong>decimal for standard measurements</strong>, and <strong>binary for addressing and memory</strong>—to avoid confusion.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">Decimal</a> : <a href="../-prefix/index.html">Prefix</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token operator">&gt; </span>, <a href="../../org.kisu.prefixes.primitives/-system/index.html">System</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token operator">&gt; </span>, <a href="../../org.kisu.prefixes.primitives/-symbol/index.html">Symbol</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token operator">&gt; </span></div><p class="paragraph">The <code class="lang-kotlin">Decimal</code> prefix system defines unit prefixes based on powers of 1000 (10³).</p><h3 class="">Use in Information Technology</h3><p class="paragraph">In information technology, decimal (SI) prefixes are commonly used to describe data transfer rates, storage device capacities, and other measurements where consistency with the metric system is expected:</p><ul><li><p class="paragraph"><strong>Storage devices</strong>: A &quot;500 GB&quot; hard drive typically refers to 500 × 10⁹ bytes (500,000,000,000 bytes).</p></li><li><p class="paragraph"><strong>Network bandwidth</strong>: &quot;100 Mbps&quot; usually means 100 × 10⁶ bits per second.</p></li></ul><h3 class="">Discrepancy Between Decimal and <a href="../-binary/index.html">Binary</a> Prefixes</h3><p class="paragraph">When SI prefixes like &quot;kilo&quot; or &quot;mega&quot; are interpreted as binary (e.g., 2¹⁰ instead of 10³), the difference in value increases with the size of the prefix:</p><ul><li><p class="paragraph">For <code class="lang-kotlin">kilo</code> (10³) vs. <code class="lang-kotlin">kibi</code> (2¹⁰), the relative difference is approximately <strong>2.4%</strong>.</p></li><li><p class="paragraph">For <code class="lang-kotlin">quetta</code> (10³⁰) vs. <code class="lang-kotlin">quebi</code> (2¹⁰⁰), the discrepancy grows to nearly <strong>27%</strong>.</p></li></ul><p class="paragraph">This growing gap reinforces the need to use the correct system—<strong>decimal for standard measurements</strong>, and <strong>binary for addressing and memory</strong>—to avoid confusion.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="ENTRY">Entries</button></div>
     <div class="tabs-section-body">
       <div data-togglable="ENTRY">
-        <h2 class="">Entries</h2>
+        <h2 class="tableheader">Entries</h2>
         <div class="table"><a data-name="-1657479603%2FClasslikes%2F-1895836109" anchor-label="BASE" id="-1657479603%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-b-a-s-e/index.html">BASE</a></div>
@@ -131,7 +130,7 @@
             </div>
           </div>
 <a data-name="-389810467%2FClasslikes%2F-1895836109" anchor-label="KILO" id="-389810467%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-i-l-o/index.html">KILO</a></div>
@@ -146,7 +145,7 @@
             </div>
           </div>
 <a data-name="-1905012690%2FClasslikes%2F-1895836109" anchor-label="MEGA" id="-1905012690%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-m-e-g-a/index.html">MEGA</a></div>
@@ -161,7 +160,7 @@
             </div>
           </div>
 <a data-name="-1531629704%2FClasslikes%2F-1895836109" anchor-label="GIGA" id="-1531629704%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-g-i-g-a/index.html">GIGA</a></div>
@@ -176,7 +175,7 @@
             </div>
           </div>
 <a data-name="-610712676%2FClasslikes%2F-1895836109" anchor-label="TERA" id="-610712676%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-t-e-r-a/index.html">TERA</a></div>
@@ -191,7 +190,7 @@
             </div>
           </div>
 <a data-name="1749162718%2FClasslikes%2F-1895836109" anchor-label="PETA" id="1749162718%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-e-t-a/index.html">PETA</a></div>
@@ -206,7 +205,7 @@
             </div>
           </div>
 <a data-name="-252818342%2FClasslikes%2F-1895836109" anchor-label="EXA" id="-252818342%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-e-x-a/index.html">EXA</a></div>
@@ -221,7 +220,7 @@
             </div>
           </div>
 <a data-name="-1025785566%2FClasslikes%2F-1895836109" anchor-label="ZETTA" id="-1025785566%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-z-e-t-t-a/index.html">ZETTA</a></div>
@@ -236,7 +235,7 @@
             </div>
           </div>
 <a data-name="-1672515945%2FClasslikes%2F-1895836109" anchor-label="YOTTA" id="-1672515945%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-y-o-t-t-a/index.html">YOTTA</a></div>
@@ -251,7 +250,7 @@
             </div>
           </div>
 <a data-name="538041616%2FClasslikes%2F-1895836109" anchor-label="RONNA" id="538041616%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-r-o-n-n-a/index.html">RONNA</a></div>
@@ -266,7 +265,7 @@
             </div>
           </div>
 <a data-name="1589575868%2FClasslikes%2F-1895836109" anchor-label="QUETTA" id="1589575868%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-togglable="ENTRY" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-q-u-e-t-t-a/index.html">QUETTA</a></div>
@@ -283,9 +282,9 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="2112116963%2FProperties%2F-1895836109" anchor-label="all" id="2112116963%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../org.kisu.prefixes.primitives/-system/all.html"><span><span>all</span></span></a></div>
@@ -300,7 +299,7 @@
             </div>
           </div>
 <a data-name="-160307280%2FProperties%2F-1895836109" anchor-label="canonical" id="-160307280%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../org.kisu.prefixes.primitives/-system/canonical.html"><span><span>canonical</span></span></a></div>
@@ -315,7 +314,7 @@
             </div>
           </div>
 <a data-name="647624406%2FProperties%2F-1895836109" anchor-label="entries" id="647624406%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="entries.html"><span><span>entries</span></span></a></div>
@@ -330,7 +329,7 @@
             </div>
           </div>
 <a data-name="1813447301%2FProperties%2F-1895836109" anchor-label="factor" id="1813447301%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="factor.html"><span><span>factor</span></span></a></div>
@@ -339,13 +338,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="factor.html">factor</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/math/BigDecimal.html">BigDecimal</a></div><div class="brief "><p class="paragraph">The factor by which a unit is scaled when this prefix is applied.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="factor.html">factor</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html">BigDecimal</a></div><div class="brief "><p class="paragraph">The factor by which a unit is scaled when this prefix is applied.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1070036856%2FProperties%2F-1895836109" anchor-label="largest" id="-1070036856%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../org.kisu.prefixes.primitives/-system/largest.html"><span><span>largest</span></span></a></div>
@@ -354,13 +353,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../org.kisu.prefixes.primitives/-system/largest.html">largest</a><span class="token operator">: </span><a href="index.html">Decimal</a></div><div class="brief "><p class="paragraph">The largest prefix in this system (e.g., <a href="-q-u-e-t-t-a/index.html">QUETTA</a> in Metric).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../org.kisu.prefixes.primitives/-system/largest.html">largest</a><span class="token operator">: </span><a href="index.html">Decimal</a></div><div class="brief "><p class="paragraph">The largest prefix in this system (e.g., <a href="../-metric/-q-u-e-t-t-a/index.html">QUETTA</a> in Metric).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-372974862%2FProperties%2F-1895836109" anchor-label="name" id="-372974862%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-metric/-q-u-e-t-t-a/index.html#-372974862%2FProperties%2F-1895836109"><span><span>name</span></span></a></div>
@@ -375,7 +374,7 @@
             </div>
           </div>
 <a data-name="-739389684%2FProperties%2F-1895836109" anchor-label="ordinal" id="-739389684%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../-metric/-q-u-e-t-t-a/index.html#-739389684%2FProperties%2F-1895836109"><span><span>ordinal</span></span></a></div>
@@ -390,7 +389,7 @@
             </div>
           </div>
 <a data-name="-711984585%2FProperties%2F-1895836109" anchor-label="smallest" id="-711984585%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../org.kisu.prefixes.primitives/-system/smallest.html"><span><span>smallest</span></span></a></div>
@@ -399,13 +398,13 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../org.kisu.prefixes.primitives/-system/smallest.html">smallest</a><span class="token operator">: </span><a href="index.html">Decimal</a></div><div class="brief "><p class="paragraph">The smallest prefix in this system (e.g., QUECTO in Metric).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../org.kisu.prefixes.primitives/-system/smallest.html">smallest</a><span class="token operator">: </span><a href="index.html">Decimal</a></div><div class="brief "><p class="paragraph">The smallest prefix in this system (e.g., <a href="../-metric/-q-u-e-c-t-o/index.html">QUECTO</a> in Metric).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-107082873%2FProperties%2F-1895836109" anchor-label="symbol" id="-107082873%2FProperties%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../org.kisu.prefixes.primitives/-symbol/symbol.html"><span><span>symbol</span></span></a></div>
@@ -422,24 +421,24 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-1326692930%2FFunctions%2F-1895836109" anchor-label="compareTo" id="-1326692930%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1466016953%2FFunctions%2F-1895836109" anchor-label="compareTo" id="1466016953%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="-q-u-e-t-t-a/index.html#-1326692930%2FFunctions%2F-1895836109"><span>compare</span><wbr></wbr><span><span>To</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1326692930%2FFunctions%2F-1895836109"></span>
+                  <div><a href="../-prefix/compare-to.html"><span>compare</span><wbr></wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1466016953%2FFunctions%2F-1895836109"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="-q-u-e-t-t-a/index.html#-1326692930%2FFunctions%2F-1895836109"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-prefix/index.html">Prefix</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Compares this <a href="../-prefix/index.html">Prefix</a> to another based on their <a href="../-prefix/factor.html">factor</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../-prefix/compare-to.html"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../-prefix/index.html">Prefix</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Compares this <a href="../-prefix/index.html">Prefix</a> to another based on their <a href="../-prefix/factor.html">factor</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="231636434%2FFunctions%2F-1895836109" anchor-label="find" id="231636434%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../org.kisu.prefixes.primitives/-system/find.html"><span><span>find</span></span></a></div>
@@ -448,43 +447,58 @@
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../../org.kisu.prefixes.primitives/-system/find.html"><span class="token function">find</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">factor<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/math/BigDecimal.html">BigDecimal</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">Decimal</a></div><div class="brief "><p class="paragraph">Finds the closest defined unit in the system that does not exceed the given <span data-unresolved-link="org.kisu.prefixes/Decimal/find/#java.math.BigDecimal/PointingToCallableParameters(0)/">factor</span>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../../org.kisu.prefixes.primitives/-system/find.html"><span class="token function">find</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">factor<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html">BigDecimal</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">Decimal</a></div><div class="brief "><p class="paragraph">Finds the closest defined unit in the system that does not exceed the given <a href="../../org.kisu.prefixes.primitives/-system/find.html">factor</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1053531276%2FFunctions%2F-1895836109" anchor-label="sortWith" id="-1053531276%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+<a data-name="-1608543911%2FFunctions%2F-1895836109" anchor-label="sortWith" id="-1608543911%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="-q-u-e-t-t-a/index.html#-1053531276%2FFunctions%2F-1895836109"><span>sort</span><wbr></wbr><span><span>With</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1053531276%2FFunctions%2F-1895836109"></span>
+                  <div><a href="../-prefix/sort-with.html"><span>sort</span><wbr></wbr><span><span>With</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1608543911%2FFunctions%2F-1895836109"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">infix </span><span class="token keyword">fun </span><a href="-q-u-e-t-t-a/index.html#-1053531276%2FFunctions%2F-1895836109"><span class="token function">sortWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">Decimal</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token punctuation">, </span><a href="index.html">Decimal</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns this prefix and <a href="-q-u-e-t-t-a/index.html#-1053531276%2FFunctions%2F-1895836109">other</a>, sorted in ascending order of their <a href="../-prefix/factor.html">factor</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">infix </span><span class="token keyword">fun </span><a href="../-prefix/sort-with.html"><span class="token function">sortWith</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">Decimal</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="index.html">Decimal</a><span class="token punctuation">, </span><a href="index.html">Decimal</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns this prefix and <a href="../-prefix/sort-with.html">other</a>, sorted in ascending order of their <a href="../-prefix/factor.html">factor</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-334860245%2FFunctions%2F-1895836109" anchor-label="to" id="-334860245%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+<a data-name="-1021760816%2FFunctions%2F-1895836109" anchor-label="to" id="-1021760816%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="-q-u-e-t-t-a/index.html#-334860245%2FFunctions%2F-1895836109"><span><span>to</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-334860245%2FFunctions%2F-1895836109"></span>
+                  <div><a href="../-prefix/to.html"><span><span>to</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1021760816%2FFunctions%2F-1895836109"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="-q-u-e-t-t-a/index.html#-334860245%2FFunctions%2F-1895836109"><span class="token function">to</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">Decimal</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/math/BigDecimal.html">BigDecimal</a></div><div class="brief "><p class="paragraph">Returns the factor needed to convert a value expressed with this prefix into one expressed in <a href="-q-u-e-t-t-a/index.html#-334860245%2FFunctions%2F-1895836109">other</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-prefix/to.html"><span class="token function">to</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="index.html">Decimal</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/math/BigDecimal.html">BigDecimal</a></div><div class="brief "><p class="paragraph">Returns the factor needed to convert a value expressed with this prefix into one expressed in <a href="../-prefix/to.html">other</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1121612979%2FFunctions%2F-1895836109" anchor-label="toString" id="1121612979%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.kisu.prefixes.primitives/-symbol/to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1121612979%2FFunctions%2F-1895836109"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":lib/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../../org.kisu.prefixes.primitives/-symbol/to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Returns the string representation of the symbol.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="116929158%2FFunctions%2F-1895836109" anchor-label="valueOf" id="116929158%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="value-of.html"><span>value</span><wbr></wbr><span><span>Of</span></span></a></div>
@@ -499,7 +513,7 @@
             </div>
           </div>
 <a data-name="-470662638%2FFunctions%2F-1895836109" anchor-label="values" id="-470662638%2FFunctions%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="values.html"><span><span>values</span></span></a></div>
@@ -519,17 +533,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Sefford & Patri-create 2025</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Sefford & Patri-create 2025</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

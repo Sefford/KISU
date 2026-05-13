@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>org.kisu.units.special</title>
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../styles/style.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
                     KISU
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -48,8 +45,8 @@
         <div class="library-version" id="library-version">
 0.0.1-SNAPSHOT        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":lib/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +56,9 @@
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +73,7 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,26 +81,28 @@
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KISU
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="package" id="content" pageIds="KISU::org.kisu.units.special////PointingToDeclaration//-1895836109">
   <div class="breadcrumbs"><a href="../../index.html">KISU</a><span class="delimiter">/</span><span class="current">org.kisu.units.special</span></div>
   <div class="cover ">
@@ -113,9 +112,9 @@
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-1610634897%2FClasslikes%2F-1895836109" anchor-label="AbsorbedDose" id="-1610634897%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-absorbed-dose/index.html"><span>Absorbed</span><wbr></wbr><span><span>Dose</span></span></a></div>
@@ -130,7 +129,7 @@
             </div>
           </div>
 <a data-name="-1520556757%2FClasslikes%2F-1895836109" anchor-label="Area" id="-1520556757%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-area/index.html"><span><span>Area</span></span></a></div>
@@ -145,7 +144,7 @@
             </div>
           </div>
 <a data-name="1942592498%2FClasslikes%2F-1895836109" anchor-label="Becquerel" id="1942592498%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-becquerel/index.html"><span><span>Becquerel</span></span></a></div>
@@ -160,7 +159,7 @@
             </div>
           </div>
 <a data-name="-947223280%2FClasslikes%2F-1895836109" anchor-label="Byte" id="-947223280%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-byte/index.html"><span><span>Byte</span></span></a></div>
@@ -175,7 +174,7 @@
             </div>
           </div>
 <a data-name="619731487%2FClasslikes%2F-1895836109" anchor-label="Bytes" id="619731487%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-bytes/index.html"><span><span>Bytes</span></span></a></div>
@@ -190,7 +189,7 @@
             </div>
           </div>
 <a data-name="1914592188%2FClasslikes%2F-1895836109" anchor-label="Capacitance" id="1914592188%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-capacitance/index.html"><span><span>Capacitance</span></span></a></div>
@@ -205,7 +204,7 @@
             </div>
           </div>
 <a data-name="-287917659%2FClasslikes%2F-1895836109" anchor-label="CatalyticActivity" id="-287917659%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-catalytic-activity/index.html"><span>Catalytic</span><wbr></wbr><span><span>Activity</span></span></a></div>
@@ -220,7 +219,7 @@
             </div>
           </div>
 <a data-name="1023117548%2FClasslikes%2F-1895836109" anchor-label="Celsius" id="1023117548%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-celsius/index.html"><span><span>Celsius</span></span></a></div>
@@ -235,7 +234,7 @@
             </div>
           </div>
 <a data-name="-1255724606%2FClasslikes%2F-1895836109" anchor-label="CelsiusTemperature" id="-1255724606%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-celsius-temperature/index.html"><span>Celsius</span><wbr></wbr><span><span>Temperature</span></span></a></div>
@@ -250,7 +249,7 @@
             </div>
           </div>
 <a data-name="657477687%2FClasslikes%2F-1895836109" anchor-label="Conductance" id="657477687%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-conductance/index.html"><span><span>Conductance</span></span></a></div>
@@ -265,7 +264,7 @@
             </div>
           </div>
 <a data-name="-1377483351%2FClasslikes%2F-1895836109" anchor-label="Coulomb" id="-1377483351%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-coulomb/index.html"><span><span>Coulomb</span></span></a></div>
@@ -280,7 +279,7 @@
             </div>
           </div>
 <a data-name="850782099%2FClasslikes%2F-1895836109" anchor-label="CubicMetre" id="850782099%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-cubic-metre/index.html"><span>Cubic</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -295,7 +294,7 @@
             </div>
           </div>
 <a data-name="-1693870127%2FClasslikes%2F-1895836109" anchor-label="DoseEquivalent" id="-1693870127%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-dose-equivalent/index.html"><span>Dose</span><wbr></wbr><span><span>Equivalent</span></span></a></div>
@@ -310,7 +309,7 @@
             </div>
           </div>
 <a data-name="-307796153%2FClasslikes%2F-1895836109" anchor-label="ElectricCharge" id="-307796153%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-electric-charge/index.html"><span>Electric</span><wbr></wbr><span><span>Charge</span></span></a></div>
@@ -325,7 +324,7 @@
             </div>
           </div>
 <a data-name="-710879671%2FClasslikes%2F-1895836109" anchor-label="ElectricPotential" id="-710879671%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-electric-potential/index.html"><span>Electric</span><wbr></wbr><span><span>Potential</span></span></a></div>
@@ -340,7 +339,7 @@
             </div>
           </div>
 <a data-name="-707902000%2FClasslikes%2F-1895836109" anchor-label="Energy" id="-707902000%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-energy/index.html"><span><span>Energy</span></span></a></div>
@@ -355,7 +354,7 @@
             </div>
           </div>
 <a data-name="1703111664%2FClasslikes%2F-1895836109" anchor-label="Farad" id="1703111664%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-farad/index.html"><span><span>Farad</span></span></a></div>
@@ -370,7 +369,7 @@
             </div>
           </div>
 <a data-name="475881375%2FClasslikes%2F-1895836109" anchor-label="Force" id="475881375%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-force/index.html"><span><span>Force</span></span></a></div>
@@ -385,7 +384,7 @@
             </div>
           </div>
 <a data-name="-1094667826%2FClasslikes%2F-1895836109" anchor-label="Frequency" id="-1094667826%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-frequency/index.html"><span><span>Frequency</span></span></a></div>
@@ -400,7 +399,7 @@
             </div>
           </div>
 <a data-name="-463927275%2FClasslikes%2F-1895836109" anchor-label="Gray" id="-463927275%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-gray/index.html"><span><span>Gray</span></span></a></div>
@@ -415,7 +414,7 @@
             </div>
           </div>
 <a data-name="1041114642%2FClasslikes%2F-1895836109" anchor-label="Henry" id="1041114642%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-henry/index.html"><span><span>Henry</span></span></a></div>
@@ -430,7 +429,7 @@
             </div>
           </div>
 <a data-name="1976416303%2FClasslikes%2F-1895836109" anchor-label="Hertz" id="1976416303%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-hertz/index.html"><span><span>Hertz</span></span></a></div>
@@ -445,7 +444,7 @@
             </div>
           </div>
 <a data-name="-988019755%2FClasslikes%2F-1895836109" anchor-label="Illuminance" id="-988019755%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-illuminance/index.html"><span><span>Illuminance</span></span></a></div>
@@ -460,7 +459,7 @@
             </div>
           </div>
 <a data-name="-1035539614%2FClasslikes%2F-1895836109" anchor-label="Inductance" id="-1035539614%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-inductance/index.html"><span><span>Inductance</span></span></a></div>
@@ -475,7 +474,7 @@
             </div>
           </div>
 <a data-name="-178472191%2FClasslikes%2F-1895836109" anchor-label="Joule" id="-178472191%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-joule/index.html"><span><span>Joule</span></span></a></div>
@@ -490,7 +489,7 @@
             </div>
           </div>
 <a data-name="1498377665%2FClasslikes%2F-1895836109" anchor-label="Katal" id="1498377665%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-katal/index.html"><span><span>Katal</span></span></a></div>
@@ -505,7 +504,7 @@
             </div>
           </div>
 <a data-name="-411457251%2FClasslikes%2F-1895836109" anchor-label="Lumen" id="-411457251%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lumen/index.html"><span><span>Lumen</span></span></a></div>
@@ -520,7 +519,7 @@
             </div>
           </div>
 <a data-name="-1564297173%2FClasslikes%2F-1895836109" anchor-label="LuminousFlux" id="-1564297173%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-luminous-flux/index.html"><span>Luminous</span><wbr></wbr><span><span>Flux</span></span></a></div>
@@ -535,7 +534,7 @@
             </div>
           </div>
 <a data-name="1197883707%2FClasslikes%2F-1895836109" anchor-label="Lux" id="1197883707%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lux/index.html"><span><span>Lux</span></span></a></div>
@@ -550,7 +549,7 @@
             </div>
           </div>
 <a data-name="-1599340373%2FClasslikes%2F-1895836109" anchor-label="MagneticFlux" id="-1599340373%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-magnetic-flux/index.html"><span>Magnetic</span><wbr></wbr><span><span>Flux</span></span></a></div>
@@ -565,7 +564,7 @@
             </div>
           </div>
 <a data-name="-988671313%2FClasslikes%2F-1895836109" anchor-label="MagneticFluxDensity" id="-988671313%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-magnetic-flux-density/index.html"><span>Magnetic</span><wbr></wbr><span>Flux</span><wbr></wbr><span><span>Density</span></span></a></div>
@@ -580,7 +579,7 @@
             </div>
           </div>
 <a data-name="190667525%2FClasslikes%2F-1895836109" anchor-label="Newton" id="190667525%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-newton/index.html"><span><span>Newton</span></span></a></div>
@@ -595,7 +594,7 @@
             </div>
           </div>
 <a data-name="476375862%2FClasslikes%2F-1895836109" anchor-label="Ohm" id="476375862%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-ohm/index.html"><span><span>Ohm</span></span></a></div>
@@ -610,7 +609,7 @@
             </div>
           </div>
 <a data-name="1765383404%2FClasslikes%2F-1895836109" anchor-label="Pascal" id="1765383404%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-pascal/index.html"><span><span>Pascal</span></span></a></div>
@@ -625,7 +624,7 @@
             </div>
           </div>
 <a data-name="1941441505%2FClasslikes%2F-1895836109" anchor-label="PlaneAngle" id="1941441505%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-plane-angle/index.html"><span>Plane</span><wbr></wbr><span><span>Angle</span></span></a></div>
@@ -640,7 +639,7 @@
             </div>
           </div>
 <a data-name="1641845445%2FClasslikes%2F-1895836109" anchor-label="Power" id="1641845445%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-power/index.html"><span><span>Power</span></span></a></div>
@@ -655,7 +654,7 @@
             </div>
           </div>
 <a data-name="1670738675%2FClasslikes%2F-1895836109" anchor-label="Pressure" id="1670738675%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-pressure/index.html"><span><span>Pressure</span></span></a></div>
@@ -670,7 +669,7 @@
             </div>
           </div>
 <a data-name="-805987241%2FClasslikes%2F-1895836109" anchor-label="Radian" id="-805987241%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-radian/index.html"><span><span>Radian</span></span></a></div>
@@ -685,7 +684,7 @@
             </div>
           </div>
 <a data-name="-957204896%2FClasslikes%2F-1895836109" anchor-label="Radioactivity" id="-957204896%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-radioactivity/index.html"><span><span>Radioactivity</span></span></a></div>
@@ -700,7 +699,7 @@
             </div>
           </div>
 <a data-name="-2051715649%2FClasslikes%2F-1895836109" anchor-label="Resistance" id="-2051715649%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-resistance/index.html"><span><span>Resistance</span></span></a></div>
@@ -715,7 +714,7 @@
             </div>
           </div>
 <a data-name="-1030813506%2FClasslikes%2F-1895836109" anchor-label="Siemens" id="-1030813506%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-siemens/index.html"><span><span>Siemens</span></span></a></div>
@@ -730,7 +729,7 @@
             </div>
           </div>
 <a data-name="494643050%2FClasslikes%2F-1895836109" anchor-label="Sievert" id="494643050%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-sievert/index.html"><span><span>Sievert</span></span></a></div>
@@ -745,7 +744,7 @@
             </div>
           </div>
 <a data-name="168600560%2FClasslikes%2F-1895836109" anchor-label="SolidAngle" id="168600560%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-solid-angle/index.html"><span>Solid</span><wbr></wbr><span><span>Angle</span></span></a></div>
@@ -760,7 +759,7 @@
             </div>
           </div>
 <a data-name="-2012945480%2FClasslikes%2F-1895836109" anchor-label="SquareMetre" id="-2012945480%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-square-metre/index.html"><span>Square</span><wbr></wbr><span><span>Metre</span></span></a></div>
@@ -775,7 +774,7 @@
             </div>
           </div>
 <a data-name="2015019525%2FClasslikes%2F-1895836109" anchor-label="Steradian" id="2015019525%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-steradian/index.html"><span><span>Steradian</span></span></a></div>
@@ -790,7 +789,7 @@
             </div>
           </div>
 <a data-name="1979000563%2FClasslikes%2F-1895836109" anchor-label="Tesla" id="1979000563%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-tesla/index.html"><span><span>Tesla</span></span></a></div>
@@ -805,7 +804,7 @@
             </div>
           </div>
 <a data-name="-355373513%2FClasslikes%2F-1895836109" anchor-label="Volt" id="-355373513%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-volt/index.html"><span><span>Volt</span></span></a></div>
@@ -820,7 +819,7 @@
             </div>
           </div>
 <a data-name="1618901374%2FClasslikes%2F-1895836109" anchor-label="Volume" id="1618901374%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-volume/index.html"><span><span>Volume</span></span></a></div>
@@ -835,7 +834,7 @@
             </div>
           </div>
 <a data-name="-1287949938%2FClasslikes%2F-1895836109" anchor-label="Watt" id="-1287949938%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-watt/index.html"><span><span>Watt</span></span></a></div>
@@ -850,7 +849,7 @@
             </div>
           </div>
 <a data-name="139508809%2FClasslikes%2F-1895836109" anchor-label="Weber" id="139508809%2FClasslikes%2F-1895836109" data-filterable-set=":lib/main"></a>
-          <div class="table-row" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
+          <div class="table-row table-row_content" data-filterable-current=":lib/main" data-filterable-set=":lib/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-weber/index.html"><span><span>Weber</span></span></a></div>
@@ -870,17 +869,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>(c) Sefford & Patri-create 2025</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>(c) Sefford & Patri-create 2025</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
