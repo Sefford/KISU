@@ -800,10 +800,10 @@ $dokka.location:org.kisu.units.mechanics/MassFlowRate.Companion///PointingToDecl
 $dokka.location:org.kisu.units.mechanics/MassFlowRate.KilogramPerSecond///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-mass-flow-rate/-kilogram-per-second/index.html
 $dokka.location:org.kisu.units.mechanics/MassFlowRate///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-mass-flow-rate/index.html
 $dokka.location:org.kisu.units.mechanics/MassFlowRate/MassFlowRate/#java.math.BigDecimal#org.kisu.units.representation.Quotient[org.kisu.units.base.Kilogram,org.kisu.units.base.Second]/PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-mass-flow-rate/-mass-flow-rate.html
-$dokka.location:org.kisu.units.mechanics/MomentOfIntertia.Companion///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-moment-of-intertia/-companion/index.html
-$dokka.location:org.kisu.units.mechanics/MomentOfIntertia.KilogramSquareMetre///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-moment-of-intertia/-kilogram-square-metre/index.html
-$dokka.location:org.kisu.units.mechanics/MomentOfIntertia///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-moment-of-intertia/index.html
-$dokka.location:org.kisu.units.mechanics/MomentOfIntertia/MomentOfIntertia/#java.math.BigDecimal#org.kisu.units.representation.Product[org.kisu.units.base.Kilogram,org.kisu.units.special.SquareMetre]/PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-moment-of-intertia/-moment-of-intertia.html
+$dokka.location:org.kisu.units.mechanics/MomentOfInertia.Companion///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-moment-of-inertia/-companion/index.html
+$dokka.location:org.kisu.units.mechanics/MomentOfInertia.KilogramSquareMetre///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-moment-of-inertia/-kilogram-square-metre/index.html
+$dokka.location:org.kisu.units.mechanics/MomentOfInertia///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-moment-of-inertia/index.html
+$dokka.location:org.kisu.units.mechanics/MomentOfInertia/MomentOfInertia/#java.math.BigDecimal#org.kisu.units.representation.Product[org.kisu.units.base.Kilogram,org.kisu.units.special.SquareMetre]/PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-moment-of-inertia/-moment-of-inertia.html
 $dokka.location:org.kisu.units.mechanics/Momentum.Companion///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-momentum/-companion/index.html
 $dokka.location:org.kisu.units.mechanics/Momentum.NewtonSecond///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-momentum/-newton-second/index.html
 $dokka.location:org.kisu.units.mechanics/Momentum///PointingToDeclaration/-k-i-s-u/org.kisu.units.mechanics/-momentum/index.html
