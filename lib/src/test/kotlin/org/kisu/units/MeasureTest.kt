@@ -146,6 +146,14 @@ class MeasureTest : StringSpec({
         }
     }
 
+    "renders optimal with the largest prefix when every candidate is below one" {
+        val measure = TestMeasure(Magnitude("1E-40"), Metric.BASE)
+        val optimal = measure.optimal
+
+        optimal.component1().compareTo(Magnitude("1E-70")) shouldBe 0
+        optimal.component2() shouldBe TestUnit(Metric.QUETTA)
+    }
+
     "canonical and optimal normalization are idempotent" {
         checkAll(invariantMeasures) { measure ->
             measure.canonical.canonical shouldBe measure.canonical
