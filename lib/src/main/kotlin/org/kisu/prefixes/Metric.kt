@@ -116,5 +116,31 @@ enum class Metric(
     RONNA(27, "R"),
 
     /** 10³⁰ = 1,000,000,000,000,000,000,000,000,000,000 */
-    QUETTA(30, "Q"),
+    QUETTA(30, "Q");
+
+    /**
+     * Converts this metric prefix to the corresponding decimal information prefix.
+     *
+     * Decimal information units use the unprefixed base value plus the thousand-step SI prefixes from kilo through
+     * quetta. Smaller metric prefixes, deca, and hecto do not have decimal information counterparts.
+     *
+     * @throws IllegalArgumentException if this metric prefix cannot represent a decimal information prefix.
+     */
+    fun asDecimal(): Decimal = when (this) {
+        BASE -> Decimal.BASE
+        KILO -> Decimal.KILO
+        MEGA -> Decimal.MEGA
+        GIGA -> Decimal.GIGA
+        TERA -> Decimal.TERA
+        PETA -> Decimal.PETA
+        EXA -> Decimal.EXA
+        ZETTA -> Decimal.ZETTA
+        YOTTA -> Decimal.YOTTA
+        RONNA -> Decimal.RONNA
+        QUETTA -> Decimal.QUETTA
+        else -> throw IllegalArgumentException(
+            "Metric prefix $this cannot be used with decimal information units. Use BASE or prefixes from KILO " +
+                "through QUETTA.",
+        )
+    }
 }

@@ -37,7 +37,6 @@ import org.kisu.units.builders.bits
 import org.kisu.units.builders.bytes
 import org.kisu.units.builders.kilo
 import org.kisu.units.exceptions.SubBitInformation
-import java.lang.reflect.InvocationTargetException
 import org.kisu.prefixes.Binary as Iec
 import org.kisu.prefixes.Decimal as Si
 import org.kisu.test.generators.Binaries as IecPrefixes
@@ -122,8 +121,8 @@ class InformationTest : StringSpec({
         }
     }
 
-    "creates decimal byte Information from metric builders" {
-        checkAll(Arb.positiveLong(), Arb.element(supportedMetricByteBuilders)) { magnitude, builderCase ->
+    "creates decimal byte Information from decimal builder locations" {
+        checkAll(Arb.positiveLong(), Arb.element(supportedDecimalByteBuilders)) { magnitude, builderCase ->
             val amount = magnitude.magnitude
             val (builder, prefix) = builderCase
 
@@ -200,12 +199,12 @@ class InformationTest : StringSpec({
 
     "rejects metric byte prefixes without decimal information equivalents" {
         unsupportedMetricPrefixes.forEach { metric ->
-            shouldThrow<IllegalStateException> { metric.toDecimalInformationPrefixForTest() }
+            shouldThrow<IllegalArgumentException> { metric.toDecimalInformationPrefixForTest() }
         }
 
         val unsupportedBuilder: MetricUnitBuilder = HectoBuilder(Magnitude.ONE)
 
-        shouldThrow<IllegalStateException> { unsupportedBuilder.bytes }
+        (unsupportedBuilder is DecimalUnitBuilder) shouldBe false
     }
 
     "keeps optimal information representation in its original scale" {
@@ -397,7 +396,7 @@ class InformationTest : StringSpec({
     }
 })
 
-private val supportedMetricByteBuilders: List<Pair<(Magnitude) -> MetricUnitBuilder, Si>> = listOf(
+private val supportedDecimalByteBuilders: List<Pair<(Magnitude) -> DecimalUnitBuilder, Si>> = listOf(
     { magnitude: Magnitude -> KiloBuilder(magnitude) } to Si.KILO,
     { magnitude: Magnitude -> MegaBuilder(magnitude) } to Si.MEGA,
     { magnitude: Magnitude -> GigaBuilder(magnitude) } to Si.GIGA,
@@ -454,14 +453,4 @@ private val unsupportedMetricPrefixes: List<Metric> = listOf(
     Metric.HECTO,
 )
 
-private val toDecimalInformationPrefixMethod =
-    Class.forName("org.kisu.units.builders.MetricUnitBuilderKt")
-        .getDeclaredMethod("toDecimalInformationPrefix", Metric::class.java)
-        .also { method -> method.isAccessible = true }
-
-private fun Metric.toDecimalInformationPrefixForTest(): Si =
-    try {
-        toDecimalInformationPrefixMethod.invoke(null, this) as Si
-    } catch (exception: InvocationTargetException) {
-        throw exception.cause ?: exception
-    }
+private fun Metric.toDecimalInformationPrefixForTest(): Si = asDecimal()

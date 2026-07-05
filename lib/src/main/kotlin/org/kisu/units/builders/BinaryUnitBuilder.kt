@@ -2,6 +2,7 @@ package org.kisu.units.builders
 
 import org.kisu.Magnitude
 import org.kisu.prefixes.Binary
+import org.kisu.units.base.Byte
 import org.kisu.units.base.Information
 
 /**
@@ -25,3 +26,11 @@ interface BinaryUnitBuilder {
  */
 val BinaryUnitBuilder.bits: Information
     get() = Information(magnitude, binary)
+
+/**
+ * Creates an [Information] quantity in byte units using the current builder's IEC prefix.
+ *
+ * For example, `25.kibi.bytes` produces `25 KiB`.
+ */
+val BinaryUnitBuilder.bytes: Information
+    get() = Information(magnitude, Byte(binary))

@@ -242,6 +242,7 @@ public final class org/kisu/prefixes/Metric : java/lang/Enum, org/kisu/prefixes/
 	public static final field YOTTA Lorg/kisu/prefixes/Metric;
 	public static final field ZEPTO Lorg/kisu/prefixes/Metric;
 	public static final field ZETTA Lorg/kisu/prefixes/Metric;
+	public final fun asDecimal ()Lorg/kisu/prefixes/Decimal;
 	public synthetic fun compareTo (Lorg/kisu/prefixes/ExponentialPrefix;)I
 	public fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Metric;
 	public synthetic fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Prefix;
@@ -782,6 +783,7 @@ public abstract interface class org/kisu/units/builders/BinaryUnitBuilder {
 
 public final class org/kisu/units/builders/BinaryUnitBuilderKt {
 	public static final fun getBits (Lorg/kisu/units/builders/BinaryUnitBuilder;)Lorg/kisu/units/base/Information;
+	public static final fun getBytes (Lorg/kisu/units/builders/BinaryUnitBuilder;)Lorg/kisu/units/base/Information;
 }
 
 public final class org/kisu/units/builders/CentiBuilder : org/kisu/units/builders/MetricUnitBuilder {
@@ -832,7 +834,15 @@ public final class org/kisu/units/builders/DeciBuilder : org/kisu/units/builders
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/ExaBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public abstract interface class org/kisu/units/builders/DecimalUnitBuilder : org/kisu/units/builders/MetricUnitBuilder {
+}
+
+public final class org/kisu/units/builders/DecimalUnitBuilderKt {
+	public static final fun getBits (Lorg/kisu/units/builders/DecimalUnitBuilder;)Lorg/kisu/units/base/Information;
+	public static final fun getBytes (Lorg/kisu/units/builders/DecimalUnitBuilder;)Lorg/kisu/units/base/Information;
+}
+
+public final class org/kisu/units/builders/ExaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/ExaBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -896,7 +906,7 @@ public final class org/kisu/units/builders/GibiBuilder : org/kisu/units/builders
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/GigaBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/GigaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/GigaBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -944,7 +954,7 @@ public final class org/kisu/units/builders/KibiBuilder : org/kisu/units/builders
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/KiloBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/KiloBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/KiloBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -976,7 +986,7 @@ public final class org/kisu/units/builders/MebiBuilder : org/kisu/units/builders
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/MegaBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/MegaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/MegaBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -1003,7 +1013,6 @@ public final class org/kisu/units/builders/MetricUnitBuilderKt {
 	public static final fun getAmperesPerSquareMetre (Lorg/kisu/units/builders/MetricUnitBuilder;)Lorg/kisu/units/electromagnetic/ElectricCurrentDensity;
 	public static final fun getAmperesRadian (Lorg/kisu/units/builders/MetricUnitBuilder;)Lorg/kisu/units/electromagnetic/MagnetomotiveForce;
 	public static final fun getBecquerels (Lorg/kisu/units/builders/MetricUnitBuilder;)Lorg/kisu/units/special/Radioactivity;
-	public static final fun getBytes (Lorg/kisu/units/builders/MetricUnitBuilder;)Lorg/kisu/units/base/Information;
 	public static final fun getCandelas (Lorg/kisu/units/builders/MetricUnitBuilder;)Lorg/kisu/units/base/LuminousIntensity;
 	public static final fun getCandelasPerSquareMetre (Lorg/kisu/units/builders/MetricUnitBuilder;)Lorg/kisu/units/photometric/Luminance;
 	public static final fun getCelsius (Lorg/kisu/units/builders/MetricUnitBuilder;)Lorg/kisu/units/special/CelsiusTemperature;
@@ -1296,7 +1305,7 @@ public final class org/kisu/units/builders/PebiBuilder : org/kisu/units/builders
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/PetaBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/PetaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/PetaBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -1397,7 +1406,7 @@ public final class org/kisu/units/builders/QuectoBuilder : org/kisu/units/builde
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/QuettaBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/QuettaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/QuettaBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -1429,7 +1438,7 @@ public final class org/kisu/units/builders/RobiBuilder : org/kisu/units/builders
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/RonnaBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/RonnaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/RonnaBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -1477,7 +1486,7 @@ public final class org/kisu/units/builders/TebiBuilder : org/kisu/units/builders
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/TeraBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/TeraBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/TeraBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -1525,7 +1534,7 @@ public final class org/kisu/units/builders/YoctoBuilder : org/kisu/units/builder
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/YottaBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/YottaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/YottaBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
@@ -1573,7 +1582,7 @@ public final class org/kisu/units/builders/ZeptoBuilder : org/kisu/units/builder
 	public final synthetic fun unbox-impl ()Lorg/kisu/Magnitude;
 }
 
-public final class org/kisu/units/builders/ZettaBuilder : org/kisu/units/builders/MetricUnitBuilder {
+public final class org/kisu/units/builders/ZettaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
 	public static final synthetic fun box-impl (Lorg/kisu/Magnitude;)Lorg/kisu/units/builders/ZettaBuilder;
 	public static fun constructor-impl (Lorg/kisu/Magnitude;)Lorg/kisu/Magnitude;
 	public fun equals (Ljava/lang/Object;)Z
