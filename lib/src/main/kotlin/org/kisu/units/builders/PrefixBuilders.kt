@@ -90,62 +90,62 @@ value class HectoBuilder(override val magnitude: Magnitude) : MetricUnitBuilder 
 
 /** Builder for quantities with the 'kilo' (10³) metric prefix. */
 @JvmInline
-value class KiloBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class KiloBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.KILO
 }
 
 /** Builder for quantities with the 'mega' (10⁶) metric prefix. */
 @JvmInline
-value class MegaBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class MegaBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.MEGA
 }
 
 /** Builder for quantities with the 'giga' (10⁹) metric prefix. */
 @JvmInline
-value class GigaBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class GigaBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.GIGA
 }
 
 /** Builder for quantities with the 'tera' (10¹²) metric prefix. */
 @JvmInline
-value class TeraBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class TeraBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.TERA
 }
 
 /** Builder for quantities with the 'peta' (10¹⁵) metric prefix. */
 @JvmInline
-value class PetaBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class PetaBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.PETA
 }
 
 /** Builder for quantities with the 'exa' (10¹⁸) metric prefix. */
 @JvmInline
-value class ExaBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class ExaBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.EXA
 }
 
 /** Builder for quantities with the 'zetta' (10²¹) metric prefix. */
 @JvmInline
-value class ZettaBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class ZettaBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric
         get() = Metric.ZETTA
 }
 
 /** Builder for quantities with the 'yotta' (10²⁴) metric prefix. */
 @JvmInline
-value class YottaBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class YottaBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.YOTTA
 }
 
 /** Builder for quantities with the 'ronna' (10²⁷) metric prefix. */
 @JvmInline
-value class RonnaBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class RonnaBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.RONNA
 }
 
 /** Builder for quantities with the 'quetta' (10³⁰) metric prefix. */
 @JvmInline
-value class QuettaBuilder(override val magnitude: Magnitude) : MetricUnitBuilder {
+value class QuettaBuilder(override val magnitude: Magnitude) : DecimalUnitBuilder {
     override val metric: Metric get() = Metric.QUETTA
 }
 

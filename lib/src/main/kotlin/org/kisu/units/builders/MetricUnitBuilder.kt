@@ -184,16 +184,6 @@ val MetricUnitBuilder.amperes: Current get() = Current(magnitude, metric)
 val MetricUnitBuilder.becquerels: Radioactivity get() = Radioactivity(magnitude, metric)
 
 /**
- * Creates a [Byte] measure by applying the metric prefix scale to the magnitude.
- *
- * Example usage:
- * ```
- * val size = 10.mega.bytes // 10 * 10^6 bytes
- * ```
- */
-val MetricUnitBuilder.bytes: org.kisu.units.special.Bytes get() = org.kisu.units.special.Bytes(magnitude, metric)
-
-/**
  * Creates a [Luminance] measure by applying the metric prefix scale to the magnitude.
  *
  * Example usage:
