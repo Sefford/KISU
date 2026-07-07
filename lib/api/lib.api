@@ -276,28 +276,26 @@ public final class org/kisu/prefixes/PrefixKt {
 }
 
 public final class org/kisu/prefixes/Time : java/lang/Enum, org/kisu/prefixes/LinearPrefix, org/kisu/prefixes/primitives/Symbol, org/kisu/prefixes/primitives/System {
-	public static final field ATTO Lorg/kisu/prefixes/Time;
-	public static final field CENTI Lorg/kisu/prefixes/Time;
+	public static final field ATTOSECOND Lorg/kisu/prefixes/Time;
 	public static final field CENTURY Lorg/kisu/prefixes/Time;
 	public static final field DAY Lorg/kisu/prefixes/Time;
 	public static final field DECADE Lorg/kisu/prefixes/Time;
-	public static final field DECI Lorg/kisu/prefixes/Time;
-	public static final field FEMTO Lorg/kisu/prefixes/Time;
+	public static final field FEMTOSECOND Lorg/kisu/prefixes/Time;
 	public static final field HOUR Lorg/kisu/prefixes/Time;
-	public static final field MICRO Lorg/kisu/prefixes/Time;
+	public static final field MICROSECOND Lorg/kisu/prefixes/Time;
 	public static final field MILLENNIUM Lorg/kisu/prefixes/Time;
-	public static final field MILLI Lorg/kisu/prefixes/Time;
+	public static final field MILLISECOND Lorg/kisu/prefixes/Time;
 	public static final field MINUTE Lorg/kisu/prefixes/Time;
 	public static final field MONTH Lorg/kisu/prefixes/Time;
-	public static final field NANO Lorg/kisu/prefixes/Time;
-	public static final field PICO Lorg/kisu/prefixes/Time;
-	public static final field QUECTO Lorg/kisu/prefixes/Time;
-	public static final field RONTO Lorg/kisu/prefixes/Time;
+	public static final field NANOSECOND Lorg/kisu/prefixes/Time;
+	public static final field PICOSECOND Lorg/kisu/prefixes/Time;
+	public static final field QUECTOSECOND Lorg/kisu/prefixes/Time;
+	public static final field RONTOSECOND Lorg/kisu/prefixes/Time;
 	public static final field SECOND Lorg/kisu/prefixes/Time;
 	public static final field WEEK Lorg/kisu/prefixes/Time;
 	public static final field YEAR Lorg/kisu/prefixes/Time;
-	public static final field YOCTO Lorg/kisu/prefixes/Time;
-	public static final field ZEPTO Lorg/kisu/prefixes/Time;
+	public static final field YOCTOSECOND Lorg/kisu/prefixes/Time;
+	public static final field ZEPTOSECOND Lorg/kisu/prefixes/Time;
 	public synthetic fun compareTo (Lorg/kisu/prefixes/LinearPrefix;)I
 	public synthetic fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Prefix;
 	public fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Time;

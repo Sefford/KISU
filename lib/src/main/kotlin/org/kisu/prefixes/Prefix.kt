@@ -11,7 +11,7 @@ import org.kisu.prefixes.primitives.System
  * stores a direct multiplier such as `60` for minute. Unit expressions and prefix algebras resolve those coordinates
  * into concrete scale factors when a value is converted or normalized.
  *
- * Implementations typically come from enums such as [Metric], [Binary], [Decimal], [Time], or other domain-specific
+ * Implementations typically come from enums such as [Metric], [Binary], [Decimal], [HumanTime], or other domain-specific
  * systems.
  */
 interface Prefix<Self : Prefix<Self>> : Symbol, Comparable<Self> {

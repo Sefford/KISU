@@ -5,7 +5,7 @@ import io.kotest.property.arbitrary.element
 import org.kisu.prefixes.Binary
 import org.kisu.prefixes.Decimal
 import org.kisu.prefixes.Metric
-import org.kisu.prefixes.Time
+import org.kisu.prefixes.HumanTime
 import org.kisu.prefixes.primitives.EnumSystem
 import org.kisu.prefixes.primitives.ExponentialEnumSystem
 import org.kisu.prefixes.primitives.LinearEnumSystem
@@ -15,7 +15,7 @@ object Systems : Generator<EnumSystem<*>> {
         ExponentialEnumSystem(Metric::class),
         ExponentialEnumSystem(Binary::class),
         ExponentialEnumSystem(Decimal::class),
-        LinearEnumSystem(Time::class),
+        LinearEnumSystem(HumanTime::class),
     )
 
     override val generator: Arb<EnumSystem<*>> =

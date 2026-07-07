@@ -8,12 +8,17 @@ import org.kisu.prefixes.primitives.System
 import java.math.BigInteger
 
 /**
- * Human-readable time prefixes expressed as direct factors of one second.
+ * Human-friendly time prefixes expressed as fixed factors of one second.
  *
- * Unlike [Metric], these values are not exponents. They are linear multipliers:
- * `MINUTE.factor == 60`, `HOUR.factor == 3600`, and so on.
+ * Unlike [Metric], these values are not exponents. They are linear multipliers: [MINUTE] is 60 seconds, [HOUR] is
+ * 3,600 seconds, and so on. SI time quantities should continue to use metric prefixes with seconds; this prefix
+ * family is for readable elapsed durations.
  *
- * Month and year use fixed average Gregorian factors so time arithmetic remains deterministic.
+ * Subsecond values use explicit second-unit names such as [MILLISECOND], [NANOSECOND], and [QUECTOSECOND].
+ *
+ * Calendar-like values use explicit fixed-duration names: [MONTH] is always 30 days, [YEAR] is
+ * always 365 days, and decade, century, and millennium are fixed multiples of that 365-day year. They are elapsed
+ * durations, not calendar periods.
  */
 @Suppress("MagicNumber", "DELEGATED_MEMBER_HIDES_SUPERTYPE_OVERRIDE")
 enum class Time(
@@ -22,41 +27,35 @@ enum class Time(
 ) : LinearPrefix<Time>,
     System<Time> by LinearEnumSystem(Time::class),
     Symbol by Representation(symbol) {
-    /** 10⁻³⁰ = 0.000000000000000000000000000001 */
-    QUECTO(Magnitude(BigInteger("1"), 30), "q"),
+    /** 10^-30 seconds */
+    QUECTOSECOND(Magnitude(BigInteger.ONE, 30), "qs"),
 
-    /** 10⁻²⁷ = 0.000000000000000000000000001 */
-    RONTO(Magnitude(BigInteger("1"), 27), "r"),
+    /** 10^-27 seconds */
+    RONTOSECOND(Magnitude(BigInteger.ONE, 27), "rs"),
 
-    /** 10⁻²⁴ = 0.000000000000000000000001 */
-    YOCTO(Magnitude(BigInteger("1"), 24), "y"),
+    /** 10^-24 seconds */
+    YOCTOSECOND(Magnitude(BigInteger.ONE, 24), "ys"),
 
-    /** 10⁻²¹ = 0.000000000000000000001 */
-    ZEPTO(Magnitude(BigInteger("1"), 21), "z"),
+    /** 10^-21 seconds */
+    ZEPTOSECOND(Magnitude(BigInteger.ONE, 21), "zs"),
 
-    /** 10⁻¹⁸ = 0.000000000000000001 */
-    ATTO(Magnitude(BigInteger("1"), 18), "a"),
+    /** 10^-18 seconds */
+    ATTOSECOND(Magnitude(BigInteger.ONE, 18), "as"),
 
-    /** 10⁻¹⁵ = 0.000000000000001 */
-    FEMTO(Magnitude(BigInteger("1"), 15), "f"),
+    /** 10^-15 seconds */
+    FEMTOSECOND(Magnitude(BigInteger.ONE, 15), "fs"),
 
-    /** 10⁻¹² = 0.000000000001 */
-    PICO(Magnitude(BigInteger("1"), 12), "p"),
+    /** 10^-12 seconds */
+    PICOSECOND(Magnitude(BigInteger.ONE, 12), "ps"),
 
-    /** 10⁻⁹ = 0.000000001 */
-    NANO(Magnitude(BigInteger("1"), 9), "n"),
+    /** 10^-9 seconds */
+    NANOSECOND(Magnitude(BigInteger.ONE, 9), "ns"),
 
-    /** 10⁻⁶ = 0.000001 */
-    MICRO(Magnitude(BigInteger("1"), 6), "μ"),
+    /** 10^-6 seconds */
+    MICROSECOND(Magnitude(BigInteger.ONE, 6), "μs"),
 
-    /** 10⁻³ = 0.001 */
-    MILLI(Magnitude(BigInteger("1"), 3), "m"),
-
-    /** 10⁻² = 0.01 */
-    CENTI(Magnitude(BigInteger("1"), 2), "c"),
-
-    /** 10⁻¹ = 0.1 */
-    DECI(Magnitude(BigInteger("1"), 1), "d"),
+    /** 10^-3 seconds */
+    MILLISECOND(Magnitude(BigInteger.ONE, 3), "ms"),
 
     /** 1 second */
     SECOND(Magnitude.valueOf(1), "s"),
@@ -73,18 +72,18 @@ enum class Time(
     /** 604,800 seconds */
     WEEK(Magnitude.valueOf(604_800), "wk"),
 
-    /** Average Gregorian month = 2,629,800 seconds */
-    MONTH(Magnitude.valueOf(2_629_800), "mo"),
+    /** Fixed 30-day month = 2,592,000 seconds */
+    MONTH(Magnitude.valueOf(2_592_000), "month"),
 
-    /** Average Gregorian year = 31,557,600 seconds */
-    YEAR(Magnitude.valueOf(31_557_600), "yr"),
+    /** Fixed 365-day year = 31,536,000 seconds */
+    YEAR(Magnitude.valueOf(31_536_000), "year"),
 
-    /** 10 average Gregorian years = 315,576,000 seconds */
-    DECADE(Magnitude.valueOf(315_576_000), "dec"),
+    /** Fixed 10-year decade using [YEAR] = 315,360,000 seconds */
+    DECADE(Magnitude.valueOf(315_360_000), "decade"),
 
-    /** 100 average Gregorian years = 3,155,760,000 seconds */
-    CENTURY(Magnitude.valueOf(3_155_760_000), "century"),
+    /** Fixed 100-year century using [YEAR] = 3,153,600,000 seconds */
+    CENTURY(Magnitude.valueOf(3_153_600_000), "century"),
 
-    /** 1,000 average Gregorian years = 31,557,600,000 seconds */
-    MILLENNIUM(Magnitude.valueOf(31_557_600_000), "millennium")
+    /** Fixed 1,000-year millennium using [YEAR] = 31,536,000,000 seconds */
+    MILLENNIUM(Magnitude.valueOf(31_536_000_000), "millenium"),
 }
