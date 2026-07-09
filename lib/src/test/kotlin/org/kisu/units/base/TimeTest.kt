@@ -178,6 +178,18 @@ class TimeTest : StringSpec({
         Human().all.map(TimeUnit::symbol) shouldBe HumanTime.entries.map(HumanTime::symbol)
     }
 
+    "exposes TimeUnit scalar factors" {
+        Seconds(Metric.MILLI).factors.single().symbol shouldBe "ms"
+        Human(HumanTime.HOUR).factors.single().symbol shouldBe "h"
+    }
+
+    "finds TimeUnit expressions within their selected scale" {
+        Seconds().find(Magnitude(1_500)) shouldBe Seconds(Metric.KILO)
+        Seconds().find(Magnitude.ZERO) shouldBe Seconds(Metric.QUECTO)
+        Human().find(Magnitude(3_661)) shouldBe Human(HumanTime.HOUR)
+        Human().find(Magnitude.ZERO) shouldBe Human(HumanTime.QUECTOSECOND)
+    }
+
     "decomposes each TimeUnit within its own scale" {
         Seconds().decompose(Magnitude(1_000)) shouldBe
             listOf(Magnitude.ONE to Seconds(Metric.KILO))
