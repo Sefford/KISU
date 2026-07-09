@@ -50,17 +50,32 @@ Use `to(...)` when you need a specific target expression. The target expression 
 ```kotlin
 import org.kisu.prefixes.Metric
 import org.kisu.units.base.Metre
-import org.kisu.units.base.Second
+import org.kisu.units.base.Seconds
 import org.kisu.units.builders.*
 
 val distance = 3.kilo.metres
 val duration = 2.seconds
 
 val metres = distance.to(Metre(Metric.BASE))
-val millisecondDuration = duration.to(Second(Metric.MILLI))
+val millisecondDuration = duration.to(Seconds(Metric.MILLI))
 
 println(metres.representation)              // 3000 m
 println(millisecondDuration.representation) // 2000 ms
+```
+
+`Time` supports both SI-style seconds and fixed human-readable durations. Use `Seconds(...)` when you want an SI-prefixed
+time expression, and use the human-time builders for exact elapsed durations such as minutes, hours, and days.
+
+```kotlin
+import org.kisu.prefixes.Metric
+import org.kisu.units.base.Seconds
+import org.kisu.units.builders.*
+
+val duration = 3_600.seconds
+
+println(duration.to(Seconds(Metric.MILLI)).representation) // 3600000 ms
+println(duration.human.representation)                     // 1 h
+println(2.hours.si.representation)                         // 7200 s
 ```
 
 For compound expressions, build the target expression with the same expression algebra used by the unit catalog:
