@@ -143,4 +143,30 @@ enum class Metric(
                 "through QUETTA.",
         )
     }
+
+    /**
+     * Converts this SI prefix to the equivalent [HumanTime] unit.
+     *
+     * Human time has direct equivalents for the standard thousand-step subsecond units and the unprefixed second.
+     * Other SI prefixes remain valid for seconds but do not have a named human-time counterpart.
+     *
+     * @throws IllegalArgumentException if this prefix has no human-time equivalent.
+     */
+    fun asHumanTime(): HumanTime = when (this) {
+        QUECTO -> HumanTime.QUECTOSECOND
+        RONTO -> HumanTime.RONTOSECOND
+        YOCTO -> HumanTime.YOCTOSECOND
+        ZEPTO -> HumanTime.ZEPTOSECOND
+        ATTO -> HumanTime.ATTOSECOND
+        FEMTO -> HumanTime.FEMTOSECOND
+        PICO -> HumanTime.PICOSECOND
+        NANO -> HumanTime.NANOSECOND
+        MICRO -> HumanTime.MICROSECOND
+        MILLI -> HumanTime.MILLISECOND
+        BASE -> HumanTime.SECOND
+        else -> throw IllegalArgumentException(
+            "Metric prefix $this has no human-time equivalent. Use BASE or a thousand-step prefix from QUECTO " +
+                "through MILLI.",
+        )
+    }
 }

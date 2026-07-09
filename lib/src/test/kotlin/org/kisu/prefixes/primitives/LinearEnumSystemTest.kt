@@ -6,12 +6,12 @@ import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.element
 import io.kotest.property.checkAll
-import org.kisu.prefixes.Time
+import org.kisu.prefixes.HumanTime
 import org.kisu.test.fakes.InvalidPrefix
 
 class LinearEnumSystemTest : StringSpec({
     val systems = Arb.element<LinearEnumSystem<*>>(
-        LinearEnumSystem(Time::class),
+        LinearEnumSystem(HumanTime::class),
     )
 
     "uses the unit-factor prefix as canonical" {

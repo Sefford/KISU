@@ -40,10 +40,10 @@ interface LinearPrefix<Self : LinearPrefix<Self>> : Prefix<Self> {
  *
  * For example:
  * ```
- * Time.MINUTE * Time.MINUTE // (Time.HOUR, 1)
+ * HumanTime.MINUTE * HumanTime.MINUTE // (HumanTime.HOUR, 1)
  * ```
  * ```
- * Time.MILLENNIUM * Time.MINUTE // (Time.MILLENNIUM, 60)
+ * HumanTime.MILLENNIUM * HumanTime.MINUTE // (HumanTime.MILLENNIUM, 60)
  * ```
  *
  * @param other The prefix to multiply with.
@@ -65,10 +65,10 @@ operator fun <P> P.times(other: P): Pair<P, Magnitude> where P : LinearPrefix<P>
  *
  * For example:
  * ```
- * Time.HOUR / Time.MINUTE // (Time.MINUTE, 1)
+ * HumanTime.HOUR / HumanTime.MINUTE // (HumanTime.MINUTE, 1)
  * ```
  * ```
- * Time.QUECTO / Time.MINUTE // (Time.QUECTO, 1 / 60)
+ * HumanTime.QUECTOSECOND / HumanTime.MINUTE // (HumanTime.QUECTOSECOND, 1 / 60)
  * ```
  * @param other The prefix to divide by.
  * @return A pair of (prefix, remainder) for the resulting factor.
