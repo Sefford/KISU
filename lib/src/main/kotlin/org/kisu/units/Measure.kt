@@ -118,9 +118,16 @@ abstract class Measure<A, Self : Measure<A, Self>> protected constructor(
         if (expression == other) {
             return self
         }
-        val conversion = expression.to(other)
-        return create(magnitude * conversion, other)
+        return create(convert(magnitude, expression, other), other)
     }
+
+    /**
+     * Converts [magnitude] between two expressions.
+     *
+     * Subclasses may override this when their unit factors need a more numerically stable operation order.
+     */
+    protected open fun convert(magnitude: Magnitude, from: A, to: A): Magnitude =
+        magnitude * from.to(to)
 
     /**
      * Adds two measures of the same type.

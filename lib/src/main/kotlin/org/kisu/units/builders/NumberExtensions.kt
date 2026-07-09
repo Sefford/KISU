@@ -3,6 +3,7 @@ package org.kisu.units.builders
 import org.kisu.magnitude
 import org.kisu.prefixes.Binary
 import org.kisu.prefixes.Decimal
+import org.kisu.prefixes.HumanTime
 import org.kisu.prefixes.Metric
 import org.kisu.units.base.Amount
 import org.kisu.units.base.Byte
@@ -665,6 +666,63 @@ val Number.reciprocalPascals: Compressibility get() = Compressibility(magnitude)
  * the SI unit for time.
  */
 val Number.seconds: Time get() = Time(magnitude)
+
+/** Creates a human-scale [Time] measured in quectoseconds. */
+val Number.quectoseconds: Time get() = Time(magnitude, HumanTime.QUECTOSECOND)
+
+/** Creates a human-scale [Time] measured in rontoseconds. */
+val Number.rontoseconds: Time get() = Time(magnitude, HumanTime.RONTOSECOND)
+
+/** Creates a human-scale [Time] measured in yoctoseconds. */
+val Number.yoctoseconds: Time get() = Time(magnitude, HumanTime.YOCTOSECOND)
+
+/** Creates a human-scale [Time] measured in zeptoseconds. */
+val Number.zeptoseconds: Time get() = Time(magnitude, HumanTime.ZEPTOSECOND)
+
+/** Creates a human-scale [Time] measured in attoseconds. */
+val Number.attoseconds: Time get() = Time(magnitude, HumanTime.ATTOSECOND)
+
+/** Creates a human-scale [Time] measured in femtoseconds. */
+val Number.femtoseconds: Time get() = Time(magnitude, HumanTime.FEMTOSECOND)
+
+/** Creates a human-scale [Time] measured in picoseconds. */
+val Number.picoseconds: Time get() = Time(magnitude, HumanTime.PICOSECOND)
+
+/** Creates a human-scale [Time] measured in nanoseconds. */
+val Number.nanoseconds: Time get() = Time(magnitude, HumanTime.NANOSECOND)
+
+/** Creates a human-scale [Time] measured in microseconds. */
+val Number.microseconds: Time get() = Time(magnitude, HumanTime.MICROSECOND)
+
+/** Creates a human-scale [Time] measured in milliseconds. */
+val Number.milliseconds: Time get() = Time(magnitude, HumanTime.MILLISECOND)
+
+/** Creates a human-scale [Time] measured in minutes. */
+val Number.minutes: Time get() = Time(magnitude, HumanTime.MINUTE)
+
+/** Creates a human-scale [Time] measured in hours. */
+val Number.hours: Time get() = Time(magnitude, HumanTime.HOUR)
+
+/** Creates a human-scale [Time] measured in fixed 24-hour days. */
+val Number.days: Time get() = Time(magnitude, HumanTime.DAY)
+
+/** Creates a human-scale [Time] measured in fixed seven-day weeks. */
+val Number.weeks: Time get() = Time(magnitude, HumanTime.WEEK)
+
+/** Creates a human-scale [Time] measured in fixed 30-day months. */
+val Number.months: Time get() = Time(magnitude, HumanTime.MONTH)
+
+/** Creates a human-scale [Time] measured in fixed 365-day years. */
+val Number.years: Time get() = Time(magnitude, HumanTime.YEAR)
+
+/** Creates a human-scale [Time] measured in fixed ten-year decades. */
+val Number.decades: Time get() = Time(magnitude, HumanTime.DECADE)
+
+/** Creates a human-scale [Time] measured in fixed 100-year centuries. */
+val Number.centuries: Time get() = Time(magnitude, HumanTime.CENTURY)
+
+/** Creates a human-scale [Time] measured in fixed 1,000-year millennia. */
+val Number.millennia: Time get() = Time(magnitude, HumanTime.MILLENNIUM)
 
 /**
  * Creates a [Conductance] from this [Number] representing a conductance in siemens,
