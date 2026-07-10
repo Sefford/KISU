@@ -191,6 +191,47 @@ public final class org/kisu/prefixes/ExponentialPrefixKt {
 	public static final fun plus (Lorg/kisu/prefixes/ExponentialPrefix;Lorg/kisu/prefixes/ExponentialPrefix;)Lkotlin/Pair;
 }
 
+public final class org/kisu/prefixes/HumanTime : java/lang/Enum, org/kisu/prefixes/LinearPrefix, org/kisu/prefixes/primitives/Symbol, org/kisu/prefixes/primitives/System {
+	public static final field ATTOSECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field CENTURY Lorg/kisu/prefixes/HumanTime;
+	public static final field DAY Lorg/kisu/prefixes/HumanTime;
+	public static final field DECADE Lorg/kisu/prefixes/HumanTime;
+	public static final field FEMTOSECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field HOUR Lorg/kisu/prefixes/HumanTime;
+	public static final field MICROSECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field MILLENNIUM Lorg/kisu/prefixes/HumanTime;
+	public static final field MILLISECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field MINUTE Lorg/kisu/prefixes/HumanTime;
+	public static final field MONTH Lorg/kisu/prefixes/HumanTime;
+	public static final field NANOSECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field PICOSECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field QUECTOSECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field RONTOSECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field SECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field WEEK Lorg/kisu/prefixes/HumanTime;
+	public static final field YEAR Lorg/kisu/prefixes/HumanTime;
+	public static final field YOCTOSECOND Lorg/kisu/prefixes/HumanTime;
+	public static final field ZEPTOSECOND Lorg/kisu/prefixes/HumanTime;
+	public synthetic fun compareTo (Lorg/kisu/prefixes/LinearPrefix;)I
+	public fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/HumanTime;
+	public synthetic fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Prefix;
+	public fun getAll ()Ljava/util/List;
+	public fun getCanonical ()Lorg/kisu/prefixes/HumanTime;
+	public synthetic fun getCanonical ()Lorg/kisu/prefixes/Prefix;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public fun getFactor ()Lorg/kisu/Magnitude;
+	public fun getLargest ()Lorg/kisu/prefixes/HumanTime;
+	public synthetic fun getLargest ()Lorg/kisu/prefixes/Prefix;
+	public fun getSmallest ()Lorg/kisu/prefixes/HumanTime;
+	public synthetic fun getSmallest ()Lorg/kisu/prefixes/Prefix;
+	public fun getSymbol ()Ljava/lang/String;
+	public fun sortWith (Lorg/kisu/prefixes/HumanTime;)Lkotlin/Pair;
+	public synthetic fun sortWith (Lorg/kisu/prefixes/Prefix;)Lkotlin/Pair;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lorg/kisu/prefixes/HumanTime;
+	public static fun values ()[Lorg/kisu/prefixes/HumanTime;
+}
+
 public abstract interface class org/kisu/prefixes/InformationPrefix : org/kisu/prefixes/ExponentialPrefix, org/kisu/prefixes/primitives/System {
 	public abstract fun getRadix ()Lorg/kisu/Magnitude;
 }
@@ -243,6 +284,7 @@ public final class org/kisu/prefixes/Metric : java/lang/Enum, org/kisu/prefixes/
 	public static final field ZEPTO Lorg/kisu/prefixes/Metric;
 	public static final field ZETTA Lorg/kisu/prefixes/Metric;
 	public final fun asDecimal ()Lorg/kisu/prefixes/Decimal;
+	public final fun asHumanTime ()Lorg/kisu/prefixes/HumanTime;
 	public synthetic fun compareTo (Lorg/kisu/prefixes/ExponentialPrefix;)I
 	public fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Metric;
 	public synthetic fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Prefix;
@@ -273,49 +315,6 @@ public final class org/kisu/prefixes/Prefix$DefaultImpls {
 
 public final class org/kisu/prefixes/PrefixKt {
 	public static final fun isCanonical (Lorg/kisu/prefixes/Prefix;)Z
-}
-
-public final class org/kisu/prefixes/Time : java/lang/Enum, org/kisu/prefixes/LinearPrefix, org/kisu/prefixes/primitives/Symbol, org/kisu/prefixes/primitives/System {
-	public static final field ATTO Lorg/kisu/prefixes/Time;
-	public static final field CENTI Lorg/kisu/prefixes/Time;
-	public static final field CENTURY Lorg/kisu/prefixes/Time;
-	public static final field DAY Lorg/kisu/prefixes/Time;
-	public static final field DECADE Lorg/kisu/prefixes/Time;
-	public static final field DECI Lorg/kisu/prefixes/Time;
-	public static final field FEMTO Lorg/kisu/prefixes/Time;
-	public static final field HOUR Lorg/kisu/prefixes/Time;
-	public static final field MICRO Lorg/kisu/prefixes/Time;
-	public static final field MILLENNIUM Lorg/kisu/prefixes/Time;
-	public static final field MILLI Lorg/kisu/prefixes/Time;
-	public static final field MINUTE Lorg/kisu/prefixes/Time;
-	public static final field MONTH Lorg/kisu/prefixes/Time;
-	public static final field NANO Lorg/kisu/prefixes/Time;
-	public static final field PICO Lorg/kisu/prefixes/Time;
-	public static final field QUECTO Lorg/kisu/prefixes/Time;
-	public static final field RONTO Lorg/kisu/prefixes/Time;
-	public static final field SECOND Lorg/kisu/prefixes/Time;
-	public static final field WEEK Lorg/kisu/prefixes/Time;
-	public static final field YEAR Lorg/kisu/prefixes/Time;
-	public static final field YOCTO Lorg/kisu/prefixes/Time;
-	public static final field ZEPTO Lorg/kisu/prefixes/Time;
-	public synthetic fun compareTo (Lorg/kisu/prefixes/LinearPrefix;)I
-	public synthetic fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Prefix;
-	public fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Time;
-	public fun getAll ()Ljava/util/List;
-	public synthetic fun getCanonical ()Lorg/kisu/prefixes/Prefix;
-	public fun getCanonical ()Lorg/kisu/prefixes/Time;
-	public static fun getEntries ()Lkotlin/enums/EnumEntries;
-	public fun getFactor ()Lorg/kisu/Magnitude;
-	public synthetic fun getLargest ()Lorg/kisu/prefixes/Prefix;
-	public fun getLargest ()Lorg/kisu/prefixes/Time;
-	public synthetic fun getSmallest ()Lorg/kisu/prefixes/Prefix;
-	public fun getSmallest ()Lorg/kisu/prefixes/Time;
-	public fun getSymbol ()Ljava/lang/String;
-	public synthetic fun sortWith (Lorg/kisu/prefixes/Prefix;)Lkotlin/Pair;
-	public fun sortWith (Lorg/kisu/prefixes/Time;)Lkotlin/Pair;
-	public fun toString ()Ljava/lang/String;
-	public static fun valueOf (Ljava/lang/String;)Lorg/kisu/prefixes/Time;
-	public static fun values ()[Lorg/kisu/prefixes/Time;
 }
 
 public abstract interface class org/kisu/prefixes/algebra/Algebra {
@@ -422,6 +421,7 @@ public abstract class org/kisu/units/Measure : java/lang/Comparable {
 	public final fun component1 ()Lorg/kisu/Magnitude;
 	public final fun component2 ()Lorg/kisu/units/representation/Expression;
 	public final fun component3 ()Ljava/lang/String;
+	protected fun convert (Lorg/kisu/Magnitude;Lorg/kisu/units/representation/Expression;Lorg/kisu/units/representation/Expression;)Lorg/kisu/Magnitude;
 	public final fun div (Ljava/lang/Number;)Lorg/kisu/units/Measure;
 	public final fun div (Lorg/kisu/Magnitude;)Lorg/kisu/units/Measure;
 	public fun equals (Ljava/lang/Object;)Z
@@ -526,6 +526,17 @@ public final class org/kisu/units/base/Current : org/kisu/units/Measure {
 	public final fun times (Lorg/kisu/units/special/MagneticFlux;)Lorg/kisu/units/special/Energy;
 	public final fun times (Lorg/kisu/units/special/PlaneAngle;)Lorg/kisu/units/electromagnetic/MagnetomotiveForce;
 	public final fun times (Lorg/kisu/units/special/Resistance;)Lorg/kisu/units/special/ElectricPotential;
+}
+
+public final class org/kisu/units/base/Human : org/kisu/units/base/TimeUnit {
+	public fun <init> ()V
+	public fun <init> (Lorg/kisu/prefixes/HumanTime;)V
+	public synthetic fun <init> (Lorg/kisu/prefixes/HumanTime;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun decompose (Lorg/kisu/Magnitude;)Ljava/util/List;
+	public fun getAll ()Ljava/util/List;
+	public synthetic fun getCanonical ()Lorg/kisu/prefixes/Prefix;
+	public fun getCanonical ()Lorg/kisu/units/base/TimeUnit;
+	public final fun getUnit ()Lorg/kisu/prefixes/HumanTime;
 }
 
 public final class org/kisu/units/base/Information : org/kisu/units/Measure {
@@ -665,6 +676,7 @@ public final class org/kisu/units/base/Second : org/kisu/units/representation/Sc
 	public static final field Companion Lorg/kisu/units/base/Second$Companion;
 	public fun <init> (Lorg/kisu/prefixes/Metric;)V
 	public synthetic fun <init> (Lorg/kisu/prefixes/Metric;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getPrefix ()Lorg/kisu/prefixes/Metric;
 }
 
 public final class org/kisu/units/base/Second$Companion {
@@ -715,6 +727,17 @@ public final class org/kisu/units/base/SecondSquared : org/kisu/units/representa
 public final class org/kisu/units/base/SecondSquared$Companion {
 }
 
+public final class org/kisu/units/base/Seconds : org/kisu/units/base/TimeUnit {
+	public fun <init> ()V
+	public fun <init> (Lorg/kisu/prefixes/Metric;)V
+	public synthetic fun <init> (Lorg/kisu/prefixes/Metric;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun decompose (Lorg/kisu/Magnitude;)Ljava/util/List;
+	public fun getAll ()Ljava/util/List;
+	public synthetic fun getCanonical ()Lorg/kisu/prefixes/Prefix;
+	public fun getCanonical ()Lorg/kisu/units/base/TimeUnit;
+	public final fun getPrefix ()Lorg/kisu/prefixes/Metric;
+}
+
 public final class org/kisu/units/base/Temperature : org/kisu/units/Measure {
 	public final fun div (Lorg/kisu/units/base/Length;)Lorg/kisu/units/thermodynamics/TemperatureGradient;
 	public final fun div (Lorg/kisu/units/special/Power;)Lorg/kisu/units/thermodynamics/ThermalResistance;
@@ -728,8 +751,12 @@ public final class org/kisu/units/base/Temperature : org/kisu/units/Measure {
 }
 
 public final class org/kisu/units/base/Time : org/kisu/units/Measure {
+	public static final field Companion Lorg/kisu/units/base/Time$Companion;
+	public synthetic fun convert (Lorg/kisu/Magnitude;Lorg/kisu/units/representation/Expression;Lorg/kisu/units/representation/Expression;)Lorg/kisu/Magnitude;
 	public final fun getActivity ()Lorg/kisu/units/special/Radioactivity;
 	public final fun getFrequency ()Lorg/kisu/units/special/Frequency;
+	public final fun getHuman ()Lorg/kisu/units/base/Time;
+	public final fun getSi ()Lorg/kisu/units/base/Time;
 	public final fun times (Lorg/kisu/units/base/Current;)Lorg/kisu/units/special/ElectricCharge;
 	public final fun times (Lorg/kisu/units/chemistry/CatalyticEfficiency;)Lorg/kisu/units/chemistry/MolarVolume;
 	public final fun times (Lorg/kisu/units/kinematics/FrequencyDrift;)Lorg/kisu/units/special/Frequency;
@@ -758,6 +785,27 @@ public final class org/kisu/units/base/Time : org/kisu/units/Measure {
 	public final fun times (Lorg/kisu/units/special/Illuminance;)Lorg/kisu/units/photometric/Exposure;
 	public final fun times (Lorg/kisu/units/special/LuminousFlux;)Lorg/kisu/units/photometric/LuminousEnergy;
 	public final fun times (Lorg/kisu/units/special/Pressure;)Lorg/kisu/units/mechanics/DynamicViscosity;
+}
+
+public final class org/kisu/units/base/Time$Companion {
+	public final fun invoke (Lorg/kisu/Magnitude;)Lorg/kisu/units/base/Time;
+	public final fun invoke (Lorg/kisu/Magnitude;Lorg/kisu/prefixes/HumanTime;)Lorg/kisu/units/base/Time;
+	public final fun invoke (Lorg/kisu/Magnitude;Lorg/kisu/prefixes/Metric;)Lorg/kisu/units/base/Time;
+	public final fun invoke (Lorg/kisu/Magnitude;Lorg/kisu/units/base/TimeUnit;)Lorg/kisu/units/base/Time;
+}
+
+public abstract class org/kisu/units/base/TimeUnit : org/kisu/units/representation/Expression {
+	public synthetic fun find (Lorg/kisu/Magnitude;)Lorg/kisu/prefixes/Prefix;
+	public fun find (Lorg/kisu/Magnitude;)Lorg/kisu/units/base/TimeUnit;
+	public fun getFactor ()Lorg/kisu/Magnitude;
+	public fun getFactors ()Ljava/util/Set;
+	public synthetic fun getLargest ()Lorg/kisu/prefixes/Prefix;
+	public fun getLargest ()Lorg/kisu/units/base/TimeUnit;
+	public synthetic fun getSmallest ()Lorg/kisu/prefixes/Prefix;
+	public fun getSmallest ()Lorg/kisu/units/base/TimeUnit;
+	public fun getSymbol ()Ljava/lang/String;
+	public synthetic fun to (Lorg/kisu/prefixes/Prefix;)Lorg/kisu/Magnitude;
+	public fun to (Lorg/kisu/units/base/TimeUnit;)Lorg/kisu/Magnitude;
 }
 
 public final class org/kisu/units/builders/AttoBuilder : org/kisu/units/builders/MetricUnitBuilder {
@@ -1176,12 +1224,14 @@ public final class org/kisu/units/builders/NumberExtensionsKt {
 	public static final fun getAmperesPerMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/Magnetization;
 	public static final fun getAmperesPerSquareMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/ElectricCurrentDensity;
 	public static final fun getAmperesRadian (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/MagnetomotiveForce;
+	public static final fun getAttoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getBecquerels (Ljava/lang/Number;)Lorg/kisu/units/special/Radioactivity;
 	public static final fun getBits (Ljava/lang/Number;)Lorg/kisu/units/base/Information;
 	public static final fun getBytes (Ljava/lang/Number;)Lorg/kisu/units/base/Information;
 	public static final fun getCandelas (Ljava/lang/Number;)Lorg/kisu/units/base/LuminousIntensity;
 	public static final fun getCandelasPerSquareMetre (Ljava/lang/Number;)Lorg/kisu/units/photometric/Luminance;
 	public static final fun getCelsius (Ljava/lang/Number;)Lorg/kisu/units/special/CelsiusTemperature;
+	public static final fun getCenturies (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getCoulombs (Ljava/lang/Number;)Lorg/kisu/units/special/ElectricCharge;
 	public static final fun getCoulombsPerCubicMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/ElectricChargeDensity;
 	public static final fun getCoulombsPerKilogram (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/Exposure;
@@ -1192,8 +1242,11 @@ public final class org/kisu/units/builders/NumberExtensionsKt {
 	public static final fun getCubicMetresPerMole (Ljava/lang/Number;)Lorg/kisu/units/chemistry/MolarVolume;
 	public static final fun getCubicMetresPerMoleSecond (Ljava/lang/Number;)Lorg/kisu/units/chemistry/CatalyticEfficiency;
 	public static final fun getCubicMetresPerSecond (Ljava/lang/Number;)Lorg/kisu/units/kinematics/VolumetricFlow;
+	public static final fun getDays (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getDecades (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getFarads (Ljava/lang/Number;)Lorg/kisu/units/special/Capacitance;
 	public static final fun getFaradsPerMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/Permittivity;
+	public static final fun getFemtoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getGrams (Ljava/lang/Number;)Lorg/kisu/units/base/Mass;
 	public static final fun getGramsMetreSecondCubed (Ljava/lang/Number;)Lorg/kisu/units/kinematics/Yank;
 	public static final fun getGramsPerCubicMetre (Ljava/lang/Number;)Lorg/kisu/units/mechanics/Density;
@@ -1208,6 +1261,7 @@ public final class org/kisu/units/builders/NumberExtensionsKt {
 	public static final fun getHenriesPerMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/MagneticPermittivity;
 	public static final fun getHertz (Ljava/lang/Number;)Lorg/kisu/units/special/Frequency;
 	public static final fun getHertzPerSecond (Ljava/lang/Number;)Lorg/kisu/units/kinematics/FrequencyDrift;
+	public static final fun getHours (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getJoules (Ljava/lang/Number;)Lorg/kisu/units/special/Energy;
 	public static final fun getJoulesPerCubicMetre (Ljava/lang/Number;)Lorg/kisu/units/mechanics/EnergyDensity;
 	public static final fun getJoulesPerKelvin (Ljava/lang/Number;)Lorg/kisu/units/thermodynamics/HeatCapacity;
@@ -1237,9 +1291,15 @@ public final class org/kisu/units/builders/NumberExtensionsKt {
 	public static final fun getMetresPerSecondFourth (Ljava/lang/Number;)Lorg/kisu/units/kinematics/linear/Snap;
 	public static final fun getMetresPerSecondSixth (Ljava/lang/Number;)Lorg/kisu/units/kinematics/linear/Pop;
 	public static final fun getMetresPerSecondSquared (Ljava/lang/Number;)Lorg/kisu/units/kinematics/linear/Acceleration;
+	public static final fun getMicroseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getMillennia (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getMilliseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getMinutes (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getMoles (Ljava/lang/Number;)Lorg/kisu/units/base/Amount;
 	public static final fun getMolesPerCubicMetre (Ljava/lang/Number;)Lorg/kisu/units/chemistry/Molarity;
 	public static final fun getMolesPerKilogram (Ljava/lang/Number;)Lorg/kisu/units/chemistry/Molality;
+	public static final fun getMonths (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getNanoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getNewtons (Ljava/lang/Number;)Lorg/kisu/units/special/Force;
 	public static final fun getNewtonsMetreSecond (Ljava/lang/Number;)Lorg/kisu/units/mechanics/AngularMomentum;
 	public static final fun getNewtonsMetreSecondPerKilogram (Ljava/lang/Number;)Lorg/kisu/units/mechanics/SpecificAngularMomentum;
@@ -1249,6 +1309,8 @@ public final class org/kisu/units/builders/NumberExtensionsKt {
 	public static final fun getOhmsMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/Resistivity;
 	public static final fun getPascals (Ljava/lang/Number;)Lorg/kisu/units/special/Pressure;
 	public static final fun getPascalsSecond (Ljava/lang/Number;)Lorg/kisu/units/mechanics/DynamicViscosity;
+	public static final fun getPicoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getQuectoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getRadians (Ljava/lang/Number;)Lorg/kisu/units/special/PlaneAngle;
 	public static final fun getRadiansPerSecond (Ljava/lang/Number;)Lorg/kisu/units/kinematics/angular/Velocity;
 	public static final fun getRadiansPerSecondCubed (Ljava/lang/Number;)Lorg/kisu/units/kinematics/angular/Jerk;
@@ -1262,6 +1324,7 @@ public final class org/kisu/units/builders/NumberExtensionsKt {
 	public static final fun getReciprocalMetres (Ljava/lang/Number;)Lorg/kisu/units/mechanics/WaveNumber;
 	public static final fun getReciprocalMoles (Ljava/lang/Number;)Lorg/kisu/units/chemistry/ReciprocalAmount;
 	public static final fun getReciprocalPascals (Ljava/lang/Number;)Lorg/kisu/units/mechanics/Compressibility;
+	public static final fun getRontoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getSeconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getSiemens (Ljava/lang/Number;)Lorg/kisu/units/special/Conductance;
 	public static final fun getSiemensPerMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/ElectricConductivity;
@@ -1287,6 +1350,10 @@ public final class org/kisu/units/builders/NumberExtensionsKt {
 	public static final fun getWebers (Ljava/lang/Number;)Lorg/kisu/units/special/MagneticFlux;
 	public static final fun getWebersMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/MagneticMoment;
 	public static final fun getWebersPerMetre (Ljava/lang/Number;)Lorg/kisu/units/electromagnetic/MagneticVectorPotential;
+	public static final fun getWeeks (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getYears (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getYoctoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
+	public static final fun getZeptoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 }
 
 public final class org/kisu/units/builders/PebiBuilder : org/kisu/units/builders/BinaryUnitBuilder {

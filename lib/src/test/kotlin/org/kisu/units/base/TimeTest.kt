@@ -6,12 +6,36 @@ import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.positiveLong
 import io.kotest.property.checkAll
+import org.kisu.Magnitude
 import org.kisu.magnitude
+import org.kisu.prefixes.HumanTime
+import org.kisu.prefixes.Metric
 import org.kisu.test.generators.MetricBuilders
 import org.kisu.test.generators.Metrics
+import org.kisu.test.generators.Times
 import org.kisu.test.generators.magnitude
 import org.kisu.test.generators.reciprocalMagnitude
+import org.kisu.units.builders.attoseconds
+import org.kisu.units.builders.centuries
+import org.kisu.units.builders.days
+import org.kisu.units.builders.decades
+import org.kisu.units.builders.femtoseconds
+import org.kisu.units.builders.hours
+import org.kisu.units.builders.microseconds
+import org.kisu.units.builders.millennia
+import org.kisu.units.builders.milli
+import org.kisu.units.builders.milliseconds
+import org.kisu.units.builders.minutes
+import org.kisu.units.builders.months
+import org.kisu.units.builders.nanoseconds
+import org.kisu.units.builders.picoseconds
+import org.kisu.units.builders.quectoseconds
+import org.kisu.units.builders.rontoseconds
 import org.kisu.units.builders.seconds
+import org.kisu.units.builders.weeks
+import org.kisu.units.builders.years
+import org.kisu.units.builders.yoctoseconds
+import org.kisu.units.builders.zeptoseconds
 import org.kisu.units.chemistry.CatalyticEfficiency
 import org.kisu.units.chemistry.MolarVolume
 import org.kisu.units.kinematics.FrequencyDrift
@@ -59,7 +83,7 @@ class TimeTest : StringSpec({
         checkAll(Arb.positiveLong(), MetricBuilders.generator) { magnitude, builder ->
             magnitude.builder().seconds.should { (amount, expression, symbol) ->
                 amount shouldBe magnitude.magnitude
-                expression shouldBe Second(magnitude.builder().metric)
+                expression shouldBe Seconds(magnitude.builder().metric)
                 symbol shouldBe Second.UNIT.toString()
             }
         }
@@ -69,17 +93,123 @@ class TimeTest : StringSpec({
         checkAll(Arb.magnitude()) { magnitude ->
             magnitude.seconds.should { (amount, expression, symbol) ->
                 amount shouldBe magnitude
-                expression shouldBe Second()
+                expression shouldBe Seconds()
                 symbol shouldBe Second.UNIT.toString()
             }
         }
+    }
+
+    "creates Time with human-readable units" {
+        checkAll(Arb.magnitude(), Times.generator) { magnitude, unit ->
+            Time(magnitude, unit).should { (amount, expression, symbol) ->
+                amount shouldBe magnitude
+                expression shouldBe Human(unit)
+                symbol shouldBe Second.UNIT.toString()
+            }
+        }
+    }
+
+    "creates Time from explicit TimeUnit expressions" {
+        Time(Magnitude.ONE, Seconds(Metric.KILO)).component2() shouldBe Seconds(Metric.KILO)
+        Time(Magnitude.ONE, Human(HumanTime.HOUR)).component2() shouldBe Human(HumanTime.HOUR)
+    }
+
+    "creates every human time unit from Number extensions" {
+        listOf(
+            1.quectoseconds to HumanTime.QUECTOSECOND,
+            1.rontoseconds to HumanTime.RONTOSECOND,
+            1.yoctoseconds to HumanTime.YOCTOSECOND,
+            1.zeptoseconds to HumanTime.ZEPTOSECOND,
+            1.attoseconds to HumanTime.ATTOSECOND,
+            1.femtoseconds to HumanTime.FEMTOSECOND,
+            1.picoseconds to HumanTime.PICOSECOND,
+            1.nanoseconds to HumanTime.NANOSECOND,
+            1.microseconds to HumanTime.MICROSECOND,
+            1.milliseconds to HumanTime.MILLISECOND,
+            1.minutes to HumanTime.MINUTE,
+            1.hours to HumanTime.HOUR,
+            1.days to HumanTime.DAY,
+            1.weeks to HumanTime.WEEK,
+            1.months to HumanTime.MONTH,
+            1.years to HumanTime.YEAR,
+            1.decades to HumanTime.DECADE,
+            1.centuries to HumanTime.CENTURY,
+            1.millennia to HumanTime.MILLENNIUM,
+        ).forEach { (time, unit) ->
+            time.component1() shouldBe Magnitude.ONE
+            time.component2() shouldBe Human(unit)
+        }
+    }
+
+    "canonicalizes human-readable units to SI seconds" {
+        checkAll(Arb.magnitude(), Times.generator) { magnitude, unit ->
+            Time(magnitude, unit).canonical.should { (amount, expression, symbol) ->
+                amount shouldBe magnitude * unit.factor
+                expression shouldBe Seconds()
+                symbol shouldBe Second.UNIT.toString()
+            }
+        }
+    }
+
+    "switches between SI and human time scales" {
+        3_600.seconds.human shouldBe 1.hours
+        2.hours.si.canonical shouldBe 7_200.seconds
+        1.milliseconds shouldBe 1.milli.seconds
+    }
+
+    "keeps SI and human TimeUnit expressions distinct" {
+        Seconds(Metric.MILLI) shouldBe Seconds(Metric.MILLI)
+        Human(HumanTime.MILLISECOND) shouldBe Human(HumanTime.MILLISECOND)
+        (Seconds(Metric.MILLI) == Human(HumanTime.MILLISECOND)) shouldBe false
+        2.hours.representation shouldBe "2 h"
+        9.minutes.representation shouldBe "9 min"
+    }
+
+    "uses the selected scale in TimeUnit expressions" {
+        Seconds(Metric.KILO).factor shouldBe Magnitude(1_000)
+        Seconds(Metric.KILO).symbol shouldBe "ks"
+        Human(HumanTime.HOUR).factor shouldBe Magnitude(3_600)
+        Human(HumanTime.HOUR).symbol shouldBe "h"
+        Human(HumanTime.HOUR).canonical shouldBe Seconds()
+    }
+
+    "preserves SI and human scales in TimeUnit systems" {
+        Seconds().all.map(TimeUnit::symbol) shouldBe Metric.entries.map { prefix -> "${prefix.symbol}s" }
+        Human().all.map(TimeUnit::symbol) shouldBe HumanTime.entries.map(HumanTime::symbol)
+    }
+
+    "exposes TimeUnit scalar factors" {
+        Seconds(Metric.MILLI).factors.single().symbol shouldBe "ms"
+        Human(HumanTime.HOUR).factors.single().symbol shouldBe "h"
+    }
+
+    "finds TimeUnit expressions within their selected scale" {
+        Seconds().find(Magnitude(1_500)) shouldBe Seconds(Metric.KILO)
+        Seconds().find(Magnitude.ZERO) shouldBe Seconds(Metric.QUECTO)
+        Human().find(Magnitude(3_661)) shouldBe Human(HumanTime.HOUR)
+        Human().find(Magnitude.ZERO) shouldBe Human(HumanTime.QUECTOSECOND)
+    }
+
+    "decomposes each TimeUnit within its own scale" {
+        Seconds().decompose(Magnitude(1_000)) shouldBe
+            listOf(Magnitude.ONE to Seconds(Metric.KILO))
+        Human().decompose(Magnitude(3_661)) shouldBe
+            listOf(
+                Magnitude.ONE to Human(HumanTime.HOUR),
+                Magnitude.ONE to Human(HumanTime.MINUTE),
+                Magnitude.ONE to Human(HumanTime.SECOND),
+            )
+    }
+
+    "keeps Second as the SI scalar for derived expressions" {
+        (Second(Metric.KILO) + Second(Metric.KILO)).factor shouldBe Magnitude(1_000_000)
     }
 
     "converts to Frequency" {
         checkAll(Arb.reciprocalMagnitude()) { magnitude ->
             magnitude.seconds.frequency.period.should { (amount, expression, symbol) ->
                 amount shouldBe magnitude
-                expression shouldBe Second()
+                expression shouldBe Seconds()
                 symbol shouldBe Second.UNIT.toString()
             }
         }
@@ -89,7 +219,7 @@ class TimeTest : StringSpec({
         checkAll(Arb.reciprocalMagnitude()) { magnitude ->
             magnitude.seconds.activity.meanInterval.should { (amount, expression, symbol) ->
                 amount shouldBe magnitude
-                expression shouldBe Second()
+                expression shouldBe Seconds()
                 symbol shouldBe Second.UNIT.toString()
             }
         }

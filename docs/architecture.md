@@ -120,9 +120,14 @@ Unit("s", 2) / Unit("s") // Unit("s"), rendered as s
 `Scalar<A, Self>` is an atomic expression made from a prefix and a unit. Examples in the catalog include:
 
 - [Metre](../lib/src/main/kotlin/org/kisu/units/base/Length.kt): metric length unit
-- [Second](../lib/src/main/kotlin/org/kisu/units/base/Time.kt): metric time unit
+- [Seconds](../lib/src/main/kotlin/org/kisu/units/base/Time.kt): SI-prefixed time expression for `Time` measures
+- [Second](../lib/src/main/kotlin/org/kisu/units/base/Time.kt): scalar second used inside derived expressions
 - [Kilogram](../lib/src/main/kotlin/org/kisu/units/base/Mass.kt): metric mass unit with special SI handling
 - [Bit](../lib/src/main/kotlin/org/kisu/units/base/Information.kt): binary information unit
+
+`Time` is not a single-scalar measure anymore. Its measure expression is the sealed `TimeUnit` family: `Seconds` wraps the
+`Second` scalar for SI-prefixed seconds, while `Human` wraps fixed `HumanTime` units such as minute, hour, and day. Both
+families canonicalize to unprefixed seconds so equivalent values compare consistently.
 
 A scalar delegates system behavior to
 [ScalarSystem](../lib/src/main/kotlin/org/kisu/prefixes/primitives/ScalarSystem.kt), which turns a prefix system into
