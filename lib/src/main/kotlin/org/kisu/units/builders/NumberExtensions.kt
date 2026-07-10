@@ -42,6 +42,7 @@ import org.kisu.units.electromagnetic.Magnetization
 import org.kisu.units.electromagnetic.MagnetomotiveForce
 import org.kisu.units.electromagnetic.Permittivity
 import org.kisu.units.electromagnetic.Resistivity
+import org.kisu.units.information.Transmission
 import org.kisu.units.kinematics.FrequencyDrift
 import org.kisu.units.kinematics.VolumetricFlow
 import org.kisu.units.kinematics.Yank
@@ -158,11 +159,26 @@ val Number.becquerels: Radioactivity get() = Radioactivity(magnitude)
 val Number.bits get() = Information(magnitude, Binary.BASE)
 
 /**
+ * Creates a [Transmission] value from this [Number] representing a rate of bits per second.
+ *
+ * The returned value uses the unprefixed IEC bit expression over seconds.
+ */
+val Number.bitsPerSecond: Transmission get() = Transmission(magnitude)
+
+/**
  * Creates an [Information] value from this [Number] representing a quantity of unprefixed bytes.
  *
  * The returned value uses the SI byte scale, so optimal formatting uses SI byte prefixes such as `kB` and `MB`.
  */
 val Number.bytes: Information get() = Information(magnitude, Byte(Decimal.BASE))
+
+/**
+ * Creates a [Transmission] value from this [Number] representing a rate of unprefixed bytes per second.
+ *
+ * The returned value uses the SI byte scale, so optimal formatting uses SI byte-rate prefixes such as `kB/s` and
+ * `MB/s`.
+ */
+val Number.bytesPerSecond: Transmission get() = Transmission(magnitude, Byte(Decimal.BASE))
 
 /**
  * Creates a [Luminance] from this [Number] representing a luminance in candela per square metre,

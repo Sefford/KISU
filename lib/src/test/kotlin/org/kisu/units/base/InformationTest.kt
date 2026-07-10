@@ -20,6 +20,7 @@ import org.kisu.test.assertions.shouldUseIecByteScale
 import org.kisu.test.assertions.shouldUseSiBitScale
 import org.kisu.test.assertions.shouldUseSiByteScale
 import org.kisu.test.generators.magnitude
+import org.kisu.test.generators.reciprocalMagnitude
 import org.kisu.units.builders.DecimalUnitBuilder
 import org.kisu.units.builders.ExaBuilder
 import org.kisu.units.builders.GigaBuilder
@@ -37,11 +38,13 @@ import org.kisu.units.builders.bits
 import org.kisu.units.builders.bytes
 import org.kisu.units.builders.kilo
 import org.kisu.units.exceptions.SubBitInformation
+import org.kisu.units.information.Transmission
 import org.kisu.prefixes.Binary as Iec
 import org.kisu.prefixes.Decimal as Si
 import org.kisu.test.generators.Binaries as IecPrefixes
 import org.kisu.test.generators.BinaryBuilders as IecBuilders
 import org.kisu.test.generators.Decimals as SiPrefixes
+import org.kisu.test.generators.Metrics as MetricPrefixes
 
 class InformationTest : StringSpec({
     val iecAlgebra = ExponentialAlgebra<Iec>(Magnitude.TWO)
@@ -394,6 +397,42 @@ class InformationTest : StringSpec({
             converted.component2().shouldUseIecBitScale()
         }
     }
+
+    // Dimension-aware arithmetic properties
+    "dividing Information by Time returns Transmission" {
+        checkAll(
+            50,
+            Arb.positiveLong(),
+            Arb.reciprocalMagnitude(),
+            IecPrefixes.generator,
+            MetricPrefixes.generator,
+        ) { leftMagnitude, rightMagnitude, leftPrefix, rightPrefix ->
+            val left = Information(leftMagnitude.magnitude, Bit(leftPrefix))
+            val right = Time(rightMagnitude, rightPrefix)
+            val expectedMagnitude = left.canonical.component1() / right.canonical.component1()
+            val expected = Transmission(expectedMagnitude)
+
+            (left / right) shouldBe expected
+        }
+    }
+
+    "dividing Information by Transmission returns Time" {
+        checkAll(
+            50,
+            Arb.positiveLong(),
+            Arb.reciprocalMagnitude(),
+            IecPrefixes.generator,
+            IecPrefixes.generator,
+        ) { leftMagnitude, rightMagnitude, leftPrefix, rightPrefix ->
+            val left = Information(leftMagnitude.magnitude, Bit(leftPrefix))
+            val right = Transmission(rightMagnitude, Bit(rightPrefix))
+            val expectedMagnitude = left.canonical.component1() / right.canonical.component1()
+            val expected = Time(expectedMagnitude)
+
+            (left / right) shouldBe expected
+        }
+    }
+    // End dimension-aware arithmetic properties
 })
 
 private val supportedDecimalByteBuilders: List<Pair<(Magnitude) -> DecimalUnitBuilder, Si>> = listOf(

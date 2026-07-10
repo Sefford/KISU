@@ -9,6 +9,7 @@ import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.prefixes.isCanonical
 import org.kisu.units.Measure
 import org.kisu.units.exceptions.SubBitInformation
+import org.kisu.units.information.Transmission
 import org.kisu.units.representation.Expression
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
@@ -61,6 +62,25 @@ class Information private constructor(magnitude: Magnitude, private val unit: In
      */
     val binary: Information
         get() = iec
+
+    // Dimension-aware arithmetic
+    /**
+     * Divides this [Information] by [Time], yielding [Transmission].
+     *
+     * Both operands are converted to their canonical units before the division result is calculated.
+     */
+    operator fun div(
+        other: Time
+    ): Transmission = Transmission(canonical.component1() / other.canonical.component1())
+
+    /**
+     * Divides this [Information] by [Transmission], yielding [Time].
+     *
+     * Both operands are converted to their canonical units before the division result is calculated.
+     */
+    operator fun div(
+        other: Transmission
+    ): Time = Time(canonical.component1() / other.canonical.component1())
 
     companion object {
         /**

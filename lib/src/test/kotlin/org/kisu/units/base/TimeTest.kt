@@ -38,6 +38,7 @@ import org.kisu.units.builders.yoctoseconds
 import org.kisu.units.builders.zeptoseconds
 import org.kisu.units.chemistry.CatalyticEfficiency
 import org.kisu.units.chemistry.MolarVolume
+import org.kisu.units.information.Transmission
 import org.kisu.units.kinematics.FrequencyDrift
 import org.kisu.units.kinematics.VolumetricFlow
 import org.kisu.units.kinematics.Yank
@@ -67,6 +68,7 @@ import org.kisu.units.special.MagneticFlux
 import org.kisu.units.special.PlaneAngle
 import org.kisu.units.special.Pressure
 import org.kisu.units.special.Volume
+import org.kisu.test.generators.Binaries as IecPrefixes
 import org.kisu.units.kinematics.angular.Acceleration as AngularAcceleration
 import org.kisu.units.kinematics.angular.Crackle as AngularCrackle
 import org.kisu.units.kinematics.angular.Jerk as AngularJerk
@@ -557,6 +559,21 @@ class TimeTest : StringSpec({
             val right = MassFlowRate(rightMagnitude, rightPrefix)
             val expectedMagnitude = left.canonical.component1() * right.canonical.component1()
             val expected = Mass(expectedMagnitude)
+
+            (left * right) shouldBe expected
+        }
+    }
+    "multiplying a Time by a Transmission returns Information" {
+        checkAll(
+            50,
+            Arb.positiveLong(),
+            Arb.positiveLong(),
+            IecPrefixes.generator,
+        ) { leftMagnitude, rightMagnitude, rightPrefix ->
+            val left = Time(leftMagnitude.magnitude)
+            val right = Transmission(rightMagnitude.magnitude, Bit(rightPrefix))
+            val expectedMagnitude = left.canonical.component1() * right.canonical.component1()
+            val expected = Information(expectedMagnitude)
 
             (left * right) shouldBe expected
         }
