@@ -5,6 +5,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 *.asc
+.codex
 
 ### IntelliJ IDEA ###
 .idea/*
