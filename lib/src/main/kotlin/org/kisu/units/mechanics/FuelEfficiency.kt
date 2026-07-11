@@ -5,10 +5,12 @@ package org.kisu.units.mechanics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.mechanics.FuelEfficiency.Companion.MetrePerCubicMetre
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.CubicMetre
+import org.kisu.units.special.Volume
 
 /**
  * Represents the physical quantity of **fuel efficiency**, measured in
@@ -57,13 +59,13 @@ class FuelEfficiency(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [FuelEfficiency] by [Volume][org.kisu.units.special.Volume],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Multiplies this [FuelEfficiency] by [Volume],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() * other.canonical.component1())
+        other: Volume
+    ): Length =
+        Length(canonical.component1() * other.canonical.component1())
 }

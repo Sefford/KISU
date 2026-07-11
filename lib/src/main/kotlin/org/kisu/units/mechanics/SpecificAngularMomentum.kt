@@ -6,6 +6,7 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
 import org.kisu.units.base.Metre
 import org.kisu.units.base.Second
 import org.kisu.units.representation.Product
@@ -67,13 +68,13 @@ class SpecificAngularMomentum(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [SpecificAngularMomentum] by [Mass][org.kisu.units.base.Mass],
-     * yielding [AngularMomentum][org.kisu.units.mechanics.AngularMomentum].
+     * Multiplies this [SpecificAngularMomentum] by [Mass],
+     * yielding [AngularMomentum].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.mechanics.AngularMomentum =
-        org.kisu.units.mechanics.AngularMomentum(canonical.component1() * other.canonical.component1())
+        other: Mass
+    ): AngularMomentum =
+        AngularMomentum(canonical.component1() * other.canonical.component1())
 }

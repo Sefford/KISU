@@ -5,9 +5,12 @@ package org.kisu.units.chemistry
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
 import org.kisu.units.base.Mole
+import org.kisu.units.base.Temperature
 import org.kisu.units.chemistry.MolarEnergy.Companion.JoulePerMole
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Energy
 import org.kisu.units.special.Joule
 
 /**
@@ -61,35 +64,35 @@ class MolarEnergy(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [MolarEnergy] by [Temperature][org.kisu.units.base.Temperature],
-     * yielding [MolarHeatCapacity][org.kisu.units.chemistry.MolarHeatCapacity].
+     * Divides this [MolarEnergy] by [Temperature],
+     * yielding [MolarHeatCapacity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Temperature
-    ): org.kisu.units.chemistry.MolarHeatCapacity =
-        org.kisu.units.chemistry.MolarHeatCapacity(canonical.component1() / other.canonical.component1())
+        other: Temperature
+    ): MolarHeatCapacity =
+        MolarHeatCapacity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [MolarEnergy] by [MolarHeatCapacity][org.kisu.units.chemistry.MolarHeatCapacity],
-     * yielding [Temperature][org.kisu.units.base.Temperature].
+     * Divides this [MolarEnergy] by [MolarHeatCapacity],
+     * yielding [Temperature].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.MolarHeatCapacity
-    ): org.kisu.units.base.Temperature =
-        org.kisu.units.base.Temperature(canonical.component1() / other.canonical.component1())
+        other: MolarHeatCapacity
+    ): Temperature =
+        Temperature(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [MolarEnergy] by [Amount][org.kisu.units.base.Amount],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [MolarEnergy] by [Amount],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Amount
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: Amount
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 }

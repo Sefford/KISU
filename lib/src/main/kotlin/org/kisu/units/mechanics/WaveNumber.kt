@@ -11,6 +11,8 @@ import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
+import org.kisu.units.special.Area
+import org.kisu.units.special.Volume
 
 /**
  * Represents the physical quantity of **wave number**, measured in
@@ -40,15 +42,15 @@ class WaveNumber(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [WaveNumber] by [Volume][org.kisu.units.special.Volume],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Multiplies this [WaveNumber] by [Volume],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() * other.canonical.component1())
+        other: Volume
+    ): Area =
+        Area(canonical.component1() * other.canonical.component1())
 }
 
 /**

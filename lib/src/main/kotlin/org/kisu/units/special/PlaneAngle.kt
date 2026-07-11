@@ -7,6 +7,10 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Current
+import org.kisu.units.base.Time
+import org.kisu.units.electromagnetic.MagnetomotiveForce
+import org.kisu.units.kinematics.angular.Velocity
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -32,37 +36,37 @@ class PlaneAngle internal constructor(magnitude: Magnitude, expression: Radian) 
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [PlaneAngle] by [Time][org.kisu.units.base.Time],
-     * yielding [Velocity][org.kisu.units.kinematics.angular.Velocity].
+     * Divides this [PlaneAngle] by [Time],
+     * yielding [Velocity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.angular.Velocity =
-        org.kisu.units.kinematics.angular.Velocity(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Velocity =
+        Velocity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [PlaneAngle] by [Velocity][org.kisu.units.kinematics.angular.Velocity],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [PlaneAngle] by [Velocity],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.angular.Velocity
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Velocity
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [PlaneAngle] by [Current][org.kisu.units.base.Current],
-     * yielding [MagnetomotiveForce][org.kisu.units.electromagnetic.MagnetomotiveForce].
+     * Multiplies this [PlaneAngle] by [Current],
+     * yielding [MagnetomotiveForce].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Current
-    ): org.kisu.units.electromagnetic.MagnetomotiveForce =
-        org.kisu.units.electromagnetic.MagnetomotiveForce(canonical.component1() * other.canonical.component1())
+        other: Current
+    ): MagnetomotiveForce =
+        MagnetomotiveForce(canonical.component1() * other.canonical.component1())
 }
 
 /**

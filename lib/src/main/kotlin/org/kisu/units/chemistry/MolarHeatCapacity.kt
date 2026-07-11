@@ -5,12 +5,15 @@ package org.kisu.units.chemistry
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
 import org.kisu.units.base.Kelvin
 import org.kisu.units.base.Mole
+import org.kisu.units.base.Temperature
 import org.kisu.units.chemistry.MolarHeatCapacity.Companion.JoulePerKelvinMole
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Joule
+import org.kisu.units.thermodynamics.HeatCapacity
 
 /**
  * Represents the physical quantity of **molar heat capacity**, measured in
@@ -74,24 +77,24 @@ class MolarHeatCapacity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MolarHeatCapacity] by [Amount][org.kisu.units.base.Amount],
-     * yielding [HeatCapacity][org.kisu.units.thermodynamics.HeatCapacity].
+     * Multiplies this [MolarHeatCapacity] by [Amount],
+     * yielding [HeatCapacity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Amount
-    ): org.kisu.units.thermodynamics.HeatCapacity =
-        org.kisu.units.thermodynamics.HeatCapacity(canonical.component1() * other.canonical.component1())
+        other: Amount
+    ): HeatCapacity =
+        HeatCapacity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [MolarHeatCapacity] by [Temperature][org.kisu.units.base.Temperature],
-     * yielding [MolarEnergy][org.kisu.units.chemistry.MolarEnergy].
+     * Multiplies this [MolarHeatCapacity] by [Temperature],
+     * yielding [MolarEnergy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Temperature
-    ): org.kisu.units.chemistry.MolarEnergy =
-        org.kisu.units.chemistry.MolarEnergy(canonical.component1() * other.canonical.component1())
+        other: Temperature
+    ): MolarEnergy =
+        MolarEnergy(canonical.component1() * other.canonical.component1())
 }

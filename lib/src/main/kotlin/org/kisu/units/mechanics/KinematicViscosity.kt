@@ -6,8 +6,12 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
+import org.kisu.units.electromagnetic.ElectronMobility
 import org.kisu.units.mechanics.KinematicViscosity.Companion.SquareMetrePerSecond
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
+import org.kisu.units.special.ElectricPotential
 import org.kisu.units.special.SquareMetre
 
 /**
@@ -62,35 +66,35 @@ class KinematicViscosity(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [KinematicViscosity] by [ElectronMobility][org.kisu.units.electromagnetic.ElectronMobility],
-     * yielding [ElectricPotential][org.kisu.units.special.ElectricPotential].
+     * Divides this [KinematicViscosity] by [ElectronMobility],
+     * yielding [ElectricPotential].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.electromagnetic.ElectronMobility
-    ): org.kisu.units.special.ElectricPotential =
-        org.kisu.units.special.ElectricPotential(canonical.component1() / other.canonical.component1())
+        other: ElectronMobility
+    ): ElectricPotential =
+        ElectricPotential(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [KinematicViscosity] by [ElectricPotential][org.kisu.units.special.ElectricPotential],
-     * yielding [ElectronMobility][org.kisu.units.electromagnetic.ElectronMobility].
+     * Divides this [KinematicViscosity] by [ElectricPotential],
+     * yielding [ElectronMobility].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.ElectricPotential
-    ): org.kisu.units.electromagnetic.ElectronMobility =
-        org.kisu.units.electromagnetic.ElectronMobility(canonical.component1() / other.canonical.component1())
+        other: ElectricPotential
+    ): ElectronMobility =
+        ElectronMobility(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [KinematicViscosity] by [Time][org.kisu.units.base.Time],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Multiplies this [KinematicViscosity] by [Time],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Area =
+        Area(canonical.component1() * other.canonical.component1())
 }

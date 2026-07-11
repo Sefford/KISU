@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.mechanics.AbsorbedDoseRate.Companion.GrayPerSecond
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.AbsorbedDose
 import org.kisu.units.special.Gray
 
 /**
@@ -61,13 +63,13 @@ class AbsorbedDoseRate(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [AbsorbedDoseRate] by [Time][org.kisu.units.base.Time],
-     * yielding [AbsorbedDose][org.kisu.units.special.AbsorbedDose].
+     * Multiplies this [AbsorbedDoseRate] by [Time],
+     * yielding [AbsorbedDose].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.AbsorbedDose =
-        org.kisu.units.special.AbsorbedDose(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): AbsorbedDose =
+        AbsorbedDose(canonical.component1() * other.canonical.component1())
 }

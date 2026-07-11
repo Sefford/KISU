@@ -6,9 +6,11 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
 import org.kisu.units.mechanics.SpecificVolume.Companion.CubicMetrePerKilogram
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.CubicMetre
+import org.kisu.units.special.Volume
 
 /**
  * Represents the physical quantity of **specific volume**, measured in
@@ -64,13 +66,13 @@ class SpecificVolume(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [SpecificVolume] by [Mass][org.kisu.units.base.Mass],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Multiplies this [SpecificVolume] by [Mass],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() * other.canonical.component1())
+        other: Mass
+    ): Volume =
+        Volume(canonical.component1() * other.canonical.component1())
 }

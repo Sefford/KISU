@@ -6,9 +6,11 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
 import org.kisu.units.electromagnetic.Exposure.Companion.CoulombPerKilogram
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Coulomb
+import org.kisu.units.special.ElectricCharge
 
 /**
  * Represents the physical quantity of **radiation exposure**, measured in
@@ -60,13 +62,13 @@ class Exposure(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Exposure] by [Mass][org.kisu.units.base.Mass],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Multiplies this [Exposure] by [Mass],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() * other.canonical.component1())
+        other: Mass
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() * other.canonical.component1())
 }

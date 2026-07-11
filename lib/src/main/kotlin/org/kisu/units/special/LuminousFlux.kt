@@ -7,6 +7,10 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.LuminousIntensity
+import org.kisu.units.base.Time
+import org.kisu.units.photometric.Efficacy
+import org.kisu.units.photometric.LuminousEnergy
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -31,81 +35,81 @@ class LuminousFlux internal constructor(magnitude: Magnitude, expression: Lumen)
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [LuminousFlux] by [LuminousIntensity][org.kisu.units.base.LuminousIntensity],
-     * yielding [SolidAngle][org.kisu.units.special.SolidAngle].
+     * Divides this [LuminousFlux] by [LuminousIntensity],
+     * yielding [SolidAngle].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.LuminousIntensity
-    ): org.kisu.units.special.SolidAngle =
-        org.kisu.units.special.SolidAngle(canonical.component1() / other.canonical.component1())
+        other: LuminousIntensity
+    ): SolidAngle =
+        SolidAngle(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [LuminousFlux] by [Efficacy][org.kisu.units.photometric.Efficacy],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Divides this [LuminousFlux] by [Efficacy],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.photometric.Efficacy
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() / other.canonical.component1())
+        other: Efficacy
+    ): Power =
+        Power(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [LuminousFlux] by [Area][org.kisu.units.special.Area],
-     * yielding [Illuminance][org.kisu.units.special.Illuminance].
+     * Divides this [LuminousFlux] by [Area],
+     * yielding [Illuminance].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.special.Illuminance =
-        org.kisu.units.special.Illuminance(canonical.component1() / other.canonical.component1())
+        other: Area
+    ): Illuminance =
+        Illuminance(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [LuminousFlux] by [Illuminance][org.kisu.units.special.Illuminance],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Divides this [LuminousFlux] by [Illuminance],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Illuminance
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() / other.canonical.component1())
+        other: Illuminance
+    ): Area =
+        Area(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [LuminousFlux] by [Power][org.kisu.units.special.Power],
-     * yielding [Efficacy][org.kisu.units.photometric.Efficacy].
+     * Divides this [LuminousFlux] by [Power],
+     * yielding [Efficacy].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Power
-    ): org.kisu.units.photometric.Efficacy =
-        org.kisu.units.photometric.Efficacy(canonical.component1() / other.canonical.component1())
+        other: Power
+    ): Efficacy =
+        Efficacy(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [LuminousFlux] by [SolidAngle][org.kisu.units.special.SolidAngle],
-     * yielding [LuminousIntensity][org.kisu.units.base.LuminousIntensity].
+     * Divides this [LuminousFlux] by [SolidAngle],
+     * yielding [LuminousIntensity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.SolidAngle
-    ): org.kisu.units.base.LuminousIntensity =
-        org.kisu.units.base.LuminousIntensity(canonical.component1() / other.canonical.component1())
+        other: SolidAngle
+    ): LuminousIntensity =
+        LuminousIntensity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [LuminousFlux] by [Time][org.kisu.units.base.Time],
-     * yielding [LuminousEnergy][org.kisu.units.photometric.LuminousEnergy].
+     * Multiplies this [LuminousFlux] by [Time],
+     * yielding [LuminousEnergy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.photometric.LuminousEnergy =
-        org.kisu.units.photometric.LuminousEnergy(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): LuminousEnergy =
+        LuminousEnergy(canonical.component1() * other.canonical.component1())
 }
 
 /**

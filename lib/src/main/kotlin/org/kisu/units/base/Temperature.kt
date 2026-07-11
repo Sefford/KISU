@@ -7,11 +7,20 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.chemistry.MolarEnergy
+import org.kisu.units.chemistry.MolarHeatCapacity
+import org.kisu.units.mechanics.SpecificEnergy
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 import org.kisu.units.special.Celsius
 import org.kisu.units.special.CelsiusTemperature
+import org.kisu.units.special.Energy
+import org.kisu.units.special.Power
+import org.kisu.units.thermodynamics.HeatCapacity
+import org.kisu.units.thermodynamics.SpecificHeatCapacity
+import org.kisu.units.thermodynamics.TemperatureGradient
 import org.kisu.units.thermodynamics.ThermalExpansionCoefficient
+import org.kisu.units.thermodynamics.ThermalResistance
 
 /**
  * Represents the physical quantity of **thermodynamic temperature**, measured in kelvin (K).
@@ -50,81 +59,81 @@ class Temperature internal constructor(magnitude: Magnitude, expression: Kelvin)
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Temperature] by [Length][org.kisu.units.base.Length],
-     * yielding [TemperatureGradient][org.kisu.units.thermodynamics.TemperatureGradient].
+     * Divides this [Temperature] by [Length],
+     * yielding [TemperatureGradient].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.thermodynamics.TemperatureGradient =
-        org.kisu.units.thermodynamics.TemperatureGradient(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): TemperatureGradient =
+        TemperatureGradient(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Temperature] by [Power][org.kisu.units.special.Power],
-     * yielding [ThermalResistance][org.kisu.units.thermodynamics.ThermalResistance].
+     * Divides this [Temperature] by [Power],
+     * yielding [ThermalResistance].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Power
-    ): org.kisu.units.thermodynamics.ThermalResistance =
-        org.kisu.units.thermodynamics.ThermalResistance(canonical.component1() / other.canonical.component1())
+        other: Power
+    ): ThermalResistance =
+        ThermalResistance(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Temperature] by [TemperatureGradient][org.kisu.units.thermodynamics.TemperatureGradient],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Temperature] by [TemperatureGradient],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.thermodynamics.TemperatureGradient
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: TemperatureGradient
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Temperature] by [ThermalResistance][org.kisu.units.thermodynamics.ThermalResistance],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Divides this [Temperature] by [ThermalResistance],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.thermodynamics.ThermalResistance
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() / other.canonical.component1())
+        other: ThermalResistance
+    ): Power =
+        Power(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Temperature] by [MolarHeatCapacity][org.kisu.units.chemistry.MolarHeatCapacity],
-     * yielding [MolarEnergy][org.kisu.units.chemistry.MolarEnergy].
+     * Multiplies this [Temperature] by [MolarHeatCapacity],
+     * yielding [MolarEnergy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.MolarHeatCapacity
-    ): org.kisu.units.chemistry.MolarEnergy =
-        org.kisu.units.chemistry.MolarEnergy(canonical.component1() * other.canonical.component1())
+        other: MolarHeatCapacity
+    ): MolarEnergy =
+        MolarEnergy(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Temperature] by [HeatCapacity][org.kisu.units.thermodynamics.HeatCapacity],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [Temperature] by [HeatCapacity],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.thermodynamics.HeatCapacity
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: HeatCapacity
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Temperature] by [SpecificHeatCapacity][org.kisu.units.thermodynamics.SpecificHeatCapacity],
-     * yielding [SpecificEnergy][org.kisu.units.mechanics.SpecificEnergy].
+     * Multiplies this [Temperature] by [SpecificHeatCapacity],
+     * yielding [SpecificEnergy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.thermodynamics.SpecificHeatCapacity
-    ): org.kisu.units.mechanics.SpecificEnergy =
-        org.kisu.units.mechanics.SpecificEnergy(canonical.component1() * other.canonical.component1())
+        other: SpecificHeatCapacity
+    ): SpecificEnergy =
+        SpecificEnergy(canonical.component1() * other.canonical.component1())
 }
 
 class Kelvin private constructor(

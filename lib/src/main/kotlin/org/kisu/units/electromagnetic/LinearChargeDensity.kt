@@ -5,10 +5,12 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.LinearChargeDensity.Companion.CoulombPerMetre
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Coulomb
+import org.kisu.units.special.ElectricCharge
 
 /**
  * Represents the physical quantity of **linear charge density**, measured in
@@ -62,13 +64,13 @@ class LinearChargeDensity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [LinearChargeDensity] by [Length][org.kisu.units.base.Length],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Multiplies this [LinearChargeDensity] by [Length],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() * other.canonical.component1())
 }

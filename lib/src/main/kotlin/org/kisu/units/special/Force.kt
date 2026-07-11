@@ -7,6 +7,15 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
+import org.kisu.units.base.Mass
+import org.kisu.units.base.Time
+import org.kisu.units.kinematics.Yank
+import org.kisu.units.kinematics.linear.Acceleration
+import org.kisu.units.kinematics.linear.Speed
+import org.kisu.units.mechanics.Compressibility
+import org.kisu.units.mechanics.Momentum
+import org.kisu.units.mechanics.SurfaceTension
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -31,136 +40,136 @@ class Force internal constructor(magnitude: Magnitude, expression: Newton) :
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Force] by [Length][org.kisu.units.base.Length],
-     * yielding [SurfaceTension][org.kisu.units.mechanics.SurfaceTension].
+     * Divides this [Force] by [Length],
+     * yielding [SurfaceTension].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.mechanics.SurfaceTension =
-        org.kisu.units.mechanics.SurfaceTension(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): SurfaceTension =
+        SurfaceTension(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Force] by [Mass][org.kisu.units.base.Mass],
-     * yielding [Acceleration][org.kisu.units.kinematics.linear.Acceleration].
+     * Divides this [Force] by [Mass],
+     * yielding [Acceleration].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.kinematics.linear.Acceleration =
-        org.kisu.units.kinematics.linear.Acceleration(canonical.component1() / other.canonical.component1())
+        other: Mass
+    ): Acceleration =
+        Acceleration(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Force] by [Time][org.kisu.units.base.Time],
-     * yielding [Yank][org.kisu.units.kinematics.Yank].
+     * Divides this [Force] by [Time],
+     * yielding [Yank].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.Yank =
-        org.kisu.units.kinematics.Yank(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Yank =
+        Yank(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Force] by [Yank][org.kisu.units.kinematics.Yank],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Force] by [Yank],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.Yank
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Yank
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Force] by [Acceleration][org.kisu.units.kinematics.linear.Acceleration],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Divides this [Force] by [Acceleration],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.linear.Acceleration
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() / other.canonical.component1())
+        other: Acceleration
+    ): Mass =
+        Mass(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Force] by [SurfaceTension][org.kisu.units.mechanics.SurfaceTension],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Force] by [SurfaceTension],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.SurfaceTension
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: SurfaceTension
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Force] by [Area][org.kisu.units.special.Area],
-     * yielding [Pressure][org.kisu.units.special.Pressure].
+     * Divides this [Force] by [Area],
+     * yielding [Pressure].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.special.Pressure =
-        org.kisu.units.special.Pressure(canonical.component1() / other.canonical.component1())
+        other: Area
+    ): Pressure =
+        Pressure(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Force] by [Pressure][org.kisu.units.special.Pressure],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Divides this [Force] by [Pressure],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Pressure
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() / other.canonical.component1())
+        other: Pressure
+    ): Area =
+        Area(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Force] by [Length][org.kisu.units.base.Length],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [Force] by [Length],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Force] by [Time][org.kisu.units.base.Time],
-     * yielding [Momentum][org.kisu.units.mechanics.Momentum].
+     * Multiplies this [Force] by [Time],
+     * yielding [Momentum].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.mechanics.Momentum =
-        org.kisu.units.mechanics.Momentum(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Momentum =
+        Momentum(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Force] by [Speed][org.kisu.units.kinematics.linear.Speed],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Multiplies this [Force] by [Speed],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.kinematics.linear.Speed
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() * other.canonical.component1())
+        other: Speed
+    ): Power =
+        Power(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Force] by [Compressibility][org.kisu.units.mechanics.Compressibility],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Multiplies this [Force] by [Compressibility],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.Compressibility
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() * other.canonical.component1())
+        other: Compressibility
+    ): Area =
+        Area(canonical.component1() * other.canonical.component1())
 }
 
 /**

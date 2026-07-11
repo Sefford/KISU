@@ -7,6 +7,7 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Mole
 import org.kisu.units.chemistry.MolarConductivity.Companion.SiemensSquareMetrePerMole
+import org.kisu.units.electromagnetic.ElectricConductivity
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Siemens
@@ -77,13 +78,13 @@ class MolarConductivity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MolarConductivity] by [Molarity][org.kisu.units.chemistry.Molarity],
-     * yielding [ElectricConductivity][org.kisu.units.electromagnetic.ElectricConductivity].
+     * Multiplies this [MolarConductivity] by [Molarity],
+     * yielding [ElectricConductivity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.Molarity
-    ): org.kisu.units.electromagnetic.ElectricConductivity =
-        org.kisu.units.electromagnetic.ElectricConductivity(canonical.component1() * other.canonical.component1())
+        other: Molarity
+    ): ElectricConductivity =
+        ElectricConductivity(canonical.component1() * other.canonical.component1())
 }

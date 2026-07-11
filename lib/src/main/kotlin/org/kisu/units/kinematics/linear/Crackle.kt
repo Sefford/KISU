@@ -7,6 +7,7 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Metre
 import org.kisu.units.base.SecondFifth
+import org.kisu.units.base.Time
 import org.kisu.units.kinematics.linear.Crackle.Companion.MetrePerSecondFifth
 import org.kisu.units.representation.Quotient
 
@@ -59,35 +60,35 @@ class Crackle internal constructor(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Crackle] by [Time][org.kisu.units.base.Time],
-     * yielding [Pop][org.kisu.units.kinematics.linear.Pop].
+     * Divides this [Crackle] by [Time],
+     * yielding [Pop].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Pop =
-        org.kisu.units.kinematics.linear.Pop(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Pop =
+        Pop(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Crackle] by [Pop][org.kisu.units.kinematics.linear.Pop],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Crackle] by [Pop],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.linear.Pop
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Pop
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Crackle] by [Time][org.kisu.units.base.Time],
-     * yielding [Snap][org.kisu.units.kinematics.linear.Snap].
+     * Multiplies this [Crackle] by [Time],
+     * yielding [Snap].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Snap =
-        org.kisu.units.kinematics.linear.Snap(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Snap =
+        Snap(canonical.component1() * other.canonical.component1())
 }

@@ -7,7 +7,11 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Current
+import org.kisu.units.base.Length
+import org.kisu.units.electromagnetic.MagneticPermittivity
 import org.kisu.units.electromagnetic.MagneticReluctance
+import org.kisu.units.electromagnetic.MagneticSusceptibility
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -38,48 +42,48 @@ class Inductance internal constructor(magnitude: Magnitude, expression: Henry) :
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Inductance] by [Length][org.kisu.units.base.Length],
-     * yielding [MagneticPermittivity][org.kisu.units.electromagnetic.MagneticPermittivity].
+     * Divides this [Inductance] by [Length],
+     * yielding [MagneticPermittivity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.electromagnetic.MagneticPermittivity =
-        org.kisu.units.electromagnetic.MagneticPermittivity(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): MagneticPermittivity =
+        MagneticPermittivity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Inductance] by [MagneticPermittivity][org.kisu.units.electromagnetic.MagneticPermittivity],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Inductance] by [MagneticPermittivity],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.electromagnetic.MagneticPermittivity
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: MagneticPermittivity
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Inductance] by [Current][org.kisu.units.base.Current],
-     * yielding [MagneticFlux][org.kisu.units.special.MagneticFlux].
+     * Multiplies this [Inductance] by [Current],
+     * yielding [MagneticFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Current
-    ): org.kisu.units.special.MagneticFlux =
-        org.kisu.units.special.MagneticFlux(canonical.component1() * other.canonical.component1())
+        other: Current
+    ): MagneticFlux =
+        MagneticFlux(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Inductance] by [MagneticSusceptibility][org.kisu.units.electromagnetic.MagneticSusceptibility],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Multiplies this [Inductance] by [MagneticSusceptibility],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.MagneticSusceptibility
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() * other.canonical.component1())
+        other: MagneticSusceptibility
+    ): Length =
+        Length(canonical.component1() * other.canonical.component1())
 }
 
 /**

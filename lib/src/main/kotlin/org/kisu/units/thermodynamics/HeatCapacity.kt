@@ -5,8 +5,13 @@ package org.kisu.units.thermodynamics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
 import org.kisu.units.base.Kelvin
+import org.kisu.units.base.Mass
+import org.kisu.units.base.Temperature
+import org.kisu.units.chemistry.MolarHeatCapacity
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Energy
 import org.kisu.units.special.Joule
 import org.kisu.units.thermodynamics.HeatCapacity.Companion.JoulePerKelvin
 
@@ -60,57 +65,57 @@ class HeatCapacity(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [HeatCapacity] by [Amount][org.kisu.units.base.Amount],
-     * yielding [MolarHeatCapacity][org.kisu.units.chemistry.MolarHeatCapacity].
+     * Divides this [HeatCapacity] by [Amount],
+     * yielding [MolarHeatCapacity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Amount
-    ): org.kisu.units.chemistry.MolarHeatCapacity =
-        org.kisu.units.chemistry.MolarHeatCapacity(canonical.component1() / other.canonical.component1())
+        other: Amount
+    ): MolarHeatCapacity =
+        MolarHeatCapacity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [HeatCapacity] by [Mass][org.kisu.units.base.Mass],
-     * yielding [SpecificHeatCapacity][org.kisu.units.thermodynamics.SpecificHeatCapacity].
+     * Divides this [HeatCapacity] by [Mass],
+     * yielding [SpecificHeatCapacity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.thermodynamics.SpecificHeatCapacity =
-        org.kisu.units.thermodynamics.SpecificHeatCapacity(canonical.component1() / other.canonical.component1())
+        other: Mass
+    ): SpecificHeatCapacity =
+        SpecificHeatCapacity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [HeatCapacity] by [MolarHeatCapacity][org.kisu.units.chemistry.MolarHeatCapacity],
-     * yielding [Amount][org.kisu.units.base.Amount].
+     * Divides this [HeatCapacity] by [MolarHeatCapacity],
+     * yielding [Amount].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.MolarHeatCapacity
-    ): org.kisu.units.base.Amount =
-        org.kisu.units.base.Amount(canonical.component1() / other.canonical.component1())
+        other: MolarHeatCapacity
+    ): Amount =
+        Amount(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [HeatCapacity] by [SpecificHeatCapacity][org.kisu.units.thermodynamics.SpecificHeatCapacity],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Divides this [HeatCapacity] by [SpecificHeatCapacity],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.thermodynamics.SpecificHeatCapacity
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() / other.canonical.component1())
+        other: SpecificHeatCapacity
+    ): Mass =
+        Mass(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [HeatCapacity] by [Temperature][org.kisu.units.base.Temperature],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [HeatCapacity] by [Temperature],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Temperature
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: Temperature
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 }

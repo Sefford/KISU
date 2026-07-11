@@ -7,6 +7,8 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
+import org.kisu.units.electromagnetic.Permittivity
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -37,37 +39,37 @@ class Capacitance internal constructor(magnitude: Magnitude, expression: Farad) 
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Capacitance] by [Length][org.kisu.units.base.Length],
-     * yielding [Permittivity][org.kisu.units.electromagnetic.Permittivity].
+     * Divides this [Capacitance] by [Length],
+     * yielding [Permittivity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.electromagnetic.Permittivity =
-        org.kisu.units.electromagnetic.Permittivity(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): Permittivity =
+        Permittivity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Capacitance] by [Permittivity][org.kisu.units.electromagnetic.Permittivity],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Capacitance] by [Permittivity],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.electromagnetic.Permittivity
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: Permittivity
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Capacitance] by [ElectricPotential][org.kisu.units.special.ElectricPotential],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Multiplies this [Capacitance] by [ElectricPotential],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.ElectricPotential
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() * other.canonical.component1())
+        other: ElectricPotential
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() * other.canonical.component1())
 }
 
 /**

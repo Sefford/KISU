@@ -7,6 +7,8 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Time
+import org.kisu.units.mechanics.AbsorbedDoseRate
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -32,26 +34,26 @@ class AbsorbedDose internal constructor(magnitude: Magnitude, expression: Gray) 
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [AbsorbedDose] by [Time][org.kisu.units.base.Time],
-     * yielding [AbsorbedDoseRate][org.kisu.units.mechanics.AbsorbedDoseRate].
+     * Divides this [AbsorbedDose] by [Time],
+     * yielding [AbsorbedDoseRate].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.mechanics.AbsorbedDoseRate =
-        org.kisu.units.mechanics.AbsorbedDoseRate(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): AbsorbedDoseRate =
+        AbsorbedDoseRate(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [AbsorbedDose] by [AbsorbedDoseRate][org.kisu.units.mechanics.AbsorbedDoseRate],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [AbsorbedDose] by [AbsorbedDoseRate],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.AbsorbedDoseRate
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: AbsorbedDoseRate
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 }
 
 /**

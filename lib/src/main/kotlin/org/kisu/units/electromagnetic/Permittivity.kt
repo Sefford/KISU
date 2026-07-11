@@ -5,9 +5,11 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.Permittivity.Companion.FaradPerMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Capacitance
 import org.kisu.units.special.Farad
 
 /**
@@ -61,13 +63,13 @@ class Permittivity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Permittivity] by [Length][org.kisu.units.base.Length],
-     * yielding [Capacitance][org.kisu.units.special.Capacitance].
+     * Multiplies this [Permittivity] by [Length],
+     * yielding [Capacitance].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Capacitance =
-        org.kisu.units.special.Capacitance(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Capacitance =
+        Capacitance(canonical.component1() * other.canonical.component1())
 }

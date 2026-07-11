@@ -5,14 +5,15 @@ import org.kisu.prefixes.primitives.LinearEnumSystem
 import org.kisu.prefixes.primitives.Representation
 import org.kisu.prefixes.primitives.Symbol
 import org.kisu.prefixes.primitives.System
+import org.kisu.units.base.Second
 import java.math.BigInteger
 
 /**
  * Human-readable elapsed-time units expressed as fixed factors of one second.
  *
  * Unlike [Metric], these values are complete time-unit names rather than SI prefixes. [MINUTE] is exactly 60 seconds,
- * [HOUR] is exactly 3,600 seconds, and so on. Use [Metric] with
- * [Second][org.kisu.units.base.Second] for SI expressions such as milliseconds or kiloseconds.
+ * [HOUR] is exactly 3,600 seconds, and so on. Use [Metric] with [Second] for SI expressions such as milliseconds
+ * or kiloseconds.
  *
  * Calendar-like values are deterministic elapsed durations: [MONTH] is always 30 days, [YEAR] is always 365 days,
  * and decade, century, and millennium are fixed multiples of that year. They are not calendar periods.

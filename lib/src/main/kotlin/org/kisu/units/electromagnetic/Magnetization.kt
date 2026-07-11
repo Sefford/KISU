@@ -6,6 +6,8 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Ampere
+import org.kisu.units.base.Current
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.Magnetization.Companion.AmperePerMetre
 import org.kisu.units.representation.Quotient
@@ -56,13 +58,13 @@ class Magnetization(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Magnetization] by [Length][org.kisu.units.base.Length],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Multiplies this [Magnetization] by [Length],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Current =
+        Current(canonical.component1() * other.canonical.component1())
 }

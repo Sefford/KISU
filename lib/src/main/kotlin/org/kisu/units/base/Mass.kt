@@ -7,8 +7,30 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.chemistry.Molality
+import org.kisu.units.chemistry.MolarMass
+import org.kisu.units.electromagnetic.Exposure
+import org.kisu.units.kinematics.linear.Acceleration
+import org.kisu.units.kinematics.linear.Speed
+import org.kisu.units.mechanics.AngularMomentum
+import org.kisu.units.mechanics.AreaDensity
+import org.kisu.units.mechanics.Density
+import org.kisu.units.mechanics.LinearMassDensity
+import org.kisu.units.mechanics.MassFlowRate
+import org.kisu.units.mechanics.MomentOfInertia
+import org.kisu.units.mechanics.Momentum
+import org.kisu.units.mechanics.SpecificAngularMomentum
+import org.kisu.units.mechanics.SpecificEnergy
+import org.kisu.units.mechanics.SpecificVolume
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
+import org.kisu.units.special.Area
+import org.kisu.units.special.ElectricCharge
+import org.kisu.units.special.Energy
+import org.kisu.units.special.Force
+import org.kisu.units.special.Volume
+import org.kisu.units.thermodynamics.HeatCapacity
+import org.kisu.units.thermodynamics.SpecificHeatCapacity
 
 /**
  * Represents the physical quantity of **mass**, measured in grams (g).
@@ -34,213 +56,213 @@ class Mass internal constructor(magnitude: Magnitude, expression: Kilogram) :
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Mass] by [Amount][org.kisu.units.base.Amount],
-     * yielding [MolarMass][org.kisu.units.chemistry.MolarMass].
+     * Divides this [Mass] by [Amount],
+     * yielding [MolarMass].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Amount
-    ): org.kisu.units.chemistry.MolarMass =
-        org.kisu.units.chemistry.MolarMass(canonical.component1() / other.canonical.component1())
+        other: Amount
+    ): MolarMass =
+        MolarMass(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [Length][org.kisu.units.base.Length],
-     * yielding [LinearMassDensity][org.kisu.units.mechanics.LinearMassDensity].
+     * Divides this [Mass] by [Length],
+     * yielding [LinearMassDensity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.mechanics.LinearMassDensity =
-        org.kisu.units.mechanics.LinearMassDensity(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): LinearMassDensity =
+        LinearMassDensity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [Time][org.kisu.units.base.Time],
-     * yielding [MassFlowRate][org.kisu.units.mechanics.MassFlowRate].
+     * Divides this [Mass] by [Time],
+     * yielding [MassFlowRate].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.mechanics.MassFlowRate =
-        org.kisu.units.mechanics.MassFlowRate(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): MassFlowRate =
+        MassFlowRate(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [MolarMass][org.kisu.units.chemistry.MolarMass],
-     * yielding [Amount][org.kisu.units.base.Amount].
+     * Divides this [Mass] by [MolarMass],
+     * yielding [Amount].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.MolarMass
-    ): org.kisu.units.base.Amount =
-        org.kisu.units.base.Amount(canonical.component1() / other.canonical.component1())
+        other: MolarMass
+    ): Amount =
+        Amount(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [AreaDensity][org.kisu.units.mechanics.AreaDensity],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Divides this [Mass] by [AreaDensity],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.AreaDensity
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() / other.canonical.component1())
+        other: AreaDensity
+    ): Area =
+        Area(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [Density][org.kisu.units.mechanics.Density],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Divides this [Mass] by [Density],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.Density
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() / other.canonical.component1())
+        other: Density
+    ): Volume =
+        Volume(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [LinearMassDensity][org.kisu.units.mechanics.LinearMassDensity],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Mass] by [LinearMassDensity],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.LinearMassDensity
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: LinearMassDensity
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [MassFlowRate][org.kisu.units.mechanics.MassFlowRate],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Mass] by [MassFlowRate],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.MassFlowRate
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: MassFlowRate
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [Area][org.kisu.units.special.Area],
-     * yielding [AreaDensity][org.kisu.units.mechanics.AreaDensity].
+     * Divides this [Mass] by [Area],
+     * yielding [AreaDensity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.mechanics.AreaDensity =
-        org.kisu.units.mechanics.AreaDensity(canonical.component1() / other.canonical.component1())
+        other: Area
+    ): AreaDensity =
+        AreaDensity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Mass] by [Volume][org.kisu.units.special.Volume],
-     * yielding [Density][org.kisu.units.mechanics.Density].
+     * Divides this [Mass] by [Volume],
+     * yielding [Density].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.mechanics.Density =
-        org.kisu.units.mechanics.Density(canonical.component1() / other.canonical.component1())
+        other: Volume
+    ): Density =
+        Density(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [Molality][org.kisu.units.chemistry.Molality],
-     * yielding [Amount][org.kisu.units.base.Amount].
+     * Multiplies this [Mass] by [Molality],
+     * yielding [Amount].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.Molality
-    ): org.kisu.units.base.Amount =
-        org.kisu.units.base.Amount(canonical.component1() * other.canonical.component1())
+        other: Molality
+    ): Amount =
+        Amount(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [Exposure][org.kisu.units.electromagnetic.Exposure],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Multiplies this [Mass] by [Exposure],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.Exposure
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() * other.canonical.component1())
+        other: Exposure
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [Acceleration][org.kisu.units.kinematics.linear.Acceleration],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Multiplies this [Mass] by [Acceleration],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.kinematics.linear.Acceleration
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() * other.canonical.component1())
+        other: Acceleration
+    ): Force =
+        Force(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [Speed][org.kisu.units.kinematics.linear.Speed],
-     * yielding [Momentum][org.kisu.units.mechanics.Momentum].
+     * Multiplies this [Mass] by [Speed],
+     * yielding [Momentum].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.kinematics.linear.Speed
-    ): org.kisu.units.mechanics.Momentum =
-        org.kisu.units.mechanics.Momentum(canonical.component1() * other.canonical.component1())
+        other: Speed
+    ): Momentum =
+        Momentum(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [SpecificAngularMomentum][org.kisu.units.mechanics.SpecificAngularMomentum],
-     * yielding [AngularMomentum][org.kisu.units.mechanics.AngularMomentum].
+     * Multiplies this [Mass] by [SpecificAngularMomentum],
+     * yielding [AngularMomentum].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.SpecificAngularMomentum
-    ): org.kisu.units.mechanics.AngularMomentum =
-        org.kisu.units.mechanics.AngularMomentum(canonical.component1() * other.canonical.component1())
+        other: SpecificAngularMomentum
+    ): AngularMomentum =
+        AngularMomentum(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [SpecificEnergy][org.kisu.units.mechanics.SpecificEnergy],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [Mass] by [SpecificEnergy],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.SpecificEnergy
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: SpecificEnergy
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [SpecificVolume][org.kisu.units.mechanics.SpecificVolume],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Multiplies this [Mass] by [SpecificVolume],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.SpecificVolume
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() * other.canonical.component1())
+        other: SpecificVolume
+    ): Volume =
+        Volume(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [Area][org.kisu.units.special.Area],
-     * yielding [MomentOfInertia][org.kisu.units.mechanics.MomentOfInertia].
+     * Multiplies this [Mass] by [Area],
+     * yielding [MomentOfInertia].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.mechanics.MomentOfInertia =
-        org.kisu.units.mechanics.MomentOfInertia(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): MomentOfInertia =
+        MomentOfInertia(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Mass] by [SpecificHeatCapacity][org.kisu.units.thermodynamics.SpecificHeatCapacity],
-     * yielding [HeatCapacity][org.kisu.units.thermodynamics.HeatCapacity].
+     * Multiplies this [Mass] by [SpecificHeatCapacity],
+     * yielding [HeatCapacity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.thermodynamics.SpecificHeatCapacity
-    ): org.kisu.units.thermodynamics.HeatCapacity =
-        org.kisu.units.thermodynamics.HeatCapacity(canonical.component1() * other.canonical.component1())
+        other: SpecificHeatCapacity
+    ): HeatCapacity =
+        HeatCapacity(canonical.component1() * other.canonical.component1())
 }
 
 /**

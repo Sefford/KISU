@@ -6,7 +6,9 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kelvin
+import org.kisu.units.base.Temperature
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Power
 import org.kisu.units.special.Watt
 import org.kisu.units.thermodynamics.ThermalResistance.Companion.KelvinPerWatt
 
@@ -61,13 +63,13 @@ class ThermalResistance(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [ThermalResistance] by [Power][org.kisu.units.special.Power],
-     * yielding [Temperature][org.kisu.units.base.Temperature].
+     * Multiplies this [ThermalResistance] by [Power],
+     * yielding [Temperature].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Power
-    ): org.kisu.units.base.Temperature =
-        org.kisu.units.base.Temperature(canonical.component1() * other.canonical.component1())
+        other: Power
+    ): Temperature =
+        Temperature(canonical.component1() * other.canonical.component1())
 }

@@ -5,6 +5,8 @@ package org.kisu.units.mechanics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
+import org.kisu.units.base.Mass
 import org.kisu.units.base.Metre
 import org.kisu.units.base.Second
 import org.kisu.units.mechanics.AngularMomentum.Companion.NewtonMeterSecond
@@ -59,46 +61,46 @@ class AngularMomentum(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [AngularMomentum] by [Length][org.kisu.units.base.Length],
-     * yielding [Momentum][org.kisu.units.mechanics.Momentum].
+     * Divides this [AngularMomentum] by [Length],
+     * yielding [Momentum].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.mechanics.Momentum =
-        org.kisu.units.mechanics.Momentum(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): Momentum =
+        Momentum(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [AngularMomentum] by [Mass][org.kisu.units.base.Mass],
-     * yielding [SpecificAngularMomentum][org.kisu.units.mechanics.SpecificAngularMomentum].
+     * Divides this [AngularMomentum] by [Mass],
+     * yielding [SpecificAngularMomentum].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.mechanics.SpecificAngularMomentum =
-        org.kisu.units.mechanics.SpecificAngularMomentum(canonical.component1() / other.canonical.component1())
+        other: Mass
+    ): SpecificAngularMomentum =
+        SpecificAngularMomentum(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [AngularMomentum] by [Momentum][org.kisu.units.mechanics.Momentum],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [AngularMomentum] by [Momentum],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.Momentum
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: Momentum
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [AngularMomentum] by [SpecificAngularMomentum][org.kisu.units.mechanics.SpecificAngularMomentum],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Divides this [AngularMomentum] by [SpecificAngularMomentum],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.SpecificAngularMomentum
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() / other.canonical.component1())
+        other: SpecificAngularMomentum
+    ): Mass =
+        Mass(canonical.component1() / other.canonical.component1())
 }

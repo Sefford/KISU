@@ -7,7 +7,9 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Time
 import org.kisu.units.mechanics.Compressibility
+import org.kisu.units.mechanics.DynamicViscosity
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -38,26 +40,26 @@ class Pressure internal constructor(magnitude: Magnitude, expression: Pascal) :
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Pressure] by [Time][org.kisu.units.base.Time],
-     * yielding [DynamicViscosity][org.kisu.units.mechanics.DynamicViscosity].
+     * Multiplies this [Pressure] by [Time],
+     * yielding [DynamicViscosity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.mechanics.DynamicViscosity =
-        org.kisu.units.mechanics.DynamicViscosity(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): DynamicViscosity =
+        DynamicViscosity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Pressure] by [Area][org.kisu.units.special.Area],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Multiplies this [Pressure] by [Area],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): Force =
+        Force(canonical.component1() * other.canonical.component1())
 }
 
 /**

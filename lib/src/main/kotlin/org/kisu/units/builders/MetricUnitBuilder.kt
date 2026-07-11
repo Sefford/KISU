@@ -114,6 +114,7 @@ import org.kisu.units.kinematics.angular.Crackle as AngularCrackle
 import org.kisu.units.kinematics.angular.Jerk as AngularJerk
 import org.kisu.units.kinematics.angular.Pop as AngularPop
 import org.kisu.units.kinematics.angular.Snap as AngularSnap
+import org.kisu.units.photometric.Exposure as PhotometricExposure
 
 /**
  * Represents a metric unit builder carrying a magnitude value.
@@ -717,8 +718,8 @@ val MetricUnitBuilder.lux: Illuminance get() = Illuminance(magnitude, metric)
  * val exposure = 1.luxSecond // 1 lx·s
  * ```
  */
-val MetricUnitBuilder.luxSecond: org.kisu.units.photometric.Exposure
-    get() = org.kisu.units.photometric.Exposure(magnitude, metric)
+val MetricUnitBuilder.luxSecond: PhotometricExposure
+    get() = PhotometricExposure(magnitude, metric)
 
 /**
  * Creates a [FuelEfficiency] measure by applying the metric prefix scale to the magnitude.

@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Ampere
+import org.kisu.units.base.Current
 import org.kisu.units.electromagnetic.MagnetomotiveForce.Companion.AmpereRadian
 import org.kisu.units.representation.Product
+import org.kisu.units.special.PlaneAngle
 import org.kisu.units.special.Radian
 
 /**
@@ -61,24 +63,24 @@ class MagnetomotiveForce(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [MagnetomotiveForce] by [Current][org.kisu.units.base.Current],
-     * yielding [PlaneAngle][org.kisu.units.special.PlaneAngle].
+     * Divides this [MagnetomotiveForce] by [Current],
+     * yielding [PlaneAngle].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Current
-    ): org.kisu.units.special.PlaneAngle =
-        org.kisu.units.special.PlaneAngle(canonical.component1() / other.canonical.component1())
+        other: Current
+    ): PlaneAngle =
+        PlaneAngle(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [MagnetomotiveForce] by [PlaneAngle][org.kisu.units.special.PlaneAngle],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Divides this [MagnetomotiveForce] by [PlaneAngle],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.PlaneAngle
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() / other.canonical.component1())
+        other: PlaneAngle
+    ): Current =
+        Current(canonical.component1() / other.canonical.component1())
 }

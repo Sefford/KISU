@@ -7,7 +7,9 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.electromagnetic.ElectricDisplacementField.Companion.CoulombPerSquareMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
 import org.kisu.units.special.Coulomb
+import org.kisu.units.special.ElectricCharge
 import org.kisu.units.special.SquareMetre
 
 /**
@@ -63,13 +65,13 @@ class ElectricDisplacementField(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [ElectricDisplacementField] by [Area][org.kisu.units.special.Area],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Multiplies this [ElectricDisplacementField] by [Area],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() * other.canonical.component1())
 }

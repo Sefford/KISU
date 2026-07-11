@@ -7,8 +7,20 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
+import org.kisu.units.base.Current
+import org.kisu.units.base.Length
+import org.kisu.units.base.Mass
+import org.kisu.units.base.Temperature
+import org.kisu.units.base.Time
+import org.kisu.units.chemistry.MolarEnergy
+import org.kisu.units.mechanics.Action
+import org.kisu.units.mechanics.EnergyDensity
+import org.kisu.units.mechanics.RadiantExposure
+import org.kisu.units.mechanics.SpecificEnergy
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
+import org.kisu.units.thermodynamics.HeatCapacity
 
 /**
  * Represents the physical quantity of **energy**, measured in [Joule].
@@ -30,191 +42,191 @@ class Energy internal constructor(magnitude: Magnitude, expression: Joule) :
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Energy] by [Amount][org.kisu.units.base.Amount],
-     * yielding [MolarEnergy][org.kisu.units.chemistry.MolarEnergy].
+     * Divides this [Energy] by [Amount],
+     * yielding [MolarEnergy].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Amount
-    ): org.kisu.units.chemistry.MolarEnergy =
-        org.kisu.units.chemistry.MolarEnergy(canonical.component1() / other.canonical.component1())
+        other: Amount
+    ): MolarEnergy =
+        MolarEnergy(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [Current][org.kisu.units.base.Current],
-     * yielding [MagneticFlux][org.kisu.units.special.MagneticFlux].
+     * Divides this [Energy] by [Current],
+     * yielding [MagneticFlux].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Current
-    ): org.kisu.units.special.MagneticFlux =
-        org.kisu.units.special.MagneticFlux(canonical.component1() / other.canonical.component1())
+        other: Current
+    ): MagneticFlux =
+        MagneticFlux(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [Length][org.kisu.units.base.Length],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Divides this [Energy] by [Length],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): Force =
+        Force(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [Mass][org.kisu.units.base.Mass],
-     * yielding [SpecificEnergy][org.kisu.units.mechanics.SpecificEnergy].
+     * Divides this [Energy] by [Mass],
+     * yielding [SpecificEnergy].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.mechanics.SpecificEnergy =
-        org.kisu.units.mechanics.SpecificEnergy(canonical.component1() / other.canonical.component1())
+        other: Mass
+    ): SpecificEnergy =
+        SpecificEnergy(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [Temperature][org.kisu.units.base.Temperature],
-     * yielding [HeatCapacity][org.kisu.units.thermodynamics.HeatCapacity].
+     * Divides this [Energy] by [Temperature],
+     * yielding [HeatCapacity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Temperature
-    ): org.kisu.units.thermodynamics.HeatCapacity =
-        org.kisu.units.thermodynamics.HeatCapacity(canonical.component1() / other.canonical.component1())
+        other: Temperature
+    ): HeatCapacity =
+        HeatCapacity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [MolarEnergy][org.kisu.units.chemistry.MolarEnergy],
-     * yielding [Amount][org.kisu.units.base.Amount].
+     * Divides this [Energy] by [MolarEnergy],
+     * yielding [Amount].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.MolarEnergy
-    ): org.kisu.units.base.Amount =
-        org.kisu.units.base.Amount(canonical.component1() / other.canonical.component1())
+        other: MolarEnergy
+    ): Amount =
+        Amount(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [EnergyDensity][org.kisu.units.mechanics.EnergyDensity],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Divides this [Energy] by [EnergyDensity],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.EnergyDensity
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() / other.canonical.component1())
+        other: EnergyDensity
+    ): Volume =
+        Volume(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [RadiantExposure][org.kisu.units.mechanics.RadiantExposure],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Divides this [Energy] by [RadiantExposure],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.RadiantExposure
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() / other.canonical.component1())
+        other: RadiantExposure
+    ): Area =
+        Area(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [SpecificEnergy][org.kisu.units.mechanics.SpecificEnergy],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Divides this [Energy] by [SpecificEnergy],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.SpecificEnergy
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() / other.canonical.component1())
+        other: SpecificEnergy
+    ): Mass =
+        Mass(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [Area][org.kisu.units.special.Area],
-     * yielding [RadiantExposure][org.kisu.units.mechanics.RadiantExposure].
+     * Divides this [Energy] by [Area],
+     * yielding [RadiantExposure].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.mechanics.RadiantExposure =
-        org.kisu.units.mechanics.RadiantExposure(canonical.component1() / other.canonical.component1())
+        other: Area
+    ): RadiantExposure =
+        RadiantExposure(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [ElectricCharge][org.kisu.units.special.ElectricCharge],
-     * yielding [ElectricPotential][org.kisu.units.special.ElectricPotential].
+     * Divides this [Energy] by [ElectricCharge],
+     * yielding [ElectricPotential].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.ElectricCharge
-    ): org.kisu.units.special.ElectricPotential =
-        org.kisu.units.special.ElectricPotential(canonical.component1() / other.canonical.component1())
+        other: ElectricCharge
+    ): ElectricPotential =
+        ElectricPotential(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [ElectricPotential][org.kisu.units.special.ElectricPotential],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Divides this [Energy] by [ElectricPotential],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.ElectricPotential
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() / other.canonical.component1())
+        other: ElectricPotential
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [Force][org.kisu.units.special.Force],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Energy] by [Force],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Force
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: Force
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [MagneticFlux][org.kisu.units.special.MagneticFlux],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Divides this [Energy] by [MagneticFlux],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.MagneticFlux
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() / other.canonical.component1())
+        other: MagneticFlux
+    ): Current =
+        Current(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [Volume][org.kisu.units.special.Volume],
-     * yielding [EnergyDensity][org.kisu.units.mechanics.EnergyDensity].
+     * Divides this [Energy] by [Volume],
+     * yielding [EnergyDensity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.mechanics.EnergyDensity =
-        org.kisu.units.mechanics.EnergyDensity(canonical.component1() / other.canonical.component1())
+        other: Volume
+    ): EnergyDensity =
+        EnergyDensity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Energy] by [HeatCapacity][org.kisu.units.thermodynamics.HeatCapacity],
-     * yielding [Temperature][org.kisu.units.base.Temperature].
+     * Divides this [Energy] by [HeatCapacity],
+     * yielding [Temperature].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.thermodynamics.HeatCapacity
-    ): org.kisu.units.base.Temperature =
-        org.kisu.units.base.Temperature(canonical.component1() / other.canonical.component1())
+        other: HeatCapacity
+    ): Temperature =
+        Temperature(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Energy] by [Time][org.kisu.units.base.Time],
-     * yielding [Action][org.kisu.units.mechanics.Action].
+     * Multiplies this [Energy] by [Time],
+     * yielding [Action].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.mechanics.Action =
-        org.kisu.units.mechanics.Action(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Action =
+        Action(canonical.component1() * other.canonical.component1())
 }
 
 /**

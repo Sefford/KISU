@@ -7,9 +7,45 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.electromagnetic.ElectricConductivity
+import org.kisu.units.electromagnetic.ElectricFieldStrength
+import org.kisu.units.electromagnetic.LinearChargeDensity
+import org.kisu.units.electromagnetic.MagneticMoment
+import org.kisu.units.electromagnetic.MagneticPermittivity
+import org.kisu.units.electromagnetic.MagneticRigidity
+import org.kisu.units.electromagnetic.MagneticSusceptibility
+import org.kisu.units.electromagnetic.MagneticVectorPotential
+import org.kisu.units.electromagnetic.Magnetization
+import org.kisu.units.electromagnetic.Permittivity
+import org.kisu.units.electromagnetic.Resistivity
+import org.kisu.units.kinematics.linear.Speed
+import org.kisu.units.mechanics.AngularMomentum
+import org.kisu.units.mechanics.FuelEfficiency
+import org.kisu.units.mechanics.LinearMassDensity
+import org.kisu.units.mechanics.Momentum
+import org.kisu.units.mechanics.Radiance
+import org.kisu.units.mechanics.RadiantIntensity
+import org.kisu.units.mechanics.SpectralIntensity
+import org.kisu.units.mechanics.SpectralPower
+import org.kisu.units.mechanics.SpectralRadiance
+import org.kisu.units.mechanics.SurfaceTension
 import org.kisu.units.mechanics.WaveNumber
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
+import org.kisu.units.special.Area
+import org.kisu.units.special.Capacitance
+import org.kisu.units.special.Conductance
+import org.kisu.units.special.ElectricCharge
+import org.kisu.units.special.ElectricPotential
+import org.kisu.units.special.Energy
+import org.kisu.units.special.Force
+import org.kisu.units.special.Inductance
+import org.kisu.units.special.MagneticFlux
+import org.kisu.units.special.MagneticFluxDensity
+import org.kisu.units.special.Power
+import org.kisu.units.special.Resistance
+import org.kisu.units.special.Volume
+import org.kisu.units.thermodynamics.TemperatureGradient
 
 /**
  * Represents the physical quantity of **length**, measured in metres (m).
@@ -35,290 +71,290 @@ class Length internal constructor(magnitude: Magnitude, expression: Metre) :
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Length] by [Time][org.kisu.units.base.Time],
-     * yielding [Speed][org.kisu.units.kinematics.linear.Speed].
+     * Divides this [Length] by [Time],
+     * yielding [Speed].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Speed =
-        org.kisu.units.kinematics.linear.Speed(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Speed =
+        Speed(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Length] by [MagneticSusceptibility][org.kisu.units.electromagnetic.MagneticSusceptibility],
-     * yielding [Inductance][org.kisu.units.special.Inductance].
+     * Divides this [Length] by [MagneticSusceptibility],
+     * yielding [Inductance].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.electromagnetic.MagneticSusceptibility
-    ): org.kisu.units.special.Inductance =
-        org.kisu.units.special.Inductance(canonical.component1() / other.canonical.component1())
+        other: MagneticSusceptibility
+    ): Inductance =
+        Inductance(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Length] by [Speed][org.kisu.units.kinematics.linear.Speed],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Length] by [Speed],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.linear.Speed
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Speed
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Length] by [FuelEfficiency][org.kisu.units.mechanics.FuelEfficiency],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Divides this [Length] by [FuelEfficiency],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.FuelEfficiency
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() / other.canonical.component1())
+        other: FuelEfficiency
+    ): Volume =
+        Volume(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Length] by [Inductance][org.kisu.units.special.Inductance],
-     * yielding [MagneticSusceptibility][org.kisu.units.electromagnetic.MagneticSusceptibility].
+     * Divides this [Length] by [Inductance],
+     * yielding [MagneticSusceptibility].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Inductance
-    ): org.kisu.units.electromagnetic.MagneticSusceptibility =
-        org.kisu.units.electromagnetic.MagneticSusceptibility(canonical.component1() / other.canonical.component1())
+        other: Inductance
+    ): MagneticSusceptibility =
+        MagneticSusceptibility(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Length] by [Volume][org.kisu.units.special.Volume],
-     * yielding [FuelEfficiency][org.kisu.units.mechanics.FuelEfficiency].
+     * Divides this [Length] by [Volume],
+     * yielding [FuelEfficiency].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.mechanics.FuelEfficiency =
-        org.kisu.units.mechanics.FuelEfficiency(canonical.component1() / other.canonical.component1())
+        other: Volume
+    ): FuelEfficiency =
+        FuelEfficiency(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [Length][org.kisu.units.base.Length],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Multiplies this [Length] by [Length],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Area =
+        Area(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [ElectricConductivity][org.kisu.units.electromagnetic.ElectricConductivity],
-     * yielding [Conductance][org.kisu.units.special.Conductance].
+     * Multiplies this [Length] by [ElectricConductivity],
+     * yielding [Conductance].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.ElectricConductivity
-    ): org.kisu.units.special.Conductance =
-        org.kisu.units.special.Conductance(canonical.component1() * other.canonical.component1())
+        other: ElectricConductivity
+    ): Conductance =
+        Conductance(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [ElectricFieldStrength][org.kisu.units.electromagnetic.ElectricFieldStrength],
-     * yielding [ElectricPotential][org.kisu.units.special.ElectricPotential].
+     * Multiplies this [Length] by [ElectricFieldStrength],
+     * yielding [ElectricPotential].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.ElectricFieldStrength
-    ): org.kisu.units.special.ElectricPotential =
-        org.kisu.units.special.ElectricPotential(canonical.component1() * other.canonical.component1())
+        other: ElectricFieldStrength
+    ): ElectricPotential =
+        ElectricPotential(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [LinearChargeDensity][org.kisu.units.electromagnetic.LinearChargeDensity],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Multiplies this [Length] by [LinearChargeDensity],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.LinearChargeDensity
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() * other.canonical.component1())
+        other: LinearChargeDensity
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [MagneticPermittivity][org.kisu.units.electromagnetic.MagneticPermittivity],
-     * yielding [Inductance][org.kisu.units.special.Inductance].
+     * Multiplies this [Length] by [MagneticPermittivity],
+     * yielding [Inductance].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.MagneticPermittivity
-    ): org.kisu.units.special.Inductance =
-        org.kisu.units.special.Inductance(canonical.component1() * other.canonical.component1())
+        other: MagneticPermittivity
+    ): Inductance =
+        Inductance(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [MagneticVectorPotential][org.kisu.units.electromagnetic.MagneticVectorPotential],
-     * yielding [MagneticFlux][org.kisu.units.special.MagneticFlux].
+     * Multiplies this [Length] by [MagneticVectorPotential],
+     * yielding [MagneticFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.MagneticVectorPotential
-    ): org.kisu.units.special.MagneticFlux =
-        org.kisu.units.special.MagneticFlux(canonical.component1() * other.canonical.component1())
+        other: MagneticVectorPotential
+    ): MagneticFlux =
+        MagneticFlux(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [Magnetization][org.kisu.units.electromagnetic.Magnetization],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Multiplies this [Length] by [Magnetization],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.Magnetization
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() * other.canonical.component1())
+        other: Magnetization
+    ): Current =
+        Current(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [Permittivity][org.kisu.units.electromagnetic.Permittivity],
-     * yielding [Capacitance][org.kisu.units.special.Capacitance].
+     * Multiplies this [Length] by [Permittivity],
+     * yielding [Capacitance].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.Permittivity
-    ): org.kisu.units.special.Capacitance =
-        org.kisu.units.special.Capacitance(canonical.component1() * other.canonical.component1())
+        other: Permittivity
+    ): Capacitance =
+        Capacitance(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [LinearMassDensity][org.kisu.units.mechanics.LinearMassDensity],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Multiplies this [Length] by [LinearMassDensity],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.LinearMassDensity
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() * other.canonical.component1())
+        other: LinearMassDensity
+    ): Mass =
+        Mass(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [Momentum][org.kisu.units.mechanics.Momentum],
-     * yielding [AngularMomentum][org.kisu.units.mechanics.AngularMomentum].
+     * Multiplies this [Length] by [Momentum],
+     * yielding [AngularMomentum].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.Momentum
-    ): org.kisu.units.mechanics.AngularMomentum =
-        org.kisu.units.mechanics.AngularMomentum(canonical.component1() * other.canonical.component1())
+        other: Momentum
+    ): AngularMomentum =
+        AngularMomentum(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [SpectralIntensity][org.kisu.units.mechanics.SpectralIntensity],
-     * yielding [RadiantIntensity][org.kisu.units.mechanics.RadiantIntensity].
+     * Multiplies this [Length] by [SpectralIntensity],
+     * yielding [RadiantIntensity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.SpectralIntensity
-    ): org.kisu.units.mechanics.RadiantIntensity =
-        org.kisu.units.mechanics.RadiantIntensity(canonical.component1() * other.canonical.component1())
+        other: SpectralIntensity
+    ): RadiantIntensity =
+        RadiantIntensity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [SpectralPower][org.kisu.units.mechanics.SpectralPower],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Multiplies this [Length] by [SpectralPower],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.SpectralPower
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() * other.canonical.component1())
+        other: SpectralPower
+    ): Power =
+        Power(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [SpectralRadiance][org.kisu.units.mechanics.SpectralRadiance],
-     * yielding [Radiance][org.kisu.units.mechanics.Radiance].
+     * Multiplies this [Length] by [SpectralRadiance],
+     * yielding [Radiance].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.SpectralRadiance
-    ): org.kisu.units.mechanics.Radiance =
-        org.kisu.units.mechanics.Radiance(canonical.component1() * other.canonical.component1())
+        other: SpectralRadiance
+    ): Radiance =
+        Radiance(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [SurfaceTension][org.kisu.units.mechanics.SurfaceTension],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Multiplies this [Length] by [SurfaceTension],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.SurfaceTension
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() * other.canonical.component1())
+        other: SurfaceTension
+    ): Force =
+        Force(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [Area][org.kisu.units.special.Area],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Multiplies this [Length] by [Area],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): Volume =
+        Volume(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [Force][org.kisu.units.special.Force],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [Length] by [Force],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Force
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: Force
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [MagneticFlux][org.kisu.units.special.MagneticFlux],
-     * yielding [MagneticMoment][org.kisu.units.electromagnetic.MagneticMoment].
+     * Multiplies this [Length] by [MagneticFlux],
+     * yielding [MagneticMoment].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.MagneticFlux
-    ): org.kisu.units.electromagnetic.MagneticMoment =
-        org.kisu.units.electromagnetic.MagneticMoment(canonical.component1() * other.canonical.component1())
+        other: MagneticFlux
+    ): MagneticMoment =
+        MagneticMoment(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [MagneticFluxDensity][org.kisu.units.special.MagneticFluxDensity],
-     * yielding [MagneticRigidity][org.kisu.units.electromagnetic.MagneticRigidity].
+     * Multiplies this [Length] by [MagneticFluxDensity],
+     * yielding [MagneticRigidity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.MagneticFluxDensity
-    ): org.kisu.units.electromagnetic.MagneticRigidity =
-        org.kisu.units.electromagnetic.MagneticRigidity(canonical.component1() * other.canonical.component1())
+        other: MagneticFluxDensity
+    ): MagneticRigidity =
+        MagneticRigidity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [Resistance][org.kisu.units.special.Resistance],
-     * yielding [Resistivity][org.kisu.units.electromagnetic.Resistivity].
+     * Multiplies this [Length] by [Resistance],
+     * yielding [Resistivity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Resistance
-    ): org.kisu.units.electromagnetic.Resistivity =
-        org.kisu.units.electromagnetic.Resistivity(canonical.component1() * other.canonical.component1())
+        other: Resistance
+    ): Resistivity =
+        Resistivity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Length] by [TemperatureGradient][org.kisu.units.thermodynamics.TemperatureGradient],
-     * yielding [Temperature][org.kisu.units.base.Temperature].
+     * Multiplies this [Length] by [TemperatureGradient],
+     * yielding [Temperature].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.thermodynamics.TemperatureGradient
-    ): org.kisu.units.base.Temperature =
-        org.kisu.units.base.Temperature(canonical.component1() * other.canonical.component1())
+        other: TemperatureGradient
+    ): Temperature =
+        Temperature(canonical.component1() * other.canonical.component1())
 }
 
 /**

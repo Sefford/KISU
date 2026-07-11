@@ -6,9 +6,13 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
+import org.kisu.units.base.Temperature
 import org.kisu.units.mechanics.SpecificEnergy.Companion.JoulePerKilogram
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Energy
 import org.kisu.units.special.Joule
+import org.kisu.units.thermodynamics.SpecificHeatCapacity
 
 /**
  * Represents the physical quantity of **specific energy**, measured in
@@ -57,35 +61,35 @@ class SpecificEnergy(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [SpecificEnergy] by [Temperature][org.kisu.units.base.Temperature],
-     * yielding [SpecificHeatCapacity][org.kisu.units.thermodynamics.SpecificHeatCapacity].
+     * Divides this [SpecificEnergy] by [Temperature],
+     * yielding [SpecificHeatCapacity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Temperature
-    ): org.kisu.units.thermodynamics.SpecificHeatCapacity =
-        org.kisu.units.thermodynamics.SpecificHeatCapacity(canonical.component1() / other.canonical.component1())
+        other: Temperature
+    ): SpecificHeatCapacity =
+        SpecificHeatCapacity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [SpecificEnergy] by [SpecificHeatCapacity][org.kisu.units.thermodynamics.SpecificHeatCapacity],
-     * yielding [Temperature][org.kisu.units.base.Temperature].
+     * Divides this [SpecificEnergy] by [SpecificHeatCapacity],
+     * yielding [Temperature].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.thermodynamics.SpecificHeatCapacity
-    ): org.kisu.units.base.Temperature =
-        org.kisu.units.base.Temperature(canonical.component1() / other.canonical.component1())
+        other: SpecificHeatCapacity
+    ): Temperature =
+        Temperature(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [SpecificEnergy] by [Mass][org.kisu.units.base.Mass],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [SpecificEnergy] by [Mass],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: Mass
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 }

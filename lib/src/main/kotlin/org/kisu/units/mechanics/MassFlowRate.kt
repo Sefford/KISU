@@ -6,7 +6,9 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.mechanics.MassFlowRate.Companion.KilogramPerSecond
 import org.kisu.units.representation.Quotient
 
@@ -57,13 +59,13 @@ class MassFlowRate(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MassFlowRate] by [Time][org.kisu.units.base.Time],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Multiplies this [MassFlowRate] by [Time],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Mass =
+        Mass(canonical.component1() * other.canonical.component1())
 }

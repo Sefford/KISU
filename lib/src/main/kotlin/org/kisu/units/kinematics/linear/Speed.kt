@@ -5,10 +5,16 @@ package org.kisu.units.kinematics.linear
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
+import org.kisu.units.base.Mass
 import org.kisu.units.base.Metre
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.kinematics.linear.Speed.Companion.MetrePerSecond
+import org.kisu.units.mechanics.Momentum
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Force
+import org.kisu.units.special.Power
 
 /**
  * Represents the physical quantity of **speed**, measured in [MetrePerSecond].
@@ -59,57 +65,57 @@ class Speed(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Speed] by [Time][org.kisu.units.base.Time],
-     * yielding [Acceleration][org.kisu.units.kinematics.linear.Acceleration].
+     * Divides this [Speed] by [Time],
+     * yielding [Acceleration].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Acceleration =
-        org.kisu.units.kinematics.linear.Acceleration(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Acceleration =
+        Acceleration(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Speed] by [Acceleration][org.kisu.units.kinematics.linear.Acceleration],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Speed] by [Acceleration],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.linear.Acceleration
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Acceleration
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Speed] by [Mass][org.kisu.units.base.Mass],
-     * yielding [Momentum][org.kisu.units.mechanics.Momentum].
+     * Multiplies this [Speed] by [Mass],
+     * yielding [Momentum].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.mechanics.Momentum =
-        org.kisu.units.mechanics.Momentum(canonical.component1() * other.canonical.component1())
+        other: Mass
+    ): Momentum =
+        Momentum(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Speed] by [Time][org.kisu.units.base.Time],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Multiplies this [Speed] by [Time],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Length =
+        Length(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Speed] by [Force][org.kisu.units.special.Force],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Multiplies this [Speed] by [Force],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Force
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() * other.canonical.component1())
+        other: Force
+    ): Power =
+        Power(canonical.component1() * other.canonical.component1())
 }

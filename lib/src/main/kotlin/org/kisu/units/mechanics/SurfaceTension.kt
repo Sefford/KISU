@@ -5,9 +5,11 @@ package org.kisu.units.mechanics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.mechanics.SurfaceTension.Companion.NewtonPerMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Force
 import org.kisu.units.special.Newton
 
 /**
@@ -58,13 +60,13 @@ class SurfaceTension(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [SurfaceTension] by [Length][org.kisu.units.base.Length],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Multiplies this [SurfaceTension] by [Length],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Force =
+        Force(canonical.component1() * other.canonical.component1())
 }

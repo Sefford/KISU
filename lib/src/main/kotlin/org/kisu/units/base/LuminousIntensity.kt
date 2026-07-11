@@ -7,8 +7,12 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.photometric.Luminance
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
+import org.kisu.units.special.Area
+import org.kisu.units.special.LuminousFlux
+import org.kisu.units.special.SolidAngle
 
 /**
  * Represents the physical quantity of **luminous intensity**, measured in candelas (cd).
@@ -33,37 +37,37 @@ class LuminousIntensity internal constructor(magnitude: Magnitude, expression: C
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [LuminousIntensity] by [Luminance][org.kisu.units.photometric.Luminance],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Divides this [LuminousIntensity] by [Luminance],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.photometric.Luminance
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() / other.canonical.component1())
+        other: Luminance
+    ): Area =
+        Area(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [LuminousIntensity] by [Area][org.kisu.units.special.Area],
-     * yielding [Luminance][org.kisu.units.photometric.Luminance].
+     * Divides this [LuminousIntensity] by [Area],
+     * yielding [Luminance].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.photometric.Luminance =
-        org.kisu.units.photometric.Luminance(canonical.component1() / other.canonical.component1())
+        other: Area
+    ): Luminance =
+        Luminance(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [LuminousIntensity] by [SolidAngle][org.kisu.units.special.SolidAngle],
-     * yielding [LuminousFlux][org.kisu.units.special.LuminousFlux].
+     * Multiplies this [LuminousIntensity] by [SolidAngle],
+     * yielding [LuminousFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.SolidAngle
-    ): org.kisu.units.special.LuminousFlux =
-        org.kisu.units.special.LuminousFlux(canonical.component1() * other.canonical.component1())
+        other: SolidAngle
+    ): LuminousFlux =
+        LuminousFlux(canonical.component1() * other.canonical.component1())
 }
 
 /**

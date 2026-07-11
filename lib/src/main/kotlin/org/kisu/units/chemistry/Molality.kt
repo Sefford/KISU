@@ -5,7 +5,9 @@ package org.kisu.units.chemistry
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
 import org.kisu.units.base.Mole
 import org.kisu.units.representation.Quotient
 
@@ -65,13 +67,13 @@ class Molality(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Molality] by [Mass][org.kisu.units.base.Mass],
-     * yielding [Amount][org.kisu.units.base.Amount].
+     * Multiplies this [Molality] by [Mass],
+     * yielding [Amount].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.base.Amount =
-        org.kisu.units.base.Amount(canonical.component1() * other.canonical.component1())
+        other: Mass
+    ): Amount =
+        Amount(canonical.component1() * other.canonical.component1())
 }

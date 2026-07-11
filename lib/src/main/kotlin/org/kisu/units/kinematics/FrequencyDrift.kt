@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.kinematics.FrequencyDrift.Companion.HertzPerSecond
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Frequency
 import org.kisu.units.special.Hertz
 
 /**
@@ -60,13 +62,13 @@ class FrequencyDrift internal constructor(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [FrequencyDrift] by [Time][org.kisu.units.base.Time],
-     * yielding [Frequency][org.kisu.units.special.Frequency].
+     * Multiplies this [FrequencyDrift] by [Time],
+     * yielding [Frequency].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.Frequency =
-        org.kisu.units.special.Frequency(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Frequency =
+        Frequency(canonical.component1() * other.canonical.component1())
 }

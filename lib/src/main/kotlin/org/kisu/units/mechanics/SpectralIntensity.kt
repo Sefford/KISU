@@ -5,6 +5,7 @@ package org.kisu.units.mechanics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.mechanics.SpectralIntensity.Companion.WattPerSteradianMetre
 import org.kisu.units.representation.Product
@@ -64,13 +65,13 @@ class SpectralIntensity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [SpectralIntensity] by [Length][org.kisu.units.base.Length],
-     * yielding [RadiantIntensity][org.kisu.units.mechanics.RadiantIntensity].
+     * Multiplies this [SpectralIntensity] by [Length],
+     * yielding [RadiantIntensity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.mechanics.RadiantIntensity =
-        org.kisu.units.mechanics.RadiantIntensity(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): RadiantIntensity =
+        RadiantIntensity(canonical.component1() * other.canonical.component1())
 }

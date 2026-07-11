@@ -6,7 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kelvin
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
+import org.kisu.units.base.Temperature
+import org.kisu.units.mechanics.HeatFluxDensity
 import org.kisu.units.representation.Quotient
 import org.kisu.units.thermodynamics.TemperatureGradient.Companion.KelvinPerMetre
 
@@ -65,25 +68,25 @@ class TemperatureGradient(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [TemperatureGradient] by [Length][org.kisu.units.base.Length],
-     * yielding [Temperature][org.kisu.units.base.Temperature].
+     * Multiplies this [TemperatureGradient] by [Length],
+     * yielding [Temperature].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.base.Temperature =
-        org.kisu.units.base.Temperature(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Temperature =
+        Temperature(canonical.component1() * other.canonical.component1())
 
     /**
      * Multiplies this [TemperatureGradient] by
-     * [ThermalConductivity][org.kisu.units.thermodynamics.ThermalConductivity],
-     * yielding [HeatFluxDensity][org.kisu.units.mechanics.HeatFluxDensity].
+     * [ThermalConductivity],
+     * yielding [HeatFluxDensity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.thermodynamics.ThermalConductivity
-    ): org.kisu.units.mechanics.HeatFluxDensity =
-        org.kisu.units.mechanics.HeatFluxDensity(canonical.component1() * other.canonical.component1())
+        other: ThermalConductivity
+    ): HeatFluxDensity =
+        HeatFluxDensity(canonical.component1() * other.canonical.component1())
 }

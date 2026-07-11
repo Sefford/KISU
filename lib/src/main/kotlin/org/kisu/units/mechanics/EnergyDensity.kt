@@ -8,7 +8,9 @@ import org.kisu.units.Measure
 import org.kisu.units.mechanics.EnergyDensity.Companion.JoulePerCubicMetre
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.CubicMetre
+import org.kisu.units.special.Energy
 import org.kisu.units.special.Joule
+import org.kisu.units.special.Volume
 
 /**
  * Represents the physical quantity of **energy density**, measured in
@@ -58,13 +60,13 @@ class EnergyDensity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [EnergyDensity] by [Volume][org.kisu.units.special.Volume],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [EnergyDensity] by [Volume],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: Volume
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 }

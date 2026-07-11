@@ -5,10 +5,14 @@ package org.kisu.units.kinematics.linear
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Mass
 import org.kisu.units.base.Metre
 import org.kisu.units.base.SecondSquared
+import org.kisu.units.base.Time
 import org.kisu.units.kinematics.linear.Acceleration.Companion.MetrePerSecondSquared
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Force
+import org.kisu.units.special.Newton
 
 /**
  * Represents the physical quantity of **linear acceleration**, measured in
@@ -39,7 +43,7 @@ class Acceleration(
      *
      * Example usages include:
      * - Describing the acceleration of vehicles, projectiles, or objects in free fall
-     * - Calculating forces in Newtonian mechanics using [Newton][org.kisu.units.special.Newton] = kg·m/s²
+     * - Calculating forces in Newtonian mechanics using [Newton] = kg·m/s²
      * - Analysing motion in physics and engineering contexts
      *
      * @see Acceleration
@@ -61,46 +65,46 @@ class Acceleration(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Acceleration] by [Time][org.kisu.units.base.Time],
-     * yielding [Jerk][org.kisu.units.kinematics.linear.Jerk].
+     * Divides this [Acceleration] by [Time],
+     * yielding [Jerk].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Jerk =
-        org.kisu.units.kinematics.linear.Jerk(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Jerk =
+        Jerk(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Acceleration] by [Jerk][org.kisu.units.kinematics.linear.Jerk],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Acceleration] by [Jerk],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.linear.Jerk
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Jerk
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Acceleration] by [Mass][org.kisu.units.base.Mass],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Multiplies this [Acceleration] by [Mass],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() * other.canonical.component1())
+        other: Mass
+    ): Force =
+        Force(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Acceleration] by [Time][org.kisu.units.base.Time],
-     * yielding [Speed][org.kisu.units.kinematics.linear.Speed].
+     * Multiplies this [Acceleration] by [Time],
+     * yielding [Speed].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Speed =
-        org.kisu.units.kinematics.linear.Speed(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Speed =
+        Speed(canonical.component1() * other.canonical.component1())
 }
