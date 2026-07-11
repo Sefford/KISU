@@ -8,9 +8,21 @@ import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
 import org.kisu.units.base.Amount.Companion.AVOGADROS_NUMBER
+import org.kisu.units.chemistry.CatalyticEfficiency
+import org.kisu.units.chemistry.Molality
+import org.kisu.units.chemistry.MolarEnergy
+import org.kisu.units.chemistry.MolarHeatCapacity
+import org.kisu.units.chemistry.MolarMass
+import org.kisu.units.chemistry.MolarVolume
+import org.kisu.units.chemistry.Molarity
 import org.kisu.units.chemistry.ReciprocalAmount
+import org.kisu.units.kinematics.VolumetricFlow
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
+import org.kisu.units.special.CatalyticActivity
+import org.kisu.units.special.Energy
+import org.kisu.units.special.Volume
+import org.kisu.units.thermodynamics.HeatCapacity
 
 /**
  * Represents the physical quantity of **amount of substance**, measured in moles (mol).
@@ -52,125 +64,125 @@ class Amount internal constructor(magnitude: Magnitude, expression: Mole) :
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Amount] by [Mass][org.kisu.units.base.Mass],
-     * yielding [Molality][org.kisu.units.chemistry.Molality].
+     * Divides this [Amount] by [Mass],
+     * yielding [Molality].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.chemistry.Molality =
-        org.kisu.units.chemistry.Molality(canonical.component1() / other.canonical.component1())
+        other: Mass
+    ): Molality =
+        Molality(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Amount] by [Time][org.kisu.units.base.Time],
-     * yielding [CatalyticActivity][org.kisu.units.special.CatalyticActivity].
+     * Divides this [Amount] by [Time],
+     * yielding [CatalyticActivity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.CatalyticActivity =
-        org.kisu.units.special.CatalyticActivity(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): CatalyticActivity =
+        CatalyticActivity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Amount] by [Molality][org.kisu.units.chemistry.Molality],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Divides this [Amount] by [Molality],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.Molality
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() / other.canonical.component1())
+        other: Molality
+    ): Mass =
+        Mass(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Amount] by [Molarity][org.kisu.units.chemistry.Molarity],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Divides this [Amount] by [Molarity],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.Molarity
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() / other.canonical.component1())
+        other: Molarity
+    ): Volume =
+        Volume(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Amount] by [CatalyticActivity][org.kisu.units.special.CatalyticActivity],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Amount] by [CatalyticActivity],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.CatalyticActivity
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: CatalyticActivity
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Amount] by [Volume][org.kisu.units.special.Volume],
-     * yielding [Molarity][org.kisu.units.chemistry.Molarity].
+     * Divides this [Amount] by [Volume],
+     * yielding [Molarity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.chemistry.Molarity =
-        org.kisu.units.chemistry.Molarity(canonical.component1() / other.canonical.component1())
+        other: Volume
+    ): Molarity =
+        Molarity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Amount] by [CatalyticEfficiency][org.kisu.units.chemistry.CatalyticEfficiency],
-     * yielding [VolumetricFlow][org.kisu.units.kinematics.VolumetricFlow].
+     * Multiplies this [Amount] by [CatalyticEfficiency],
+     * yielding [VolumetricFlow].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.CatalyticEfficiency
-    ): org.kisu.units.kinematics.VolumetricFlow =
-        org.kisu.units.kinematics.VolumetricFlow(canonical.component1() * other.canonical.component1())
+        other: CatalyticEfficiency
+    ): VolumetricFlow =
+        VolumetricFlow(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Amount] by [MolarEnergy][org.kisu.units.chemistry.MolarEnergy],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [Amount] by [MolarEnergy],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.MolarEnergy
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: MolarEnergy
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Amount] by [MolarHeatCapacity][org.kisu.units.chemistry.MolarHeatCapacity],
-     * yielding [HeatCapacity][org.kisu.units.thermodynamics.HeatCapacity].
+     * Multiplies this [Amount] by [MolarHeatCapacity],
+     * yielding [HeatCapacity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.MolarHeatCapacity
-    ): org.kisu.units.thermodynamics.HeatCapacity =
-        org.kisu.units.thermodynamics.HeatCapacity(canonical.component1() * other.canonical.component1())
+        other: MolarHeatCapacity
+    ): HeatCapacity =
+        HeatCapacity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Amount] by [MolarMass][org.kisu.units.chemistry.MolarMass],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Multiplies this [Amount] by [MolarMass],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.MolarMass
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() * other.canonical.component1())
+        other: MolarMass
+    ): Mass =
+        Mass(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Amount] by [MolarVolume][org.kisu.units.chemistry.MolarVolume],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Multiplies this [Amount] by [MolarVolume],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.MolarVolume
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() * other.canonical.component1())
+        other: MolarVolume
+    ): Volume =
+        Volume(canonical.component1() * other.canonical.component1())
 }
 
 class Mole private constructor(

@@ -5,8 +5,10 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Current
 import org.kisu.units.electromagnetic.MagneticDipoleMoment.Companion.JoulePerTesla
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
 import org.kisu.units.special.Joule
 import org.kisu.units.special.Tesla
 
@@ -64,24 +66,24 @@ class MagneticDipoleMoment(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [MagneticDipoleMoment] by [Current][org.kisu.units.base.Current],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Divides this [MagneticDipoleMoment] by [Current],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Current
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() / other.canonical.component1())
+        other: Current
+    ): Area =
+        Area(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [MagneticDipoleMoment] by [Area][org.kisu.units.special.Area],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Divides this [MagneticDipoleMoment] by [Area],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() / other.canonical.component1())
+        other: Area
+    ): Current =
+        Current(canonical.component1() / other.canonical.component1())
 }

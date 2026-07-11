@@ -9,6 +9,8 @@ import org.kisu.units.electromagnetic.ElectricChargeDensity.Companion.CoulombPer
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Coulomb
 import org.kisu.units.special.CubicMetre
+import org.kisu.units.special.ElectricCharge
+import org.kisu.units.special.Volume
 
 /**
  * Represents the physical quantity of **electric charge density**, measured in
@@ -62,13 +64,13 @@ class ElectricChargeDensity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [ElectricChargeDensity] by [Volume][org.kisu.units.special.Volume],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Multiplies this [ElectricChargeDensity] by [Volume],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() * other.canonical.component1())
+        other: Volume
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() * other.canonical.component1())
 }

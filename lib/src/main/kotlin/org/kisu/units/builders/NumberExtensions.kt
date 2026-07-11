@@ -120,6 +120,7 @@ import org.kisu.units.kinematics.angular.Crackle as AngularCrackle
 import org.kisu.units.kinematics.angular.Jerk as AngularJerk
 import org.kisu.units.kinematics.angular.Pop as AngularPop
 import org.kisu.units.kinematics.angular.Snap as AngularSnap
+import org.kisu.units.photometric.Exposure as PhotometricExposure
 
 /**
  * Creates a [Magnetization] from this [Number] representing a magnetization in ampere per metre,
@@ -477,7 +478,7 @@ val Number.lux: Illuminance get() = Illuminance(magnitude)
  * Creates a [Exposure] from this [Number] representing an exposure in lux second,
  * the SI unit for exposure.
  */
-val Number.luxSecond: org.kisu.units.photometric.Exposure get() = org.kisu.units.photometric.Exposure(magnitude)
+val Number.luxSecond: PhotometricExposure get() = PhotometricExposure(magnitude)
 
 /**
  * Creates a [FuelEfficiency] from this [Number] representing a fuel efficiency in metre per cubic metre,

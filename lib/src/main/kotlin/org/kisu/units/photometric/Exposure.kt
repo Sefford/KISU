@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.photometric.Exposure.Companion.LuxSecond
 import org.kisu.units.representation.Product
+import org.kisu.units.special.Illuminance
 import org.kisu.units.special.Lux
 
 /**
@@ -60,24 +62,24 @@ class Exposure(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Exposure] by [Time][org.kisu.units.base.Time],
-     * yielding [Illuminance][org.kisu.units.special.Illuminance].
+     * Divides this [Exposure] by [Time],
+     * yielding [Illuminance].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.Illuminance =
-        org.kisu.units.special.Illuminance(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Illuminance =
+        Illuminance(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Exposure] by [Illuminance][org.kisu.units.special.Illuminance],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Exposure] by [Illuminance],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Illuminance
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Illuminance
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 }

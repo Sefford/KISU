@@ -6,9 +6,11 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
 import org.kisu.units.mechanics.Density.Companion.KilogramPerCubicMetre
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.CubicMetre
+import org.kisu.units.special.Volume
 
 /**
  * Represents the physical quantity of **density**, measured in
@@ -63,13 +65,13 @@ class Density(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Density] by [Volume][org.kisu.units.special.Volume],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Multiplies this [Density] by [Volume],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() * other.canonical.component1())
+        other: Volume
+    ): Mass =
+        Mass(canonical.component1() * other.canonical.component1())
 }

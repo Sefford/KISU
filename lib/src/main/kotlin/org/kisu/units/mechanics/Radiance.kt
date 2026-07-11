@@ -5,9 +5,11 @@ package org.kisu.units.mechanics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.mechanics.Radiance.Companion.WattPerSteradianSquareMetre
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
 import org.kisu.units.special.SquareMetre
 import org.kisu.units.special.Steradian
 import org.kisu.units.special.Watt
@@ -60,35 +62,35 @@ class Radiance(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Radiance] by [Length][org.kisu.units.base.Length],
-     * yielding [SpectralRadiance][org.kisu.units.mechanics.SpectralRadiance].
+     * Divides this [Radiance] by [Length],
+     * yielding [SpectralRadiance].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.mechanics.SpectralRadiance =
-        org.kisu.units.mechanics.SpectralRadiance(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): SpectralRadiance =
+        SpectralRadiance(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Radiance] by [SpectralRadiance][org.kisu.units.mechanics.SpectralRadiance],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Radiance] by [SpectralRadiance],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.SpectralRadiance
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: SpectralRadiance
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Radiance] by [Area][org.kisu.units.special.Area],
-     * yielding [RadiantIntensity][org.kisu.units.mechanics.RadiantIntensity].
+     * Multiplies this [Radiance] by [Area],
+     * yielding [RadiantIntensity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.mechanics.RadiantIntensity =
-        org.kisu.units.mechanics.RadiantIntensity(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): RadiantIntensity =
+        RadiantIntensity(canonical.component1() * other.canonical.component1())
 }

@@ -7,6 +7,7 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.mechanics.SpectralIrradiance.Companion.WattPerCubicMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
 import org.kisu.units.special.CubicMetre
 import org.kisu.units.special.Watt
 
@@ -59,13 +60,13 @@ class SpectralIrradiance(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [SpectralIrradiance] by [Area][org.kisu.units.special.Area],
-     * yielding [SpectralPower][org.kisu.units.mechanics.SpectralPower].
+     * Multiplies this [SpectralIrradiance] by [Area],
+     * yielding [SpectralPower].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.mechanics.SpectralPower =
-        org.kisu.units.mechanics.SpectralPower(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): SpectralPower =
+        SpectralPower(canonical.component1() * other.canonical.component1())
 }

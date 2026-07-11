@@ -8,6 +8,8 @@ import org.kisu.units.Measure
 import org.kisu.units.photometric.Efficacy.Companion.LumenPerWatt
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Lumen
+import org.kisu.units.special.LuminousFlux
+import org.kisu.units.special.Power
 import org.kisu.units.special.Watt
 
 /**
@@ -61,13 +63,13 @@ class Efficacy(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Efficacy] by [Power][org.kisu.units.special.Power],
-     * yielding [LuminousFlux][org.kisu.units.special.LuminousFlux].
+     * Multiplies this [Efficacy] by [Power],
+     * yielding [LuminousFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Power
-    ): org.kisu.units.special.LuminousFlux =
-        org.kisu.units.special.LuminousFlux(canonical.component1() * other.canonical.component1())
+        other: Power
+    ): LuminousFlux =
+        LuminousFlux(canonical.component1() * other.canonical.component1())
 }

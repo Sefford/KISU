@@ -9,6 +9,8 @@ import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
+import org.kisu.units.special.Area
+import org.kisu.units.special.Force
 import org.kisu.units.special.Pascal
 import org.kisu.units.special.Pressure
 
@@ -42,15 +44,15 @@ class Compressibility(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Compressibility] by [Force][org.kisu.units.special.Force],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Multiplies this [Compressibility] by [Force],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Force
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() * other.canonical.component1())
+        other: Force
+    ): Area =
+        Area(canonical.component1() * other.canonical.component1())
 }
 
 /**

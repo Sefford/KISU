@@ -7,6 +7,7 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Metre
 import org.kisu.units.base.SecondCubed
+import org.kisu.units.base.Time
 import org.kisu.units.kinematics.linear.Jerk.Companion.MetrePerSecondCubed
 import org.kisu.units.representation.Quotient
 
@@ -59,35 +60,35 @@ class Jerk(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Jerk] by [Time][org.kisu.units.base.Time],
-     * yielding [Snap][org.kisu.units.kinematics.linear.Snap].
+     * Divides this [Jerk] by [Time],
+     * yielding [Snap].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Snap =
-        org.kisu.units.kinematics.linear.Snap(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Snap =
+        Snap(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Jerk] by [Snap][org.kisu.units.kinematics.linear.Snap],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Jerk] by [Snap],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.linear.Snap
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Snap
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Jerk] by [Time][org.kisu.units.base.Time],
-     * yielding [Acceleration][org.kisu.units.kinematics.linear.Acceleration].
+     * Multiplies this [Jerk] by [Time],
+     * yielding [Acceleration].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Acceleration =
-        org.kisu.units.kinematics.linear.Acceleration(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Acceleration =
+        Acceleration(canonical.component1() * other.canonical.component1())
 }

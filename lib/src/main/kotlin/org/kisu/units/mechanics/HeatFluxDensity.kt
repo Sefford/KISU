@@ -7,8 +7,12 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.mechanics.HeatFluxDensity.Companion.WattPerSquareMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
+import org.kisu.units.special.Power
 import org.kisu.units.special.SquareMetre
 import org.kisu.units.special.Watt
+import org.kisu.units.thermodynamics.TemperatureGradient
+import org.kisu.units.thermodynamics.ThermalConductivity
 
 /**
  * Represents the physical quantity of **heat flux density**, measured in
@@ -58,35 +62,35 @@ class HeatFluxDensity(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [HeatFluxDensity] by [TemperatureGradient][org.kisu.units.thermodynamics.TemperatureGradient],
-     * yielding [ThermalConductivity][org.kisu.units.thermodynamics.ThermalConductivity].
+     * Divides this [HeatFluxDensity] by [TemperatureGradient],
+     * yielding [ThermalConductivity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.thermodynamics.TemperatureGradient
-    ): org.kisu.units.thermodynamics.ThermalConductivity =
-        org.kisu.units.thermodynamics.ThermalConductivity(canonical.component1() / other.canonical.component1())
+        other: TemperatureGradient
+    ): ThermalConductivity =
+        ThermalConductivity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [HeatFluxDensity] by [ThermalConductivity][org.kisu.units.thermodynamics.ThermalConductivity],
-     * yielding [TemperatureGradient][org.kisu.units.thermodynamics.TemperatureGradient].
+     * Divides this [HeatFluxDensity] by [ThermalConductivity],
+     * yielding [TemperatureGradient].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.thermodynamics.ThermalConductivity
-    ): org.kisu.units.thermodynamics.TemperatureGradient =
-        org.kisu.units.thermodynamics.TemperatureGradient(canonical.component1() / other.canonical.component1())
+        other: ThermalConductivity
+    ): TemperatureGradient =
+        TemperatureGradient(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [HeatFluxDensity] by [Area][org.kisu.units.special.Area],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Multiplies this [HeatFluxDensity] by [Area],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): Power =
+        Power(canonical.component1() * other.canonical.component1())
 }

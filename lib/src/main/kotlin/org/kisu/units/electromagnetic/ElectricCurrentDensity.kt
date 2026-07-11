@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Ampere
+import org.kisu.units.base.Current
 import org.kisu.units.electromagnetic.ElectricCurrentDensity.Companion.AmperePerSquareMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
 import org.kisu.units.special.SquareMetre
 
 /**
@@ -62,13 +64,13 @@ class ElectricCurrentDensity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [ElectricCurrentDensity] by [Area][org.kisu.units.special.Area],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Multiplies this [ElectricCurrentDensity] by [Area],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): Current =
+        Current(canonical.component1() * other.canonical.component1())
 }

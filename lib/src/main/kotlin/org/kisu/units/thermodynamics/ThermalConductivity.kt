@@ -7,6 +7,7 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kelvin
 import org.kisu.units.base.Metre
+import org.kisu.units.mechanics.HeatFluxDensity
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Watt
@@ -69,13 +70,13 @@ class ThermalConductivity(
     // Dimension-aware arithmetic
     /**
      * Multiplies this [ThermalConductivity] by
-     * [TemperatureGradient][org.kisu.units.thermodynamics.TemperatureGradient],
-     * yielding [HeatFluxDensity][org.kisu.units.mechanics.HeatFluxDensity].
+     * [TemperatureGradient],
+     * yielding [HeatFluxDensity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.thermodynamics.TemperatureGradient
-    ): org.kisu.units.mechanics.HeatFluxDensity =
-        org.kisu.units.mechanics.HeatFluxDensity(canonical.component1() * other.canonical.component1())
+        other: TemperatureGradient
+    ): HeatFluxDensity =
+        HeatFluxDensity(canonical.component1() * other.canonical.component1())
 }

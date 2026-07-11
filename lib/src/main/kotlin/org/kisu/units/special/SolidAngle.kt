@@ -7,6 +7,8 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.LuminousIntensity
+import org.kisu.units.mechanics.RadiantIntensity
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -30,26 +32,26 @@ class SolidAngle internal constructor(magnitude: Magnitude, expression: Steradia
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [SolidAngle] by [LuminousIntensity][org.kisu.units.base.LuminousIntensity],
-     * yielding [LuminousFlux][org.kisu.units.special.LuminousFlux].
+     * Multiplies this [SolidAngle] by [LuminousIntensity],
+     * yielding [LuminousFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.LuminousIntensity
-    ): org.kisu.units.special.LuminousFlux =
-        org.kisu.units.special.LuminousFlux(canonical.component1() * other.canonical.component1())
+        other: LuminousIntensity
+    ): LuminousFlux =
+        LuminousFlux(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [SolidAngle] by [RadiantIntensity][org.kisu.units.mechanics.RadiantIntensity],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Multiplies this [SolidAngle] by [RadiantIntensity],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.RadiantIntensity
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() * other.canonical.component1())
+        other: RadiantIntensity
+    ): Power =
+        Power(canonical.component1() * other.canonical.component1())
 }
 
 /**

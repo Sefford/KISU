@@ -5,9 +5,12 @@ package org.kisu.units.chemistry
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
 import org.kisu.units.base.Mole
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.chemistry.CatalyticEfficiency.Companion.CubicMetrePerMoleSecond
+import org.kisu.units.kinematics.VolumetricFlow
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.CubicMetre
@@ -74,24 +77,24 @@ class CatalyticEfficiency(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [CatalyticEfficiency] by [Amount][org.kisu.units.base.Amount],
-     * yielding [VolumetricFlow][org.kisu.units.kinematics.VolumetricFlow].
+     * Multiplies this [CatalyticEfficiency] by [Amount],
+     * yielding [VolumetricFlow].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Amount
-    ): org.kisu.units.kinematics.VolumetricFlow =
-        org.kisu.units.kinematics.VolumetricFlow(canonical.component1() * other.canonical.component1())
+        other: Amount
+    ): VolumetricFlow =
+        VolumetricFlow(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [CatalyticEfficiency] by [Time][org.kisu.units.base.Time],
-     * yielding [MolarVolume][org.kisu.units.chemistry.MolarVolume].
+     * Multiplies this [CatalyticEfficiency] by [Time],
+     * yielding [MolarVolume].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.chemistry.MolarVolume =
-        org.kisu.units.chemistry.MolarVolume(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): MolarVolume =
+        MolarVolume(canonical.component1() * other.canonical.component1())
 }

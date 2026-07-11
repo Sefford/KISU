@@ -5,9 +5,12 @@ package org.kisu.units.mechanics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.mechanics.SpectralPower.Companion.WattPerMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
+import org.kisu.units.special.Power
 import org.kisu.units.special.Watt
 
 /**
@@ -57,35 +60,35 @@ class SpectralPower(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [SpectralPower] by [SpectralIrradiance][org.kisu.units.mechanics.SpectralIrradiance],
-     * yielding [Area][org.kisu.units.special.Area].
+     * Divides this [SpectralPower] by [SpectralIrradiance],
+     * yielding [Area].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.SpectralIrradiance
-    ): org.kisu.units.special.Area =
-        org.kisu.units.special.Area(canonical.component1() / other.canonical.component1())
+        other: SpectralIrradiance
+    ): Area =
+        Area(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [SpectralPower] by [Area][org.kisu.units.special.Area],
-     * yielding [SpectralIrradiance][org.kisu.units.mechanics.SpectralIrradiance].
+     * Divides this [SpectralPower] by [Area],
+     * yielding [SpectralIrradiance].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.mechanics.SpectralIrradiance =
-        org.kisu.units.mechanics.SpectralIrradiance(canonical.component1() / other.canonical.component1())
+        other: Area
+    ): SpectralIrradiance =
+        SpectralIrradiance(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [SpectralPower] by [Length][org.kisu.units.base.Length],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Multiplies this [SpectralPower] by [Length],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Power =
+        Power(canonical.component1() * other.canonical.component1())
 }

@@ -33,15 +33,15 @@ class Elastance internal constructor(magnitude: Magnitude, expression: InverseFa
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Elastance] by [ElectricCharge][org.kisu.units.special.ElectricCharge],
-     * yielding [ElectricPotential][org.kisu.units.special.ElectricPotential].
+     * Multiplies this [Elastance] by [ElectricCharge],
+     * yielding [ElectricPotential].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.ElectricCharge
-    ): org.kisu.units.special.ElectricPotential =
-        org.kisu.units.special.ElectricPotential(canonical.component1() * other.canonical.component1())
+        other: ElectricCharge
+    ): ElectricPotential =
+        ElectricPotential(canonical.component1() * other.canonical.component1())
 }
 
 /**

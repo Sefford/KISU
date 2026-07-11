@@ -5,10 +5,12 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.MagneticSusceptibility.Companion.MetrePerHenry
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Henry
+import org.kisu.units.special.Inductance
 
 /**
  * Represents the physical quantity of **magnetic susceptibility**, measured in
@@ -68,13 +70,13 @@ class MagneticSusceptibility(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MagneticSusceptibility] by [Inductance][org.kisu.units.special.Inductance],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Multiplies this [MagneticSusceptibility] by [Inductance],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Inductance
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() * other.canonical.component1())
+        other: Inductance
+    ): Length =
+        Length(canonical.component1() * other.canonical.component1())
 }

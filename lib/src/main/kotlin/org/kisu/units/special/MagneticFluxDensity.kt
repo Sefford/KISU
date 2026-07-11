@@ -7,6 +7,8 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
+import org.kisu.units.electromagnetic.MagneticRigidity
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -31,26 +33,26 @@ class MagneticFluxDensity internal constructor(magnitude: Magnitude, expression:
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MagneticFluxDensity] by [Length][org.kisu.units.base.Length],
-     * yielding [MagneticRigidity][org.kisu.units.electromagnetic.MagneticRigidity].
+     * Multiplies this [MagneticFluxDensity] by [Length],
+     * yielding [MagneticRigidity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.electromagnetic.MagneticRigidity =
-        org.kisu.units.electromagnetic.MagneticRigidity(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): MagneticRigidity =
+        MagneticRigidity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [MagneticFluxDensity] by [Area][org.kisu.units.special.Area],
-     * yielding [MagneticFlux][org.kisu.units.special.MagneticFlux].
+     * Multiplies this [MagneticFluxDensity] by [Area],
+     * yielding [MagneticFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.special.MagneticFlux =
-        org.kisu.units.special.MagneticFlux(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): MagneticFlux =
+        MagneticFlux(canonical.component1() * other.canonical.component1())
 }
 
 /**

@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Candela
+import org.kisu.units.base.LuminousIntensity
 import org.kisu.units.photometric.Luminance.Companion.CandelaPerSquareMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
 import org.kisu.units.special.SquareMetre
 
 /**
@@ -62,13 +64,13 @@ class Luminance(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Luminance] by [Area][org.kisu.units.special.Area],
-     * yielding [LuminousIntensity][org.kisu.units.base.LuminousIntensity].
+     * Multiplies this [Luminance] by [Area],
+     * yielding [LuminousIntensity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.base.LuminousIntensity =
-        org.kisu.units.base.LuminousIntensity(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): LuminousIntensity =
+        LuminousIntensity(canonical.component1() * other.canonical.component1())
 }

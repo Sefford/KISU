@@ -5,7 +5,9 @@ package org.kisu.units.chemistry
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
 import org.kisu.units.base.Mole
 import org.kisu.units.chemistry.MolarMass.Companion.KilogramPerMole
 import org.kisu.units.representation.Quotient
@@ -66,13 +68,13 @@ class MolarMass(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MolarMass] by [Amount][org.kisu.units.base.Amount],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Multiplies this [MolarMass] by [Amount],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Amount
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() * other.canonical.component1())
+        other: Amount
+    ): Mass =
+        Mass(canonical.component1() * other.canonical.component1())
 }

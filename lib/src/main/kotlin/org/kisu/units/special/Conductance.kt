@@ -7,6 +7,9 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Current
+import org.kisu.units.base.Length
+import org.kisu.units.electromagnetic.ElectricConductivity
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -36,37 +39,37 @@ class Conductance internal constructor(magnitude: Magnitude, expression: Siemens
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Conductance] by [Length][org.kisu.units.base.Length],
-     * yielding [ElectricConductivity][org.kisu.units.electromagnetic.ElectricConductivity].
+     * Divides this [Conductance] by [Length],
+     * yielding [ElectricConductivity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.electromagnetic.ElectricConductivity =
-        org.kisu.units.electromagnetic.ElectricConductivity(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): ElectricConductivity =
+        ElectricConductivity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Conductance] by [ElectricConductivity][org.kisu.units.electromagnetic.ElectricConductivity],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Conductance] by [ElectricConductivity],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.electromagnetic.ElectricConductivity
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: ElectricConductivity
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Conductance] by [ElectricPotential][org.kisu.units.special.ElectricPotential],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Multiplies this [Conductance] by [ElectricPotential],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.ElectricPotential
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() * other.canonical.component1())
+        other: ElectricPotential
+    ): Current =
+        Current(canonical.component1() * other.canonical.component1())
 }
 
 /**

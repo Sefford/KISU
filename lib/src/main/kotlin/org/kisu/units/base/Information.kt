@@ -11,8 +11,8 @@ import org.kisu.units.Measure
 import org.kisu.units.exceptions.SubBitInformation
 import org.kisu.units.information.Transmission
 import org.kisu.units.representation.Expression
-import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
+import org.kisu.units.representation.Scalar as RepresentationScalar
 
 /**
  * Represents a quantity of **digital information**.
@@ -152,7 +152,7 @@ class Information private constructor(magnitude: Magnitude, private val unit: In
  * IEC bits so equality and ordering compare physical information content rather than the original display unit.
  */
 sealed class InformationUnit : Expression<InformationUnit>() {
-    protected abstract val scalar: Scalar<*, *>
+    protected abstract val scalar: RepresentationScalar<*, *>
 
     /**
      * Equivalent bit expression on the same SI or IEC scale.
@@ -180,7 +180,7 @@ sealed class InformationUnit : Expression<InformationUnit>() {
     override val largest: InformationUnit
         get() = all.last()
 
-    override val factors: Set<Scalar<*, *>>
+    override val factors: Set<RepresentationScalar<*, *>>
         get() = scalar.factors
 
     override val symbol: String
@@ -207,7 +207,7 @@ sealed class InformationUnit : Expression<InformationUnit>() {
  * Examples include `kbit` ([Decimal.KILO]) and `Kibit` ([Binary.KIBI]).
  */
 class Bit<P>(val prefix: P) : InformationUnit() where P : InformationPrefix<P> {
-    override val scalar: org.kisu.units.representation.Scalar<*, *> = Scalar(prefix)
+    override val scalar: RepresentationScalar<*, *> = Scalar(prefix)
 
     override val bits: InformationUnit
         get() = Bit(prefix.canonical)
@@ -252,7 +252,7 @@ class Bit<P>(val prefix: P) : InformationUnit() where P : InformationPrefix<P> {
         algebra: Algebra<P>,
         val prefix: P,
         unit: Unit,
-    ) : org.kisu.units.representation.Scalar<P, Scalar<P>>(
+    ) : RepresentationScalar<P, Scalar<P>>(
         algebra,
         prefix,
         unit,
@@ -271,7 +271,7 @@ class Bit<P>(val prefix: P) : InformationUnit() where P : InformationPrefix<P> {
  * Examples include `kB` ([Decimal.KILO]) and `KiB` ([Binary.KIBI]).
  */
 class Byte<P>(val prefix: P) : InformationUnit() where P : InformationPrefix<P> {
-    override val scalar: org.kisu.units.representation.Scalar<*, *> = Scalar(prefix)
+    override val scalar: RepresentationScalar<*, *> = Scalar(prefix)
 
     override val bits: InformationUnit
         get() = Bit(prefix.canonical)
@@ -316,7 +316,7 @@ class Byte<P>(val prefix: P) : InformationUnit() where P : InformationPrefix<P> 
         algebra: Algebra<P>,
         val prefix: P,
         unit: Unit,
-    ) : org.kisu.units.representation.Scalar<P, Scalar<P>>(
+    ) : RepresentationScalar<P, Scalar<P>>(
         algebra,
         prefix,
         unit,

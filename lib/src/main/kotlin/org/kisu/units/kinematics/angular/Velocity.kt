@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.kinematics.angular.Velocity.Companion.RadianPerSecond
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.PlaneAngle
 import org.kisu.units.special.Radian
 
 /**
@@ -60,35 +62,35 @@ class Velocity(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Velocity] by [Time][org.kisu.units.base.Time],
-     * yielding [Acceleration][org.kisu.units.kinematics.angular.Acceleration].
+     * Divides this [Velocity] by [Time],
+     * yielding [Acceleration].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.angular.Acceleration =
-        org.kisu.units.kinematics.angular.Acceleration(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Acceleration =
+        Acceleration(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Velocity] by [Acceleration][org.kisu.units.kinematics.angular.Acceleration],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Velocity] by [Acceleration],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.kinematics.angular.Acceleration
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Acceleration
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Velocity] by [Time][org.kisu.units.base.Time],
-     * yielding [PlaneAngle][org.kisu.units.special.PlaneAngle].
+     * Multiplies this [Velocity] by [Time],
+     * yielding [PlaneAngle].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.PlaneAngle =
-        org.kisu.units.special.PlaneAngle(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): PlaneAngle =
+        PlaneAngle(canonical.component1() * other.canonical.component1())
 }

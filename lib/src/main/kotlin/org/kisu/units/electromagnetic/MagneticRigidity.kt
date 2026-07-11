@@ -5,9 +5,11 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.MagneticRigidity.Companion.TeslaMetre
 import org.kisu.units.representation.Product
+import org.kisu.units.special.MagneticFluxDensity
 import org.kisu.units.special.Tesla
 
 /**
@@ -59,24 +61,24 @@ class MagneticRigidity(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [MagneticRigidity] by [Length][org.kisu.units.base.Length],
-     * yielding [MagneticFluxDensity][org.kisu.units.special.MagneticFluxDensity].
+     * Divides this [MagneticRigidity] by [Length],
+     * yielding [MagneticFluxDensity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.MagneticFluxDensity =
-        org.kisu.units.special.MagneticFluxDensity(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): MagneticFluxDensity =
+        MagneticFluxDensity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [MagneticRigidity] by [MagneticFluxDensity][org.kisu.units.special.MagneticFluxDensity],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [MagneticRigidity] by [MagneticFluxDensity],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.MagneticFluxDensity
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: MagneticFluxDensity
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 }

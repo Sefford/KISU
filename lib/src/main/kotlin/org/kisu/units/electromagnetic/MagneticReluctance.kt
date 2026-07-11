@@ -7,10 +7,12 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Current
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 import org.kisu.units.special.Henry
 import org.kisu.units.special.Inductance
+import org.kisu.units.special.MagneticFlux
 
 /**
  * Represents the physical quantity of **magnetic reluctance**, measured in
@@ -41,15 +43,15 @@ class MagneticReluctance(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MagneticReluctance] by [MagneticFlux][org.kisu.units.special.MagneticFlux],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Multiplies this [MagneticReluctance] by [MagneticFlux],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.MagneticFlux
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() * other.canonical.component1())
+        other: MagneticFlux
+    ): Current =
+        Current(canonical.component1() * other.canonical.component1())
 }
 
 /**

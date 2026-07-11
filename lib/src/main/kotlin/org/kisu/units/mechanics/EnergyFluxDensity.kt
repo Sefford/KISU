@@ -6,6 +6,7 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.mechanics.EnergyFluxDensity.Companion.JoulePerSquareMetreSecond
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
@@ -63,13 +64,13 @@ class EnergyFluxDensity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [EnergyFluxDensity] by [Time][org.kisu.units.base.Time],
-     * yielding [RadiantExposure][org.kisu.units.mechanics.RadiantExposure].
+     * Multiplies this [EnergyFluxDensity] by [Time],
+     * yielding [RadiantExposure].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.mechanics.RadiantExposure =
-        org.kisu.units.mechanics.RadiantExposure(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): RadiantExposure =
+        RadiantExposure(canonical.component1() * other.canonical.component1())
 }

@@ -7,6 +7,8 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
+import org.kisu.units.base.Time
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -31,15 +33,15 @@ class CatalyticActivity internal constructor(magnitude: Magnitude, expression: K
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [CatalyticActivity] by [Time][org.kisu.units.base.Time],
-     * yielding [Amount][org.kisu.units.base.Amount].
+     * Multiplies this [CatalyticActivity] by [Time],
+     * yielding [Amount].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.base.Amount =
-        org.kisu.units.base.Amount(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Amount =
+        Amount(canonical.component1() * other.canonical.component1())
 }
 
 /**

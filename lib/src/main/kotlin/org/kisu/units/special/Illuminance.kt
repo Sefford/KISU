@@ -7,6 +7,8 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Time
+import org.kisu.units.photometric.Exposure
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -31,26 +33,26 @@ class Illuminance internal constructor(magnitude: Magnitude, expression: Lux) :
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Illuminance] by [Time][org.kisu.units.base.Time],
-     * yielding [Exposure][org.kisu.units.photometric.Exposure].
+     * Multiplies this [Illuminance] by [Time],
+     * yielding [Exposure].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.photometric.Exposure =
-        org.kisu.units.photometric.Exposure(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Exposure =
+        Exposure(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Illuminance] by [Area][org.kisu.units.special.Area],
-     * yielding [LuminousFlux][org.kisu.units.special.LuminousFlux].
+     * Multiplies this [Illuminance] by [Area],
+     * yielding [LuminousFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.special.LuminousFlux =
-        org.kisu.units.special.LuminousFlux(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): LuminousFlux =
+        LuminousFlux(canonical.component1() * other.canonical.component1())
 }
 
 /**

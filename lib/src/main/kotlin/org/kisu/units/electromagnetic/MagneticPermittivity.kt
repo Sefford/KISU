@@ -5,10 +5,12 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.MagneticPermittivity.Companion.HenryPerMetre
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.Henry
+import org.kisu.units.special.Inductance
 
 /**
  * Represents magnetic permeability, here exposed under the type name
@@ -66,13 +68,13 @@ class MagneticPermittivity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MagneticPermittivity] by [Length][org.kisu.units.base.Length],
-     * yielding [Inductance][org.kisu.units.special.Inductance].
+     * Multiplies this [MagneticPermittivity] by [Length],
+     * yielding [Inductance].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Inductance =
-        org.kisu.units.special.Inductance(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Inductance =
+        Inductance(canonical.component1() * other.canonical.component1())
 }

@@ -5,10 +5,13 @@ package org.kisu.units.chemistry
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
 import org.kisu.units.base.Mole
 import org.kisu.units.chemistry.Molarity.Companion.MolePerCubicMetre
+import org.kisu.units.electromagnetic.ElectricConductivity
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.CubicMetre
+import org.kisu.units.special.Volume
 
 /**
  * Represents the physical quantity of **molarity**, also called molar concentration,
@@ -69,24 +72,24 @@ class Molarity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Molarity] by [MolarConductivity][org.kisu.units.chemistry.MolarConductivity],
-     * yielding [ElectricConductivity][org.kisu.units.electromagnetic.ElectricConductivity].
+     * Multiplies this [Molarity] by [MolarConductivity],
+     * yielding [ElectricConductivity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.chemistry.MolarConductivity
-    ): org.kisu.units.electromagnetic.ElectricConductivity =
-        org.kisu.units.electromagnetic.ElectricConductivity(canonical.component1() * other.canonical.component1())
+        other: MolarConductivity
+    ): ElectricConductivity =
+        ElectricConductivity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Molarity] by [Volume][org.kisu.units.special.Volume],
-     * yielding [Amount][org.kisu.units.base.Amount].
+     * Multiplies this [Molarity] by [Volume],
+     * yielding [Amount].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.base.Amount =
-        org.kisu.units.base.Amount(canonical.component1() * other.canonical.component1())
+        other: Volume
+    ): Amount =
+        Amount(canonical.component1() * other.canonical.component1())
 }

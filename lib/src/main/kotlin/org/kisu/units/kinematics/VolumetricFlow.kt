@@ -5,10 +5,14 @@ package org.kisu.units.kinematics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Amount
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
+import org.kisu.units.chemistry.CatalyticEfficiency
 import org.kisu.units.kinematics.VolumetricFlow.Companion.CubicMetrePerSecond
 import org.kisu.units.representation.Quotient
 import org.kisu.units.special.CubicMetre
+import org.kisu.units.special.Volume
 
 /**
  * Represents the physical quantity of **volumetric flow rate**, measured in
@@ -61,35 +65,35 @@ class VolumetricFlow internal constructor(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [VolumetricFlow] by [Amount][org.kisu.units.base.Amount],
-     * yielding [CatalyticEfficiency][org.kisu.units.chemistry.CatalyticEfficiency].
+     * Divides this [VolumetricFlow] by [Amount],
+     * yielding [CatalyticEfficiency].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Amount
-    ): org.kisu.units.chemistry.CatalyticEfficiency =
-        org.kisu.units.chemistry.CatalyticEfficiency(canonical.component1() / other.canonical.component1())
+        other: Amount
+    ): CatalyticEfficiency =
+        CatalyticEfficiency(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [VolumetricFlow] by [CatalyticEfficiency][org.kisu.units.chemistry.CatalyticEfficiency],
-     * yielding [Amount][org.kisu.units.base.Amount].
+     * Divides this [VolumetricFlow] by [CatalyticEfficiency],
+     * yielding [Amount].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.CatalyticEfficiency
-    ): org.kisu.units.base.Amount =
-        org.kisu.units.base.Amount(canonical.component1() / other.canonical.component1())
+        other: CatalyticEfficiency
+    ): Amount =
+        Amount(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [VolumetricFlow] by [Time][org.kisu.units.base.Time],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Multiplies this [VolumetricFlow] by [Time],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Volume =
+        Volume(canonical.component1() * other.canonical.component1())
 }

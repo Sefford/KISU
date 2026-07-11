@@ -7,6 +7,26 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Current
+import org.kisu.units.base.Length
+import org.kisu.units.base.LuminousIntensity
+import org.kisu.units.base.Mass
+import org.kisu.units.base.Time
+import org.kisu.units.electromagnetic.ElectricCurrentDensity
+import org.kisu.units.electromagnetic.ElectricDisplacementField
+import org.kisu.units.electromagnetic.MagneticDipoleMoment
+import org.kisu.units.mechanics.AreaDensity
+import org.kisu.units.mechanics.Compressibility
+import org.kisu.units.mechanics.HeatFluxDensity
+import org.kisu.units.mechanics.KinematicViscosity
+import org.kisu.units.mechanics.MomentOfInertia
+import org.kisu.units.mechanics.Radiance
+import org.kisu.units.mechanics.RadiantExposure
+import org.kisu.units.mechanics.RadiantIntensity
+import org.kisu.units.mechanics.SpectralIrradiance
+import org.kisu.units.mechanics.SpectralPower
+import org.kisu.units.mechanics.WaveNumber
+import org.kisu.units.photometric.Luminance
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -33,235 +53,235 @@ class Area internal constructor(magnitude: Magnitude, expression: SquareMetre) :
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Area] by [Length][org.kisu.units.base.Length],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Area] by [Length],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Area] by [Time][org.kisu.units.base.Time],
-     * yielding [KinematicViscosity][org.kisu.units.mechanics.KinematicViscosity].
+     * Divides this [Area] by [Time],
+     * yielding [KinematicViscosity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.mechanics.KinematicViscosity =
-        org.kisu.units.mechanics.KinematicViscosity(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): KinematicViscosity =
+        KinematicViscosity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Area] by [Compressibility][org.kisu.units.mechanics.Compressibility],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Divides this [Area] by [Compressibility],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.Compressibility
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() / other.canonical.component1())
+        other: Compressibility
+    ): Force =
+        Force(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Area] by [KinematicViscosity][org.kisu.units.mechanics.KinematicViscosity],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Area] by [KinematicViscosity],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.KinematicViscosity
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: KinematicViscosity
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Area] by [WaveNumber][org.kisu.units.mechanics.WaveNumber],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Divides this [Area] by [WaveNumber],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.mechanics.WaveNumber
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() / other.canonical.component1())
+        other: WaveNumber
+    ): Volume =
+        Volume(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Area] by [Force][org.kisu.units.special.Force],
-     * yielding [Compressibility][org.kisu.units.mechanics.Compressibility].
+     * Divides this [Area] by [Force],
+     * yielding [Compressibility].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Force
-    ): org.kisu.units.mechanics.Compressibility =
-        org.kisu.units.mechanics.Compressibility(canonical.component1() / other.canonical.component1())
+        other: Force
+    ): Compressibility =
+        Compressibility(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Area] by [Volume][org.kisu.units.special.Volume],
-     * yielding [WaveNumber][org.kisu.units.mechanics.WaveNumber].
+     * Divides this [Area] by [Volume],
+     * yielding [WaveNumber].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Volume
-    ): org.kisu.units.mechanics.WaveNumber =
-        org.kisu.units.mechanics.WaveNumber(canonical.component1() / other.canonical.component1())
+        other: Volume
+    ): WaveNumber =
+        WaveNumber(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [Current][org.kisu.units.base.Current],
-     * yielding [MagneticDipoleMoment][org.kisu.units.electromagnetic.MagneticDipoleMoment].
+     * Multiplies this [Area] by [Current],
+     * yielding [MagneticDipoleMoment].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Current
-    ): org.kisu.units.electromagnetic.MagneticDipoleMoment =
-        org.kisu.units.electromagnetic.MagneticDipoleMoment(canonical.component1() * other.canonical.component1())
+        other: Current
+    ): MagneticDipoleMoment =
+        MagneticDipoleMoment(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [Length][org.kisu.units.base.Length],
-     * yielding [Volume][org.kisu.units.special.Volume].
+     * Multiplies this [Area] by [Length],
+     * yielding [Volume].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Volume =
-        org.kisu.units.special.Volume(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Volume =
+        Volume(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [Mass][org.kisu.units.base.Mass],
-     * yielding [MomentOfInertia][org.kisu.units.mechanics.MomentOfInertia].
+     * Multiplies this [Area] by [Mass],
+     * yielding [MomentOfInertia].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Mass
-    ): org.kisu.units.mechanics.MomentOfInertia =
-        org.kisu.units.mechanics.MomentOfInertia(canonical.component1() * other.canonical.component1())
+        other: Mass
+    ): MomentOfInertia =
+        MomentOfInertia(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [ElectricCurrentDensity][org.kisu.units.electromagnetic.ElectricCurrentDensity],
-     * yielding [Current][org.kisu.units.base.Current].
+     * Multiplies this [Area] by [ElectricCurrentDensity],
+     * yielding [Current].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.ElectricCurrentDensity
-    ): org.kisu.units.base.Current =
-        org.kisu.units.base.Current(canonical.component1() * other.canonical.component1())
+        other: ElectricCurrentDensity
+    ): Current =
+        Current(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [ElectricDisplacementField][org.kisu.units.electromagnetic.ElectricDisplacementField],
-     * yielding [ElectricCharge][org.kisu.units.special.ElectricCharge].
+     * Multiplies this [Area] by [ElectricDisplacementField],
+     * yielding [ElectricCharge].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.electromagnetic.ElectricDisplacementField
-    ): org.kisu.units.special.ElectricCharge =
-        org.kisu.units.special.ElectricCharge(canonical.component1() * other.canonical.component1())
+        other: ElectricDisplacementField
+    ): ElectricCharge =
+        ElectricCharge(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [AreaDensity][org.kisu.units.mechanics.AreaDensity],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Multiplies this [Area] by [AreaDensity],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.AreaDensity
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() * other.canonical.component1())
+        other: AreaDensity
+    ): Mass =
+        Mass(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [HeatFluxDensity][org.kisu.units.mechanics.HeatFluxDensity],
-     * yielding [Power][org.kisu.units.special.Power].
+     * Multiplies this [Area] by [HeatFluxDensity],
+     * yielding [Power].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.HeatFluxDensity
-    ): org.kisu.units.special.Power =
-        org.kisu.units.special.Power(canonical.component1() * other.canonical.component1())
+        other: HeatFluxDensity
+    ): Power =
+        Power(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [Radiance][org.kisu.units.mechanics.Radiance],
-     * yielding [RadiantIntensity][org.kisu.units.mechanics.RadiantIntensity].
+     * Multiplies this [Area] by [Radiance],
+     * yielding [RadiantIntensity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.Radiance
-    ): org.kisu.units.mechanics.RadiantIntensity =
-        org.kisu.units.mechanics.RadiantIntensity(canonical.component1() * other.canonical.component1())
+        other: Radiance
+    ): RadiantIntensity =
+        RadiantIntensity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [RadiantExposure][org.kisu.units.mechanics.RadiantExposure],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Multiplies this [Area] by [RadiantExposure],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.RadiantExposure
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() * other.canonical.component1())
+        other: RadiantExposure
+    ): Energy =
+        Energy(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [SpectralIrradiance][org.kisu.units.mechanics.SpectralIrradiance],
-     * yielding [SpectralPower][org.kisu.units.mechanics.SpectralPower].
+     * Multiplies this [Area] by [SpectralIrradiance],
+     * yielding [SpectralPower].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.mechanics.SpectralIrradiance
-    ): org.kisu.units.mechanics.SpectralPower =
-        org.kisu.units.mechanics.SpectralPower(canonical.component1() * other.canonical.component1())
+        other: SpectralIrradiance
+    ): SpectralPower =
+        SpectralPower(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [Luminance][org.kisu.units.photometric.Luminance],
-     * yielding [LuminousIntensity][org.kisu.units.base.LuminousIntensity].
+     * Multiplies this [Area] by [Luminance],
+     * yielding [LuminousIntensity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.photometric.Luminance
-    ): org.kisu.units.base.LuminousIntensity =
-        org.kisu.units.base.LuminousIntensity(canonical.component1() * other.canonical.component1())
+        other: Luminance
+    ): LuminousIntensity =
+        LuminousIntensity(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [Illuminance][org.kisu.units.special.Illuminance],
-     * yielding [LuminousFlux][org.kisu.units.special.LuminousFlux].
+     * Multiplies this [Area] by [Illuminance],
+     * yielding [LuminousFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Illuminance
-    ): org.kisu.units.special.LuminousFlux =
-        org.kisu.units.special.LuminousFlux(canonical.component1() * other.canonical.component1())
+        other: Illuminance
+    ): LuminousFlux =
+        LuminousFlux(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [MagneticFluxDensity][org.kisu.units.special.MagneticFluxDensity],
-     * yielding [MagneticFlux][org.kisu.units.special.MagneticFlux].
+     * Multiplies this [Area] by [MagneticFluxDensity],
+     * yielding [MagneticFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.MagneticFluxDensity
-    ): org.kisu.units.special.MagneticFlux =
-        org.kisu.units.special.MagneticFlux(canonical.component1() * other.canonical.component1())
+        other: MagneticFluxDensity
+    ): MagneticFlux =
+        MagneticFlux(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Area] by [Pressure][org.kisu.units.special.Pressure],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Multiplies this [Area] by [Pressure],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Pressure
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() * other.canonical.component1())
+        other: Pressure
+    ): Force =
+        Force(canonical.component1() * other.canonical.component1())
 }
 
 /**

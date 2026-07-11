@@ -7,6 +7,7 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Metre
 import org.kisu.units.base.SecondSixth
+import org.kisu.units.base.Time
 import org.kisu.units.kinematics.linear.Pop.Companion.MetrePerSecondSixth
 import org.kisu.units.representation.Quotient
 
@@ -57,13 +58,13 @@ class Pop internal constructor(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Pop] by [Time][org.kisu.units.base.Time],
-     * yielding [Crackle][org.kisu.units.kinematics.linear.Crackle].
+     * Multiplies this [Pop] by [Time],
+     * yielding [Crackle].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.kinematics.linear.Crackle =
-        org.kisu.units.kinematics.linear.Crackle(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Crackle =
+        Crackle(canonical.component1() * other.canonical.component1())
 }

@@ -7,8 +7,10 @@ import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
 import org.kisu.units.electromagnetic.ElectronMobility.Companion.SquareMetrePerVoltSecond
+import org.kisu.units.mechanics.KinematicViscosity
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.ElectricPotential
 import org.kisu.units.special.SquareMetre
 import org.kisu.units.special.Volt
 
@@ -71,13 +73,13 @@ class ElectronMobility(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [ElectronMobility] by [ElectricPotential][org.kisu.units.special.ElectricPotential],
-     * yielding [KinematicViscosity][org.kisu.units.mechanics.KinematicViscosity].
+     * Multiplies this [ElectronMobility] by [ElectricPotential],
+     * yielding [KinematicViscosity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.ElectricPotential
-    ): org.kisu.units.mechanics.KinematicViscosity =
-        org.kisu.units.mechanics.KinematicViscosity(canonical.component1() * other.canonical.component1())
+        other: ElectricPotential
+    ): KinematicViscosity =
+        KinematicViscosity(canonical.component1() * other.canonical.component1())
 }

@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.mechanics.Action.Companion.JouleSecond
 import org.kisu.units.representation.Product
+import org.kisu.units.special.Energy
 import org.kisu.units.special.Joule
 
 /**
@@ -57,24 +59,24 @@ class Action(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Action] by [Time][org.kisu.units.base.Time],
-     * yielding [Energy][org.kisu.units.special.Energy].
+     * Divides this [Action] by [Time],
+     * yielding [Energy].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.Energy =
-        org.kisu.units.special.Energy(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): Energy =
+        Energy(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Action] by [Energy][org.kisu.units.special.Energy],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [Action] by [Energy],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Energy
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: Energy
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 }

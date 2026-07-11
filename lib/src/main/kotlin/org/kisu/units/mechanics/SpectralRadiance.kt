@@ -5,6 +5,7 @@ package org.kisu.units.mechanics
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.mechanics.SpectralRadiance.Companion.WattPerSteradianCubicMetre
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
@@ -64,13 +65,13 @@ class SpectralRadiance(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [SpectralRadiance] by [Length][org.kisu.units.base.Length],
-     * yielding [Radiance][org.kisu.units.mechanics.Radiance].
+     * Multiplies this [SpectralRadiance] by [Length],
+     * yielding [Radiance].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.mechanics.Radiance =
-        org.kisu.units.mechanics.Radiance(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Radiance =
+        Radiance(canonical.component1() * other.canonical.component1())
 }

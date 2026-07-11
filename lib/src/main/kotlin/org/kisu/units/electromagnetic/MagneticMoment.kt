@@ -5,9 +5,11 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.MagneticMoment.Companion.WeberMetre
 import org.kisu.units.representation.Product
+import org.kisu.units.special.MagneticFlux
 import org.kisu.units.special.Weber
 
 /**
@@ -52,24 +54,24 @@ class MagneticMoment(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [MagneticMoment] by [Length][org.kisu.units.base.Length],
-     * yielding [MagneticFlux][org.kisu.units.special.MagneticFlux].
+     * Divides this [MagneticMoment] by [Length],
+     * yielding [MagneticFlux].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.MagneticFlux =
-        org.kisu.units.special.MagneticFlux(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): MagneticFlux =
+        MagneticFlux(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [MagneticMoment] by [MagneticFlux][org.kisu.units.special.MagneticFlux],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [MagneticMoment] by [MagneticFlux],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.MagneticFlux
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: MagneticFlux
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 }

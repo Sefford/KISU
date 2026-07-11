@@ -8,9 +8,11 @@ import org.kisu.units.Measure
 import org.kisu.units.base.Kilogram
 import org.kisu.units.base.Metre
 import org.kisu.units.base.SecondCubed
+import org.kisu.units.base.Time
 import org.kisu.units.kinematics.Yank.Companion.KilogramMetrePerSecondCubed
 import org.kisu.units.representation.Product
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Force
 
 /**
  * Represents the physical quantity of **yank**, measured in
@@ -84,13 +86,13 @@ class Yank internal constructor(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Yank] by [Time][org.kisu.units.base.Time],
-     * yielding [Force][org.kisu.units.special.Force].
+     * Multiplies this [Yank] by [Time],
+     * yielding [Force].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.Force =
-        org.kisu.units.special.Force(canonical.component1() * other.canonical.component1())
+        other: Time
+    ): Force =
+        Force(canonical.component1() * other.canonical.component1())
 }

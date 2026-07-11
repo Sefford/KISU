@@ -6,8 +6,10 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Kilogram
+import org.kisu.units.base.Mass
 import org.kisu.units.mechanics.AreaDensity.Companion.KilogramPerSquareMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Area
 import org.kisu.units.special.SquareMetre
 
 /**
@@ -58,13 +60,13 @@ class AreaDensity(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [AreaDensity] by [Area][org.kisu.units.special.Area],
-     * yielding [Mass][org.kisu.units.base.Mass].
+     * Multiplies this [AreaDensity] by [Area],
+     * yielding [Mass].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.special.Area
-    ): org.kisu.units.base.Mass =
-        org.kisu.units.base.Mass(canonical.component1() * other.canonical.component1())
+        other: Area
+    ): Mass =
+        Mass(canonical.component1() * other.canonical.component1())
 }

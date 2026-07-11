@@ -7,6 +7,9 @@ import org.kisu.prefixes.Metric
 import org.kisu.prefixes.algebra.Algebra
 import org.kisu.prefixes.algebra.ExponentialAlgebra
 import org.kisu.units.Measure
+import org.kisu.units.base.Current
+import org.kisu.units.base.Length
+import org.kisu.units.electromagnetic.Resistivity
 import org.kisu.units.representation.Scalar
 import org.kisu.units.representation.Unit
 
@@ -36,26 +39,26 @@ class Resistance internal constructor(magnitude: Magnitude, expression: Ohm) :
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [Resistance] by [Current][org.kisu.units.base.Current],
-     * yielding [ElectricPotential][org.kisu.units.special.ElectricPotential].
+     * Multiplies this [Resistance] by [Current],
+     * yielding [ElectricPotential].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Current
-    ): org.kisu.units.special.ElectricPotential =
-        org.kisu.units.special.ElectricPotential(canonical.component1() * other.canonical.component1())
+        other: Current
+    ): ElectricPotential =
+        ElectricPotential(canonical.component1() * other.canonical.component1())
 
     /**
-     * Multiplies this [Resistance] by [Length][org.kisu.units.base.Length],
-     * yielding [Resistivity][org.kisu.units.electromagnetic.Resistivity].
+     * Multiplies this [Resistance] by [Length],
+     * yielding [Resistivity].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.electromagnetic.Resistivity =
-        org.kisu.units.electromagnetic.Resistivity(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Resistivity =
+        Resistivity(canonical.component1() * other.canonical.component1())
 }
 
 /**

@@ -5,9 +5,11 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.MagneticVectorPotential.Companion.WeberPerMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.MagneticFlux
 import org.kisu.units.special.Weber
 
 /**
@@ -65,13 +67,13 @@ class MagneticVectorPotential(
 
     // Dimension-aware arithmetic
     /**
-     * Multiplies this [MagneticVectorPotential] by [Length][org.kisu.units.base.Length],
-     * yielding [MagneticFlux][org.kisu.units.special.MagneticFlux].
+     * Multiplies this [MagneticVectorPotential] by [Length],
+     * yielding [MagneticFlux].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.MagneticFlux =
-        org.kisu.units.special.MagneticFlux(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): MagneticFlux =
+        MagneticFlux(canonical.component1() * other.canonical.component1())
 }

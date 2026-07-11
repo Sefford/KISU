@@ -6,9 +6,11 @@ import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
 import org.kisu.units.base.Second
+import org.kisu.units.base.Time
 import org.kisu.units.photometric.LuminousEnergy.Companion.LumenSecond
 import org.kisu.units.representation.Product
 import org.kisu.units.special.Lumen
+import org.kisu.units.special.LuminousFlux
 
 /**
  * Represents the physical quantity of **luminous energy**, measured in [LumenSecond].
@@ -59,24 +61,24 @@ class LuminousEnergy(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [LuminousEnergy] by [Time][org.kisu.units.base.Time],
-     * yielding [LuminousFlux][org.kisu.units.special.LuminousFlux].
+     * Divides this [LuminousEnergy] by [Time],
+     * yielding [LuminousFlux].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Time
-    ): org.kisu.units.special.LuminousFlux =
-        org.kisu.units.special.LuminousFlux(canonical.component1() / other.canonical.component1())
+        other: Time
+    ): LuminousFlux =
+        LuminousFlux(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [LuminousEnergy] by [LuminousFlux][org.kisu.units.special.LuminousFlux],
-     * yielding [Time][org.kisu.units.base.Time].
+     * Divides this [LuminousEnergy] by [LuminousFlux],
+     * yielding [Time].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.LuminousFlux
-    ): org.kisu.units.base.Time =
-        org.kisu.units.base.Time(canonical.component1() / other.canonical.component1())
+        other: LuminousFlux
+    ): Time =
+        Time(canonical.component1() / other.canonical.component1())
 }

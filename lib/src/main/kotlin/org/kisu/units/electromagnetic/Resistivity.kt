@@ -5,10 +5,12 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
 import org.kisu.units.electromagnetic.Resistivity.Companion.OhmMetre
 import org.kisu.units.representation.Product
 import org.kisu.units.special.Ohm
+import org.kisu.units.special.Resistance
 
 /**
  * Represents the physical quantity of **electrical resistivity**, measured in
@@ -67,24 +69,24 @@ class Resistivity(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [Resistivity] by [Length][org.kisu.units.base.Length],
-     * yielding [Resistance][org.kisu.units.special.Resistance].
+     * Divides this [Resistivity] by [Length],
+     * yielding [Resistance].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Resistance =
-        org.kisu.units.special.Resistance(canonical.component1() / other.canonical.component1())
+        other: Length
+    ): Resistance =
+        Resistance(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [Resistivity] by [Resistance][org.kisu.units.special.Resistance],
-     * yielding [Length][org.kisu.units.base.Length].
+     * Divides this [Resistivity] by [Resistance],
+     * yielding [Length].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.special.Resistance
-    ): org.kisu.units.base.Length =
-        org.kisu.units.base.Length(canonical.component1() / other.canonical.component1())
+        other: Resistance
+    ): Length =
+        Length(canonical.component1() / other.canonical.component1())
 }

@@ -5,9 +5,13 @@ package org.kisu.units.electromagnetic
 import org.kisu.Magnitude
 import org.kisu.prefixes.Metric
 import org.kisu.units.Measure
+import org.kisu.units.base.Length
 import org.kisu.units.base.Metre
+import org.kisu.units.chemistry.MolarConductivity
+import org.kisu.units.chemistry.Molarity
 import org.kisu.units.electromagnetic.ElectricConductivity.Companion.SiemensPerMetre
 import org.kisu.units.representation.Quotient
+import org.kisu.units.special.Conductance
 import org.kisu.units.special.Siemens
 
 /**
@@ -68,35 +72,35 @@ class ElectricConductivity(
 
     // Dimension-aware arithmetic
     /**
-     * Divides this [ElectricConductivity] by [MolarConductivity][org.kisu.units.chemistry.MolarConductivity],
-     * yielding [Molarity][org.kisu.units.chemistry.Molarity].
+     * Divides this [ElectricConductivity] by [MolarConductivity],
+     * yielding [Molarity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.MolarConductivity
-    ): org.kisu.units.chemistry.Molarity =
-        org.kisu.units.chemistry.Molarity(canonical.component1() / other.canonical.component1())
+        other: MolarConductivity
+    ): Molarity =
+        Molarity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Divides this [ElectricConductivity] by [Molarity][org.kisu.units.chemistry.Molarity],
-     * yielding [MolarConductivity][org.kisu.units.chemistry.MolarConductivity].
+     * Divides this [ElectricConductivity] by [Molarity],
+     * yielding [MolarConductivity].
      *
      * Both operands are converted to their canonical units before the division result is calculated.
      */
     operator fun div(
-        other: org.kisu.units.chemistry.Molarity
-    ): org.kisu.units.chemistry.MolarConductivity =
-        org.kisu.units.chemistry.MolarConductivity(canonical.component1() / other.canonical.component1())
+        other: Molarity
+    ): MolarConductivity =
+        MolarConductivity(canonical.component1() / other.canonical.component1())
 
     /**
-     * Multiplies this [ElectricConductivity] by [Length][org.kisu.units.base.Length],
-     * yielding [Conductance][org.kisu.units.special.Conductance].
+     * Multiplies this [ElectricConductivity] by [Length],
+     * yielding [Conductance].
      *
      * Both operands are converted to their canonical units before the multiplication result is calculated.
      */
     operator fun times(
-        other: org.kisu.units.base.Length
-    ): org.kisu.units.special.Conductance =
-        org.kisu.units.special.Conductance(canonical.component1() * other.canonical.component1())
+        other: Length
+    ): Conductance =
+        Conductance(canonical.component1() * other.canonical.component1())
 }
