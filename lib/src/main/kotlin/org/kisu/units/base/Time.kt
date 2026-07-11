@@ -11,6 +11,7 @@ import org.kisu.prefixes.algebra.LinearAlgebra
 import org.kisu.units.Measure
 import org.kisu.units.chemistry.CatalyticEfficiency
 import org.kisu.units.chemistry.MolarVolume
+import org.kisu.units.information.Transmission
 import org.kisu.units.kinematics.FrequencyDrift
 import org.kisu.units.kinematics.VolumetricFlow
 import org.kisu.units.kinematics.Yank
@@ -152,6 +153,15 @@ class Time private constructor(magnitude: Magnitude, expression: TimeUnit) :
     operator fun times(
         other: FrequencyDrift
     ): Frequency = Frequency(canonical.component1() * other.canonical.component1())
+
+    /**
+     * Multiplies this [Time] by [Transmission], yielding [Information].
+     *
+     * Both operands are converted to their canonical units before the multiplication result is calculated.
+     */
+    operator fun times(
+        other: Transmission
+    ): Information = Information(canonical.component1() * other.canonical.component1())
 
     /**
      * Multiplies this [Time] by [VolumetricFlow], yielding [Volume].

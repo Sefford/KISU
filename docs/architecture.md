@@ -287,6 +287,9 @@ Mass is the main special case. The public SI base unit is kilogram, but prefix a
 Information is another special case. It uses the binary prefix system for bits, and construction validates that values
 resolve to whole bits.
 
+Transmission rates combine the `InformationUnit` expression family with scalar seconds, preserving bit-vs-byte and
+decimal-vs-IEC numerator choices while canonicalizing through `bit/s`.
+
 ## Data Flow
 
 A typical value moves through the system like this:

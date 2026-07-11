@@ -541,6 +541,8 @@ public final class org/kisu/units/base/Human : org/kisu/units/base/TimeUnit {
 
 public final class org/kisu/units/base/Information : org/kisu/units/Measure {
 	public static final field Companion Lorg/kisu/units/base/Information$Companion;
+	public final fun div (Lorg/kisu/units/base/Time;)Lorg/kisu/units/information/Transmission;
+	public final fun div (Lorg/kisu/units/information/Transmission;)Lorg/kisu/units/base/Time;
 	public final fun getBinary ()Lorg/kisu/units/base/Information;
 	public final fun getBits ()Lorg/kisu/units/base/Information;
 	public final fun getBytes ()Lorg/kisu/units/base/Information;
@@ -759,6 +761,7 @@ public final class org/kisu/units/base/Time : org/kisu/units/Measure {
 	public final fun getSi ()Lorg/kisu/units/base/Time;
 	public final fun times (Lorg/kisu/units/base/Current;)Lorg/kisu/units/special/ElectricCharge;
 	public final fun times (Lorg/kisu/units/chemistry/CatalyticEfficiency;)Lorg/kisu/units/chemistry/MolarVolume;
+	public final fun times (Lorg/kisu/units/information/Transmission;)Lorg/kisu/units/base/Information;
 	public final fun times (Lorg/kisu/units/kinematics/FrequencyDrift;)Lorg/kisu/units/special/Frequency;
 	public final fun times (Lorg/kisu/units/kinematics/VolumetricFlow;)Lorg/kisu/units/special/Volume;
 	public final fun times (Lorg/kisu/units/kinematics/Yank;)Lorg/kisu/units/special/Force;
@@ -831,7 +834,9 @@ public abstract interface class org/kisu/units/builders/BinaryUnitBuilder {
 
 public final class org/kisu/units/builders/BinaryUnitBuilderKt {
 	public static final fun getBits (Lorg/kisu/units/builders/BinaryUnitBuilder;)Lorg/kisu/units/base/Information;
+	public static final fun getBitsPerSecond (Lorg/kisu/units/builders/BinaryUnitBuilder;)Lorg/kisu/units/information/Transmission;
 	public static final fun getBytes (Lorg/kisu/units/builders/BinaryUnitBuilder;)Lorg/kisu/units/base/Information;
+	public static final fun getBytesPerSecond (Lorg/kisu/units/builders/BinaryUnitBuilder;)Lorg/kisu/units/information/Transmission;
 }
 
 public final class org/kisu/units/builders/CentiBuilder : org/kisu/units/builders/MetricUnitBuilder {
@@ -887,7 +892,9 @@ public abstract interface class org/kisu/units/builders/DecimalUnitBuilder : org
 
 public final class org/kisu/units/builders/DecimalUnitBuilderKt {
 	public static final fun getBits (Lorg/kisu/units/builders/DecimalUnitBuilder;)Lorg/kisu/units/base/Information;
+	public static final fun getBitsPerSecond (Lorg/kisu/units/builders/DecimalUnitBuilder;)Lorg/kisu/units/information/Transmission;
 	public static final fun getBytes (Lorg/kisu/units/builders/DecimalUnitBuilder;)Lorg/kisu/units/base/Information;
+	public static final fun getBytesPerSecond (Lorg/kisu/units/builders/DecimalUnitBuilder;)Lorg/kisu/units/information/Transmission;
 }
 
 public final class org/kisu/units/builders/ExaBuilder : org/kisu/units/builders/DecimalUnitBuilder {
@@ -1227,7 +1234,9 @@ public final class org/kisu/units/builders/NumberExtensionsKt {
 	public static final fun getAttoseconds (Ljava/lang/Number;)Lorg/kisu/units/base/Time;
 	public static final fun getBecquerels (Ljava/lang/Number;)Lorg/kisu/units/special/Radioactivity;
 	public static final fun getBits (Ljava/lang/Number;)Lorg/kisu/units/base/Information;
+	public static final fun getBitsPerSecond (Ljava/lang/Number;)Lorg/kisu/units/information/Transmission;
 	public static final fun getBytes (Ljava/lang/Number;)Lorg/kisu/units/base/Information;
+	public static final fun getBytesPerSecond (Ljava/lang/Number;)Lorg/kisu/units/information/Transmission;
 	public static final fun getCandelas (Ljava/lang/Number;)Lorg/kisu/units/base/LuminousIntensity;
 	public static final fun getCandelasPerSquareMetre (Ljava/lang/Number;)Lorg/kisu/units/photometric/Luminance;
 	public static final fun getCelsius (Ljava/lang/Number;)Lorg/kisu/units/special/CelsiusTemperature;
@@ -1975,6 +1984,20 @@ public final class org/kisu/units/exceptions/NegativeTime : java/lang/Arithmetic
 
 public final class org/kisu/units/exceptions/SubBitInformation : java/lang/ArithmeticException {
 	public fun <init> (Lorg/kisu/Magnitude;Ljava/lang/String;)V
+}
+
+public final class org/kisu/units/information/Transmission : org/kisu/units/Measure {
+	public static final field Companion Lorg/kisu/units/information/Transmission$Companion;
+	public fun <init> (Lorg/kisu/Magnitude;Lorg/kisu/units/representation/Quotient;)V
+	public final fun getBinary ()Lorg/kisu/units/information/Transmission;
+	public final fun getBits ()Lorg/kisu/units/information/Transmission;
+	public final fun getBytes ()Lorg/kisu/units/information/Transmission;
+	public final fun getDecimal ()Lorg/kisu/units/information/Transmission;
+	public final fun getIec ()Lorg/kisu/units/information/Transmission;
+	public final fun times (Lorg/kisu/units/base/Time;)Lorg/kisu/units/base/Information;
+}
+
+public final class org/kisu/units/information/Transmission$Companion {
 }
 
 public final class org/kisu/units/kinematics/FrequencyDrift : org/kisu/units/Measure {
