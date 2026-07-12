@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 rootProject.name = "KISU"
 
 include("lib")
+include("examples:arithmetic-recipes")

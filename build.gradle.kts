@@ -2,6 +2,7 @@ val jacocoVersion = libs.versions.jacoco.get()
 
 plugins {
     jacoco
+    kotlin("jvm") apply false
 }
 
 repositories {
