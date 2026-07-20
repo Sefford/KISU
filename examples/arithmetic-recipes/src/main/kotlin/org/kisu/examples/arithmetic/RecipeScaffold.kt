@@ -5,10 +5,8 @@ data class RecipeScaffold(
     val problem: String,
     val tasks: List<String>,
 ) {
-    fun print() {
-        println(title)
-        println(problem)
-        tasks.forEach { task -> println("- $task") }
-        println()
+    fun print(output: ConsoleOutput = ConsoleOutput()) {
+        output.heading(problem)
+        tasks.forEach { task -> output.write("- $task") }
     }
 }

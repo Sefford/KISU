@@ -7,6 +7,14 @@ plugins {
 
 dependencies {
     implementation(project(":lib"))
+
+    // Test Dependencies
+    testImplementation(kotlin("test"))
+
+    // Kotest
+    testImplementation(libs.kotest)
+    testImplementation(libs.kotest.assertions)
+    testImplementation(libs.kotest.property)
 }
 
 kotlin {
